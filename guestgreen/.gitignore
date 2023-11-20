@@ -11,6 +11,7 @@ tmp/
 *~.nib
 local.properties
 .settings/
+guestgreen/.settings/
 .loadpath
 .recommenders
 build/
