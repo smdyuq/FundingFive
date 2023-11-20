@@ -10,15 +10,15 @@
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 	<main>
-
-		<p>마이페이지 입니다.</p>
-
-
-
-
-
-
-
+	
+	<p>마이페이지 입니다.</p>
+	
+	
+	
+	
+	
+	
+	
 	</main>
 
 	<%@include file="../../views/common/footer.jsp"%>
