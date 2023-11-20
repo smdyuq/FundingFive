@@ -16,7 +16,7 @@ public class DatabaseConnection {
 	    try {
 	        System.out.println("Connecting to the database...");
 	        Class.forName(DRIVER);
-	        con = DriverManager.getConnection(URL, USER, PWD);
+	        con = DriverManager.getConnection(URL, USER, PWD); 
 	        System.out.println("Connected to the database.");
 	        return con;
 	    } catch (Exception e) {

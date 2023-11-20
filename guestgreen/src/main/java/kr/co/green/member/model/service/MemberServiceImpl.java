@@ -17,7 +17,6 @@ public class MemberServiceImpl implements MemberService {
         dc = new DatabaseConnection();
         con = dc.connDB();
     }
-
     // 회원가입
     @Override
     public int signUp(MemberDTO memberDTO) {

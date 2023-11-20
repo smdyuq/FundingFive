@@ -28,9 +28,9 @@ public class FormController extends HttpServlet {
 		String action = request.getPathInfo();
 		String nextPage = ""; 
 		HttpSession session = request.getSession();
+		 
 		
-		
-		if (action.equals("/loginform.do")) { //홈>로그인페이지 이동
+		if (action.equals("/loginform.do")) { //홈>로그인페이지 이동 
 	        nextPage = "/views/member/login.jsp";
 	    }else if(action.equals("/signupform.do")){
 	    	nextPage = "/views/member/signup.jsp"; //홈>회원가입페이지 이동

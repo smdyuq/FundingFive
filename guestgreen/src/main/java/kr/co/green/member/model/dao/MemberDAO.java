@@ -22,7 +22,7 @@ public class MemberDAO {
 			
 			pstmt = con.prepareStatement(query);
 			
-			
+		
 			pstmt.setString(1, memberDTO.getId());
 			pstmt.setString(2, memberDTO.getPwd());
 			pstmt.setString(3, memberDTO.getName());
