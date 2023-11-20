@@ -17,7 +17,7 @@ public class MemberDAO {
 		
 		String query = "INSERT INTO member "
 				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1)";
-		
+	
 		try {
 			
 			pstmt = con.prepareStatement(query);

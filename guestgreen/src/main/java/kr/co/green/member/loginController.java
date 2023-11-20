@@ -29,7 +29,6 @@ public class loginController extends HttpServlet {
 
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 유저가 입력한 데이터 받기
         String id = request.getParameter("member-id");

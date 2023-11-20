@@ -9,7 +9,7 @@ public interface MemberService {
 
 	//id중복 체크 
 	boolean duplicateId(String id);
-
+	
 	//로그인
 	MemberDTO memberLogin(String id);
 }

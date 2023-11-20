@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService {
     public int signUp(MemberDTO memberDTO) {
         return memberDAO.signUp(con, memberDTO);
     }
-    
+   
 	//아이디 중복검사 
 	@Override
 	public boolean duplicateId(String id) {

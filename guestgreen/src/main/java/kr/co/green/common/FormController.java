@@ -38,7 +38,7 @@ public class FormController extends HttpServlet {
 	    	nextPage = "/views/member/Mypage.jsp"; //홈>마이페이지 이동
 	    }
 
-	    
+	   
 	    
 	    // 페이지 포워딩
 	    if (!nextPage.isEmpty()) {

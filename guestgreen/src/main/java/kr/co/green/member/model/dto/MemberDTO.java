@@ -16,7 +16,6 @@ public class MemberDTO {
 	private int type;
 
 
-
 	
 	public MemberDTO() {
 		super();
