@@ -12,6 +12,7 @@ tmp/
 local.properties
 guestgreen/.settings/
 .settings/
+guestgreen/.settings/
 .loadpath
 .recommenders
 build/
