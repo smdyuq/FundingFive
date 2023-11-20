@@ -17,6 +17,7 @@
 				<li><a href="/">홈</a></li>
 				<li><a href="#">진행중인 프로젝트</a></li>
 				<li><a href="#">공개예정 프로젝트</a></li>
+				<li><a href="/boardList.do?cpage=1">공지사항</a></li>
 			</ul>
 		</div>
 	</div>
