@@ -11,7 +11,7 @@
         <meta name="author" content="" />
         <title>Blog Post - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/img/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/img/favicon.ico" />	
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/project/detail.css" rel="stylesheet" />
         <script src ="/resources/js/project/project.js" ></script>
