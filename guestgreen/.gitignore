@@ -12,6 +12,8 @@ tmp/
 local.properties
 guestgreen/.settings/
 .settings/
+.classpath
+guestgreen/.classpath
 guestgreen/.settings/
 .loadpath
 .recommenders
