@@ -13,6 +13,13 @@ public interface MemberService {
 	//로그인
 	MemberDTO memberLogin(String id);
 	
-	//후원 버튼 클릭 시 로그인 된 회원 정보 가져오기
-	MemberDTO memberSelect(int no);
+	//회원조회 
+	MemberDTO selectMember(int no);
+
+	//회원 정보 수정 
+	int updateMember(MemberDTO memberDTO, int no);
+
+	//회원 탈퇴 
+	int deleteUpdate(MemberDTO memberDTO, int sessionId);
+
 }

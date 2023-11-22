@@ -38,7 +38,7 @@ public class SponserInfoController extends HttpServlet {
 		
 		//로그인 된 유저 정보 가져오기
 		MemberService memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNumber);
+		MemberDTO memberDTO = memberService.selectMember(memberNumber);
 		
 		if(!Objects.isNull(memberDTO)) {
 			request.setAttribute("memberDTO", memberDTO);

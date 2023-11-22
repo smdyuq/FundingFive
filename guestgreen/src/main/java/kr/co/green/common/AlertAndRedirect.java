@@ -9,21 +9,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 @WebServlet("/AlertAndRedirect")
 public class AlertAndRedirect extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
-	 public AlertAndRedirect() {
-	        super();
-	    }
+    public AlertAndRedirect() {
+        super();
+    }
 
-	    public static void alertRedirect(HttpServletResponse response, String msg, String url) throws IOException {
-			PrintWriter out = response.getWriter();
-			out.println("<script>"
-					+ "location.href='" + url + "';"
-					+ "alert('" + msg + "')"
-					+ "</script>");
-			out.flush();
-			out.close();
-		}
+    public static void alertRedirect(HttpServletResponse response, String msg, String url) throws IOException {
+      PrintWriter out = response.getWriter();
+      out.println("<script>"
+            + "location.href='" + url + "';"
+            + "alert('" + msg + "')"
+            + "</script>");
+      out.flush();
+      out.close();
+   }
+    
+    
+//   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      response.getWriter().append("Served at: ").append(request.getContextPath());
+//   }
+//
+//   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      doGet(request, response);
+//   }
+
 }
