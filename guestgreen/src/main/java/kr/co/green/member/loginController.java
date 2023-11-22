@@ -31,6 +31,10 @@ public class loginController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8"); 
+		
 		// 1. 유저가 입력한 데이터 받기
         String id = request.getParameter("member-id");
         String pwd = request.getParameter("member-pwd");
@@ -38,24 +42,21 @@ public class loginController extends HttpServlet {
         // 2. 받은 데이터(아이디,패스워드)가 일치하는지
         MemberServiceImpl memberService = new MemberServiceImpl();
 
-        // 패스워드 확인
+        // 패스워드 확인 
         MemberDTO member = memberService.memberLogin(id);
 
         if (member.getId() != null && pwd.equals(member.getPwd())) {
             System.out.println("로그인 성공");
-            HttpSession session = request.getSession();
-            session.setAttribute("name", member.getName());
-            session.setAttribute("id", member.getId());
-            session.setAttribute("userType", member.getType());
+            HttpSession session = request.getSession();   
+            session.setAttribute("no", member.getNo());
+
+            request.setAttribute("member", member);           
 
             RequestDispatcher view = request.getRequestDispatcher("/");
             view.forward(request, response);
         } else {
-            System.out.println("로그인 실패");
-
-            // 실패 메시디 띄우고 로그인창으로 보냄
-            AlertAndRedirect.alertRedirect(response, "로그인에 실패하였습니다.", "/views/member/login.jsp");
-
+            AlertAndRedirect.alertRedirect(response, "회원정보를 불러오지 못했습니다. 다시 시도해주세요.", "views/member/login.jsp");
         }
+        
     }
 }

@@ -33,6 +33,38 @@ public class MemberServiceImpl implements MemberService {
 	//로그인 
 	@Override
 	public MemberDTO memberLogin(String id) {
-		return memberDAO.memeberLogin(con, id);
-	} 
+		return memberDAO.memberLogin(con, id);
+	}
+	
+	
+	//회원 정보 조회
+	@Override
+	public MemberDTO selectMember(int no) {
+		return memberDAO.selectMember(con, no);
+	}
+
+	
+	//회원 정보 수정
+	@Override
+	public int updateMember(MemberDTO memberDTO, int no) {
+		return memberDAO.updateMember(con, memberDTO, no);
+	}
+	
+	//회원 탈퇴 
+	@Override
+	public int deleteUpdate(MemberDTO memberDTO, int sessionId) {
+		return memberDAO.deleteUpdate(con, memberDTO, sessionId);
+	}
+	
+
 }
+
+
+
+
+
+
+
+
+
+
