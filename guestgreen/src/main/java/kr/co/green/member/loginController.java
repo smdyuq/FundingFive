@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
@@ -30,6 +31,10 @@ public class loginController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8"); 
+		
 		// 1. 유저가 입력한 데이터 받기
         String id = request.getParameter("member-id");
         String pwd = request.getParameter("member-pwd");
@@ -42,22 +47,16 @@ public class loginController extends HttpServlet {
 
         if (member.getId() != null && pwd.equals(member.getPwd())) {
             System.out.println("로그인 성공");
-            HttpSession session = request.getSession();
-            session.setAttribute("name", member.getName());
-            session.setAttribute("id", member.getId());
-            session.setAttribute("userType", member.getType());
+            HttpSession session = request.getSession();   
+            session.setAttribute("no", member.getNo());
+
+            request.setAttribute("member", member);           
 
             RequestDispatcher view = request.getRequestDispatcher("/");
             view.forward(request, response);
         } else {
-            System.out.println("로그인 실패");
-
-            // 실패 메시지를 request에 저장
-            request.setAttribute("loginErrorMessage", "로그인에 실패했습니다. 아이디 또는 비밀번호를 확인하세요.");
-
-            // 로그인 페이지로 포워딩
-            RequestDispatcher view = request.getRequestDispatcher("/views/member/login.jsp");
-            view.forward(request, response);
+            AlertAndRedirect.alertRedirect(response, "회원정보를 불러오지 못했습니다. 다시 시도해주세요.", "views/member/login.jsp");
         }
+        
     }
 }
