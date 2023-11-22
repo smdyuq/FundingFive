@@ -57,6 +57,14 @@ public class FormController extends HttpServlet {
 				request.setAttribute("member", memberDTO);
 			}
 			nextPage = "/"; // 홈으로 이동
+		} else if (action.equals("/projectEnrollFrom.do")) {
+			int no = (int) session.getAttribute("no");
+			MemberServiceImpl memberService = new MemberServiceImpl();
+			MemberDTO memberDTO = memberService.selectMember(no);
+			request.setAttribute("member", memberDTO);
+			nextPage = "/views/project/projectEnroll.jsp";
+		} else if (action.equals("/administratorOkForm.do")) {
+			nextPage = "/views/project/administratorOk.jsp";
 		}
 
 		// 페이지 포워딩

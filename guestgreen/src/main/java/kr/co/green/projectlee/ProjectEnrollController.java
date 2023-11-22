@@ -8,7 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import kr.co.green.member.model.dto.MemberDTO;
+import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.projectlee.dto.ProjectleeDTO;
 import kr.co.green.projectlee.service.ProjectleeserviceImpl;
 
@@ -37,7 +40,7 @@ public class ProjectEnrollController extends HttpServlet {
 		String projectKind = request.getParameter("project-kind");
 		int projectPrice = Integer.parseInt(request.getParameter("project-price"));
 		int projectTargetAmount = Integer.parseInt(request.getParameter("project_target_amount"));
-		String projectRegisterDate = request.getParameter("project-register-date");
+
 		String projectEndDate = request.getParameter("project-end-date");
 
 		ProjectleeDTO projectleeDTO = new ProjectleeDTO();
@@ -48,10 +51,12 @@ public class ProjectEnrollController extends HttpServlet {
 		projectleeDTO.setProjectKind(projectKind);
 		projectleeDTO.setProjectPrice(projectPrice);
 		projectleeDTO.setProjectTargetAmount(projectTargetAmount);
-		projectleeDTO.setProjectRegisterDate(projectRegisterDate);
+
 		projectleeDTO.setProjectEndDate(projectEndDate);
 
 		ProjectleeserviceImpl projectleeservice = new ProjectleeserviceImpl();
+		
+//		프로젝트 등록
 		int result1 = projectleeservice.projectEnroll(projectleeDTO);
 
 		if (result1 > 0) {

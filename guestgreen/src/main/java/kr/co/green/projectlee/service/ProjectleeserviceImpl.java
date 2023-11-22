@@ -24,16 +24,18 @@ public class ProjectleeserviceImpl implements Projectleeservice {
 		return projectleeDAO.projectEnroll(con, projectleeDTO);
 	}
 
-//	창작자 등록
-	@Override
-	public int projectManagerEnroll(ProjectleeDTO projectleeDTO, int no) {
-		return projectleeDAO.projectManagerEnroll(con, projectleeDTO, no);
-	}
-
 //	프로젝트 번호 조회
 	@Override
-	public ProjectleeDTO projectManagerNoSelect(ProjectleeDTO projectleeDTO) {
-		return projectleeDAO.projectManagerNoSelect(con, projectleeDTO);
+	public int projectManagerNoSelect() {
+		return projectleeDAO.projectManagerNoSelect(con);
 	}
+
+//	창작자 등록
+	@Override
+	public int projectManagerEnroll(ProjectleeDTO projectleeDTO, int no, int projectNo) {
+		System.out.println("매니장;ㅣㄻ: "+projectleeDTO.getManagerName());
+		return projectleeDAO.projectManagerEnroll(con, projectleeDTO, no, projectNo);
+	}
+
 
 }

@@ -35,7 +35,7 @@
 		<c:if test="${not empty sessionScope.no}">
 			<c:if test="${member.type == 1}">
 				<div>
-					<a class="gnb-button-style" href="#">프로젝트 등록</a> <a
+					<a class="gnb-button-style" href="/form/projectEnrollFrom.do">프로젝트 등록</a> <a
 						class="gnb-button-style" href="/form/memberform.do">마이페이지</a> <a
 						class="gnb-button-style" href="/logout.do">로그아웃</a>
 				</div>

@@ -7,7 +7,6 @@
 <%@include file="../../views/common/head.jsp"%>
 </head>
 <body>
-
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 	<main>
@@ -15,7 +14,6 @@
 			<div class="project-manager-enroll-form">
 				<h2>창작자 등록</h2>
 				<form action="/projectManagerEnroll.do" method="post">
-
 
 					<label for="project-manager-name">프로젝트 매니저 이름 :</label> <input
 						type="text" id=" project-manager-name" name="project-manager-name"
@@ -31,7 +29,6 @@
 			</div>
 		</section>
 	</main>
-
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>

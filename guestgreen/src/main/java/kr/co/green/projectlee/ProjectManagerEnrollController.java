@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.projectlee.dto.ProjectleeDTO;
 import kr.co.green.projectlee.service.ProjectleeserviceImpl;
 
@@ -35,6 +36,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		String projectManagerName = request.getParameter("project-manager-name");
 		String projectManagerIntroduce = request.getParameter("project-manager-introduce");
 		String projectManagerAccount = request.getParameter("project-manager-account");
+		
 		int no = (int) session.getAttribute("no");
 
 		ProjectleeDTO projectleeDTO = new ProjectleeDTO();
@@ -46,10 +48,10 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		ProjectleeserviceImpl projectleeservice = new ProjectleeserviceImpl();
 
 //		프로젝트 번호 조회
-		projectleeDTO = projectleeservice.projectManagerNoSelect(projectleeDTO);
+		int projectNo = projectleeservice.projectManagerNoSelect();
 
 //		창작자 등록
-		int result2 = projectleeservice.projectManagerEnroll(projectleeDTO, no);
+		int result2 = projectleeservice.projectManagerEnroll(projectleeDTO, no, projectNo);
 
 		if (result2 > 0) {
 			response.sendRedirect("/");

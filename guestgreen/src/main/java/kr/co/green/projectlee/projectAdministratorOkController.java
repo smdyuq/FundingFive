@@ -25,8 +25,7 @@ public class projectAdministratorOkController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/views/project/administratorOk.jsp");
-		view.forward(request, response);
+		
 	}
 
 }

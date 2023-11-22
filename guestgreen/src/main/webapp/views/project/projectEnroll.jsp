@@ -8,7 +8,6 @@
 <%@include file="../../views/common/head.jsp"%>
 </head>
 <body>
-
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 	<main>
@@ -35,9 +34,7 @@
 					<label for="project_target_amount">프로젝트 목표 후원금액 :</label> <input
 						type="text" id="project_target_amount"
 						name="project_target_amount" required><br> <label
-						for="project-register-date">프로젝트 등록일 :</label> <input type="date"
-						id="project-register-date" name="project-register-date" required><br>
-					<label for="project-end-date">프로젝트 마감일 :</label> <input type="date"
+						for="project-end-date">프로젝트 마감일 :</label> <input type="date"
 						id="project-end-date" name="project-end-date" required><br>
 
 					<button type="submit">다음</button>
@@ -45,7 +42,6 @@
 			</div>
 		</section>
 	</main>
-
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
