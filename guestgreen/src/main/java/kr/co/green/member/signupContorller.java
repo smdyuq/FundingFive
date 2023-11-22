@@ -55,7 +55,6 @@ public class signupContorller extends HttpServlet {
 		Pattern passwordPattern = Pattern.compile(pwdPattern);
 		Matcher passwordMatcher = passwordPattern.matcher(pwd);
 
-		// dto객체 생성
 		MemberDTO memberDTO = new MemberDTO(id, pwd, name, phone, addr);
 
 		if (matcher.matches() && passwordMatcher.matches()) {
