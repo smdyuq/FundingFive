@@ -42,7 +42,7 @@ public class loginController extends HttpServlet {
         // 2. 받은 데이터(아이디,패스워드)가 일치하는지
         MemberServiceImpl memberService = new MemberServiceImpl();
 
-        // 패스워드 확인
+        // 패스워드 확인 
         MemberDTO member = memberService.memberLogin(id);
 
         if (member.getId() != null && pwd.equals(member.getPwd())) {
