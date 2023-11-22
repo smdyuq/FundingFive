@@ -9,32 +9,35 @@
 
 	<%@include file="/views/common/header.jsp"%>
 	<%@include file="/views/common/nav.jsp"%>
-  	<main class="flex-shrink-0">
-		<div class="container">
-			<h3>
-				게시판
-				</h2>
-				<hr>
-				<br />
-				<table class="table table-hover">
+	<main>
+		<section>
+			<div class="table-container">
+				<form action="/boardList.do" method="get">
+					<input type="hidden" name="cpage" value="1"> <input
+						type="search" name="searchText" placeholder="검색어를 입력하세요">
+					<button type="submit">검색</button>
+				</form>
+				<table class="table table-hover" id="content">
 					<thead>
 						<tr>
-							<td>선택</td>
-							<td>번호</td>
-							<td>제목</td>
-							<td>작성자(회원번호)</td>
-							<td>작성일</td>
-							<td>조회수</td>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+							<th>주회수</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="table-group-divider" id="table-content">
+
 						<c:choose>
-							<c:when test="">
+							<c:when test="${empty list }">
+								<tr>
+									<td colspan="5" class="text-center">등록된 글이 없습니다.</td>
+								</tr>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="item" items="${list }">
 									<tr onclick="detailPage(${item.idx})">
-										<td>선택</td>
 										<td>${row}</td>
 										<td>${item.title }</td>
 										<td>${item.writer }</td>
@@ -45,15 +48,19 @@
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-					</tbody>
-					<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
 
-						<c:if test="${!empty sessionScope.no}">
-							<!-- 글쓰기 버튼은 로그인한 사용자만 보여야 합니다. -->
-							<button class="btn btn-dark me-md-2" type="button"
-								onclick="window.location.href= '/Enroll.do'">글쓰기</button>
-						</c:if>
-					</div>
+					</tbody>
+				</table>
+				<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
+
+					<c:if test="${sessionScope.userType == 0}">
+						<!-- 글쓰기 버튼은 로그인한 사용자만 보여야 합니다. -->
+						<button class="btn btn-dark me-md-2" type="button"
+							onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
+							등록</button>
+					</c:if>
+					</form>
+				</div>
 				</table>
 
 
@@ -95,7 +102,7 @@
 						</c:choose>
 					</ul>
 				</nav>
-		</div>
+			</div>
 	</main>
 	<%@include file="/views/common/footer.jsp"%>
 </body>

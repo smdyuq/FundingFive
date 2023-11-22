@@ -12,42 +12,40 @@ import kr.co.green.board.service.PageInfo;
 public class BoardDAO {
 
 	private PreparedStatement pstmt;
-	
-	public ArrayList<BoardDTO> boardList(Connection con, PageInfo pi,String searchText){
-		
+
+	public ArrayList<BoardDTO> boardList(Connection con, PageInfo pi, String searchText) {
+
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		String query = "select BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_IN_DATE, BOARD_UPDATE_DATE, BOARD_VIEWS, MEMBER_NO"
-				+ "			from BOARD "
-				+ "			where BOARD_DELETE_DATE is null"
-				+ "			and BOARD_TITLE like '%'||?||'%'"
-				+ "			order by BOARD_IN_DATE desc"
+				+ "			from BOARD " + "			where BOARD_DELETE_DATE is null"
+				+ "			and BOARD_TITLE like '%'||?||'%'" + "			order by BOARD_IN_DATE desc"
 				+ "			offset ? row fetch first ? row only";
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, searchText);
 			pstmt.setInt(2, pi.getOffSet());
 			pstmt.setInt(3, pi.getBoardLimit());
-			
+
 			ResultSet rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				int board_no = rs.getInt("BOARD_NO");
 				String board_title = rs.getString("BOARD_TITLE");
 				String board_indate = rs.getString("BOARD_IN_DATE");
 				int views = rs.getInt("BOARD_VIEWS");
 				String writer = rs.getString("MEMBER_NO");
-				
+
 				BoardDTO board = new BoardDTO();
 				board.setIdx(board_no);
 				board.setTitle(board_title);
 				board.setInDate(board_indate);
 				board.setViews(views);
 				board.setWriter(writer);
-				
+
 				list.add(board);
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,21 +57,57 @@ public class BoardDAO {
 	public int boardListCount(Connection con, String searchText) {
 		String query = "SELECT count(*) AS cnt FROM BOARD WHERE BOARD_DELETE_DATE IS NULL"
 				+ " 										AND BOARD_TITLE LIKE '%' || ? || '%'";
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, searchText);
-			
+
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				int result = rs.getInt("cnt");
 				return result;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
+		return 0;
+	}
+
+	public int boardEnroll(Connection con, String title, String content, String writer, String fileName,
+			String uploadDirectory) {
+		String query = "INSERT INTO board VALUES(board_no_SEQ.nextval," // 게시글 번호
+				+ "									?," // 제목
+				+ "									?," // 내용
+				+ "									DEFAULT," // 작성일
+				+ "									null," // 수정일
+				+ "									0," // 조회수
+				+ "									1," // 작성자
+				+ "									?," // 파일 이름
+				+ "									?," // 파일 경로
+				+ "									null)"; // 삭제일
+
+		try {
+			// 쿼리 사용 준비
+			pstmt = con.prepareStatement(query);
+			System.out.println("asd");
+
+			// 물음표 값
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, fileName);
+			pstmt.setString(4, uploadDirectory);
+
+			// 쿼리 실행
+			int result = pstmt.executeUpdate();
+			System.out.println(result);
+
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return 0;
 	}
 }

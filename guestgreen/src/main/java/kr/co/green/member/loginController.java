@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
@@ -52,12 +53,9 @@ public class loginController extends HttpServlet {
         } else {
             System.out.println("로그인 실패");
 
-            // 실패 메시지를 request에 저장
-            request.setAttribute("loginErrorMessage", "로그인에 실패했습니다. 아이디 또는 비밀번호를 확인하세요.");
+            // 실패 메시디 띄우고 로그인창으로 보냄
+            AlertAndRedirect.alertRedirect(response, "로그인에 실패하였습니다.", "/views/member/login.jsp");
 
-            // 로그인 페이지로 포워딩
-            RequestDispatcher view = request.getRequestDispatcher("/views/member/login.jsp");
-            view.forward(request, response);
         }
     }
 }
