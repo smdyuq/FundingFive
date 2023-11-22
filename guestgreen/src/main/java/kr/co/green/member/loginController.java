@@ -43,9 +43,9 @@ public class loginController extends HttpServlet {
         if (member.getId() != null && pwd.equals(member.getPwd())) {
             System.out.println("로그인 성공");
             HttpSession session = request.getSession();
-            session.setAttribute("name", member.getName());
-            session.setAttribute("id", member.getId());
-            session.setAttribute("userType", member.getType());
+            session.setAttribute("no", member.getNo());
+            
+            request.setAttribute("member", member);
 
             RequestDispatcher view = request.getRequestDispatcher("/");
             view.forward(request, response);

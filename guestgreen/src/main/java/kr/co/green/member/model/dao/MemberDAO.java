@@ -100,9 +100,34 @@ public class MemberDAO {
 
 			e.printStackTrace();
 		}
-
-		
-		
 			return result;
 	}
+
+	public MemberDTO memberSelect(Connection con, int no) {
+		String query = "SELECT member_phone, member_name FROM MEMBER"
+				+ "		WHERE member_no = ?";
+		MemberDTO result = new MemberDTO();
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				result.setPhone(rs.getString("MEMBER_PHONE"));
+				result.setName(rs.getString("MEMBER_NAME"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+

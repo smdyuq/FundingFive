@@ -34,5 +34,21 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO memberLogin(String id) {
 		return memberDAO.memeberLogin(con, id);
+	}
+	
+	//후원 버튼 클릭 시 로그인 된 회원 정보 가져오기
+	@Override
+	public MemberDTO memberSelect(int no) {
+		return memberDAO.memberSelect(con, no);
 	} 
 }
+
+
+
+
+
+
+
+
+
+
