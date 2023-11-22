@@ -35,14 +35,14 @@
 <c:if test="${not empty sessionScope.name}">
     <c:if test="${sessionScope.userType == 1}">
         <div>
-            <a class="gnb-button-style" href="#">프로젝트 등록</a>
+            <a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트 등록</a>
             <a class="gnb-button-style" href="/form/mypageform.do">마이페이지</a>
             <a class="gnb-button-style" href="/logout.do">로그아웃</a>
         </div>
     </c:if>
     <c:if test="${sessionScope.userType == 0}">
         <div>
-            <a class="gnb-button-style" href="#">프로젝트 관리</a>
+            <a class="gnb-button-style" href="/form/administratorOkForm.do">프로젝트 관리</a>
             <a class="gnb-button-style" href="/logout.do">로그아웃</a>
         </div>
     </c:if>

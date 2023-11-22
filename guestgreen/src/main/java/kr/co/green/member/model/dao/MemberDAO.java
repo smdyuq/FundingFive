@@ -85,7 +85,7 @@ public class MemberDAO {
 				String resultUpdateDate= rs.getString("MEMBER_Update_Date");
 				int resultType = rs.getInt("MEMBER_TYPE");
 
-				
+				result.setNo(resultNo);
 				result.setId(resultId);
 				result.setPwd(resultPwd);
 				result.setName(resultName);

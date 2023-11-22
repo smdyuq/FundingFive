@@ -21,34 +21,37 @@ public class FormController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 
+
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-		
+
 		String action = request.getPathInfo();
-		String nextPage = ""; 
+		String nextPage = "";
 		HttpSession session = request.getSession();
-		 
-		
-		if (action.equals("/loginform.do")) { //홈>로그인페이지 이동 
-	        nextPage = "/views/member/login.jsp";
-	    }else if(action.equals("/signupform.do")){
-	    	nextPage = "/views/member/signup.jsp"; //홈>회원가입페이지 이동
-	    }else if(action.equals("/mypageform.do")) {
-	    	nextPage = "/views/member/Mypage.jsp"; //홈>마이페이지 이동
-	    }
 
-	   
-	    
-	    // 페이지 포워딩
-	    if (!nextPage.isEmpty()) {
-	        RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-	        dispatcher.forward(request, response);
-	    }
-}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (action.equals("/loginform.do")) { // 홈>로그인페이지 이동
+			nextPage = "/views/member/login.jsp";
+		} else if (action.equals("/signupform.do")) {
+			nextPage = "/views/member/signup.jsp"; // 홈>회원가입페이지 이동
+		} else if (action.equals("/mypageform.do")) {
+			nextPage = "/views/member/Mypage.jsp"; // 홈>마이페이지 이동
+		} else if (action.equals("/projectEnrollForm.do")) {
+			nextPage = "/views/project/projectEnroll.jsp"; // 홈>프로젝트 등록페이지 이동
+		} else if (action.equals("/administratorOkForm.do")) {
+			nextPage = "/views/project/administratorOk.jsp"; // 홈>관리자 승인페이지 이동
+		}
 
-	    doGet(request, response);
+		// 페이지 포워딩
+		if (!nextPage.isEmpty()) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doGet(request, response);
 	}
 
 }
