@@ -8,51 +8,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>funding(수정예정)</title>
-<link rel="stylesheet" href="/resources/css/project/projectDetail.css">
-<script src="/resources/js/project/projectDetail.js"></script>
-<!--css 주소 수정-->
 
+<script src="/resources/js/project/projectDetail.js"></script>
+
+		<%@include file="/views/common/head.jsp"%>
 </head>
 
 <body>
-	<header>
-		<%@include file="../../views/common/header.jsp"%>
-		<%@include file="../../views/common/nav.jsp"%>
-		<div>
-			<!-- <img scr="" alt="로고"> -->
-			<a href="#">로고</a>
-		</div>
-		<div>
-			<a id="member-information"> 회원 가입을 해주세요.</a>
-			<!-- <a id="member-information"> ()님 안녕하세요.</a> 
-            <a id="member-information"> 관리자님 안녕하세요.</a>  -->
-		</div>
-		<div class="gnb-buttons">
-			<div>
-				<a class="gnb-button-style" href="#">로그인</a> <a
-					class="gnb-button-style" href="#">회원가입</a>
-			</div>
-		</div>
-	</header>
-	<nav>
-		<div class="nav-menu">
-			<div>
-				<ul class="nav-menu-list">
-					<li class="lnb-category-expansion"><a
-						onclick="lnbCategoryClose()">메뉴</a>
-						<div class="lnb-category">
-							<a href="#">카테고리1</a> <a href="#">카테고리2</a> <a href="#">카테고리3</a>
-							<a href="#">카테고리4</a> <a href="#">카테고리4</a>
-						</div></li>
-					<li><a href="#">홈</a></li>
-					<li><a href="#">진행중인 프로젝트</a></li>
-					<li><a href="#">공개예정 프로젝트</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		<%@include file="/views/common/header.jsp"%>
+		<%@include file="/views/common/nav.jsp"%>
 
-	<!-- ------------------------------------------------------------------------------- -->
 	<main>
 		<div class="container">
 			<div class="project-div">
@@ -69,12 +34,20 @@
 									<a class="project-value">${projectDTO.projectCurrentAmount}
 										<p class="project-text-unit">원</p>
 									</a>
+									<a class="project-value">${projectDTO.projectCurrentPercentage}
+										<p class="project-text-unit">%</p>
+									</a>
 								</div>
 								<p class="project-text">남은 기간</p>
 								<div>
-									<a class="project-value">projectEndDate-projectRegisterDate
-										<p class="project-text-unit">일</p>
-									</a>
+									<c:if test="${projectDTO.projectRemainDate>0}">		
+										<a class="project-value">${projectDTO.projectRemainDate}
+											<p class="project-text-unit">일</p>
+										</a>
+									</c:if>
+									<c:if test="${projectDTO.preojectRemainDate<=0}">
+											<p class="project-text-unit">종료된 프로젝트입니다.</p>
+									</c:if>	
 								</div>
 								<p class="project-text">후원자 수</p>
 								<div>
@@ -82,12 +55,19 @@
 										<p class="project-text-unit">명</p>
 									</a>
 								</div>
+								<div>
+									<a class="project-value">${projectDTO.getProjectTargetAmount}
+										<p class="project-text-unit">원</p>
+									</a>
+									<a class="project-value">${projectDTO.getProjectRegisterDate} ~ ${projectDTO.getProjectEndDate}
+										<p class="project-text-unit">펀딩기간</p>
+									</a>
+									<a class="project-value">
+								</div>
 							</div>
 							<div class="sponsor-button">
-								<!-- <div> -->
 								<button class="btn btn-dark me-md-2" type="button" 
-									onclick="projectDonate(${projectDTO.getProjectNumber})">후원하기</button>
-								<!-- </div> -->
+									onclick="projectDonate(${projectDTO.projectNumber})">후원하기</button>
 							</div>
 						</div>
 					</div>
@@ -96,38 +76,7 @@
 			<div class="product-div">
 				<div class="product-description">
 					<p>제품 상세 설명(이미지, 글)</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
-					<p>테스트입니다아아아아아아아ㅏ아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아</p>
+					<p>테스트입니다</p>
 				</div>
 				<div class="originator-div">
 					<p>창작자 소개</p>
@@ -135,9 +84,7 @@
 						<a class="project-manager-name">${projectDTO.projectManagerName}
 						</a>
 					</div>
-					<p>여기는 창작자
-						소개입니다아아아아아ㅏ아아아아아아아아아아아아아아아아ㅏ아아아아아아아아아ㅏ아아아아아아ㅏ아아아아아아ㅏ아아ㅏ아아아아아</p>
-					<p>ㅓ세ㅔ로정렬좀 돼라아아ㅏ아아ㅏ아아아아아아아아아</p>
+					<p>${projectDTO.projectManagerName}</p>
 					<div>
 						<a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}
 						</a>
@@ -146,11 +93,9 @@
 						<a href="#">이전 프로젝트 보기</a>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</main>
-	<!-- ------------------------------------------------------------------------------- -->
 
 	<%@include file="../../views/common/footer.jsp"%>
 
