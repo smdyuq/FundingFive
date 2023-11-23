@@ -15,6 +15,15 @@ public class MemberDTO {
 	
 	private int type;
 
+	
+	//api로부터 결제된 회원 정보 받기(후에 donate테이블 저장)
+	public MemberDTO(String name, String phone, String addr, int no) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.addr = addr;
+		this.no = no;
+	}
 
 	public MemberDTO() {
 		super();

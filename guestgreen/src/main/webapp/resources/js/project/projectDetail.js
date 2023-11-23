@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function projectDonate(projectNumber) {
-	const pageUrl = '/getSponserInfo.do?projectNumber=' + projectNumber;
+	const pageUrl = '/getData.do?projectNumber=' + projectNumber;
 	window.location.href = pageUrl;
 }
 
