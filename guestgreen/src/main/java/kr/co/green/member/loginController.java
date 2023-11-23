@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
@@ -39,7 +37,7 @@ public class loginController extends HttpServlet {
         String id = request.getParameter("member-id");
         String pwd = request.getParameter("member-pwd");
 
-        // 2. 받은 데이터(아이디,패스워드)가 일치하는지
+        // 2. 받은 데이터(아이디,패스워드)가 일치하는지 
         MemberServiceImpl memberService = new MemberServiceImpl();
 
         // 패스워드 확인 

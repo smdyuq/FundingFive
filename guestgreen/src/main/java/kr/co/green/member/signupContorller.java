@@ -44,6 +44,10 @@ public class signupContorller extends HttpServlet {
 		String phone = request.getParameter("member-phone");
 		String addr = request.getParameter("member-addr");
 
+		//id유효성 검사 
+		String idPattern = "/^[a-zA-z0-9]{4,12}$/";
+		Pattern idpattern = Pattern.compile(idPattern);
+		Matcher idMatcher = idpattern.matcher(id);
 
 		// 이름 유효성 검사
 		String namePattern = "^[가-힣]+$";
@@ -77,15 +81,17 @@ public class signupContorller extends HttpServlet {
 			}
 			
 
+		}else if(!idMatcher.matches()) {
+			validationAlert(response, "아이디가 정책에 맞지 않습니다.");
+			
 		} else if (!matcher.matches()) { // matcher.matches() 정규표현식 통과 true, 실패 false
 			validationAlert(response, "이름은 한글만 가능합니다.");
 			
 
 		} else if (!passwordMatcher.matches()) {
 			validationAlert(response, "비밀번호가 정책에 맞지 않습니다.");
-
 				
-		}
+		} 
 	}
 
 	private void validationAlert(HttpServletResponse response, String msg) throws IOException {
