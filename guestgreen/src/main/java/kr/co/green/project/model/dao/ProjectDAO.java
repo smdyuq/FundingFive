@@ -15,7 +15,7 @@ public class ProjectDAO {
 
 			String query = "SELECT p.PROJECT_NO, p.PROJECT_NAME, p.PROJECT_INTRODUCE, p.PROJECT_CONTENT, p.PROJECT_KIND, "
 					+ "				p.PROJECT_PRICE, p.PROJECT_TARGET_AMOUNT, p.PROJECT_CURRENT_AMOUNT, p.PROJECT_SPONSER_NUMBER, "
-					+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, "
+					+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, p.PROJECT_CURRENT_PERCENTAGE"
 					+ "				pii.PROJECT_INNER_IMAGE_NAME, pii.PROJECT_INNER_IMAGE_PATH" 
 					+ "				FROM project p"
 					+ "		JOIN PROJECT_INNER_IMAGE pii "
@@ -40,6 +40,7 @@ public class ProjectDAO {
 						projectDTO.setProjectSponserNumber(rs.getInt("PROJECT_SPONSER_NUMBER"));
 						projectDTO.setProjectInnerImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
 						projectDTO.setProjectInnerImagePath(rs.getString("PROJECT_OUTER_IMAGE_PATH"));
+						projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
 						projectDTO.setProjectInnerImageName(rs.getString("PROJECT_INNER_IMAGE_NAME"));
 						projectDTO.setProjectInnerImagePath(rs.getString("PROJECT_INNER_IMAGE_PATH"));
 					}
@@ -110,13 +111,15 @@ public class ProjectDAO {
 		return projectDTO;
 	}	
 
-	// 후원 성공 시 PROJECT테이블 후원자 수, 후원 금액 업데이트
+	// 후원 성공 시 PROJECT테이블 후원자 수, 현재 후원 금액, 현재 후원 퍼센트 업데이트
 	public int projectUpdate(Connection con, ProjectDTO projectDTO) {
 		String query = "UPDATE project" 
 				+ "		SET project_sponser_number = project_sponser_number + 1, "
 				+ "			project_current_amount = project_current_amount + ? "
 				+ "	    WHERE project_no = ?";
 		int result = 0;
+		int projectCurrentPercentage = projectDTO.getProjectCurrentAmount()/projectDTO.getProjectTargetAmount() * 100;
+		projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectDTO.getProjectPrice());

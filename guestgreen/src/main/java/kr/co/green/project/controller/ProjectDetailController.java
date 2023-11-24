@@ -42,8 +42,6 @@ public class ProjectDetailController extends HttpServlet {
 		projectDTO = projectService.getProjectDetail(projectNumber);
 		
 		if(!Objects.isNull(projectDTO)) {
-			int currentPercentage = projectDTO.getProjectCurrentAmount()/projectDTO.getProjectTargetAmount() * 100;
-			projectDTO.setProjectCurrentPercentage(currentPercentage);
 			
 			projectService.getProjectDday(projectDTO);
 			if(!Objects.isNull(projectDTO.getProjectEndDate())) {
