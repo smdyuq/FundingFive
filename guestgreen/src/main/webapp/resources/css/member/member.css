@@ -1,15 +1,12 @@
 @charset "UTF-8";
 
-
 h2 {
 	color: #333;
 	margin: 40px 0;
 }
+
 .information-div {
-    margin-top: 3%;
-    margin-left:10%;
-    margin-right:10%;
-    margin-bottom: 5%;
+	margin: 3% 10% 5% 10%;
 }
 
 /* 탭 전체 스타일 */
@@ -57,7 +54,7 @@ input[name="tab_item"] {
 	clear: both;
 	overflow: hidden;
 	margin-left: 0px;
-	flex-grow: 1; 
+	flex-grow: 1;
 }
 
 /* 선택 된 탭 콘텐츠를 표시 */

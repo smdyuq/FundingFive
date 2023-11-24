@@ -100,9 +100,6 @@ public class MemberDAO {
 
 			e.printStackTrace();
 		}
-
-		
-		
 			return result;
 	}
 
@@ -211,3 +208,11 @@ public class MemberDAO {
 		return 0;
 	}
 }
+
+
+
+
+
+
+
+

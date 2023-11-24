@@ -47,22 +47,24 @@
 			<div class="signup-input">
 				<label for="member-phone">휴대폰 번호:</label> <input type="number"
 					id="member-phone" name="member-phone" onkeyup=""
-					placeholder="숫자만 입력해주세요." required><button>인증하기</button><br> <span
-					id="phonekMsg"></span>
-			</div>
-			<br>
-			<div class="signup-input">
-				<label for="member-addr">주소:</label> <input type="text"
-					id="member-addr" name="member-addr" onkeyup=""
-					placeholder="주소를 입력해주세요." required><input type="button"
-					value="우편번호검색" onclick="checkPost()"><br> <input
-					type="text" id="member-addr-detail" name="member-addr-detail"
-					onkeyup="" placeholder="상세주소를 입력해주세요." required><br> <span
-					id="addrMsg"></span>
-			</div>
-			<br>
-			<button type="submit">회원가입</button>
-
+					placeholder="숫자만 입력해주세요." required>
+				<button type="button" id="sendPhoneNumber">인증요청</button>
+				<br>
+				<!-- 인증 요청 성공하면 보이게  -->
+				<div id="verificationSection" style="display: none;">
+					<input type="number" placeholder="인증번호를 입력해주세요."
+						id="verificationCode">
+					<button onclick="RandomExample()">인증하기</button>
+					<br> <span id="phoneMsg"></span>
+				</div>
+				<br>
+				<div class="signup-input">
+					<label for="member-addr">주소:</label> <input type="text"
+						id="member-addr" name="member-addr" onkeyup=""
+						placeholder="주소를 입력해주세요." required> <span id="addrMsg"></span>
+				</div>
+				<br>
+				<button type="submit">회원가입</button>
 		</form>
 		</div>
 		</section>
@@ -83,6 +85,11 @@
 if (errorMessage != null && !errorMessage.isEmpty()) {%> alert('<%=errorMessage%>
 	');
 <%}%>
+function phoneTest() {
+	window.location.href="/testController.do";
+}
+
+
 /* 아이디 중복체크 및 유효성 검사 */
 function duplicateId() {
     const id = document.getElementById("member-id").value;
@@ -175,6 +182,43 @@ function duplicateId() {
 	    } 
 
 	}
+	///////////////////////////////인증번호////////////////////////////////////
+	$('#sendPhoneNumber').click(function(e){
+    e.preventDefault(); // 기본 이벤트를 막음 (페이지 리로드 방지)
+
+    let phoneNumber = $('#member-phone').val();
+
+
+    
+    $.ajax({
+        type: "GET",
+        url: "/PhoneController.do",
+        data: {
+            "phoneNumber" : phoneNumber
+        },
+        success:    function(res){
+        	console.log("test");
+            // 인증번호 발송 성공 시 처리
+        },
+        error: function(err) {
+        	
+        	console.log("err");
+            // 인증번호 발송 실패 시 처리
+        }
+    })
+});
+
+	// 인증 요청 버튼 클릭 시 처리
+	  document.getElementById("sendPhoneNumber").addEventListener("click", function() {
+	    // 여기에 인증 요청 처리하는 코드 작성
+	    // 인증 요청 성공 시 아래의 코드를 사용하여 인증 섹션을 보여줌
+	    document.getElementById("verificationSection").style.display = "block";
+	  });
+
+	  // 인증하기 버튼 클릭 시 처리
+	  function RandomExample() {
+	    // 여기에 인증하기 처리하는 코드 작성
+	  }
 	
 	
 </script>

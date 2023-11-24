@@ -1,5 +1,7 @@
 package kr.co.green.member.model.service;
 
+
+
 import kr.co.green.member.model.dto.MemberDTO;
 
 public interface MemberService {
@@ -12,7 +14,7 @@ public interface MemberService {
 	
 	//로그인
 	MemberDTO memberLogin(String id);
-
+	
 	//회원조회 
 	MemberDTO selectMember(int no);
 
@@ -23,8 +25,5 @@ public interface MemberService {
 	int deleteUpdate(MemberDTO memberDTO, int sessionId);
 
 
-	
-	
 
-	
 }

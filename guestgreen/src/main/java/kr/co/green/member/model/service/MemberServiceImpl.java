@@ -36,6 +36,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.memberLogin(con, id);
 	}
 	
+	
 	//회원 정보 조회
 	@Override
 	public MemberDTO selectMember(int no) {
@@ -57,3 +58,13 @@ public class MemberServiceImpl implements MemberService {
 	
 
 }
+
+
+
+
+
+
+
+
+
+
