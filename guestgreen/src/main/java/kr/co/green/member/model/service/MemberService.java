@@ -1,5 +1,7 @@
 package kr.co.green.member.model.service;
 
+
+
 import kr.co.green.member.model.dto.MemberDTO;
 
 public interface MemberService {
@@ -21,5 +23,7 @@ public interface MemberService {
 
 	//회원 탈퇴 
 	int deleteUpdate(MemberDTO memberDTO, int sessionId);
+
+
 
 }
