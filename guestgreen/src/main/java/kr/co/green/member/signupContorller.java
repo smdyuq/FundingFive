@@ -65,7 +65,7 @@ public class signupContorller extends HttpServlet {
 
 			// 리다이렉트
 			if (result > 0) {
-				// 회원가입 성공
+			// 회원가입 성공
 				RequestDispatcher view = request.getRequestDispatcher("/");
 				view.forward(request, response);
 			} else {
