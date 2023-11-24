@@ -17,9 +17,9 @@ public class DonateDAO {
 		int result=0;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, donateDTO.getProjectNumber());
+			pstmt.setString(1, donateDTO.getDonateId());
 			pstmt.setInt(2, donateDTO.getMemberNumber());
-			pstmt.setString(3, donateDTO.getDonateId());
+			pstmt.setInt(3, donateDTO.getProjectNumber());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

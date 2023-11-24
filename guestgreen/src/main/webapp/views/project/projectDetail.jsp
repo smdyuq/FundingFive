@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>funding(수정예정)</title>
 
+<link href="/resources/css/project/projectDetail.css" rel="stylesheet" />
 <script src="/resources/js/project/projectDetail.js"></script>
 
 		<%@include file="/views/common/head.jsp"%>

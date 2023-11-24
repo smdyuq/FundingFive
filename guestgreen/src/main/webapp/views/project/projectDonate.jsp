@@ -87,7 +87,6 @@
 	                ${projectDTO.projectNumber}, ${memberDTO.no});
 		});
 		
-	
 	</script>
 </body>
 </html>
