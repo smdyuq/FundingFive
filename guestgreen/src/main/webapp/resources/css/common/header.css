@@ -1,13 +1,33 @@
 @charset "UTF-8";
 
-body {
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	width: 100%;
-}
+
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        }
+        
+    /* 메인 컨텐츠 길이 상관없이 푸터 하단에 고정 */
+    main{
+        padding: 20px;
+        margin-top: auto;
+        flex: 1; 
+        align-self: flex-start; 
+        width: 100%;
+    }
+    
+ /* GNB */
+    header {
+        color: black;
+        padding: 25px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;       
+        }
 
 
 

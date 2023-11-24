@@ -11,14 +11,29 @@ public class MemberDTO {
 	private String addr;
 	
 	private String createDate;
-	private String upDate;
+	private String updateDate;
 	
 	private int type;
 
-
 	
+	//api로부터 결제된 회원 정보 받기(후에 donate테이블 저장)
+	public MemberDTO(String name, String phone, String addr, int no) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.addr = addr;
+		this.no = no;
+	}
+
 	public MemberDTO() {
 		super();
+	}
+	
+	public MemberDTO(String id, String name, String pwd) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.pwd = pwd;
 	}
 	
 	
@@ -31,8 +46,13 @@ public class MemberDTO {
 		this.addr = addr;
 	}
 	
-	
-	
+	public MemberDTO(String id, String name, String phone, String addr) {
+	    super();
+	    this.id = id;
+	    this.name = name;
+	    this.phone = phone;
+	    this.addr = addr;
+	}
 	
 
 	public int getNo() {
@@ -91,12 +111,12 @@ public class MemberDTO {
 		this.createDate = createDate;
 	}
 
-	public String getUpDate() {
-		return upDate;
+	public String getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpDate(String upDate) {
-		this.upDate = upDate;
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public int getType() {
@@ -106,6 +126,8 @@ public class MemberDTO {
 	public void setType(int type) {
 		this.type = type;
 	}
+
+
 	
 	
 	

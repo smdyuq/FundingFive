@@ -166,6 +166,7 @@ dd {
 	<main>
 		<div class="FrontPage_HomeWrapper">
 
+
 			<div class="FrontPage_StyleHero">
 				<img src="/resources/image/이미지3.jpg" width="766" height="280"><br>
 				<br>
