@@ -9,7 +9,9 @@
 
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
-	<main></main>
+	<main>
+
+	</main>
 
 	<%@include file="./views/common/footer.jsp"%>
 </body>

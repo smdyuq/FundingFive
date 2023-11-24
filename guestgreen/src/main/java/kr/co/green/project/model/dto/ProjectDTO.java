@@ -9,16 +9,34 @@ public class ProjectDTO {
 	private int projectPrice;
 	private int projectTargetAmount;
 	private int projectCurrentAmount;
+	private int projectCurrentPercentage = projectCurrentAmount/projectTargetAmount*100;
 	private int projectSponserNumber;
 	private String projectRegisterDate;
 	private String projectEndDate;
 	private String projectOuterImageName;
 	private String projectOuterImagePath;
+	private long projectRemainDate;
 	
+	//api로부터 결제된 프로젝트 정보 받기(후에 donate테이블 저장)
+	public ProjectDTO( String projectName, int projectPrice, int projectNumber) {
+		super();
+		this.projectName = projectName;
+		this.projectPrice = projectPrice;
+		this.projectNumber = projectNumber;
+	}
+	
+	public ProjectDTO() {
+	}
+
+	public long getProjectRemainDate() {
+		return projectRemainDate;
+	}
+	public void setProjectRemainDate(long projectRemainDate) {
+		this.projectRemainDate = projectRemainDate;
+	}
 	private String ProjectInnerImageName;
 	private String ProjectInnerImagePath;
 	
-	private String projectManagerId;
 	private String projectManagerName;
 	private String projectManagerIntroduce;
 	private String projectManagerImageName;
@@ -117,12 +135,6 @@ public class ProjectDTO {
 		ProjectInnerImagePath = projectInnerImagePath;
 	}
 	
-	public String getProjectManagerId() {
-		return projectManagerId;
-	}
-	public void setProjectManagerId(String projectManagerId) {
-		this.projectManagerId = projectManagerId;
-	}
 	public String getProjectManagerName() {
 		return projectManagerName;
 	}
@@ -153,6 +165,15 @@ public class ProjectDTO {
 	public void setProjectMangerAccount(String projectMangerAccount) {
 		this.projectMangerAccount = projectMangerAccount;
 	}
+
+	public int getProjectCurrentPercentage() {
+		return projectCurrentPercentage;
+	}
+
+	public void setProjectCurrentPercentage(int projectCurrentPercentage) {
+		this.projectCurrentPercentage = projectCurrentPercentage;
+	}
+	
 	
 	
 }
