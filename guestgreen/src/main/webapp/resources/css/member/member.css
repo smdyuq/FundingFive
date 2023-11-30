@@ -1,94 +1,144 @@
 @charset "UTF-8";
 
- body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding-bottom: 10%;
-        }
+h2 {
+	color: #333;
+	margin: 40px 0;
+}
 
-        h2 {
-            color: #333;
-            margin: 40px 0;
-        }
+.information-div {
+	margin: 3% 10% 5% 10%;
+}
 
-        .a {
-            width: 80%;
-            margin: 0 auto;
-        }
+/* 탭 전체 스타일 */
+.tabs {
+	margin-top: 50px;
+	padding-bottom: 40px;
+	background-color: #ffffff;
+	width: 100%;
+	margin: 0 auto;
+	height: auto;
+}
 
-        .nav-tabs .nav-link.active {
-            color: #000;
-            font-weight: bold;
-        }
+/* 탭 스타일 */
+.tab_item {
+	width: calc(99.1%/ 3);
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+	color: gray;
+	display: block;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	transition: all 0.2s ease;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	border-bottom: 1px solid gray;
+}
 
-        .nav-tabs .nav-link {
-            color: gray; 
-        }
+.tab_item:hover {
+	opacity: 0.75;
+	color: red;
+}
 
-        .tab-content{
-            padding: 5%;
-        }
-        .tab-content > div > div{
-            padding-left: 10%;
-            padding-right: 10%;
-        }
-        .tab-content > div > div > div > label{
-            text-align: left;
-            padding-bottom: 8px;
-        }
+input[name="tab_item"] {
+	display: none;
+}
 
-        /* 회원정보 */
-        .signup-input {
-            position: relative;
-            margin-bottom: 20px;
-            border-top: none;
-            position: relative;
-        }
+/* 탭 컨텐츠 스타일 */
+.tab_content {
+	padding: 40px 40px 0;
+	clear: both;
+	overflow: hidden;
+	margin-left: 0px;
+	flex-grow: 1;
+}
 
-        .signup-input label {
-            display: block;
-            font-weight: bold;
-        }
+/* 선택 된 탭 콘텐츠를 표시 */
+#information:checked ~#information_content, #sponsorship:checked ~#sponsorship_content,
+	#project:checked ~#project_content {
+	display: block;
+}
 
-        .signup-input input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: none; 
-        }
+/* 선택된 탭 스타일 */
+.tabs input:checked+.tab_item {
+	color: black;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid white;
+	border-radius: 3px 3px;
+	position: relative;
+	z-index: 1;
+}
 
-        .signup-input span {
-            display: block;
-            color: red;
-            margin-top: 5px;
-            font-size: 14px;
-        }
-        .signup-input div {
-            text-align: left; 
-            margin-top: 30px; 
-            border-bottom: 1px solid #ccc; 
-            padding-bottom: 15px; 
-        }
-        .signup-input div > p {
-            margin-bottom: 5px;
-        }
-        .signup-input span::before {
-            content: ''; /* 가상 요소를 생성 */
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px; /* 선 높이 */
-            background-color: #d3d3d3; /* 선 색상 */
-        }
-        button{
-                border: 2px solid #c0c0c0; 
-                border-radius: 5px;
-                padding: 7px; 
-                font-size: 14px;
-                width: 20%;
-                margin-right: 10px;
-        }
+/* 회원정보 */
+.signup-input {
+	position: relative;
+	margin-bottom: 20px;
+	border-top: none;
+	position: relative;
+}
 
-        /* 내 후원/프로젝트 현황 */
+.signup-input label {
+	display: block;
+	font-weight: bold;
+}
+
+.signup-input input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	border: none;
+}
+
+.signup-input span {
+	display: block;
+	color: red;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.signup-input div {
+	text-align: left;
+	margin-top: 30px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+}
+
+.signup-input div>p {
+	margin-bottom: 5px;
+}
+
+.signup-input span::before {
+	content: '';
+	/* 가상 요소를 생성 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #d3d3d3;
+}
+
+button {
+	border: 2px solid #c0c0c0;
+	border-radius: 5px;
+	padding: 7px;
+	font-size: 14px;
+	width: 20%;
+	margin-right: 10px;
+}
+
+.member-information-div {
+	width: 80%;
+	margin: 0 auto;
+	padding: 5%;
+}
+
+.signup-input>label {
+	text-align: left;
+	margin-bottom: 7px;
+}
