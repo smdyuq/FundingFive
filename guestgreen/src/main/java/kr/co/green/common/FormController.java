@@ -34,13 +34,7 @@ public class FormController extends HttpServlet {
 			nextPage = "/views/member/login.jsp";
 		} else if (action.equals("/signupform.do")) {
 			nextPage = "/views/member/signup.jsp"; // 홈>회원가입페이지 이동
-
-			// 프로젝트 등록으로 이동(이승엽 사용)
-		} else if (action.equals("/projectEnrollFrom.do")) {
-			int no = (int) session.getAttribute("no");
-			MemberServiceImpl memberService = new MemberServiceImpl();
-			MemberDTO memberDTO = memberService.memberSelect(no);
-			request.setAttribute("member", memberDTO);
+		} else if (action.equals("/projectEnrollForm.do")) {
 			nextPage = "/views/project/projectEnroll.jsp";
 		}
 

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import kr.co.green.member.model.dto.MemberDTO;
+import kr.co.green.member.model.service.MemberService;
 import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
@@ -45,20 +46,6 @@ public class ProjectEnrollController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
-		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(no);
-		request.setAttribute("member", memberDTO);
-
-		String projectName = request.getParameter("project-name");
-		String projectIntroduce = request.getParameter("project-introduce");
-		String projectContent = request.getParameter("project-content");
-		String projectKind = request.getParameter("project-kind");
-		int projectPrice = Integer.parseInt(request.getParameter("project-price"));
-		int projectTargetAmount = Integer.parseInt(request.getParameter("project_target_amount"));
-		String projectEndDate = request.getParameter("project-end-date");
-
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
@@ -70,12 +57,15 @@ public class ProjectEnrollController extends HttpServlet {
 		}
 
 		String fileName = "";
+		String[] fileNameArr = new String[2];
+		int index = 0;
 		for (Part part : parts) {
-
 			if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
 				fileName = getFileName(part);
 				if (!fileName.equals("")) {
 					part.write(filePath + File.separator + fileName);
+					fileNameArr[index] = fileName;
+					index++;
 					// 이미지 리사이징 (100 X 100)
 					resizeImage(uploadDirectory + "\\" + fileName, 100, 100);
 				} else if (fileName.equals("")) {
@@ -86,41 +76,30 @@ public class ProjectEnrollController extends HttpServlet {
 			}
 		}
 
+		
+		String projectName = request.getParameter("project-name");
+		String projectIntroduce = request.getParameter("project-introduce");
+		String projectKind = request.getParameter("project-kind");
+		int projectPrice = Integer.parseInt(request.getParameter("project-price"));
+		int projectTargetAmount = Integer.parseInt(request.getParameter("project_target_amount"));
+		String projectEndDate = request.getParameter("project-end-date");
+//		프로젝트 정보를 객체에 담아서 projectSmartEditor.jsp로 보냄
 		ProjectDTO projectDTO = new ProjectDTO();
 
 		projectDTO.setProjectName(projectName);
 		projectDTO.setProjectIntroduce(projectIntroduce);
-		projectDTO.setProjectContent(projectContent);
 		projectDTO.setProjectKind(projectKind);
 		projectDTO.setProjectPrice(projectPrice);
 		projectDTO.setProjectTargetAmount(projectTargetAmount);
 		projectDTO.setProjectEndDate(projectEndDate);
-		projectDTO.setProjectOuterImageName(fileName);
+		projectDTO.setProjectOuterImageName(fileNameArr[0]);
 		projectDTO.setProjectOuterImagePath(uploadDirectory);
+		projectDTO.setProjectInnerImageName(fileNameArr[1]);
+		projectDTO.setProjectInnerImagePath(uploadDirectory);
 
-		ProjectService projectleeservice = new ProjectServiceImpl();
-
-//		프로젝트 등록
-		int result1 = projectleeservice.projectEnroll(projectDTO);
-
-		ProjectDTO projectleeDTO2 = new ProjectDTO();
-
-		projectleeDTO2.setProjectInnerImageName(fileName);
-		projectleeDTO2.setProjectInnerImagePath(uploadDirectory);
-
-		int projectNo = projectleeservice.projectManagerNoSelect();
-
-//		상세 페이지 이미지 등록
-		int result2 = projectleeservice.innerimageEnroll(projectleeDTO2, projectNo);
-
-		if (result1 > 0 && result2 > 0) {
-//			RequestDispatcher view = request.getRequestDispatcher("/views/project/projectManagerEnroll.jsp");
-			RequestDispatcher view = request.getRequestDispatcher("/views/project/projectSmartEditor.jsp");
-			view.forward(request, response);
-		} else {
-			response.sendRedirect("/views/common/error.jsp");
-		}
-
+		request.setAttribute("projectDTO", projectDTO);
+		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectSmartEditor.jsp");
+		view.forward(request, response);
 	}
 
 	// 파일 이름 가지고 오는 메소드
@@ -148,7 +127,6 @@ public class ProjectEnrollController extends HttpServlet {
 	// 이미지 리사이징
 	void resizeImage(String fileName, int targetWidth, int targetHeight) throws IOException {
 		File testFile = new File("thumbnail.jpg");
-		System.out.println(testFile);
 		Thumbnails.of(new File(fileName)).size(targetWidth, targetHeight).toFile(new File(fileName));
 
 	}
