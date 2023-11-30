@@ -49,7 +49,9 @@ public class loginController extends HttpServlet {
             System.out.println("로그인 성공");
             HttpSession session = request.getSession();   
             session.setAttribute("no", member.getNo());
-
+//			session.setAttribute("usertype", member.getUsertype()); 추가 요청(나영)
+//			session.setAttribute("userType", 0);
+			
             request.setAttribute("member", member);           
 
             RequestDispatcher view = request.getRequestDispatcher("/");

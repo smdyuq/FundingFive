@@ -27,6 +27,9 @@ public class boardListController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      request.setCharacterEncoding("UTF-8");
+	      response.setContentType("text/html; charset=utf-8");
+		
 		//현재 페이지
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
 		//검색
@@ -56,7 +59,6 @@ public class boardListController extends HttpServlet {
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
-	      
 	      
 	      RequestDispatcher view = request.getRequestDispatcher("/views/board/boardList.jsp");
 	      view.forward(request, response);

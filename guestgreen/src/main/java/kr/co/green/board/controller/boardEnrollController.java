@@ -37,6 +37,9 @@ public class boardEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	      request.setCharacterEncoding("UTF-8");
+	      response.setContentType("text/html; charset=utf-8");
+		
 		//내용, 제목 받기
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -55,12 +58,9 @@ public class boardEnrollController extends HttpServlet {
 		}
 		
 		
-		// "C:\\Users\\jaeyun\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads"+"";
 		String fileName = "";
 		for(Part part : parts) {
-//			System.out.println(getFileName(part));
-//			System.out.println(getFileName(part) != null);
-//			System.out.println(!Objects.isNull(getFileName(part)));
+
 			if(getFileName(part) != null || !Objects.isNull(getFileName(part))) {
 				fileName = getFileName(part);
 				if(!fileName.equals("")) {
@@ -86,6 +86,7 @@ public class boardEnrollController extends HttpServlet {
 		}
 		
 		//성공 유무에 따라 처리
+		System.out.println(result);
 		if(result > 0) {
 			response.sendRedirect("/boardList.do?cpage=1");
 		}else{

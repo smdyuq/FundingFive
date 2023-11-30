@@ -14,8 +14,7 @@ public class BoardDTO {
 	
 	private String fileName;	//파일 이름
 	private String filePath;	//파일 경로
-	
-		
+
 	public String getFileName() {
 		return fileName;
 	}

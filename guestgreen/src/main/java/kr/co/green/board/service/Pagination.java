@@ -28,12 +28,6 @@ public class Pagination {
 		
 		int offset = (currentPage -1)*boardLimit;
 		
-		//새로운 쿼리를 사용할 경우 if부분 생략
-//		if(currentPage == 1) {
-//			boardLimit = offset+5;
-//		}else {
-//			boardLimit = offset+4;
-//		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, 
 									maxPage, startPage, endPage, offset);

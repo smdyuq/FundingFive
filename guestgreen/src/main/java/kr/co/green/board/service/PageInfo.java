@@ -20,6 +20,9 @@ public class PageInfo {
 	//시작페이지
 	private int startPage;
 	
+	//끝 페이지
+	private int endPage;
+		
 	private int offset;
 	
 	public PageInfo(int listCount, int currentPage, 
@@ -100,6 +103,5 @@ public class PageInfo {
 		this.endPage = endPage;
 	}
 
-	//끝 페이지
-	private int endPage;
+
 }

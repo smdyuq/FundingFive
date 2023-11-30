@@ -14,10 +14,8 @@ public class DatabaseConnection {
    // DB 연결해주는 메서드
    public Connection connDB() {
 	    try {
-	        System.out.println("Connecting to the database...");
 	        Class.forName(DRIVER);
 	        con = DriverManager.getConnection(URL, USER, PWD); 
-	        System.out.println("Connected to the database.");
 	        return con;
 	    } catch (Exception e) {
 	        System.err.println("Failed to establish a database connection.");

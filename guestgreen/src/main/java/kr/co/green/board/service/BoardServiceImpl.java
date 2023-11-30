@@ -33,6 +33,27 @@ public class BoardServiceImpl implements BoardService{
 		public int boardEnroll(String title, String content, String writer, String fileName, String uploadDirectory) {
 			return boardDAO.boardEnroll(con,title,content,writer,fileName,uploadDirectory);
 		}
-	
+		//게시글 내용 보기
+		public void boardSelect(BoardDTO board) {
+			boardDAO.boardSelect(con,board);
+			
+		}
+		//게시글 삭제
+		public int boardDelete(int idx) {
+			return boardDAO.boardDelete(con, idx);
+		}
+		//게시글 수정(이미지까지 수정)
+		public int boardUpdate(int idx, String title, String content, String fileName, String uploadDirectory) {
+			return boardDAO.boardUpdate(con, idx, title, content, fileName, uploadDirectory);
+		}
+		//게시글 수정(제목,내용만)
+		public int boardUpdate2(int idx, String title, String content) {
+			return boardDAO.boardUpdate2(con, idx, title, content);
+		}
+		//조회수 증가
+		public int boardView(int idx) {
+			return boardDAO.boardView(con,idx);
+		}
+		
 	
 }
