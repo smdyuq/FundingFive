@@ -17,7 +17,6 @@ import kr.co.green.member.model.service.MemberServiceImpl;
 @WebServlet("/form/*")
 public class FormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Object MemberDTO = null;
 
 	public FormController() {
 		super();

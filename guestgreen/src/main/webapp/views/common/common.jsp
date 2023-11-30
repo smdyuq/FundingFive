@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,3 @@
 
 </body>
 </html>
-=======
-    pageEncoding="UTF-8"%>
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git

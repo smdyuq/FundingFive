@@ -23,9 +23,18 @@
     <div class="recent_searches">
         <p>최근 검색어</p>
         <div class="recent_searches_text">
+        <c:when test="${empty projectApprovedList}">
             <div class="recent_searches_result">
-                <a href="#">최근검색어 임시값</a><a href="#">x</a>
+                <a href="#">최근검색어가 없습니다.</a>
             </div>
+        </c:when>
+        <c:otherwise>
+            <div class="recent_searches_result">
+            	<c:forEach var="search-word" items="${memberSearchArr}">
+                	<a href="#">${search-word}</a><a href="#">x</a>
+                </c:forEach>
+            </div>
+        </c:otherwise>    
         </div>
     </div>    
     <div class="popular_searches">
