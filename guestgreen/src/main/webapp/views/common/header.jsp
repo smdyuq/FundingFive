@@ -5,12 +5,7 @@
 <header>
 	<div>
 		<!-- <img scr="" alt="로고"> 이미지로 바꿀거임-->
-<<<<<<< HEAD
-		<a href="/form/homeform.do">로고</a>
-	
-=======
 		<a href="/form/home.do">로고</a>
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
 	</div>
 
 	<div>
@@ -30,30 +25,6 @@
 		<p>|</p>
 	</div>
 	<div>
-<<<<<<< HEAD
-		<c:if test="${empty sessionScope.no}">
-			<div>
-				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
-					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
-			</div>
-		</c:if>
-		<c:if test="${not empty sessionScope.no}">
-			<c:if test="${member.type == 1}">
-				<div>
-					<a class="gnb-button-style" href="/form/projectEnrollFrom.do">프로젝트 등록</a> <a
-						class="gnb-button-style" href="/form/memberform.do">마이페이지</a> <a
-						class="gnb-button-style" href="/logout.do">로그아웃</a>
-				</div>
-			</c:if>
-			<c:if test="${member.type == 0}">
-				<div>
-					<a class="gnb-button-style" href="/administratorOk.do?cpage=1">프로젝트
-						관리</a> <a class="gnb-button-style" href="/logout.do">로그아웃</a>
-				</div>
-			</c:if>
-		</c:if>
-	</div>
-=======
 		<c:if test="${empty sessionScope.memberNo}">
     <div>
         <a class="gnb-button-style" href="/form/loginform.do">로그인</a>
@@ -76,5 +47,4 @@
     </c:if>
 </c:if>
 		</div>
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
 </header>
