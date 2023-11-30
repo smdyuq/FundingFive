@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+        body {
+            margin: 0px;
+        }
+
+        .search_box_div {
+            display: flex;
+            margin: auto;
+            justify-content: left;
+            width: 100%;
+        }
+
+        .search_img {
+            display: flex;
+            width: 50px;
+            /* 상단, 우측, 하단, 좌측 */
+            padding: 5px 10px 10px 10px;
+        }
+
+        .search_box {
+            display: flex;
+            width: 70%;
+            height: 50px;
+            border: none;
+        }
+
+        .close_btn {
+            width: 30px;
+        }
+
+        /* 최근 검색어 */
+        .recent_searches_result{
+            display: flex;
+            width: 140px;
+            border: 1px solid black;
+            justify-content: space-between;
+        }
+        .recent_searches_result > a{
+            text-decoration: none;
+            color: black;
+        }
+
+        /* 인기 검색어 */
+
+        .popular_searches_text {
+            display: flex;
+        }
+
+        .popular_searches_text>div {
+            width: 30%;
+        }
+
+        .searche_row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .searche_row>div {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .searche_row>div>p {
+            display: flex;
+            width: 30px;
+        }
+
+        .searche_row>div>a {
+            text-decoration: none;
+            color: black;
+        }

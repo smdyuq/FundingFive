@@ -23,14 +23,14 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 
 
 	@Override
-	// 전체 게시글 수
-	public int boardProjecYtListCount(String searchText, int no) {
-		return memberBoardDAO.boardProjecYtListCount(con, searchText, no);
+	//회원 본인이 등록한 프로젝트 중 승인된 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getMyApprovedProject(int memberNo) {
+		return memberBoardDAO.getMyApprovedProject(con, memberNo);
 	}
 
-	// 프로젝트 목록 조회
+	//회원 본인이 등록한 프로젝트 중 승인되지않은 프로젝트 조회
 	@Override
-	public ArrayList<MemberBoardDTO> boardProjecYtList(PageInfo pi, String searchText, int no) {
-		return memberBoardDAO.boardProjecYtList(con, pi, searchText, no);
+	public ArrayList<MemberBoardDTO> getMyRejectedProject(int memberNo) {
+		return memberBoardDAO.getMyRejectedProject(con, memberNo);
 	}
 }

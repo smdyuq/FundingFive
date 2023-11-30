@@ -26,14 +26,12 @@ public class DuplicateIdController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	       response.setCharacterEncoding("UTF-8");
 		   
-	       String id = request.getParameter("id");
+	       String memberId = request.getParameter("memberId");
 	       
 	       // 중복 검사 로직
 	       MemberServiceImpl memberService = new MemberServiceImpl();
-	       boolean isIdDuplicate = memberService.duplicateId(id);
-	       System.out.println(isIdDuplicate);
+	       boolean isIdDuplicate = memberService.duplicateMemberId(memberId);
 	       
 	       PrintWriter out = response.getWriter();
 	       

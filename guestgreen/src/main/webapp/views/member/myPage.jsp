@@ -5,20 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <%@include file="../../views/common/head.jsp"%>
-
-
 <link rel="stylesheet" href="/resources/css/member/member.css">
+<script src="/resources/js/member/myPage.js"></script>
+
 <style>
 main {
 	padding: 10px;
 }
 </style>
 </head>
+
 <body>
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
-
-
 
 	<main onload="showTabContent('information');">
 		<div class="information-div">
@@ -37,11 +36,11 @@ main {
 
 			<div class="tab_content" id="information_content">
 				<div class="member-information-div">
-					<form id="update-form" action="/Update.do" method="post">
+					<form id="update-form" action="/update.do" method="post">
 						<div class="signup-input">
 							<label for="member-id">아이디</label> <input type="text"
 								id="member-id" name="member-id" onkeyup="duplicateId()"
-								value="${member.id}" required><br> <span id="idMsg"></span>
+								value="${memberDTO.memberId}" required><br> <span id="idMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
@@ -54,30 +53,30 @@ main {
 						<div class="signup-input">
 							<label for="member-name">이름 </label> <input type="text"
 								id="member-name" name="member-name" onkeyup="validateName() "
-								value="${member.name}" required><br> <span
+								value="${memberDTO.memberName}" required><br> <span
 								id="nameMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
 							<label for="member-phone">휴대폰 번호:</label> <input type="number"
-								value="${member.phone}" id="member-phone" name="member-phone"
+								value="${memberDTO.memberPhone}" id="member-phone" name="member-phone"
 								onkeyup="" required><br> <span id="phonekMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
 							<label for="member-addr">주소</label> <input type="text"
-								value="${member.addr}" id="member-addr" name="member-addr"
+								value="${memberDTO.memberAddr}" id="member-addr" name="member-addr"
 								onkeyup="" required><br> <span id="addrMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
 							<label for="member-createDate">가입일</label> <input type="text"
-								value="${member.createDate}" id="member-createDate" name="member-createDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
+								value="${memberDTO.memberCreateDate}" id="member-createDate" name="member-createDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
 							<label for="member-updateDate">최종 수정일</label> <input type="text"
-								value="${member.updateDate}" id="member-updateDate" name="member-updateDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
+								value="${memberDTO.memberUpdateDate}" id="member-updateDate" name="member-updateDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
 						</div>
 						<br>
 						<button type="submit">수정하기</button>
@@ -153,13 +152,13 @@ main {
 							</thead>
 							<tbody class="project-tbody">
 								<c:choose>
-									<c:when test="${empty projectList}">
+									<c:when test="${empty projectApprovedList}">
 										<tr>
 											<td colspan="7" class="text-center">등록된 프로젝트가 없습니다.</td>
 										</tr>
 									</c:when>
 									<c:otherwise>
-										<c:forEach var="project" items="${projectList}">
+										<c:forEach var="project" items="${projectApprovedList}">
 											<tr>
 												<th>${project.projectOuterImageName}</th>
 												<th>${project.projectIntroduce}</th>
@@ -235,13 +234,13 @@ main {
 							</thead>
 							<tbody class="project-tbody">
 								<c:choose>
-									<c:when test="${empty projectList}">
+									<c:when test="${empty projectRejectedList}">
 										<tr>
 											<td colspan="7" class="text-center">등록된 프로젝트가 없습니다.</td>
 										</tr>
 									</c:when>
 									<c:otherwise>
-										<c:forEach var="project" items="${projectList}">
+										<c:forEach var="project" items="${projectRejectedList}">
 											<tr>
 												<th>프로젝트 이미지</th>
 												<th>프로젝트명</th>
@@ -300,30 +299,3 @@ main {
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
-<script>
-	function deleteBtn() {
-		if (confirm("정말로 탈퇴하시겠습니까?")) {
-			let form = document.getElementById("update-form");
-			form.action = "/memberDelete.do";
-			form.submit();
-		}
-	}
-
-	function showTabContent(tabId) {
-		// 모든 탭 컨텐츠 숨김
-		var tabContents = document.querySelectorAll('.tab_content');
-		tabContents.forEach(function(content) {
-			content.style.display = 'none';
-		});
-
-		// 선택한 탭 컨텐츠 표시
-		var selectedTabContent = document.getElementById(tabId + '_content');
-		if (selectedTabContent) {
-			selectedTabContent.style.display = 'block';
-		}
-	}
-
-	window.onload = function() {
-		showTabContent('information');
-	};
-</script>

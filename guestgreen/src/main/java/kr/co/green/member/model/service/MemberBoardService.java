@@ -7,10 +7,10 @@ import kr.co.green.member.model.dto.MemberBoardDTO;
 
 public interface MemberBoardService {
 
-	//프로젝트 목록 조회
-	public ArrayList<MemberBoardDTO> boardProjecYtList(PageInfo pi, String searchText, int no);
+	//회원 본인이 등록한 프로젝트 중 승인된 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getMyApprovedProject(int memberNo);
 	
-	//전체 게시글 수
-	public int boardProjecYtListCount(String searchText, int no);
+	//회원 본인이 등록한 프로젝트 중 승인되지않은 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getMyRejectedProject(int memberNo);
 	
 }

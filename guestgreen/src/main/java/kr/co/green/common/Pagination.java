@@ -2,7 +2,7 @@ package kr.co.green.common;
 
 public class Pagination {
 	
-	public static PageInfo getPageInfo(int listCount, 
+	public PageInfo getPageInfo(int listCount, 
 										int currentPage,
 										int pageLimit, 
 										int boardLimit) {

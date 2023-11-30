@@ -31,7 +31,7 @@
 		</tbody>
 	</table>
 
-	<button id="donateButton">후원하기</button>
+	<button id="donateButton">카카오톡으로 후원하기</button>
 
 
 	<%@include file="../../views/common/footer.jsp"%>
@@ -40,20 +40,19 @@
 		var IMP = window.IMP;
 		IMP.init(config.store_identification_code);
 		
-	
 		var today = new Date();
 		var hours = today.getHours(); 
 		var minutes = today.getMinutes(); 
 		var seconds = today.getSeconds(); 
 		var milliseconds = today.getMilliseconds();
-		var makeMerchantUid = '' + hours + minutes + seconds + milliseconds;
+		var make_donate_id = '' + hours + minutes + seconds + milliseconds;
 		
 		function requestPay(project_name, project_price, member_name, 
 							member_phone, member_addr, project_no, member_no ) {
 			IMP.request_pay({
                 pg : "kakaopay.TC0ONETIME",
                 pay_method : 'card',
-                merchant_id : "IMP" + makeMerchantUid,
+                merchant_id : "IMP" + make_donate_id,
                 name : project_name,
                 amount : project_price,
                 buyer_email : 'Iamport@chai.finance',
@@ -62,13 +61,13 @@
                 buyer_addr : member_addr,
                 buyer_postcode : '123-456'
 			},rsp => {
-			    if (rsp.success) {   
+			    if (rsp.success) {
 			        axios({
 			          url: "/orderResult.do",
 			          method: "post",
 			          headers: { "Content-Type": "application/json" },
 			          data: {
-			            donate_id: "IMP" + makeMerchantUid,
+			            donate_id: "IMP" + make_donate_id,
 						project_no : project_no,
 						project_price : project_price,
 						member_no : member_no
@@ -82,9 +81,9 @@
 		}
 		
 		document.getElementById('donateButton').addEventListener('click', function(){
-			requestPay("${projectDTO.projectName}", ${projectDTO.projectPrice},
-	                "${memberDTO.name}", "${memberDTO.phone}", "${memberDTO.addr}",
-	                ${projectDTO.projectNumber}, ${memberDTO.no});
+			requestPay('${projectDTO.projectName}', '${projectDTO.projectPrice}',
+	                '${memberDTO.memberName}', '${memberDTO.memberPhone}', '${memberDTO.memberAddr}',
+	                '${projectDTO.projectNo}', '${memberDTO.memberNo}');
 		});
 		
 	</script>

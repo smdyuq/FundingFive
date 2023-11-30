@@ -11,7 +11,7 @@ public class ProjectDAO {
 	private PreparedStatement pstmt;
 
 	// 상세페이지 프로젝트 요소 조회
-	public ProjectDTO getProjectDetail(Connection con, int projectNumber) {
+	public ProjectDTO getProjectDetail(Connection con, int projectNo) {
 
 			String query = "SELECT p.PROJECT_NO, p.PROJECT_NAME, p.PROJECT_INTRODUCE, p.PROJECT_CONTENT, p.PROJECT_KIND, "
 					+ "				p.PROJECT_PRICE, p.PROJECT_TARGET_AMOUNT, p.PROJECT_CURRENT_AMOUNT, p.PROJECT_SPONSER_NUMBER, "
@@ -25,11 +25,11 @@ public class ProjectDAO {
 			ProjectDTO projectDTO = new ProjectDTO();
 			try {
 				pstmt = con.prepareStatement(query);
-				pstmt.setInt(1, projectNumber);
+				pstmt.setInt(1, projectNo);
 		
 				ResultSet rs = pstmt.executeQuery();
 					while (rs.next()) {
-						projectDTO.setProjectNumber(rs.getInt("PROJECT_NO"));
+						projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
 						projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 						projectDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
 						projectDTO.setProjectContent(rs.getString("PROJECT_CONTENT"));
@@ -59,7 +59,7 @@ public class ProjectDAO {
 				+ "		WHERE project_no = ?";
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, projectDTO.getProjectNumber());
+			pstmt.setInt(1, projectDTO.getProjectNo());
 			ResultSet rs = pstmt.executeQuery();		
 			while (rs.next()) {
 				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
@@ -79,7 +79,7 @@ public class ProjectDAO {
 				+ "		WHERE PROJECT_NO = ?";
 		try {
 		pstmt = con.prepareStatement(query);
-		pstmt.setInt(1, projectDTO.getProjectNumber());
+		pstmt.setInt(1, projectDTO.getProjectNo());
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
@@ -93,13 +93,13 @@ public class ProjectDAO {
 	}
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
-	public ProjectDTO getProjectBasicInfo(Connection con, int projectNumber) {
+	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
 		String query = "SELECT project_name, project_price FROM project"
 				+ "		WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try(PreparedStatement pstmt = con.prepareStatement(query)){	
-			pstmt.setInt(1, projectNumber);
+			pstmt.setInt(1, projectNo);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
@@ -123,7 +123,7 @@ public class ProjectDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectDTO.getProjectPrice());
-			pstmt.setInt(2, projectDTO.getProjectNumber());
+			pstmt.setInt(2, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

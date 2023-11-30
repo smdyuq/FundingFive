@@ -31,15 +31,13 @@ public class ProjectDetailController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		
-		int projectNumber = Integer.parseInt(request.getParameter("project-no"));
+		int projectNo = Integer.parseInt(request.getParameter("project-no"));
 		ProjectDTO projectDTO;
 		
 		//프로젝트 상세페이지에 들어갈 요소 불러오기
 		ProjectService projectService = new ProjectServiceImpl();
-		projectDTO = projectService.getProjectDetail(projectNumber);
+		projectDTO = projectService.getProjectDetail(projectNo);
 		
 		if(!Objects.isNull(projectDTO)) {
 			

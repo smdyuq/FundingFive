@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function projectDonate(projectNumber) {
-	const pageUrl = '/getData.do?projectNumber=' + projectNumber;
+function projectDonate(projectNo) {
+	const pageUrl = '/getData.do?projectNo=' + projectNo;
 	window.location.href = pageUrl;
 }
 
