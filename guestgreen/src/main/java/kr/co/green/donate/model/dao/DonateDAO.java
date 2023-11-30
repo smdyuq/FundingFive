@@ -18,8 +18,8 @@ public class DonateDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, donateDTO.getDonateId());
-			pstmt.setInt(2, donateDTO.getMemberNumber());
-			pstmt.setInt(3, donateDTO.getProjectNumber());
+			pstmt.setInt(2, donateDTO.getMemberNo());
+			pstmt.setInt(3, donateDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

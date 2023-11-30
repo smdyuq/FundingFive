@@ -7,22 +7,22 @@ import kr.co.green.member.model.dto.MemberDTO;
 public interface MemberService {
 
 	// 회원가입
-	public int signUp(MemberDTO memberDTO);
+	public int memberSignUp(MemberDTO memberDTO);
 
 	//id중복 체크 
-	boolean duplicateId(String id);
+	boolean duplicateMemberId(String memberId);
 	
 	//로그인
-	MemberDTO memberLogin(String id);
+	MemberDTO memberLogin(String memberId);
 	
 	//회원조회 
-	MemberDTO selectMember(int no);
+	MemberDTO memberSelect(int memberNo);
 
 	//회원 정보 수정 
-	int updateMember(MemberDTO memberDTO, int no);
+	int memberUpdate(MemberDTO memberDTO, int memberNo);
 
 	//회원 탈퇴 
-	int deleteUpdate(MemberDTO memberDTO, int sessionId);
+	int memberDelete(int memberNo);
 
 
 

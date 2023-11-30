@@ -19,8 +19,8 @@ public class ProjectServiceImpl implements ProjectService {
 
 	// 프로젝트 상세페이지 요소 조회
 	@Override
-	public ProjectDTO getProjectDetail(int projectNumber) {
-		return projectDAO.getProjectDetail(con, projectNumber);
+	public ProjectDTO getProjectDetail(int projectNo) {
+		return projectDAO.getProjectDetail(con, projectNo);
 	}
 
 	// 프로젝트 마감일 조회(쿼리문에서 DATE타입을 형변환 시켜와야함)
@@ -37,8 +37,8 @@ public class ProjectServiceImpl implements ProjectService {
 
 	// api에 보내기 위한 프로젝트 기본정보 조회
 	@Override
-	public ProjectDTO getProjectBasicInfo(int projectNumber) {
-				return projectDAO.getProjectBasicInfo(con, projectNumber);
+	public ProjectDTO getProjectBasicInfo(int projectNo) {
+				return projectDAO.getProjectBasicInfo(con, projectNo);
 	}
 
 	// 후원 성공 시 PROJECT테이블 후원자 수, 후원 금액 업데이트

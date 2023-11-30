@@ -1,7 +1,7 @@
 package kr.co.green.project.model.dto;
 
 public class ProjectDTO {
-	private int projectNumber;
+	private int projectNo; 			
 	private String projectName;
 	private String projectIntroduce;
 	private String projectContent;
@@ -11,18 +11,44 @@ public class ProjectDTO {
 	private int projectCurrentAmount;
 	private int projectCurrentPercentage = projectCurrentAmount/projectTargetAmount*100;
 	private int projectSponserNumber;
+	private String projectConfirmStatus;
+	private String projectSaleStatus;
 	private String projectRegisterDate;
 	private String projectEndDate;
 	private String projectOuterImageName;
 	private String projectOuterImagePath;
 	private long projectRemainDate;
 	
+	public int getProjectNo() {
+		return projectNo;
+	}
+
+	public void setProjectNo(int projectNo) {
+		this.projectNo = projectNo;
+	}
+
+	public String getProjectConfirmStatus() {
+		return projectConfirmStatus;
+	}
+
+	public void setProjectConfirmStatus(String projectConfirmStatus) {
+		this.projectConfirmStatus = projectConfirmStatus;
+	}
+
+	public String getProjectSaleStatus() {
+		return projectSaleStatus;
+	}
+
+	public void setProjectSaleStatus(String projectSaleStatus) {
+		this.projectSaleStatus = projectSaleStatus;
+	}
+
 	//api로부터 결제된 프로젝트 정보 받기(후에 donate테이블 저장)
-	public ProjectDTO( String projectName, int projectPrice, int projectNumber) {
+	public ProjectDTO( String projectName, int projectPrice, int projectNo) {
 		super();
 		this.projectName = projectName;
 		this.projectPrice = projectPrice;
-		this.projectNumber = projectNumber;
+		this.projectNo = projectNo;
 	}
 	
 	public ProjectDTO() {
@@ -43,13 +69,7 @@ public class ProjectDTO {
 	private String projectManagerImagePath;
 	private String projectMangerAccount;
 	
-	
-	public int getProjectNumber() {
-		return projectNumber;
-	}
-	public void setProjectNumber(int projectNumber) {
-		this.projectNumber = projectNumber;
-	}
+
 	public String getProjectName() {
 		return projectName;
 	}
