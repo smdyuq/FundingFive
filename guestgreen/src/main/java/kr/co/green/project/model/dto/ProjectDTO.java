@@ -19,6 +19,23 @@ public class ProjectDTO {
 	private String projectOuterImagePath;
 	private long projectRemainDate;
 	
+	private String projectInnerImageName;
+	private String projectInnerImagePath;
+	
+	private int projectManagerNo;
+	private String projectManagerName;
+	private String projectManagerIntroduce;
+	private String projectManagerImageName;
+	private String projectManagerImagePath;
+	private String projectMangerAccount;
+	
+	public int getProjectManagerNo() {
+		return projectManagerNo;
+	}
+	
+	public void setProjectManagerNo(int projectManagerNo) {
+		this.projectManagerNo = projectManagerNo;
+	}
 	public int getProjectNo() {
 		return projectNo;
 	}
@@ -60,14 +77,6 @@ public class ProjectDTO {
 	public void setProjectRemainDate(long projectRemainDate) {
 		this.projectRemainDate = projectRemainDate;
 	}
-	private String ProjectInnerImageName;
-	private String ProjectInnerImagePath;
-	
-	private String projectManagerName;
-	private String projectManagerIntroduce;
-	private String projectManagerImageName;
-	private String projectManagerImagePath;
-	private String projectMangerAccount;
 	
 
 	public String getProjectName() {
@@ -143,16 +152,16 @@ public class ProjectDTO {
 		this.projectOuterImagePath = projectOuterImagePath;
 	}
 	public String getProjectInnerImageName() {
-		return ProjectInnerImageName;
+		return projectInnerImageName;
 	}
 	public void setProjectInnerImageName(String projectInnerImageName) {
-		ProjectInnerImageName = projectInnerImageName;
+		this.projectInnerImageName = projectInnerImageName;
 	}
 	public String getProjectInnerImagePath() {
-		return ProjectInnerImagePath;
+		return projectInnerImagePath;
 	}
 	public void setProjectInnerImagePath(String projectInnerImagePath) {
-		ProjectInnerImagePath = projectInnerImagePath;
+		this.projectInnerImagePath = projectInnerImagePath;
 	}
 	
 	public String getProjectManagerName() {
