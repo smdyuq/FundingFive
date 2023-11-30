@@ -20,33 +20,35 @@ import kr.co.green.member.model.service.MemberServiceImpl;
 @WebServlet("/login.do")
 public class loginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public loginController() {
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public loginController() {
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		// 1. 유저가 입력한 데이터 받기
-        String memberId = request.getParameter("member-id");
-        String memberPwd = request.getParameter("member-pwd");
+		String memberId = request.getParameter("member-id");
+		String memberPwd = request.getParameter("member-pwd");
 
-        // 2. 받은 데이터(아이디,패스워드)가 일치하는지 
-        MemberService memberService = new MemberServiceImpl();
+		// 2. 받은 데이터(아이디,패스워드)가 일치하는지
+		MemberService memberService = new MemberServiceImpl();
 
-        // 패스워드 확인 
-        MemberDTO memberDTO = memberService.memberLogin(memberId);
-        if(BCrypt.checkpw(memberPwd, memberDTO.getMemberPwd())) {
-        	HttpSession session = request.getSession();
-        	session.setAttribute("memberNo", memberDTO.getMemberNo());
-        	request.setAttribute("memberDTO", memberDTO);
-        	RequestDispatcher view = request.getRequestDispatcher("/");
-        	view.forward(request, response);
-        }else {
-        	AlertAndRedirect.alertRedirect(response, "로그인에 실패했습니다.", "/");
-        }
-        
-    }
+		// 패스워드 확인
+		MemberDTO memberDTO = memberService.memberLogin(memberId);
+		if (BCrypt.checkpw(memberPwd, memberDTO.getMemberPwd())) {
+			HttpSession session = request.getSession();
+			session.setAttribute("memberNo", memberDTO.getMemberNo());
+			request.setAttribute("memberDTO", memberDTO);
+			RequestDispatcher view = request.getRequestDispatcher("/");
+			view.forward(request, response);
+		} else {
+			AlertAndRedirect.alertRedirect(response, "로그인에 실패했습니다.", "/");
+		}
+	}
 }

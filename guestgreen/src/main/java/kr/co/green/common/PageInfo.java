@@ -2,13 +2,13 @@ package kr.co.green.common;
 
 public class PageInfo {
 
-	public PageInfo(int listCount, int currentPage, int pageLimit, int boardiLimit, int maxPage, int startPage,
+	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage, int offset) {
 		super();
 		this.listCount = listCount;
 		this.currentPage = currentPage;
 		this.pageLimit = pageLimit;
-		this.boardiLimit = boardiLimit;
+		this.boardLimit = boardLimit;
 		this.maxPage = maxPage;
 		this.startPage = startPage;
 		this.endPage = endPage;
@@ -25,7 +25,7 @@ public class PageInfo {
 	private int pageLimit;
 
 	// 한 페이지에 들어갈 게시글 수
-	private int boardiLimit;
+	private int boardLimit;
 
 	// 전체 페이지
 	private int maxPage;
@@ -64,12 +64,12 @@ public class PageInfo {
 		this.pageLimit = pageLimit;
 	}
 
-	public int getBoardiLimit() {
-		return boardiLimit;
+	public int getBoardLimit() {
+		return boardLimit;
 	}
 
-	public void setBoardiLimit(int boardiLimit) {
-		this.boardiLimit = boardiLimit;
+	public void setBoardLimit(int boardLimit) {
+		this.boardLimit = boardLimit;
 	}
 
 	public int getMaxPage() {
