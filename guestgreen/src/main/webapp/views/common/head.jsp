@@ -4,6 +4,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
+ 
 <title>Blog Post - Start Bootstrap Template</title>
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/common/header.css" rel="stylesheet" />

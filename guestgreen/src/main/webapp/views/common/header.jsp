@@ -27,25 +27,25 @@
 	</div>
 	<div>
 		<c:if test="${empty sessionScope.no}">
-    <div>
-        <a class="gnb-button-style" href="/form/loginform.do">로그인</a>
-        <a class="gnb-button-style" href="/form/signupform.do">회원가입</a>
-    </div>
-</c:if>
-<c:if test="${not empty sessionScope.no}">
-    <c:if test="${member.type == 1}">
-        <div>
-            <a class="gnb-button-style" href="#">프로젝트 등록</a>
-            <a class="gnb-button-style" href="/form/memberform.do?cpage=1">마이페이지</a>
-            <a class="gnb-button-style" href="/logout.do">로그아웃</a>
-        </div>
-    </c:if>
-    <c:if test="${member.type == 0}">
-        <div>
-            <a class="gnb-button-style" href="#">프로젝트 관리</a>
-            <a class="gnb-button-style" href="/logout.do">로그아웃</a>
-        </div>
-    </c:if>
-</c:if>
-		</div>
+			<div>
+				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
+					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
+			</div>
+		</c:if>
+		<c:if test="${not empty sessionScope.no}">
+			<c:if test="${member.type == 1}">
+				<div>
+					<a class="gnb-button-style" href="#">프로젝트 등록</a> <a
+						class="gnb-button-style" href="/form/memberform.do?cpage=1">마이페이지</a>
+					<a class="gnb-button-style" href="/logout.do">로그아웃</a>
+				</div>
+			</c:if>
+			<c:if test="${member.type == 0}">
+				<div>
+					<a class="gnb-button-style" href="#">프로젝트 관리</a> <a
+						class="gnb-button-style" href="/logout.do">로그아웃</a>
+				</div>
+			</c:if>
+		</c:if>
+	</div>
 </header>

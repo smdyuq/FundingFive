@@ -6,88 +6,80 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="/resources/css/member/signup.css">
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
 
-	<main>
+<main>
 
-		<h2>회원가입</h2>
-		<form action="/signup.do" method="POST">
+                <div class="container_div">
 
-			<div class="signup-input"></div>
-			<div class="signup-input">
-				<label for="member-id">아이디:</label> <input type="text"
-					id="member-id" name="member-id" onkeyup="duplicateId()"
-					placeholder="사용하실 id를 입력해주세요." required><br> <span
-					id="idMsg"></span>
-			</div>
-			<br>
-			<div class="signup-input">
-				<label for="member-pwd">비밀번호:</label> <input type="password"
-					id="member-pwd" name="member-pwd" onkeyup="validatePassword()"
-					placeholder="비밀번호를 입력해주세요." required> <br> <span
-					id="passwordMsg"></span>
-			</div>
-			<br>
-			<div class="signup-input">
-				<label for="member-pwdCheck">비밀번호 확인:</label> <input type="password"
-					id="member-pwdCheck" name="member-pwdCheck"
-					onkeyup="validatePassword()" placeholder="비밀번호를 확인합니다." required>
-				<br> <span id="passwordChkMsg"></span>
-			</div>
-			<br>
-			<div class="signup-input">
-				<label for="member-name">이름:</label> <input type="text"
-					id="member-name" name="member-name" onkeyup="validateName() "
-					placeholder="이름을 입력해주세요." required><br> <span
-					id="nameMsg"></span>
-			</div>
-			<br>
-			<div class="signup-input">
-				<label for="member-phone">휴대폰 번호:</label> <input type="number"
-					id="member-phone" name="member-phone" onkeyup=""
-					placeholder="숫자만 입력해주세요." required>
-				<button type="button" id="sendPhoneNumber">인증요청</button>
-				<br>
-				<!-- 인증 요청 성공하면 보이게  -->
-				<div id="verificationSection" style="display: none;">
-					<input type="number" placeholder="인증번호를 입력해주세요."
-						id="verificationCode">
-					<button onclick="RandomExample()">인증하기</button>
-					<br> <span id="phoneMsg"></span>
-				</div>
-				<br>
-				<div class="signup-input">
-					<label for="member-addr">주소:</label> <input type="text"
-						id="member-addr" name="member-addr" onkeyup=""
-						placeholder="주소를 입력해주세요." required> <span id="addrMsg"></span>
-				</div>
-				<br>
-				<button type="submit">회원가입</button>
-		</form>
-		</div>
-		</section>
+                    <div class="signup-form">
+                        <h2>회원가입</h2><br>
+                        <form action="/signup.do" method="POST">
 
+                            <div class="signup-input"></div>
+                            <div class="signup-input">
+                                <label for="member-id">아이디</label> <input type="text" id="member-id" name="member-id"
+                                    onkeyup="duplicateId()" placeholder="사용하실 id를 입력해주세요." required><br> <span
+                                    id="idMsg"></span>
+                            </div>
+                            <br>
+                            <div class="signup-input">
+                                <label for="member-pwd">비밀번호</label> <input type="password" id="member-pwd"
+                                    name="member-pwd" onkeyup="validatePassword()" placeholder="비밀번호를 입력해주세요." required>
+                                <br> <span id="passwordMsg"></span>
+                            </div>
+                            <br>
+                            <div class="signup-input">
+                                <label for="member-pwdCheck">비밀번호 확인</label> <input type="password"
+                                    id="member-pwdCheck" name="member-pwdCheck" onkeyup="validatePassword()"
+                                    placeholder="비밀번호를 확인합니다." required>
+                                <br> <span id="passwordChkMsg"></span>
+                            </div>
+                            <br>
+                            <div class="signup-input">
+                                <label for="member-name">이름</label> <input type="text" id="member-name"
+                                    name="member-name" onkeyup="validateName() " placeholder="이름을 입력해주세요." required><br>
+                                <span id="nameMsg"></span>
+                            </div>
+                            <br>
 
-
-
-
-	</main>
+                            <div class="signup-input">
+                                <label for="member-phone">휴대폰 번호</label>
+                                <div class="phone-div">
+                                    <input type="number" id="member-phone" name="member-phone" onkeyup=""
+                                        placeholder="숫자만 입력해주세요." required>
+                                    <button type="button" id="sendPhoneNumber">인증요청</button>
+                                </div>
+                                <br>
+                                <!-- 인증 요청 성공하면 보이게  -->
+                                <div id="verificationSection" style="display: none;">
+                                    <input type="number" placeholder="인증번호를 입력해주세요." id="verificationCode">
+                                    <button onclick="RandomExample()" id="sendPhoneNumber">인증하기</button>
+                                    <br> <span id="phoneMsg"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="signup-input">
+                                <label for="member-addr">주소</label> <input type="text" id="member-addr"
+                                    name="member-addr" onkeyup="" placeholder="주소를 입력해주세요." required> <span
+                                    id="addrMsg"></span>
+                            </div>
+                            <br>
+                            <button class="signup-btn" type="submit">회원가입</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
 
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
 
 <script>
-	/* <!-- 서버에서 전달한 실패 메시지를 확인하고 팝업창 띄우기  --> */
-    <%String errorMessage = (String) request.getAttribute("errorMessage");
-if (errorMessage != null && !errorMessage.isEmpty()) {%> alert('<%=errorMessage%>
-	');
-<%}%>
-function phoneTest() {
-	window.location.href="/testController.do";
-}
+
 
 
 /* 아이디 중복체크 및 유효성 검사 */
