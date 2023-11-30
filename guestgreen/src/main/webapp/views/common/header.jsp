@@ -6,6 +6,7 @@
 	<div>
 		<!-- <img scr="" alt="로고"> 이미지로 바꿀거임-->
 		<a href="/form/homeform.do">로고</a>
+	
 	</div>
 
 	<div>
@@ -42,7 +43,7 @@
 			</c:if>
 			<c:if test="${member.type == 0}">
 				<div>
-					<a class="gnb-button-style" href="/form/administratorOkForm.do">프로젝트
+					<a class="gnb-button-style" href="/administratorOk.do?cpage=1">프로젝트
 						관리</a> <a class="gnb-button-style" href="/logout.do">로그아웃</a>
 				</div>
 			</c:if>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@include file="../../views/common/head.jsp"%>
+<%@include file="../../views/common/head.jsp" %>
 </head>
 <body>
 

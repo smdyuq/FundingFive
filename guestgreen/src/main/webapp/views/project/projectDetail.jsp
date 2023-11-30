@@ -85,7 +85,7 @@
 							</div>
 							<div class="sponsor-button">
 								<!-- <div> -->
-								<button class="btn btn-dark me-md-2" type="button" 
+								<button class="btn btn-dark me-md-2" type="button"
 									onclick="projectDonate(${projectDTO.getProjectNumber})">후원하기</button>
 								<!-- </div> -->
 							</div>

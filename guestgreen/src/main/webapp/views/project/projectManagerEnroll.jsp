@@ -5,6 +5,11 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -13,18 +18,27 @@
 		<section>
 			<div class="project-manager-enroll-form">
 				<h2>창작자 등록</h2>
-				<form action="/projectManagerEnroll.do" method="post">
+				<hr>
+				<form action="/projectManagerEnroll.do" method="post"
+					enctype="multipart/form-data">
 
-					<label for="project-manager-name">프로젝트 매니저 이름 :</label> <input
-						type="text" id=" project-manager-name" name="project-manager-name"
-						required> <br> <label for="project-manager-introduce">프로젝트
-						매니저 소개 :</label> <input type="text" id="project-manager-introduce"
-						name="project-manager-introduce" required> <br> <label
-						for="project-manager-account">프로젝트 매니저 입금계좌 :</label> <input
-						type="text" id="project-manager-account"
-						name="project-manager-account" required> <br>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">프로젝트
+							창작자 이름 </label> <input type="text" class="form-control"
+							id="exampleFormControlInput1" name="project-manager-name"
+							required> <label for="exampleFormControlInput1"
+							class="form-label">프로젝트 창작자 소개 </label> <input type="text"
+							class="form-control" id="exampleFormControlInput1"
+							name="project-manager-introduce" required> <label
+							for="exampleFormControlInput1" class="form-label">프로젝트
+							창작자 계좌 </label> <input type="text" class="form-control"
+							id="exampleFormControlInput1" name="project-manager-account"
+							required> <label for="exampleFormControlInput1"
+							class="form-label">프로젝트 창작자 프로필 이미지 </label> <input type="file"
+							class="form-control" id="exampleFormControlInput1"
+							name="project_manager_image" required> <br>
 
-					<button type="submit">프로젝트 등록</button>
+						<button class="btn btn-primary" type="submit">프로젝트 등록</button>
 				</form>
 			</div>
 		</section>

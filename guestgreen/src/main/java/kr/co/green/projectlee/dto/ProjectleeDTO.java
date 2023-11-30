@@ -2,7 +2,7 @@ package kr.co.green.projectlee.dto;
 
 public class ProjectleeDTO {
 
-//	프로젝트
+	// 프로젝트
 	private int projectNo; // 프로젝트 번호
 	private String projectName; // 프로젝트 이름
 	private String projectIntroduce; // 프로젝트 소개
@@ -19,7 +19,7 @@ public class ProjectleeDTO {
 	private String projectOuterImageName; // 프로젝트 대표 이미지 이름
 	private String projectOuterImagePath; // 프로젝트 대표 이미지 경로
 
-//	창작자
+	// 창작자
 	private int managerNo; // 창작자 번호
 	private String managerName; // 창작자 이름
 	private String managerIntroduce; // 창작자 소개
@@ -27,13 +27,11 @@ public class ProjectleeDTO {
 	private String managerImagePath; // 창작자 사진 경로
 	private String managerAccount; // 창작자 입금계좌
 
-//	프로젝트 내부 이미지
-
+	// 프로젝트 내부 이미지
 	private String projectInnerImageName; // 프로젝트 내부 이미지 이름
 	private String projectInnerImagePath; // 프로젝트 내부 이미지 경로
 
-//	getter / setter
-
+	// getter / setter
 	public int getProjectNo() {
 		return projectNo;
 	}
