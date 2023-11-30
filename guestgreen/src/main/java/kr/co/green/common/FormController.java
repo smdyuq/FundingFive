@@ -27,8 +27,6 @@ public class FormController extends HttpServlet {
 
 		String action = request.getPathInfo();
 		String nextPage = "";
-		HttpSession session = request.getSession();
-		
 
 		if (action.equals("/loginform.do")) { // 홈>로그인페이지 이동
 			nextPage = "/views/member/login.jsp";
@@ -37,16 +35,16 @@ public class FormController extends HttpServlet {
 		} else if (action.equals("/projectEnrollForm.do")) {
 			nextPage = "/views/project/projectEnroll.jsp";
 		}
-
-	else if(action.equals("/home.do"))
-
-	{
-		int memberNo = (int) session.getAttribute("memberNo");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNo);
-		request.setAttribute("memberDTO", memberDTO);
-		nextPage = "/"; // 홈으로 이동
-	}
+		else if(action.equals("/home.do")){
+			HttpSession session = request.getSession();
+			if(session.getAttribute("memberNo") != null) {
+				int memberNo = (int)session.getAttribute("memberNo");
+				MemberServiceImpl memberService = new MemberServiceImpl();
+				MemberDTO memberDTO = memberService.memberSelect(memberNo);
+				request.setAttribute("memberDTO", memberDTO);
+			}
+			nextPage = "/"; // 홈으로 이동
+		}
 
 
 	// 페이지 포워딩

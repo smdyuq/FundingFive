@@ -14,6 +14,7 @@ public class SearchServiceImpl implements SearchService {
 	public SearchServiceImpl() {
 		dc = new DatabaseConnection();
 		con = dc.connDB();
+		searchDAO = new SearchDAO();
 	}
 	
 	//회원 검색기록 조회
@@ -24,7 +25,7 @@ public class SearchServiceImpl implements SearchService {
 
 	//인기검색어 조회
 	@Override
-	public String[] getPopularSearch() {
+	public SearchDTO[] getPopularSearch() {
 		return searchDAO.getPopularSearch(con);
 	}
 

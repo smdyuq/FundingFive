@@ -35,7 +35,7 @@
     <c:if test="${memberDTO.memberType == 1}">
         <div>
             <a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트 등록</a>
-            <a class="gnb-button-style" href="myPage.do?cpage=1">마이페이지</a>
+            <a class="gnb-button-style" href="/myPage.do?cpage=1">마이페이지</a>
             <a class="gnb-button-style" href="/logout.do">로그아웃</a>
         </div>
     </c:if>

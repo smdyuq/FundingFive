@@ -23,37 +23,48 @@
     <div class="recent_searches">
         <p>최근 검색어</p>
         <div class="recent_searches_text">
-        <c:when test="${empty projectApprovedList}">
-            <div class="recent_searches_result">
-                <a href="#">최근검색어가 없습니다.</a>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div class="recent_searches_result">
-            	<c:forEach var="search-word" items="${memberSearchArr}">
-                	<a href="#">${search-word}</a><a href="#">x</a>
-                </c:forEach>
-            </div>
-        </c:otherwise>    
+        <c:choose>
+	        <c:when test="${empty memberSearchArr}">
+	            <div class="recent_searches_result">
+	                <a href="#">최근검색어가 없습니다.</a>
+	            </div>
+	        </c:when>
+	        <c:otherwise>
+	            <div class="recent_searches_result">
+	            	<c:forEach var="searching" items="${memberSearchArr}">
+	                	<div><a href="#">${searching.searchWord}</a><a href="#">x</a></div>
+	                </c:forEach>
+	            </div>
+	        </c:otherwise>   
+        </c:choose> 
         </div>
     </div>    
     <div class="popular_searches">
         <p>인기 검색어</p>
         <div class="popular_searches_text">
-            <div class="searche_row">
-                <div><p>1</p><a href="#">임시값</a></div>
-                <div><p>2</p><a href="#">임시값</a></div>
-                <div><p>3</p><a href="#">임시값</a></div>
-                <div><p>4</p><a href="#">임시값</a></div>
-                <div><p>5</p><a href="#">임시값</a></div>
-            </div>
-            <div class="searche_row">
-                <div><p>6</p><a href="#">임시값</a></div>
-                <div><p>7</p><a href="#">임시값</a></div>
-                <div><p>8</p><a href="#">임시값</a></div>
-                <div><p>9</p><a href="#">임시값</a></div>
-                <div><p>10</p><a href="#">임시값</a></div>
-            </div>
+        <c:choose>
+	        <c:when test="${empty popularSearchArr}">
+	            <div class="searche_row">
+	                <div><p>1</p><a href="#">임시값</a></div>
+	                <div><p>2</p><a href="#">임시값</a></div>
+	                <div><p>3</p><a href="#">임시값</a></div>
+	                <div><p>4</p><a href="#">임시값</a></div>
+	                <div><p>5</p><a href="#">임시값</a></div>
+	            </div>
+	            <div class="searche_row">
+	                <div><p>6</p><a href="#">임시값</a></div>
+	                <div><p>7</p><a href="#">임시값</a></div>
+	                <div><p>8</p><a href="#">임시값</a></div>
+	                <div><p>9</p><a href="#">임시값</a></div>
+	                <div><p>10</p><a href="#">임시값</a></div>
+	            </div>
+	        </c:when>    
+	        <c:otherwise>
+	        	<c:forEach var="searching" items="${popularSearchArr}">
+	                	<div><a href="#">${searching.rowNum}</a><a href="#">${searching.searchWord}</a></div>
+	            </c:forEach>
+	        </c:otherwise>
+        </c:choose>
         </div>
     </div>
 
