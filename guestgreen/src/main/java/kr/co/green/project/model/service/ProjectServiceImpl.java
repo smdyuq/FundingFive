@@ -1,8 +1,10 @@
 package kr.co.green.project.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import kr.co.green.common.DatabaseConnection;
+import kr.co.green.common.PageInfo;
 import kr.co.green.project.model.dao.ProjectDAO;
 import kr.co.green.project.model.dto.ProjectDTO;
 
@@ -17,6 +19,82 @@ public class ProjectServiceImpl implements ProjectService {
 		con = dc.connDB();
 	}
 
+//	프로젝트 등록 페이지
+
+//	프로젝트 등록
+	@Override
+	public int projectEnroll(ProjectDTO projectleeDTO) {
+		return projectDAO.projectEnroll(con, projectleeDTO);
+	}
+
+//	상세 페이지 이미지 등록
+	@Override
+	public int innerimageEnroll(ProjectDTO projectleeDTO2, int projectNo) {
+		return projectDAO.innerimageEnroll(con, projectleeDTO2, projectNo);
+	}
+
+//	프로젝트 스토리(상세내용) 페이지
+
+//	프로젝트 스토리(상세내용) 등록
+	@Override
+	public int projectContentUpdate(ProjectDTO projectleeDTO, int projectNo) {
+		return projectDAO.projectContentUpdate(con, projectleeDTO, projectNo);
+	}
+
+//	창작자 등록 페이지
+
+//	프로젝트 번호 조회
+	@Override
+	public int projectManagerNoSelect() {
+		return projectDAO.projectManagerNoSelect(con);
+	}
+
+//	창작자 등록
+	@Override
+	public int projectManagerEnroll(ProjectDTO projectleeDTO, int no, int projectNo) {
+		return projectDAO.projectManagerEnroll(con, projectleeDTO, no, projectNo);
+	}
+
+//	관리자 승인 페이지
+
+//	전체 게시글 수
+	@Override
+	public int projectListCount() {
+		return projectDAO.projectListCount(con);
+	}
+
+//	프로젝트 조회
+	@Override
+	public ArrayList<ProjectDTO> projectSelect(PageInfo pi) {
+		return projectDAO.projectSelect(con, pi);
+	}
+
+//	승인페이지 상세보기 페이지
+
+//	승인페이지 상세보기 프로젝트 조회
+	@Override
+	public void projectDetail(ProjectDTO leeDTO) {
+		projectDAO.projectDetail(con, leeDTO);
+	}
+
+//	승인 버튼 누를시 업데이트
+	@Override
+	public int projectUpdate(int projectNo) {
+		return projectDAO.projectUpdate(con, projectNo);
+	}
+
+//	거절 버튼 누를시 업데이트
+	@Override
+	public int projectDelete(int projectNo) {
+		return projectDAO.projectDelete(con, projectNo);
+	}
+
+//	거절 사유 메시지 등록
+	@Override
+	public int deleteReason(String reason, int projectNo) {
+		return projectDAO.deleteReason(con, reason, projectNo);
+	}
+
 	// 프로젝트 상세페이지 요소 조회
 	@Override
 	public ProjectDTO getProjectDetail(int projectNo) {
@@ -26,24 +104,24 @@ public class ProjectServiceImpl implements ProjectService {
 	// 프로젝트 마감일 조회(쿼리문에서 DATE타입을 형변환 시켜와야함)
 	@Override
 	public void getProjectDday(ProjectDTO projectDTO) {
-				projectDAO.getProjectDday(con, projectDTO);
+		projectDAO.getProjectDday(con, projectDTO);
 	}
 
 	// 프로젝트 창작자 정보 조회
 	@Override
 	public void getProjectManagerDetail(ProjectDTO projectDTO) {
-				projectDAO.getProjectManagerDetail(con, projectDTO);
+		projectDAO.getProjectManagerDetail(con, projectDTO);
 	}
 
 	// api에 보내기 위한 프로젝트 기본정보 조회
 	@Override
 	public ProjectDTO getProjectBasicInfo(int projectNo) {
-				return projectDAO.getProjectBasicInfo(con, projectNo);
+		return projectDAO.getProjectBasicInfo(con, projectNo);
 	}
 
 	// 후원 성공 시 PROJECT테이블 후원자 수, 후원 금액 업데이트
 	@Override
 	public int projectUpdate(ProjectDTO projectDTO) {
-				return projectDAO.projectUpdate(con, projectDTO);
+		return projectDAO.projectUpdate(con, projectDTO);
 	}
 }

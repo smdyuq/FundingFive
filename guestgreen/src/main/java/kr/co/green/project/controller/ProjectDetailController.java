@@ -18,7 +18,7 @@ import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
 
-@WebServlet("/projectDetail.do")
+@WebServlet("/projectAdministrator.do")
 public class ProjectDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

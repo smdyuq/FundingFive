@@ -10,11 +10,15 @@ tmp/
 *.swp
 *~.nib
 local.properties
+<<<<<<< HEAD
+.settings
+=======
 guestgreen/.settings/
 .settings/
 .classpath
 guestgreen/.classpath
 guestgreen/.settings/
+>>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
 .loadpath
 .recommenders
 build/
