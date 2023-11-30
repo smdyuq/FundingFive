@@ -58,10 +58,12 @@ public class OrderResultController extends HttpServlet {
 		int projectNo = jsonObject.has("project_no") ? jsonObject.get("project_no").getAsInt() : 0;
 		int projectPrice = jsonObject.has("project_price") ? jsonObject.get("project_price").getAsInt() : 0;
 		int memberNo = jsonObject.has("member_no") ? jsonObject.get("member_no").getAsInt() : 0;
+		int projectCurrentAmount = jsonObject.has("project_current_amount") ? jsonObject.get("project_current_amount").getAsInt() : 0;
 		
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectNo(projectNo);
 		projectDTO.setProjectPrice(projectPrice);
+		projectDTO.setProjectCurrentAmount(projectCurrentAmount + projectPrice);
 		
 		DonateDTO donateDTO = new DonateDTO();
 		donateDTO.setProjectNo(projectNo);
@@ -77,10 +79,13 @@ public class OrderResultController extends HttpServlet {
 			DonateService donateService = new DonateServiceImpl();
 			int result2 = donateService.donateEnroll(donateDTO);
 			if(result2>0) {
-				AlertAndRedirect.alertRedirect(response, "DONATE테이블 등록 성공", "/");
+				AlertAndRedirect.alertRedirect(response, "결제가 완료되었습니다.", "/");
+			}else{
+				AlertAndRedirect.alertRedirect(response, "DONATE테이블 등록 실패", "/");
 			}
+		}else {
+			AlertAndRedirect.alertRedirect(response, "API에서 불러온 객체 PROJECT테이블 업데이트 실패", "/");
 		}
-		AlertAndRedirect.alertRedirect(response, "API에서 불러온 객체 PROJECT테이블 업데이트 실패 또는 DONATE테이블 등록 실패", "/");
 	}
 
 }

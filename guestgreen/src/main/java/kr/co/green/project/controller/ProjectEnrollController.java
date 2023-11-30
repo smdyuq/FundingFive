@@ -86,22 +86,22 @@ public class ProjectEnrollController extends HttpServlet {
 			}
 		}
 
-		ProjectDTO projectleeDTO = new ProjectDTO();
+		ProjectDTO projectDTO = new ProjectDTO();
 
-		projectleeDTO.setProjectName(projectName);
-		projectleeDTO.setProjectIntroduce(projectIntroduce);
-		projectleeDTO.setProjectContent(projectContent);
-		projectleeDTO.setProjectKind(projectKind);
-		projectleeDTO.setProjectPrice(projectPrice);
-		projectleeDTO.setProjectTargetAmount(projectTargetAmount);
-		projectleeDTO.setProjectEndDate(projectEndDate);
-		projectleeDTO.setProjectOuterImageName(fileName);
-		projectleeDTO.setProjectOuterImagePath(uploadDirectory);
+		projectDTO.setProjectName(projectName);
+		projectDTO.setProjectIntroduce(projectIntroduce);
+		projectDTO.setProjectContent(projectContent);
+		projectDTO.setProjectKind(projectKind);
+		projectDTO.setProjectPrice(projectPrice);
+		projectDTO.setProjectTargetAmount(projectTargetAmount);
+		projectDTO.setProjectEndDate(projectEndDate);
+		projectDTO.setProjectOuterImageName(fileName);
+		projectDTO.setProjectOuterImagePath(uploadDirectory);
 
 		ProjectService projectleeservice = new ProjectServiceImpl();
 
 //		프로젝트 등록
-		int result1 = projectleeservice.projectEnroll(projectleeDTO);
+		int result1 = projectleeservice.projectEnroll(projectDTO);
 
 		ProjectDTO projectleeDTO2 = new ProjectDTO();
 

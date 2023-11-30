@@ -10,7 +10,7 @@ public class ProjectDTO {
 	private int projectPrice;
 	private int projectTargetAmount;
 	private int projectCurrentAmount;
-	private int projectCurrentPercentage = projectCurrentAmount / projectTargetAmount * 100;
+	private int projectCurrentPercentage ;
 	private int projectSponserNumber;
 	private String projectConfirmStatus;
 	private String projectSaleStatus;

@@ -377,15 +377,17 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_name, project_price FROM project" + "		WHERE project_no = ?";
+		String query = "SELECT project_no, project_name, project_price, project_current_amount FROM project" + "		WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.setInt(1, projectNo);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				projectDTO.setProjectNo(projectNo);
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
+				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -395,15 +397,19 @@ public class ProjectDAO {
 
 	// 후원 성공 시 PROJECT테이블 후원자 수, 현재 후원 금액, 현재 후원 퍼센트 업데이트
 	public int projectUpdate(Connection con, ProjectDTO projectDTO) {
-		String query = "UPDATE project" + "		SET project_sponser_number = project_sponser_number + 1, "
-				+ "			project_current_amount = project_current_amount + ? " + "	    WHERE project_no = ?";
+		String query = "UPDATE project" 
+				+ "		SET project_sponser_number = project_sponser_number + 1, "
+				+ "			project_current_amount = ?, "
+				+ "			project_current_percentage = ?" 
+				+ "	    WHERE project_no = ?";
 		int result = 0;
 		int projectCurrentPercentage = projectDTO.getProjectCurrentAmount() / projectDTO.getProjectTargetAmount() * 100;
 		projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, projectDTO.getProjectPrice());
-			pstmt.setInt(2, projectDTO.getProjectNo());
+			pstmt.setInt(1, projectDTO.getProjectCurrentAmount());
+			pstmt.setInt(2, projectDTO.getProjectPrice() / projectDTO.getProjectCurrentAmount() * 100);
+			pstmt.setInt(3, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
