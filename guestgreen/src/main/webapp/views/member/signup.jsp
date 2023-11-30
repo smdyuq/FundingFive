@@ -10,7 +10,8 @@
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
-
+	<%@include file="../../views/common/common.jsp"%>
+	
 <main>
 
                 <div class="container_div">

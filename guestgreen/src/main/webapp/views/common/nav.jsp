@@ -8,7 +8,7 @@
 					<li class="lnb-category-expansion"><a onclick="lnbCategoryClose()" class="menu_img"><img
 								src="/resources/image/menu.png" alt="메뉴" style="width: 20px;"></a>
 						<div class="lnb-category">
-							<a href="#">카테고리1</a> <a href="#">카테고리2</a> <a href="#">카테고리3</a>
+							<a href="/views/category/category.jsp">카테고리1</a> <a href="#">카테고리2</a> <a href="#">카테고리3</a>
 							<a href="#">카테고리4</a> <a href="#">카테고리4</a>
 						</div>
 					</li>

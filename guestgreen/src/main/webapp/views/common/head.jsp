@@ -11,6 +11,7 @@
 <link href="/resources/css/common/header.css" rel="stylesheet" />
 <link href="/resources/css/common/nav.css" rel="stylesheet" />
 <link href="/resources/css/common/footer.css" rel="stylesheet" />
+<link href="/resources/css/common/common.css" rel="stylesheet" />
 <!-- Bootstrap core JS-->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
