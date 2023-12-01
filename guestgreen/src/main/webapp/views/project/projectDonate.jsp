@@ -103,7 +103,7 @@
 		var make_donate_id = '' + hours + minutes + seconds + milliseconds;
 		
 		function requestPay(project_name, project_price, member_name, 
-							member_phone, member_addr, project_no, member_no ) {
+							member_phone, member_addr, project_no, member_no, project_current_percentage ) {
 			IMP.request_pay({
                 pg : "kakaopay.TC0ONETIME",
                 pay_method : 'card',
@@ -125,7 +125,8 @@
 			            donate_id: "IMP" + make_donate_id,
 						project_no : project_no,
 						project_price : project_price,
-						member_no : member_no
+						member_no : member_no,
+						project_current_amount : project_current_amount
 			          }
 			        }).then((data) => {
 			        })
@@ -138,7 +139,7 @@
 		document.getElementById('donateButton').addEventListener('click', function(){
 			requestPay('${projectDTO.projectName}', '${projectDTO.projectPrice}',
 	                '${memberDTO.memberName}', '${memberDTO.memberPhone}', '${memberDTO.memberAddr}',
-	                '${projectDTO.projectNo}', '${memberDTO.memberNo}');
+	                '${projectDTO.projectNo}', '${memberDTO.memberNo}', '${projectDTO.projectCurrentAmount}');
 		});
 		
 	</script>

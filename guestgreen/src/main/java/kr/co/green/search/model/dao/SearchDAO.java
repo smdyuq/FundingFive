@@ -36,31 +36,56 @@ public class SearchDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return arr;
-		
+		boolean isEmpty = true;
+		for (SearchDTO dto : arr) {
+		    if (dto != null) {
+		        isEmpty = false;
+		        break;
+		    }
+		}
+		if(isEmpty) {
+		    return new SearchDTO[0];
+		}else {
+		    return arr;
+		}
 	}
 
-	public String[] getPopularSearch(Connection con) {
-		String query = "SELECT SEARCH_WORD FROM "
+	public SearchDTO[] getPopularSearch(Connection con) {
+		String query = "SELECT ROWNUM, SEARCH_WORD FROM "
 					+ " ( SELECT SEARCH_WORD, COUNT(SEARCH_WORD) AS cnt "
 					+ " FROM SEARCHING "
 					+ " GROUP BY SEARCH_WORD "
 					+ " ORDER BY cnt DESC ) " 
 					+ " WHERE ROWNUM <= 10 ";
-		String[] arr = new String[10];
+		SearchDTO[] arr = new SearchDTO[10];
 		try {
 			pstmt = con.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			
 			int index = 0;
 			while(rs.next() && index < 10){
-				arr[index] = rs.getString("SEARCH_WORD");
-				index++ ;
+				SearchDTO searchDTO = new SearchDTO();
+				searchDTO.setRowNum(rs.getInt("ROWNUM"));
+				searchDTO.setSearchWord(rs.getString("SEARCH_WORD"));
+				arr[index] = searchDTO;
+				index++;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return arr;
+		boolean isEmpty = true;
+		for (SearchDTO dto : arr) {
+		    if (dto != null) {
+		        isEmpty = false;
+		        break;
+		    }
+		}
+		if(isEmpty) {
+		    return new SearchDTO[0];
+		}else {
+		    return arr;
+		}
+		
 	}
 
 }

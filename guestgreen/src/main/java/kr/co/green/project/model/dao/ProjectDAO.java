@@ -15,21 +15,22 @@ public class ProjectDAO {
 //	프로젝트 등록 페이지
 
 //	프로젝트 등록
-	public int projectEnroll(Connection con, ProjectDTO projectleeDTO) {
+	public int projectEnroll(Connection con, ProjectDTO projectDTO) {
 
 		String query = "INSERT INTO PROJECT(PROJECT_NO, PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_CURRENT_AMOUNT, PROJECT_SPONSER_NUMBER, PROJECT_CONFIRM_STATUS, PROJECT_SALE_STATUS, PROJECT_REGISTER_DATE, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_OUTER_IMAGE_PATH, PROJECT_CURRENT_PERCENTAGE) "
-				+ " VALUES(project_no_seq.nextval, ?, ?, '임시값', ?, ?, ?,default, default, default, default, default, TO_DATE(?,'YYYY-MM-DD'), ?, ?, default)";
+				+ " VALUES(project_no_seq.nextval, ?, ?, ?, ?, ?, ?,default, default, default, default, default, TO_DATE(?,'YYYY-MM-DD'), ?, ?, default)";
 
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, projectleeDTO.getProjectName());
-			pstmt.setString(2, projectleeDTO.getProjectIntroduce());
-			pstmt.setString(3, projectleeDTO.getProjectKind());
-			pstmt.setInt(4, projectleeDTO.getProjectPrice());
-			pstmt.setInt(5, projectleeDTO.getProjectTargetAmount());
-			pstmt.setString(6, projectleeDTO.getProjectEndDate());
-			pstmt.setString(7, projectleeDTO.getProjectOuterImageName());
-			pstmt.setString(8, projectleeDTO.getProjectOuterImagePath());
+			pstmt.setString(1, projectDTO.getProjectName());
+			pstmt.setString(2, projectDTO.getProjectIntroduce());
+			pstmt.setString(3, projectDTO.getProjectContent());
+			pstmt.setString(4, projectDTO.getProjectKind());
+			pstmt.setInt(5, projectDTO.getProjectPrice());
+			pstmt.setInt(6, projectDTO.getProjectTargetAmount());
+			pstmt.setString(7, projectDTO.getProjectEndDate());
+			pstmt.setString(8, projectDTO.getProjectOuterImageName());
+			pstmt.setString(9, projectDTO.getProjectOuterImagePath());
 
 			int result = pstmt.executeUpdate();
 
@@ -43,20 +44,17 @@ public class ProjectDAO {
 	}
 
 //	상세 페이지 이미지 등록
-	public int innerimageEnroll(Connection con, ProjectDTO projectleeDTO2, int projectNo) {
+	public int innerimageEnroll(Connection con, ProjectDTO projectDTO, int projectNo) {
 		String query = "INSERT INTO PROJECT_INNER_IMAGE(PROJECT_INNER_IMAGE_NAME, PROJECT_INNER_IMAGE_PATH, PROJECT_NO) VALUES(?,?,?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, projectleeDTO2.getProjectInnerImageName());
-			pstmt.setString(2, projectleeDTO2.getProjectInnerImagePath());
+			pstmt.setString(1, projectDTO.getProjectInnerImageName());
+			pstmt.setString(2, projectDTO.getProjectInnerImagePath());
 			pstmt.setInt(3, projectNo);
 
 			int result = pstmt.executeUpdate();
-
-			pstmt.close();
-			con.close();
 
 			return result;
 		} catch (SQLException e) {
@@ -68,62 +66,37 @@ public class ProjectDAO {
 
 //	프로젝트 스토리(상세내용) 페이지
 
-//	프로젝트 스토리(상세내용) 등록
-	public int projectContentUpdate(Connection con, ProjectDTO projectleeDTO, int projectNo) {
-		String query = "update project set project_content = ? where project_no = ? ";
-
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, projectleeDTO.getProjectContent());
-			pstmt.setInt(2, projectNo);
-
-			int result = pstmt.executeUpdate();
-
-			return result;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return 0;
-	}
-
-//	창작자 등록 페이지
-
 // 	프로젝트 번호 조회
-	public int projectManagerNoSelect(Connection con) {
+	public int projectNoSelect(Connection con) {
 		String query = "SELECT PROJECT_NO FROM (SELECT PROJECT_NO FROM PROJECT ORDER BY PROJECT_REGISTER_DATE DESC) WHERE ROWNUM = 1";
 
 		int projectNo = 0;
 		try {
 			pstmt = con.prepareStatement(query);
-
 			ResultSet rs = pstmt.executeQuery();
-
 			while (rs.next()) {
 				projectNo = rs.getInt("PROJECT_NO");
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return projectNo;
 	}
 
 //	창작자 등록
-	public int projectManagerEnroll(Connection con, ProjectDTO projectleeDTO, int no, int projectNo) {
+	public int projectManagerEnroll(Connection con, ProjectDTO projectDTO, int memberNo, int projectNo) {
 		String query = "INSERT INTO PROJECT_MANAGER(PROJECT_MANAGER_NAME, PROJECT_MANAGER_INTRODUCE, PROJECT_MANAGER_IMAGE_NAME, PROJECT_MANAGER_IMAGE_PATH, PROJECT_MANAGER_ACCOUNT, MEMBER_NO, PROJECT_NO)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, projectleeDTO.getProjectManagerName());
-			pstmt.setString(2, projectleeDTO.getProjectIntroduce());
-			pstmt.setString(3, projectleeDTO.getProjectManagerImageName());
-			pstmt.setString(4, projectleeDTO.getProjectManagerImagePath());
-			pstmt.setString(5, projectleeDTO.getProjectMangerAccount());
-			pstmt.setInt(6, no);
+			pstmt.setString(1, projectDTO.getProjectManagerName());
+			pstmt.setString(2, projectDTO.getProjectIntroduce());
+			pstmt.setString(3, projectDTO.getProjectManagerImageName());
+			pstmt.setString(4, projectDTO.getProjectManagerImagePath());
+			pstmt.setString(5, projectDTO.getProjectManagerAccount());
+			pstmt.setInt(6, memberNo);
 			pstmt.setInt(7, projectNo);
 
 			int result = pstmt.executeUpdate();
@@ -148,7 +121,6 @@ public class ProjectDAO {
 
 		try {
 			pstmt = con.prepareStatement(query);
-
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -166,7 +138,7 @@ public class ProjectDAO {
 	public ArrayList<ProjectDTO> projectSelect(Connection con, PageInfo pi) {
 		ArrayList<ProjectDTO> list = new ArrayList<>();
 
-		String query = "SELECT p1.PROJECT_NO, PROJECT_NAME, PROJECT_REGISTER_dATE, project_manager_name FROM PROJECT p1 join project_manager p2 on p1.project_no = p2.project_no WHERE PROJECT_CONFIRM_STATUS = 'C' ORDER BY PROJECT_REGISTER_DATE DESC OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
+		String query = "SELECT p1.PROJECT_NO, PROJECT_NAME, PROJECT_REGISTER_DATE, PROJECT_MANAGER_NAME FROM PROJECT p1 join project_manager p2 on p1.project_no = p2.project_no WHERE PROJECT_CONFIRM_STATUS = 'C' ORDER BY PROJECT_REGISTER_DATE DESC OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -201,39 +173,36 @@ public class ProjectDAO {
 		return list;
 	}
 
-//	승인페이지 상세보기 페이지
-
 //	승인페이지 상세보기 프로젝트 조회
-	public void projectDetail(Connection con, ProjectDTO leeDTO) {
+	public void projectDetail(Connection con, ProjectDTO projectDTO) {
 		String query = "SELECT p1.PROJECT_NO ,PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_MANAGER_NAME, PROJECT_MANAGER_INTRODUCE, PROJECT_MANAGER_ACCOUNT, PROJECT_MANAGER_IMAGE_NAME FROM PROJECT p1 join project_manager p2 on p1.project_no = p2.project_no WHERE p1.PROJECT_NO = ?";
 
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setInt(1, leeDTO.getProjectNo());
+			pstmt.setInt(1, projectDTO.getProjectNo());
 
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				leeDTO.setProjectNo(rs.getInt("PROJECT_NO"));
-				leeDTO.setProjectName(rs.getString("PROJECT_NAME"));
-				leeDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
-				leeDTO.setProjectContent(rs.getString("PROJECT_CONTENT"));
-				leeDTO.setProjectKind(rs.getString("PROJECT_KIND"));
-				leeDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
-				leeDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));
-				leeDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
-				leeDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
-				leeDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
-				leeDTO.setProjectManagerIntroduce(rs.getString("PROJECT_MANAGER_INTRODUCE"));
-				leeDTO.setProjectMangerAccount(rs.getString("PROJECT_MANAGER_ACCOUNT"));
-				leeDTO.setProjectManagerImageName(rs.getString("PROJECT_MANAGER_IMAGE_NAME"));
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
+				projectDTO.setProjectContent(rs.getString("PROJECT_CONTENT"));
+				projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
+				projectDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				projectDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
+				projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				projectDTO.setProjectManagerIntroduce(rs.getString("PROJECT_MANAGER_INTRODUCE"));
+				projectDTO.setProjectManagerAccount(rs.getString("PROJECT_MANAGER_ACCOUNT"));
+				projectDTO.setProjectManagerImageName(rs.getString("PROJECT_MANAGER_IMAGE_NAME"));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 //	승인 버튼 누를시 업데이트
@@ -290,7 +259,6 @@ public class ProjectDAO {
 
 			return result;
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 
@@ -377,15 +345,17 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_name, project_price FROM project" + "		WHERE project_no = ?";
+		String query = "SELECT project_no, project_name, project_price, project_current_amount FROM project" + "		WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.setInt(1, projectNo);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				projectDTO.setProjectNo(projectNo);
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
+				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -395,15 +365,19 @@ public class ProjectDAO {
 
 	// 후원 성공 시 PROJECT테이블 후원자 수, 현재 후원 금액, 현재 후원 퍼센트 업데이트
 	public int projectUpdate(Connection con, ProjectDTO projectDTO) {
-		String query = "UPDATE project" + "		SET project_sponser_number = project_sponser_number + 1, "
-				+ "			project_current_amount = project_current_amount + ? " + "	    WHERE project_no = ?";
+		String query = "UPDATE project" 
+				+ "		SET project_sponser_number = project_sponser_number + 1, "
+				+ "			project_current_amount = ?, "
+				+ "			project_current_percentage = ?" 
+				+ "	    WHERE project_no = ?";
 		int result = 0;
 		int projectCurrentPercentage = projectDTO.getProjectCurrentAmount() / projectDTO.getProjectTargetAmount() * 100;
 		projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, projectDTO.getProjectPrice());
-			pstmt.setInt(2, projectDTO.getProjectNo());
+			pstmt.setInt(1, projectDTO.getProjectCurrentAmount());
+			pstmt.setInt(2, projectDTO.getProjectPrice() / projectDTO.getProjectCurrentAmount() * 100);
+			pstmt.setInt(3, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

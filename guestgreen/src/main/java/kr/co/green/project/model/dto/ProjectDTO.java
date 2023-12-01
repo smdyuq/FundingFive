@@ -30,7 +30,7 @@ public class ProjectDTO {
 	private String projectManagerIntroduce;
 	private String projectManagerImageName;
 	private String projectManagerImagePath;
-	private String projectMangerAccount;
+	private String projectManagerAccount;
 
 	public int getProjectManagerNo() {
 		return projectManagerNo;
@@ -221,6 +221,14 @@ public class ProjectDTO {
 		this.projectManagerImageName = projectManagerImageName;
 	}
 
+	public String getProjectManagerAccount() {
+		return projectManagerAccount;
+	}
+
+	public void setProjectManagerAccount(String projectManagerAccount) {
+		this.projectManagerAccount = projectManagerAccount;
+	}
+
 	public String getProjectManagerImagePath() {
 		return projectManagerImagePath;
 	}
@@ -229,13 +237,6 @@ public class ProjectDTO {
 		this.projectManagerImagePath = projectManagerImagePath;
 	}
 
-	public String getProjectMangerAccount() {
-		return projectMangerAccount;
-	}
-
-	public void setProjectMangerAccount(String projectMangerAccount) {
-		this.projectMangerAccount = projectMangerAccount;
-	}
 
 	public int getProjectCurrentPercentage() {
 		return projectCurrentPercentage;
