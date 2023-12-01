@@ -115,10 +115,10 @@ body {
 	font-size: 13px;
 }
 
-.img_div>img, a {
+.img_div>img, .img_div_a {
 	transition: all 0.2s linear;
 }
 
-.img_div>img, a:hover {
+.img_div>img, .img_div_a:hover {
 	transform: scale(1.1);
 }

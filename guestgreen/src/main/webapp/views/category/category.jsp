@@ -19,7 +19,7 @@
     <div class="product_container">
         <div class="product">
             <div class="img_div">
-                <a href=""><img src="#" alt="상품 이미지"></a>
+                <a class="img_div_a" href=""><img src="#" alt="상품 이미지"></a>
             </div>
             <a href="#" class="category_name">카테고리</a><a class="divide_area">|</a><a href="#"
                 class="manager_name">창작자</a>
