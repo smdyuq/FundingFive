@@ -18,6 +18,7 @@ main {
 <body>
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
+	<%@include file="../../views/common/common.jsp"%>
 
 	<main onload="showTabContent('information');">
 		<div class="information-div">
@@ -58,7 +59,7 @@ main {
 						</div>
 						<br>
 						<div class="signup-input">
-							<label for="member-phone">휴대폰 번호:</label> <input type="number"
+							<label for="member-phone">휴대폰 번호</label> <input type="number"
 								value="${memberDTO.memberPhone}" id="member-phone" name="member-phone"
 								onkeyup="" required><br> <span id="phonekMsg"></span>
 						</div>
@@ -71,12 +72,12 @@ main {
 						<br>
 						<div class="signup-input">
 							<label for="member-createDate">가입일</label> <input type="text"
-								value="${memberDTO.memberCreateDate}" id="member-createDate" name="member-createDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
+								value="${memberDTO.memberCreateDate}" id="member-createDate" name="member-createDate" onkeyup="" readonly><br> <span id="addrMsg"></span>
 						</div>
 						<br>
 						<div class="signup-input">
 							<label for="member-updateDate">최종 수정일</label> <input type="text"
-								value="${memberDTO.memberUpdateDate}" id="member-updateDate" name="member-updateDate	>							onkeyup="" readonly><br> <span id="addrMsg"></span>
+								value="${memberDTO.memberUpdateDate}" id="member-updateDate" name="member-updateDate"	onkeyup="" readonly><br> <span id="addrMsg"></span>
 						</div>
 						<br>
 						<button type="submit">수정하기</button>
@@ -126,17 +127,12 @@ main {
 				</div>
 			</div>
 
-		</div>
+		<!-- </div> -->
 		<div>
 			<div class="tab_content" id="project_content">
 				<div class="project-div1">
 					<p>여기는 프로젝트 승인유무 Y</p>
 					<div class="table-container">
-						<form action="/projectList.do" method="GET">
-							<input type="hidden" name="cpage" value=1> <input
-								type="search" name="searchText" placeholder="프로젝트명을 입력해주세요.">
-							<button type="submit">검색</button>
-						</form>
 
 						<table class="project-table table table-hover" id="content">
 							<thead class="project-thead">
@@ -173,53 +169,14 @@ main {
 								</c:choose>
 							</tbody>
 						</table>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<c:choose>
-									<c:when test="${pi.currentPage == 1}">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											href="/projectList.do?cpage=${pi.currentPage-1}&searchText=${searchText}"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-								<c:forEach var="page" begin="${pi.startPage}"
-									end="${pi.endPage}">
-									<li class="page-item"><a class="page-link"
-										href="/projectList.do?cpage=${page}&searchText=${searchText}">${page}</a></li>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pi.currentPage == pi.maxPage}">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											href="/projectList.do?cpage=${pi.currentPage+1}&searchText=${searchText}"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
 					</div>
+					<hr>
 				</div>
 
 
 				<div class="project-div2">
 					<p>여기는 프로젝트 승인유무 C</p>
 					<div class="table-container">
-						<form action="/projectList.do" method="GET">
-							<input type="hidden" name="cpage" value=1> <input
-								type="search" name="searchText" placeholder="프로젝트명을 입력해주세요.">
-							<button type="submit">검색</button>
-						</form>
 						<table class="project-table table table-hover" id="content">
 							<thead class="project-thead">
 								<tr>
@@ -255,41 +212,7 @@ main {
 								</c:choose>
 							</tbody>
 						</table>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<c:choose>
-									<c:when test="${pi.currentPage == 1}">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											href="/projectList.do?cpage=${pi.currentPage-1}&searchText=${searchText}"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-								<c:forEach var="page" begin="${pi.startPage}"
-									end="${pi.endPage}">
-									<li class="page-item"><a class="page-link"
-										href="/projectList.do?cpage=${page}&searchText=${searchText}">${page}</a></li>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pi.currentPage == pi.maxPage}">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											href="/projectList.do?cpage=${pi.currentPage+1}&searchText=${searchText}"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
+						
 					</div>
 				</div>
 			</div>

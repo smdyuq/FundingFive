@@ -5,35 +5,90 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/resources/js/project/apiKey.js"></script>
-<title>Insert title here</title>
-<%@include file="../../views/common/head.jsp"%>
 
+<title>Insert title here</title>
+<link href="/resources/css/common/common.css" rel="stylesheet" />
+<link href="/resources/css/project/projectDonate.css" rel="stylesheet" />
+<%@include file="../../views/common/head.jsp"%>
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 
-	<table>
-		<tbody>
-			<tr>
-				<th>연락처</th>
-				<td>${memberDTO.phone}</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>${memberDTO.name}</td>
-			</tr>
-		</tbody>
-	</table>
 
-	<button id="donateButton">카카오톡으로 후원하기</button>
+<<<<<<< HEAD
+	<main>
 
+		<div class="main-container">
+			<div class="top-container">
+				<div class="main-div">
+					<div class="main-img">
+						<img src="" alt="이미지">
+					</div>
+					<div class="main-text">
+						<div class="main-cartegory">카테고리 명</div>
+						<div class="main-project-name">프로젝트명</div>
+						<div class="main-price">
+							<p>00000원</p>
+							<p class="main-percent">000%</p>
+							<p>n일 남음</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-container">
+				<div class="project-information-all">
+					<div>
+						<p class="project-information">후원자 정보</p>
+						<div class="project-information-div">
+							<p class="project-information-name">이름</p>
+							<p>${memberDTO.name}</p>
+							<br>
+							<p class="project-information-name">연락처</p>
+							<p>${memberDTO.phone}</p>
+							<br>
+						</div>
+					</div>
+					<div>
+						<p class="project-information">프로젝트 정보</p>
+						<div class="project-information-div">
+							<p class="project-information-name">프로젝트 명</p>
+							<p>{}</p>
+							<br>
+							<p class="project-information-name">가격</p>
+							<p>{}</p>
+							<br>
+						</div>
+					</div>
+					<div>
+						<p class="project-information">배송지 정보</p>
+						<div class="project-information-div">
+							<p class="project-information-name">이름</p>
+							<p>{}</p>
+							<br>
+							<p class="project-information-name">연락처</p>
+							<p>{}</p>
+							<br>
+							<p class="project-information-name">배송지</p>
+							<p>{}</p>
+							<br>
+							<p class="instructions">* 연락처 및 배송지 변경은 마이페이지에서 설정에서 가능합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="payment-information">
+					<div class="payment-information-div">
+						<p class="payment-information-name">최종 후원 금액 :</p>
+						<p>원</p>
+					</div>
+					<button class="donateButton" id="donateButton">카카오톡으로 후원하기</button>
+				</div>
+			</div>
+		</div>
 
+	</main>
+
+	<%@include file="../../views/common/common.jsp"%>
 	<%@include file="../../views/common/footer.jsp"%>
 
 	<script>
@@ -89,7 +144,13 @@
 	</script>
 </body>
 </html>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/resources/js/project/apiKey.js"></script>
 
+<script src="/resources/js/common/common.js"></script>
 
 
 

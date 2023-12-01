@@ -42,11 +42,7 @@ public class FormController extends HttpServlet {
 			MemberDTO memberDTO = memberService.memberSelect(no);
 			request.setAttribute("member", memberDTO);
 			nextPage = "/views/project/projectEnroll.jsp";
-		}
-
-	else if(action.equals("/home.do"))
-
-	{
+		}else if(action.equals("/home.do")){
 		int memberNo = (int) session.getAttribute("memberNo");
 		MemberServiceImpl memberService = new MemberServiceImpl();
 		MemberDTO memberDTO = memberService.memberSelect(memberNo);

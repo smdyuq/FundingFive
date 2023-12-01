@@ -35,7 +35,8 @@ public class UpdateController extends HttpServlet {
 		String memberName = request.getParameter("member-name");
 		String memberPhone = request.getParameter("member-phone");
 		String memberAddr = request.getParameter("member-addr");
-		String memberUpdateDate = request.getParameter("updateDate");
+		String memberCreateDate = request.getParameter("member-createDate");
+		String memberUpdateDate = request.getParameter("member-updateDate");
 
 		HttpSession session = request.getSession();
 		int memberNo = (int)session.getAttribute("memberNo");
@@ -47,6 +48,7 @@ public class UpdateController extends HttpServlet {
 		memberDTO.setMemberName(memberName);
 		memberDTO.setMemberPhone(memberPhone);
 		memberDTO.setMemberAddr(memberAddr);
+		memberDTO.setMemberCreateDate(memberCreateDate);;
 		memberDTO.setMemberUpdateDate(memberUpdateDate);
 
 		MemberServiceImpl memberService = new MemberServiceImpl();
@@ -54,7 +56,9 @@ public class UpdateController extends HttpServlet {
 		int result = memberService.memberUpdate(memberDTO, memberNo);
 
 		if (result > 0) {
-		    AlertAndRedirect.alertRedirect(response, "회원정보를 수정했습니다.", "/views/member/myPage.jsp");
+			request.setAttribute("memberDTO", memberDTO);
+			RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");
+			view.forward(request, response);
 		} else {
 			AlertAndRedirect.alertRedirect(response, "회원정보 수정에 실패했습니다.", "/");
 		}
