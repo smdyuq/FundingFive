@@ -47,17 +47,18 @@ public class FormController extends HttpServlet {
 
 			request.setAttribute("member", memberDTO);
 			nextPage = "/views/member/member.jsp"; // 홈>마이페이지 이동
-		}else if(action.equals("/homeform.do")) {
-			
-			Integer no = (Integer) session.getAttribute("no");
-		    if (no != null) {
-		        int intValue = no.intValue();
-		        MemberServiceImpl memberService = new MemberServiceImpl();
-		        MemberDTO memberDTO = memberService.selectMember(intValue);
-		        request.setAttribute("member", memberDTO);
-		    }
-		    nextPage = "/";  //홈으로 이동 
 		}
+//		else if(action.equals("/homeform.do")) {
+//			
+//			Integer no = (Integer) session.getAttribute("no");
+//		    if (no != null) {
+//		        int intValue = no.intValue();
+//		        MemberServiceImpl memberService = new MemberServiceImpl();
+//		        MemberDTO memberDTO = memberService.selectMember(intValue);
+//		        request.setAttribute("member", memberDTO);
+//		    }
+//		    nextPage = "/";  //홈으로 이동 
+//		}
 		
 		// 페이지 포워딩
 		if (!nextPage.isEmpty()) {
