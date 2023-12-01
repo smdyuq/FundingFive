@@ -547,9 +547,8 @@ dd {
 }
 
 /* 마감 임박 */
-
-#countdown{
-margin-bottom:1%;
+#countdown {
+	margin-bottom: 1%;
 }
 
 #count-time {
@@ -592,25 +591,28 @@ margin-bottom:1%;
 	display: none;
 	z-index: 9999;
 	color: inherit;
-	border:none;
-	width : 50px;
-	height : 50px;
+	border: none;
+	width: 50px;
+	height: 50px;
 	border-radius: 40px;
 	text-align: center;
 	font-weight: 180;
 	cursor: pointer;
 }
-
-
 </style>
 
 <body>
+
+
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
+	<%@include file="./views/common/common.jsp"%>
+	
 	<main>
+
+
+
 		<div class="FrontPage_HomeWrapper">
-
-
 			<div class="FrontPage_StyleHero">
 
 				<div class="slider-1 slidesimg">
@@ -903,7 +905,7 @@ margin-bottom:1%;
 		<img class="banner"
 			src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
 			width="1160px" height="181.1px">
-			
+
 		<div class="jb-division-line"></div>
 
 		<div class="Container">
@@ -957,15 +959,16 @@ margin-bottom:1%;
 				</div>
 			</div>
 			<br> <br>
-		</div>	
-			
-			
-			
+		</div>
+
+
+
 		<div class="jb-division-line"></div>
 		<br>
 
 		<div class="Container">
-			<div class="FrontPage_ListTitle">최근 본 프로젝트</div><br>
+			<div class="FrontPage_ListTitle">최근 본 프로젝트</div>
+			<br>
 
 			<div class="row_frontPage_Card">
 
@@ -1509,7 +1512,7 @@ margin-bottom:1%;
 			</div>
 		</div>
 		<br>
-		
+
 		<div class="jb-division-line"></div>
 
 		<div class="Container">
@@ -1561,8 +1564,9 @@ margin-bottom:1%;
 				</div>
 			</div>
 
-		</div><br><br>
-		
+		</div>
+		<br> <br>
+
 		<div class="jb-division-line"></div>
 
 		<div class="Container">
@@ -1614,9 +1618,10 @@ margin-bottom:1%;
 				</div>
 			</div>
 
-		</div><br><br>
+		</div>
+		<br> <br>
 
-		
+
 
 		<button id="toTop">Top</button>
 

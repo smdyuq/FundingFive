@@ -9,14 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>funding(수정예정)</title>
 
-<script src="/resources/js/project/projectDetail.js"></script>
+<link href="/resources/css/common/common.css" rel="stylesheet"/>
+<link href="/resources/css/project/projectDetail.css" rel="stylesheet" />
 
-		<%@include file="/views/common/head.jsp"%>
+
+<%@include file="/views/common/head.jsp"%>
 </head>
 
 <body>
-		<%@include file="/views/common/header.jsp"%>
-		<%@include file="/views/common/nav.jsp"%>
+	<%@include file="/views/common/header.jsp"%>
+	<%@include file="/views/common/nav.jsp"%>
 
 	<main>
 		<div class="container">
@@ -33,21 +35,20 @@
 								<div>
 									<a class="project-value">${projectDTO.projectCurrentAmount}
 										<p class="project-text-unit">원</p>
-									</a>
-									<a class="project-value">${projectDTO.projectCurrentPercentage}
+									</a> <a class="project-value">${projectDTO.projectCurrentPercentage}
 										<p class="project-text-unit">%</p>
 									</a>
 								</div>
 								<p class="project-text">남은 기간</p>
 								<div>
-									<c:if test="${projectDTO.projectRemainDate>0}">		
+									<c:if test="${projectDTO.projectRemainDate>0}">
 										<a class="project-value">${projectDTO.projectRemainDate}
 											<p class="project-text-unit">일</p>
 										</a>
 									</c:if>
 									<c:if test="${projectDTO.preojectRemainDate<=0}">
-											<p class="project-text-unit">종료된 프로젝트입니다.</p>
-									</c:if>	
+										<p class="project-text-unit">종료된 프로젝트입니다.</p>
+									</c:if>
 								</div>
 								<p class="project-text">후원자 수</p>
 								<div>
@@ -58,16 +59,18 @@
 								<div>
 									<a class="project-value">${projectDTO.getProjectTargetAmount}
 										<p class="project-text-unit">원</p>
-									</a>
-									<a class="project-value">${projectDTO.getProjectRegisterDate} ~ ${projectDTO.getProjectEndDate}
+									</a> <a class="project-value">${projectDTO.getProjectRegisterDate}
+										~ ${projectDTO.getProjectEndDate}
 										<p class="project-text-unit">펀딩기간</p>
-									</a>
-									<a class="project-value">
+									</a> <a class="project-value">
 								</div>
 							</div>
 							<div class="sponsor-button">
-								<button class="btn btn-dark me-md-2" type="button" 
-									onclick="projectDonate(${projectDTO.projectNumber})">후원하기</button>
+
+
+								<button class="btn btn-dark me-md-2" type="button"
+									onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
+
 							</div>
 						</div>
 					</div>
@@ -97,9 +100,16 @@
 		</div>
 	</main>
 
+	<%@include file="../../views/common/common.jsp"%>
 	<%@include file="../../views/common/footer.jsp"%>
+	
 
 </body>
 
 </html>
+
+<script src="/resources/js/common/nav.js"></script>
+<script src="/resources/js/project/projectDetail.js"></script>
+<script src="/resources/js/common/common.js"></script>
+
 

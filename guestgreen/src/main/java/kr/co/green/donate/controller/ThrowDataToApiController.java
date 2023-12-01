@@ -28,22 +28,20 @@ public class ThrowDataToApiController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		
 		HttpSession session = request.getSession();
-		int memberNumber = (int)(session.getAttribute("no"));
-		int projectNumber = Integer.parseInt(request.getParameter("projectNumber"));
+		int memberNo = (int)(session.getAttribute("memberNo"));
+		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 		
 		//로그인 된 유저 정보 가져오기
 		MemberService memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.selectMember(memberNumber);
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
 		
 		
 		if(!Objects.isNull(memberDTO)) {
 			//프로젝트 정보(이름, 가격) 가져오기
 			ProjectService projectService = new ProjectServiceImpl();
-			ProjectDTO projectDTO = projectService.getProjectBasicInfo(projectNumber);
+			ProjectDTO projectDTO = projectService.getProjectBasicInfo(projectNo);
 			if(!Objects.isNull(projectDTO)) {
 				request.setAttribute("memberDTO", memberDTO);
 				request.setAttribute("projectDTO", projectDTO);

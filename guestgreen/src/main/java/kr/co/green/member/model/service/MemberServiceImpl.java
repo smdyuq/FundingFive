@@ -17,45 +17,42 @@ public class MemberServiceImpl implements MemberService {
         dc = new DatabaseConnection();
         con = dc.connDB();
     }
+    
     // 회원가입
     @Override
-    public int signUp(MemberDTO memberDTO) {
-        return memberDAO.signUp(con, memberDTO);
+    public int memberSignUp(MemberDTO memberDTO) {
+        return memberDAO.memberSignUp(con, memberDTO);
     }
    
 	//아이디 중복검사 
 	@Override
-	public boolean duplicateId(String id) {
-		return memberDAO.duplicateId(con, id);
-		
+	public boolean duplicateMemberId(String memberId) {
+		return memberDAO.duplicateMemberId(con, memberId);
 	}
 
 	//로그인 
 	@Override
-	public MemberDTO memberLogin(String id) {
-		return memberDAO.memberLogin(con, id);
+	public MemberDTO memberLogin(String memberId) {
+		return memberDAO.memberLogin(con, memberId);
 	}
-	
 	
 	//회원 정보 조회
 	@Override
-	public MemberDTO selectMember(int no) {
-		return memberDAO.selectMember(con, no);
+	public MemberDTO memberSelect(int mebmerNo) {
+		return memberDAO.memberSelect(con, mebmerNo);
 	}
-
 	
 	//회원 정보 수정
 	@Override
-	public int updateMember(MemberDTO memberDTO, int no) {
-		return memberDAO.updateMember(con, memberDTO, no);
+	public int memberUpdate(MemberDTO memberDTO, int no) {
+		return memberDAO.memberUpdate(con, memberDTO, no);
 	}
 	
 	//회원 탈퇴 
 	@Override
-	public int deleteUpdate(MemberDTO memberDTO, int sessionId) {
-		return memberDAO.deleteUpdate(con, memberDTO, sessionId);
+	public int memberDelete(int memberNo) {
+		return memberDAO.memberDelete(con, memberNo);
 	}
-	
 
 }
 

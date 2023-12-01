@@ -1,71 +1,50 @@
 @charset "UTF-8";
 
-body {
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	width: 100%;
-	display: grid;
-	place-items: center;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        }
+        
+    /* 메인 컨텐츠 길이 상관없이 푸터 하단에 고정 */
+    main{
+        padding: 20px;
+        margin-top: auto;
+        flex: 1; 
+        align-self: flex-start; 
+        width: 80%;
+     	margin:0px auto;
+    }
 
-/* GNB */
-header {
-	color: black;
-	padding: 25px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+    
+ /* GNB */
+    header {
+        color: black;
+        padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;       
+        }
 
-/* 메인 컨텐츠 길이 상관없이 푸터 하단에 고정 */
-main {
-	padding: 20px;
-	margin-top: auto;
-	flex: 1;
-	align-self: flex-start;
-	width: 80%;
-	height: 100%
-}
+    header a {
+        color: black;
+        text-decoration: none;
+        margin: 0 10px;
+    } 
 
-/* GNB */
-header {
-	color: black;
-	padding: 25px;
-	padding-right: 40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-header a {
-	color: black;
-	text-decoration: none;
-	margin: 0 10px;
-}
-
-#member-information {
-	color: gray;
-	font-size: 14px;
-}
-
-/*     .gnb-button-style{
-        border: 2px solid #c0c0c0; 
-        border-radius: 5px;
-        padding: 7px; 
+    #member-information{
+        color: gray;
         font-size: 14px;
-    } */
-/* 로고 왼쪽 정렬 */
-header>div:first-child {
-	margin-right: auto;
-}
+    }
 
-#member-information {
-	margin-left: auto;
-	margin-right: 10px;
-}
-/*     .gnb-button-style {
-        margin-left: 5px;
-    } */
+        /* 로고 왼쪽 정렬 */
+    header > div:first-child {
+        margin-right: auto;
+    }
+    #member-information {
+        margin-left: auto;
+        margin-right: 10px;
+    } 

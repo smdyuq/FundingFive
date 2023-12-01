@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		lnbCategory.style.display = 'none';
 	}
 	
-	
-	
-	
-	
-	
 });
+
+	function projectSearch(){
+		const pageUrl = '/searchForm.do';
+		window.location.href = pageUrl;
+}

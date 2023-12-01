@@ -2,130 +2,131 @@ package kr.co.green.member.model.dto;
 
 public class MemberDTO {
 	
-	private int no;
+	private int memberNo;
 	
-	private String id;
-	private String pwd;
-	private String name;
-	private String phone;
-	private String addr;
+	private String memberId;
+	private String memberPwd;
+	private String memberName;
+	private String memberPhone;
+	private String memberAddr;
 	
-	private String createDate;
-	private String updateDate;
+	private String memberCreateDate;
+	private String memberUpdateDate;
 	
-	private int type;
+	private int memberType = 1;
 
 	
 	//api로부터 결제된 회원 정보 받기(후에 donate테이블 저장)
-	public MemberDTO(String name, String phone, String addr, int no) {
+	public MemberDTO(String memberName, String memberPhone, String memberAddr, int memberNo) {
 		super();
-		this.name = name;
-		this.phone = phone;
-		this.addr = addr;
-		this.no = no;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberAddr = memberAddr;
+		this.memberNo = memberNo;
 	}
 
 	public MemberDTO() {
 		super();
 	}
 	
-	public MemberDTO(String id, String name, String pwd) {
+	public MemberDTO(String memberId, String memberName, String memberPwd) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.pwd = pwd;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberPwd = memberPwd;
 	}
 	
 	
-	public MemberDTO(String id, String pwd, String name, String phone, String addr) {
+	public MemberDTO(String memberId, String memberPwd, String memberName, String memberPhone, String memberAddr) {
 		super();
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.phone = phone;
-		this.addr = addr;
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberAddr = memberAddr;
 	}
 	
-	public MemberDTO(String id, String name, String phone, String addr) {
+	public MemberDTO(String memberId, String memberName, String memberPhone, String memberAddr) {
 	    super();
-	    this.id = id;
-	    this.name = name;
-	    this.phone = phone;
-	    this.addr = addr;
+	    this.memberId = memberId;
+	    this.memberName = memberName;
+	    this.memberPhone = memberPhone;
+	    this.memberAddr = memberAddr;
+	}
+
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberPwd() {
+		return memberPwd;
+	}
+
+	public void setMemberPwd(String memberPwd) {
+		this.memberPwd = memberPwd;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
+	}
+
+	public String getMemberAddr() {
+		return memberAddr;
+	}
+
+	public void setMemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
+	}
+
+	public String getMemberCreateDate() {
+		return memberCreateDate;
+	}
+
+	public void setMemberCreateDate(String memberCreateDate) {
+		this.memberCreateDate = memberCreateDate;
+	}
+
+	public String getMemberUpdateDate() {
+		return memberUpdateDate;
+	}
+
+	public void setMemberUpdateDate(String memberUpdateDate) {
+		this.memberUpdateDate = memberUpdateDate;
+	}
+
+	public int getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(int memberType) {
+		this.memberType = memberType;
 	}
 	
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddr() {
-		return addr;
-	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-
-	public String getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(String updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
 
 
 	

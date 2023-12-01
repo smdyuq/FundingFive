@@ -13,55 +13,48 @@ public class MemberDAO {
 	private PreparedStatement pstmt;
 	
 	// 회원가입
-	public int signUp(Connection con, MemberDTO memberDTO) {
+	public int memberSignUp(Connection con, MemberDTO memberDTO) {
 		
 		String query = "INSERT INTO member "
 				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1)";
-	
+		int result = 0;
 		try {
-			
 			pstmt = con.prepareStatement(query);
 			
-		
-			pstmt.setString(1, memberDTO.getId());
-			pstmt.setString(2, memberDTO.getPwd());
-			pstmt.setString(3, memberDTO.getName());
-			pstmt.setString(4, memberDTO.getPhone());
-			pstmt.setString(5, memberDTO.getAddr());
+			pstmt.setString(1, memberDTO.getMemberId());
+			pstmt.setString(2, memberDTO.getMemberPwd());
+			pstmt.setString(3, memberDTO.getMemberName());
+			pstmt.setString(4, memberDTO.getMemberPhone());
+			pstmt.setString(5, memberDTO.getMemberAddr());
 			
-			
-			int result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			return result;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return 0;
+		return result;
 	}
 	
 	//id중복 체크 
-	public boolean duplicateId(Connection con, String id) {
+	public boolean duplicateMemberId(Connection con, String memberId) {
 		String query ="SELECT member_id FROM member "
 				+"     WHERE member_id = ? ";
-		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, id);
+			pstmt.setString(1, memberId);
 			ResultSet rs = pstmt.executeQuery();
-			
 			
 			return rs.next();
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	//로그인 
-	public MemberDTO memberLogin(Connection con, String id) {
-		String query = "SELECT *" 
+	public MemberDTO memberLogin(Connection con, String memberId) {
+		String query = "SELECT member_no, member_pwd, member_name, member_type" 
 				+ "    FROM member" 
 				+ "    WHERE member_Id= ?";
 
@@ -69,33 +62,17 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, id);
+			pstmt.setString(1, memberId);
 			
 			// 쿼리 실행
 			ResultSet rs = pstmt.executeQuery(); 
 
 			while (rs.next()) {
-				int resultNo = rs.getInt("MEMBER_NO");
-				String resultId = rs.getString("MEMBER_ID"); 
-				String resultPwd = rs.getString("MEMBER_PWD");
-				String resultName = rs.getString("MEMBER_NAME");
-				String resultPhone = rs.getString("MEMBER_PHONE");
-				String resultaddr = rs.getString("MEMBER_ADDR");
-				String resultCreateDate= rs.getString("MEMBER_Create_Date");
-				String resultUpdateDate= rs.getString("MEMBER_Update_Date");
-				int resultType = rs.getInt("MEMBER_TYPE");
-
-				result.setNo(resultNo);
-				result.setId(resultId);
-				result.setPwd(resultPwd);
-				result.setName(resultName);
-				result.setPhone(resultPhone);
-				result.setAddr(resultaddr);
-				result.setCreateDate(resultCreateDate);
-				result.setUpdateDate(resultUpdateDate);
-				result.setType(resultType);
+				result.setMemberNo(rs.getInt("MEMBER_NO"));
+				result.setMemberPwd(rs.getString("MEMBER_PWD"));
+				result.setMemberName(rs.getString("MEMBER_NAME"));
+				result.setMemberType(rs.getInt("MEMBER_TYPE"));
 			}
-
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -104,7 +81,7 @@ public class MemberDAO {
 	}
 
 	//회원정보 조회
-	public MemberDTO selectMember(Connection con, int no) {
+	public MemberDTO memberSelect(Connection con, int mebmerNo) {
 		String query = "SELECT * "
 				+"	   FROM member"
 				+"     WHERE member_no = ?";  
@@ -113,7 +90,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query); 
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, mebmerNo);
 			
 			ResultSet rs = pstmt.executeQuery(); 
 			
@@ -128,33 +105,25 @@ public class MemberDAO {
 				String resultUpdateDate= rs.getString("MEMBER_Update_Date");
 				int resultType = rs.getInt("MEMBER_TYPE");
 				
-				result.setNo(resultNo);
-				result.setId(resultId);
-				result.setPwd(resultPwd);
-				result.setName(resultName);
-				result.setPhone(resultPhone);
-				result.setAddr(resultaddr);
-				result.setCreateDate(resultCreateDate);
-				result.setUpdateDate(resultUpdateDate);
-				result.setType(resultType);
-				
+				result.setMemberNo(resultNo);
+				result.setMemberId(resultId);
+				result.setMemberPwd(resultPwd);
+				result.setMemberName(resultName);
+				result.setMemberPhone(resultPhone);
+				result.setMemberAddr(resultaddr);
+				result.setMemberCreateDate(resultCreateDate);
+				result.setMemberUpdateDate(resultUpdateDate);
+				result.setMemberType(resultType);
 				
 			}
-			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-		
 		return result;
-		
-	
-		
-		
 	}
 
 	//회원 정보 수정 
-	public int updateMember(Connection con, MemberDTO memberDTO, int no) {
+	public int memberUpdate(Connection con, MemberDTO memberDTO, int no) {
 	    String query = "UPDATE MEMBER "
 	            + "SET member_id = ?,"
 	            + "    member_name = ?,"
@@ -162,19 +131,15 @@ public class MemberDAO {
 	            + "    member_addr = ?, "
 	            + "    MEMBER_UPDATE_DATE = SYSDATE"
 	            + "    WHERE member_no = ?";
-
 	    try (PreparedStatement pstmt = con.prepareStatement(query)) {
-	        pstmt.setString(1, memberDTO.getId());
-	        pstmt.setString(2, memberDTO.getName());
-	        pstmt.setString(3, memberDTO.getPhone());
-	        pstmt.setString(4, memberDTO.getAddr());
+	        pstmt.setString(1, memberDTO.getMemberId());
+	        pstmt.setString(2, memberDTO.getMemberName());
+	        pstmt.setString(3, memberDTO.getMemberPhone());
+	        pstmt.setString(4, memberDTO.getMemberAddr());
 	        pstmt.setInt(5, no);
-	        
 	        
 	        int result = pstmt.executeUpdate();
 	        return result;
-	         
-	       
 
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -182,29 +147,20 @@ public class MemberDAO {
 
 	    return 0;
 	}
-		
-		
-
 
 	//회원탈퇴 
-	public int deleteUpdate(Connection con, MemberDTO memberDTO, int sessionId) {
+	public int memberDelete(Connection con, int memberNo) {
 		
 		String query = "DELETE FROM MEMBER"
-				+ "     WHERE member_name = ?";
-		
+				+ "     WHERE member_no = ?";
 		try {
 			pstmt = con.prepareStatement(query);
-			
-			pstmt.setString(1, memberDTO.getName());
-			 
+			pstmt.setInt(1, memberNo);
 			return pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-		
-		
 		return 0;
 	}
 }
