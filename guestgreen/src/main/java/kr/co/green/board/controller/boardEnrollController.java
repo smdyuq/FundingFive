@@ -37,8 +37,6 @@ public class boardEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	      request.setCharacterEncoding("UTF-8");
-	      response.setContentType("text/html; charset=utf-8");
 		
 		//내용, 제목 받기
 		String title = request.getParameter("title");

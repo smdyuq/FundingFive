@@ -40,4 +40,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	function projectSearch(){
 		const pageUrl = '/searchForm.do';
 		window.location.href = pageUrl;
-	}
+}

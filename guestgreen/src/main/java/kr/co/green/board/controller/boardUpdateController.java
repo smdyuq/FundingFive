@@ -34,8 +34,7 @@ public class boardUpdateController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      request.setCharacterEncoding("UTF-8");
-	      response.setContentType("text/html; charset=utf-8");
+
 	      
 	    //값 받기(idx,제목,내용)
 			int idx = Integer.parseInt(request.getParameter("idx"));

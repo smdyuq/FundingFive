@@ -9,8 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>funding(수정예정)</title>
 
+<link href="/resources/css/common/common.css" rel="stylesheet"/>
 <link href="/resources/css/project/projectDetail.css" rel="stylesheet" />
-<script src="/resources/js/project/projectDetail.js"></script>
+
 
 <%@include file="/views/common/head.jsp"%>
 </head>
@@ -99,9 +100,16 @@
 		</div>
 	</main>
 
+	<%@include file="../../views/common/common.jsp"%>
 	<%@include file="../../views/common/footer.jsp"%>
+	
 
 </body>
 
 </html>
+
+<script src="/resources/js/common/nav.js"></script>
+<script src="/resources/js/project/projectDetail.js"></script>
+<script src="/resources/js/common/common.js"></script>
+
 

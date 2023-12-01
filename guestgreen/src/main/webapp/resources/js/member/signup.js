@@ -97,6 +97,8 @@ function duplicateId() {
 	    // 여기에 인증하기 처리하는 코드 작성
 	    let verificationCode = document.getElementById("verificationCode").value;
 	    
+		console.log(numStr);
+
 	    if(verificationCode === numStr){
 	    	alert('확인되었습니다.');
 	    	signupBtn.disabled = false;

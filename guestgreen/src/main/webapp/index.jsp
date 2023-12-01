@@ -6,10 +6,11 @@
 </head>
 <body>
 
-
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
-	<main></main>
+	<%@include file="./views/common/common.jsp"%>
+	<main>
+     </main>
 
 
 	<%@include file="../../views/common/footer.jsp"%>

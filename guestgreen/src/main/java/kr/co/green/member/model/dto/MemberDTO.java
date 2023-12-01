@@ -13,7 +13,7 @@ public class MemberDTO {
 	private String memberCreateDate;
 	private String memberUpdateDate;
 	
-	private int memberType;
+	private int memberType = 1;
 
 	
 	//api로부터 결제된 회원 정보 받기(후에 donate테이블 저장)
