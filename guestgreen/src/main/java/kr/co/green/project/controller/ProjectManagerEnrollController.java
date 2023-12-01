@@ -46,7 +46,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
-		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+		String uploadDirectory = "/Users/qknyoing0945/git/guestgreen/guestgreen/src/main/webapp/resources/uploads";
 
 		// 파일 업로드하려는 디렉토리 없으면 생성
 		File filePath = new File(uploadDirectory);
@@ -62,7 +62,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 				if (!fileName.equals("")) {
 					part.write(filePath + File.separator + fileName);
 					// 이미지 리사이징 (100 X 100)					
-					resizeImage(uploadDirectory + "\\" + fileName, 100, 100);
+					resizeImage(uploadDirectory + "/" + fileName, 100, 100);
 				} else if (fileName.equals("")) {
 					uploadDirectory = "";
 				}
