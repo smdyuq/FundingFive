@@ -43,12 +43,10 @@ public class ProjectEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
-		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+		String uploadDirectory = "C:\\Users\\LG\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
 		// 파일 업로드하려는 디렉토리 없으면 생성
 		File filePath = new File(uploadDirectory);
