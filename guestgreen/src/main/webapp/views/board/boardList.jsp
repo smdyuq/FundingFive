@@ -44,12 +44,10 @@ main {
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
 					<button class="nav-link active" id="information-label"
 						data-bs-toggle="tab" data-bs-target="#nav-boardList" type="button"
-						role="tab" aria-controls="nav-boardList" aria-selected="true">공
-						지</button>
+						role="tab" aria-controls="nav-boardList" aria-selected="true">공지</button>
 					<button class="nav-link" id="sponsorship-label"
 						data-bs-toggle="tab" data-bs-target="#nav-QnA" type="button"
-						role="tab" aria-controls="nav-QnA" aria-selected="false">자주
-						묻는 질문</button>
+						role="tab" aria-controls="nav-QnA" aria-selected="false">자주 묻는 질문</button>
 				</div>
 			</nav>
 			<div class="tab-content">
@@ -94,7 +92,7 @@ main {
 					<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
 	
 						<c:if test="${sessionScope.no == 1}">
-							<!-- 유저타입 = 0 만 버튼 보임. -->
+							<!-- 멤버 넘버가 1인 사람만 버튼이 보임. -->
 							<button class="btn btn-dark me-md-2" type="button"
 								onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
 								등록</button>
@@ -159,13 +157,19 @@ main {
 					aria-labelledby="nav-QnA-tab">
 					<details>
 						<summary>[회원탈퇴] 회원 탈퇴는 어떻게 하나요?</summary>
-						<span>회원 탈퇴는 아래의 절차를 따라 하실 수 있습니다. 탈퇴 시 회원 전용 웹 서비스 이용이 불가합니다. 탈퇴 전 유의사항을 반드시 확인해 주시기 바랍니다.
+						<span># 회원 탈퇴는 아래의 절차를 따라 하실 수 있습니다. 탈퇴 시 회원 전용 웹 서비스 이용이 불가합니다.<br>
+						탈퇴 전 유의사항을 반드시 확인해 주시기 바랍니다.<br>	
 						[회원 탈퇴하기]
 						마이페이지 - 탈퇴하기</span>
 					</details>
 					<details>
 						<summary>[문의]문의관련해서는 어디서 확인해야하나요?</summary>
-						<span>페이지 내 카카오 문의하기를 운영하고 있습니다.
+						<span># 페이지 내 카카오 문의하기를 운영하고 있습니다.<br>
+						자세한 문의 사항은 상담원 문의 하기로 문의 부탁드리겠습니다.</span>
+					</details>
+					<details>
+						<summary>[문의]문의관련해서는 어디서 확인해야하나요?</summary>
+						<span># 페이지 내 카카오 문의하기를 운영하고 있습니다.<br>
 						자세한 문의 사항은 상담원 문의 하기로 문의 부탁드리겠습니다.</span>
 					</details>
 					

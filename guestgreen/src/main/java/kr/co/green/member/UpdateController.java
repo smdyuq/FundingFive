@@ -14,13 +14,12 @@ import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
-@WebServlet("/Update.do")
+@WebServlet("/update.do")
 public class UpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public UpdateController() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,52 +29,32 @@ public class UpdateController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 
-		String id = request.getParameter("member-id");
+		String memberId = request.getParameter("member-id");
 		
-		String name = request.getParameter("member-name");
-		String phone = request.getParameter("member-phone");
-		String addr = request.getParameter("member-addr");
-		String updateDate = request.getParameter("updateDate");
+		String memberName = request.getParameter("member-name");
+		String memberPhone = request.getParameter("member-phone");
+		String memberAddr = request.getParameter("member-addr");
+		String memberUpdateDate = request.getParameter("updateDate");
 
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
+		int memberNo = (int)session.getAttribute("memberNo");
 
 		MemberDTO memberDTO = new MemberDTO();
 
-		memberDTO.setId(id);
+		memberDTO.setMemberId(memberId);
 
-		memberDTO.setName(name);
-		memberDTO.setPhone(phone);
-		memberDTO.setAddr(addr);
-		memberDTO.setUpdateDate(updateDate);
+		memberDTO.setMemberName(memberName);
+		memberDTO.setMemberPhone(memberPhone);
+		memberDTO.setMemberAddr(memberAddr);
+		memberDTO.setMemberUpdateDate(memberUpdateDate);
 
 		MemberServiceImpl memberService = new MemberServiceImpl();
 		
-		int result = memberService.updateMember(memberDTO, no);
-
-		System.out.println("result: " + result);
-
-		if (result > 0) {
-		    String message = "회원정보를 수정했습니다.";
-		    // session.setAttribute("no", no);
-		    AlertAndRedirect.alertRedirect(response, message, "/form/memberform.do");
+		if (memberService.memberUpdate(memberDTO, memberNo) > 0) {
+		    AlertAndRedirect.alertRedirect(response, "회원정보를 수정했습니다.", "/views/member/myPage.jsp");
 		} else {
-		    String errorMessage = "회원정보를 수정하지 못했습니다. 다시 시도해주세요.";
-		    request.setAttribute("errorMessage", errorMessage);
-		    RequestDispatcher view = request.getRequestDispatcher("/views/member/member.jsp");
-		    view.forward(request, response);
+			AlertAndRedirect.alertRedirect(response, "회원정보 수정에 실패했습니다.", "/");
 		}
-
-		System.out.println("id: " + id);
-
-		System.out.println("name: " + name);
-		System.out.println("phone: " + phone);
-		System.out.println("addr: " + addr);
-		System.out.println("updateDate: " + updateDate);
-		System.out.println("no: " + no);
 	}
 }

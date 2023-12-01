@@ -1,6 +1,9 @@
 package kr.co.green.project.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +18,7 @@ import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
 
-@WebServlet("/ProjectDetailController")
+@WebServlet("/projectDetail.do")
 public class ProjectDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,32 +31,43 @@ public class ProjectDetailController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		
-		int projectNumber = Integer.parseInt(request.getParameter("project-no"));
-		ProjectDTO projectDTO = new ProjectDTO();
-		projectDTO.setProjectNumber(projectNumber);
+		int projectNo = Integer.parseInt(request.getParameter("project-no"));
+		ProjectDTO projectDTO;
 		
 		//프로젝트 상세페이지에 들어갈 요소 불러오기
 		ProjectService projectService = new ProjectServiceImpl();
-		projectService.getProjectDetail(projectDTO);
+		projectDTO = projectService.getProjectDetail(projectNo);
 		
-		if(!Objects.isNull(projectDTO.getProjectName())) {
-			projectService.getProjectManagerDetail(projectDTO);
-			if(!Objects.isNull(projectDTO.getProjectManagerName())) {
-				System.out.println("project, project_inner_image, project_manager테이블 갖고오기 성공");
-				request.setAttribute("projectDTO", projectDTO);
-				RequestDispatcher view = request.getRequestDispatcher("/views/project/projectDetail.jsp");
-				view.forward(request, response);
-			}else {
-				AlertAndRedirect.alertRedirect(response, "project_manager테이블 갖고오기 실패", "메인페이지로 보내기");
+		if(!Objects.isNull(projectDTO)) {
+			
+			projectService.getProjectDday(projectDTO);
+			if(!Objects.isNull(projectDTO.getProjectEndDate())) {
+				
+				String registerDate = projectDTO.getProjectRegisterDate(); // 가져온 날짜 문자열
+				String endDate = projectDTO.getProjectEndDate(); // 가져온 날짜 문자열
+
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+		        LocalDate endDateLocalDateType = LocalDate.parse(endDate, formatter);
+		        LocalDate currentDate = LocalDate.now();
+
+		        long dDay = ChronoUnit.DAYS.between(currentDate, endDateLocalDateType);
+		        
+		        projectDTO.setProjectRegisterDate(registerDate);
+		        projectDTO.setProjectEndDate(endDate);
+		        projectDTO.setProjectRemainDate(dDay);
+				
+				projectService.getProjectManagerDetail(projectDTO);
+				
+				if(!Objects.isNull(projectDTO.getProjectManagerName())) {
+					request.setAttribute("projectDTO", projectDTO);
+					RequestDispatcher view = request.getRequestDispatcher("/views/project/projectDetail.jsp");
+					view.forward(request, response);
+				}
 			}
-		}else {
-			AlertAndRedirect.alertRedirect(response, "project테이블또는 project_inner_image테이블 갖고오기 실패", "메인페이지로 보내기");
 		}
-		
-		
+		AlertAndRedirect.alertRedirect(response, "프로젝트 상세페이지 조회 실패", "/");
 	}
 
 }

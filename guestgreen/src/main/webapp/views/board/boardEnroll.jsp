@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
 <%@include file="/views/common/head.jsp"%>
-<%@ include file="../common/smarteditor.jsp" %>
-<script type="text/javascript" src="/resources/smarteditor/js/common/smarteditor.js" 
-charset="utf-8"></script>
+<%@ include file="../common/smarteditor.jsp"%>
+<script type="text/javascript"
+	src="/resources/smarteditor/js/common/smarteditor.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -16,13 +16,12 @@ charset="utf-8"></script>
 		<section id="post-form">
 			<h2>새 글 작성</h2>
 			<!-- 파일 업로드시 써야하는 것 -->
-			<form action="/boardEnroll.do" method="post" enctype="multipart/form-data">
-				<label for="title">제목:</label>
-				<input type="text" id="title"name="title" style="width: 1035px" required> 
+			<form action="/boardEnroll.do" method="post"
+				enctype="multipart/form-data">
+				<label for="title">제목:</label> <input type="text" id="title" name="title" style="width: 1035px" required>
 				<div id="smarteditor">
 					<label for="editorTxt">내용:</label>
-					<textarea name="content" id="editorTxt" rows="13" cols="10"
-						placeholder="내용을 입력해주세요" style="width: 1000px"></textarea>
+					<textarea name="content" id="editorTxt" rows="13" cols="10" placeholder="내용을 입력해주세요" style="width: 1000px"></textarea>
 				</div>
 				<!-- 파일 업로드(스마트 에디터로 해결)
 				<input type="file" id="file" name="file"> <br>
