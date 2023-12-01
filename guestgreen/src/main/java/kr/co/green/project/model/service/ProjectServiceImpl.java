@@ -23,36 +23,29 @@ public class ProjectServiceImpl implements ProjectService {
 
 //	프로젝트 등록
 	@Override
-	public int projectEnroll(ProjectDTO projectleeDTO) {
-		return projectDAO.projectEnroll(con, projectleeDTO);
+	public int projectEnroll(ProjectDTO projectDTO) {
+		return projectDAO.projectEnroll(con, projectDTO);
 	}
 
 //	상세 페이지 이미지 등록
 	@Override
-	public int innerimageEnroll(ProjectDTO projectleeDTO2, int projectNo) {
-		return projectDAO.innerimageEnroll(con, projectleeDTO2, projectNo);
+	public int innerimageEnroll(ProjectDTO projectDTO, int projectNo) {
+		return projectDAO.innerimageEnroll(con, projectDTO, projectNo);
 	}
 
-//	프로젝트 스토리(상세내용) 페이지
-
-//	프로젝트 스토리(상세내용) 등록
-	@Override
-	public int projectContentUpdate(ProjectDTO projectleeDTO, int projectNo) {
-		return projectDAO.projectContentUpdate(con, projectleeDTO, projectNo);
-	}
 
 //	창작자 등록 페이지
 
 //	프로젝트 번호 조회
 	@Override
-	public int projectManagerNoSelect() {
-		return projectDAO.projectManagerNoSelect(con);
+	public int projectNoSelect() {
+		return projectDAO.projectNoSelect(con);
 	}
 
 //	창작자 등록
 	@Override
-	public int projectManagerEnroll(ProjectDTO projectleeDTO, int no, int projectNo) {
-		return projectDAO.projectManagerEnroll(con, projectleeDTO, no, projectNo);
+	public int projectManagerEnroll(ProjectDTO projectDTO, int memberNo, int projectNo) {
+		return projectDAO.projectManagerEnroll(con, projectDTO, memberNo, projectNo);
 	}
 
 //	관리자 승인 페이지
@@ -73,8 +66,8 @@ public class ProjectServiceImpl implements ProjectService {
 
 //	승인페이지 상세보기 프로젝트 조회
 	@Override
-	public void projectDetail(ProjectDTO leeDTO) {
-		projectDAO.projectDetail(con, leeDTO);
+	public void projectDetail(ProjectDTO projectDTO) {
+		projectDAO.projectDetail(con, projectDTO);
 	}
 
 //	승인 버튼 누를시 업데이트
@@ -124,4 +117,5 @@ public class ProjectServiceImpl implements ProjectService {
 	public int projectUpdate(ProjectDTO projectDTO) {
 		return projectDAO.projectUpdate(con, projectDTO);
 	}
+
 }

@@ -35,22 +35,14 @@ public class projectAdministratorOkController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(no);
-		request.setAttribute("member", memberDTO);
-
 		// 페이지 코드
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
 
-		ProjectService projectleeservice = new ProjectServiceImpl();
+		ProjectService projectService = new ProjectServiceImpl();
 
 //		전체 게시글 수
-		int listCount = projectleeservice.projectListCount();
+		int listCount = projectService.projectListCount();
 
 		// 보여질 페이지 수
 		int pageLimit = 5;
@@ -64,15 +56,11 @@ public class projectAdministratorOkController extends HttpServlet {
 		PageInfo pi = page.getPageInfo(listCount, cpage, pageLimit, boardLimit);
 
 //		 프로젝트 조회
-		ArrayList<ProjectDTO> list = projectleeservice.projectSelect(pi);
-
-		int row = listCount - (cpage - 1) * boardLimit;
-		request.setAttribute("row", row);
+		ArrayList<ProjectDTO> list = projectService.projectSelect(pi);
 
 		// 나머지 페이징 처리는 common
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/administratorOk.jsp");
 		view.forward(request, response);
 	}

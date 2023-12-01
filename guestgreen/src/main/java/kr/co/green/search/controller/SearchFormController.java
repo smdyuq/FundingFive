@@ -1,8 +1,6 @@
 package kr.co.green.search.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,18 +25,19 @@ public class SearchFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		//검색어 테이블에서 검색기록 가져오기
-		int memberNo = (int)session.getAttribute("memberNo");
-		
 		SearchService searchService = new SearchServiceImpl();
-		SearchDTO[] memberSearchArr = searchService.getSearchHistory(memberNo);
+		//검색어 테이블에서 검색기록 가져오기
+		int memberNo = 0;
+		if(session.getAttribute("memberNo") != null) {
+			memberNo = (int)session.getAttribute("memberNo");
+			SearchDTO[] memberSearchArr = searchService.getSearchHistory(memberNo);
+			request.setAttribute("memberSearchArr", memberSearchArr);
+		}
 		
 		//프로젝트 테이블에서 인기검색어 가져오기
-		String[] popularSearchArr = searchService.getPopularSearch();
-		
-		request.setAttribute("memberSearchArr", memberSearchArr);
+		SearchDTO[] popularSearchArr = searchService.getPopularSearch();
 		request.setAttribute("popularSearchArr", popularSearchArr);
-		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectSearchResult.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectSearchForm.jsp");
 		view.forward(request, response);
 		
 	}

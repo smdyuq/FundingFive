@@ -34,9 +34,8 @@ public class MemberDelelteController extends HttpServlet {
 		int memberNo = (int)session.getAttribute("memberNo");
 		
 		MemberService memberService = new MemberServiceImpl();
-		int result = memberService.memberDelete(memberNo);
 		
-		if(result > 0) {
+		if(memberService.memberDelete(memberNo) > 0) {
 			session.removeAttribute("memberNo");
 			session.invalidate();
 			AlertAndRedirect.alertRedirect(response, "회원 탈퇴에 성공했습니다.", "/");

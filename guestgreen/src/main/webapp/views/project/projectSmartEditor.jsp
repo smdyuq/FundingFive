@@ -19,13 +19,23 @@ charset="utf-8"></script>
 	<%@include file="../../views/common/nav.jsp"%>
 	<main>
 	<form action="/smartEditor.do" method="post">
-	<h2>프로젝트 스토리</h2>
-	<hr>
-	<div id="smarteditor">
-	<textarea name ="editorTxt" id="editorTxt" rows="13" cols="10" placeholder="내용을 입력해주세요"
-	style="width:500px"></textarea>
-	</div>
-	<button type="submit" class="btn btn-primary" onclick="save()">등록</button>
+		<input type="hidden" name="project-name" value="${projectDTO.projectName}">
+		<input type="hidden" name="project-introduce" value="${projectDTO.projectIntroduce}">
+		<input type="hidden" name="project-kind" value="${projectDTO.projectKind}">
+		<input type="hidden" name="project-price" value="${projectDTO.projectPrice}">
+		<input type="hidden" name="project-target-amount" value="${projectDTO.projectTargetAmount}">
+		<input type="hidden" name="project-end-date" value="${projectDTO.projectEndDate}">
+		<input type="hidden" name="project-outer-image-name" value="${projectDTO.projectOuterImageName}">
+		<input type="hidden" name="project-outer-image-path" value="${projectDTO.projectOuterImagePath}">
+		<input type="hidden" name="project-inner-image-name" value="${projectDTO.projectInnerImageName}">
+		<input type="hidden" name="project-inner-image-path" value="${projectDTO.projectInnerImagePath}">
+		<h2>프로젝트 스토리</h2>
+		<hr>
+		<div id="smarteditor">
+			<textarea name ="editorTxt" id="editorTxt" rows="13" cols="10" placeholder="내용을 입력해주세요"
+			style="width:500px"></textarea>
+		</div>
+			<button type="submit" class="btn btn-primary" onclick="save()">등록</button>
 	</form>
 	</main>
 

@@ -3,11 +3,19 @@ package kr.co.green.search.model.dto;
 public class SearchDTO {
 
 	private int searchNo;
+	private int rowNum;
 	private String searchWord;
 	private String searchStatus;
 	private String searchDate;
 	private int memberNo;
 	
+	
+	public int getRowNum() {
+		return rowNum;
+	}
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
 	public int getSearchNo() {
 		return searchNo;
 	}

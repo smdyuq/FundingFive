@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
@@ -39,15 +40,9 @@ public class ProjectManagerEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
-
-		String projectManagerName = request.getParameter("project-manager-name");
-		String projectManagerIntroduce = request.getParameter("project-manager-introduce");
-		String projectManagerAccount = request.getParameter("project-manager-account");
+		int memberNo = (int) session.getAttribute("memberNo");
 
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
@@ -76,27 +71,35 @@ public class ProjectManagerEnrollController extends HttpServlet {
 			}
 		}
 
-		ProjectDTO projectleeDTO = new ProjectDTO();
+		ProjectDTO projectDTO = new ProjectDTO();
+		projectDTO.setProjectName(request.getParameter("project-name"));
+		projectDTO.setProjectIntroduce(request.getParameter("project-introduce"));
+		projectDTO.setProjectKind(request.getParameter("project-kind"));
+		projectDTO.setProjectPrice(Integer.parseInt(request.getParameter("project-price")));
+		projectDTO.setProjectTargetAmount(Integer.parseInt(request.getParameter("project-target-amount")));
+		projectDTO.setProjectEndDate(request.getParameter("project-end-date"));
+		projectDTO.setProjectOuterImageName(request.getParameter("project-outer-image-name"));
+		projectDTO.setProjectOuterImagePath(request.getParameter("project-outer-image-path"));
+		projectDTO.setProjectInnerImageName(request.getParameter("project-inner-image-name"));
+		projectDTO.setProjectInnerImagePath(request.getParameter("project-inner-image-path"));
+		projectDTO.setProjectContent(request.getParameter("project-content"));
+		projectDTO.setProjectManagerName(request.getParameter("project-manager-name"));
+		projectDTO.setProjectManagerIntroduce(request.getParameter("project-manager-introduce"));
+		projectDTO.setProjectManagerAccount(request.getParameter("project-manager-account"));
+		projectDTO.setProjectManagerImageName(fileName);
+		projectDTO.setProjectManagerImagePath(uploadDirectory);
 
-		projectleeDTO.setProjectManagerName(projectManagerName);
-		projectleeDTO.setProjectManagerIntroduce(projectManagerIntroduce);
-		projectleeDTO.setProjectMangerAccount(projectManagerAccount);
-		projectleeDTO.setProjectManagerImageName(fileName);
-		projectleeDTO.setProjectManagerImagePath(uploadDirectory);
-
-		ProjectService projectleeservice = new ProjectServiceImpl();
-
-//		프로젝트 번호 조회
-		int projectNo = projectleeservice.projectManagerNoSelect();
-
-//		창작자 등록
-		int result2 = projectleeservice.projectManagerEnroll(projectleeDTO, no, projectNo);
-
-		if (result2 > 0) {
-			response.sendRedirect("/form/homeform.do");
-		} else {
-			response.sendRedirect("/views/common/error.jsp");
-
+		ProjectService projectService = new ProjectServiceImpl();
+		
+		if(projectService.projectEnroll(projectDTO)>0){			//1. 프로젝트 등록하기
+			int projectNo = projectService.projectNoSelect();	//2. 등록한 프로젝트의 번호 가져오기
+			if(projectNo != 0) {											
+				if(projectService.innerimageEnroll(projectDTO, projectNo)>0) {		//3. 프로젝트 내부이미지 등록하기
+					if(projectService.projectManagerEnroll(projectDTO, memberNo, projectNo)>0) {	//4. 프로젝트 창작자 정보 등록하기
+						AlertAndRedirect.alertRedirect(response, "관리자가 승인하면 프로젝트가 등록됩니다.", "/");
+					}
+				}
+			}
 		}
 	}
 

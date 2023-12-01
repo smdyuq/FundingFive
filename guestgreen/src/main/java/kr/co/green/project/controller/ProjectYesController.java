@@ -27,17 +27,13 @@ public class ProjectYesController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 
-		ProjectService projectleeservice = new ProjectServiceImpl();
+		ProjectService projectService = new ProjectServiceImpl();
 
 		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 
 //		승인 버튼 누를시 업데이트
-		int result = projectleeservice.projectUpdate(projectNo);
-
-		if (result > 0) {
+		if (projectService.projectUpdate(projectNo) > 0) {
 			response.sendRedirect("/administratorOk.do?cpage=1");
 		} else {
 			response.sendRedirect("/views/common/error.jsp");
