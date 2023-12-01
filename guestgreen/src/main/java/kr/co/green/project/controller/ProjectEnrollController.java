@@ -46,10 +46,10 @@ public class ProjectEnrollController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
+		int memberNo = (int) session.getAttribute("memberNo");
 		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(no);
-		request.setAttribute("member", memberDTO);
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
+		request.setAttribute("memberDTO", memberDTO);
 
 		String projectName = request.getParameter("project-name");
 		String projectIntroduce = request.getParameter("project-introduce");
@@ -57,8 +57,12 @@ public class ProjectEnrollController extends HttpServlet {
 		String projectKind = request.getParameter("project-kind");
 		int projectPrice = Integer.parseInt(request.getParameter("project-price"));
 		int projectTargetAmount = Integer.parseInt(request.getParameter("project_target_amount"));
+		int projectCurrentPercentage = projectPrice / projectTargetAmount * 100;
+		
+		System.out.println("projectCurrentPercentage : " + projectCurrentPercentage);
+		
 		String projectEndDate = request.getParameter("project-end-date");
-
+		
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";

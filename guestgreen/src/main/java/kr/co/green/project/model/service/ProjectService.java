@@ -26,7 +26,7 @@ public interface ProjectService {
 	public int projectManagerNoSelect();
 
 //	창작자 등록
-	public int projectManagerEnroll(ProjectDTO projectleeDTO, int no, int projectNo);
+	public int projectManagerEnroll(ProjectDTO projectleeDTO, int memberNo, int projectNo);
 
 //	관리자 승인 페이지
 

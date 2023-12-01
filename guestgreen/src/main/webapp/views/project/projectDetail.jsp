@@ -12,12 +12,12 @@
 <link href="/resources/css/project/projectDetail.css" rel="stylesheet" />
 <script src="/resources/js/project/projectDetail.js"></script>
 
-<%@include file="/views/common/head.jsp"%>
+<%@include file="../../views/common/head.jsp"%>
 </head>
 
 <body>
-	<%@include file="/views/common/header.jsp"%>
-	<%@include file="/views/common/nav.jsp"%>
+	<%@include file="../../views/common/header.jsp"%>
+	<%@include file="../../views/common/nav.jsp"%>
 
 	<main>
 		<div class="container">

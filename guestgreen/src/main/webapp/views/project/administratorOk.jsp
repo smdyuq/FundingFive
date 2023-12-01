@@ -43,7 +43,7 @@
 									<tr onclick="projectDetail(${item.projectNo})">
 										<td>${item.projectName }</td>
 										<td>${item.projectRegisterDate }</td>
-										<td>${item.managerName }</td>
+										<td>${item.projectManagerName }</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

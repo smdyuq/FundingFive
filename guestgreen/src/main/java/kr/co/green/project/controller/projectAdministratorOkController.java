@@ -39,10 +39,10 @@ public class projectAdministratorOkController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
+		int memberNo = (int) session.getAttribute("memberNo");
 		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(no);
-		request.setAttribute("member", memberDTO);
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
+		request.setAttribute("memberDTO", memberDTO);
 
 		// 페이지 코드
 		int cpage = Integer.parseInt(request.getParameter("cpage"));

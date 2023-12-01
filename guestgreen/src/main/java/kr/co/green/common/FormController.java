@@ -38,10 +38,11 @@ public class FormController extends HttpServlet {
 
 			// 프로젝트 등록으로 이동(이승엽 사용)
 		} else if (action.equals("/projectEnrollFrom.do")) {
-			int no = (int) session.getAttribute("no");
+			int memberNo = (int) session.getAttribute("memberNo");
 			MemberServiceImpl memberService = new MemberServiceImpl();
-			MemberDTO memberDTO = memberService.memberSelect(no);
-			request.setAttribute("member", memberDTO);
+			MemberDTO memberDTO = memberService.memberSelect(memberNo);
+			request.setAttribute("memberDTO", memberDTO);
+		
 			nextPage = "/views/project/projectEnroll.jsp";
 		}
 

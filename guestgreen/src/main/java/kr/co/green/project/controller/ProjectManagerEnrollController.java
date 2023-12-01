@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import kr.co.green.member.model.dto.MemberDTO;
+import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
@@ -41,9 +43,12 @@ public class ProjectManagerEnrollController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
+		int memberNo = (int) session.getAttribute("memberNo");
+		MemberServiceImpl memberService = new MemberServiceImpl();
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
+		request.setAttribute("memberDTO", memberDTO);
 
 		String projectManagerName = request.getParameter("project-manager-name");
 		String projectManagerIntroduce = request.getParameter("project-manager-introduce");
@@ -66,7 +71,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 				fileName = getFileName(part);
 				if (!fileName.equals("")) {
 					part.write(filePath + File.separator + fileName);
-					// 이미지 리사이징 (100 X 100)					
+					// 이미지 리사이징 (100 X 100)
 					resizeImage(uploadDirectory + "\\" + fileName, 100, 100);
 				} else if (fileName.equals("")) {
 					uploadDirectory = "";
@@ -90,10 +95,10 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		int projectNo = projectleeservice.projectManagerNoSelect();
 
 //		창작자 등록
-		int result2 = projectleeservice.projectManagerEnroll(projectleeDTO, no, projectNo);
+		int result2 = projectleeservice.projectManagerEnroll(projectleeDTO, memberNo, projectNo);
 
 		if (result2 > 0) {
-			response.sendRedirect("/form/homeform.do");
+			response.sendRedirect("/form/home.do");
 		} else {
 			response.sendRedirect("/views/common/error.jsp");
 

@@ -61,17 +61,17 @@
 				<label for="exampleFormControlInput1" class="form-label">창작자명
 				</label> <input type="text" class="form-control"
 					id="exampleFormControlInput1" name="manager-name"
-					value="${ leeDTO.managerName}" disabled> <label
+					value="${ leeDTO.projectManagerName}" disabled> <label
 					for="exampleFormControlInput1" class="form-label">창작자 소개 </label> <input
 					type="text" class="form-control" id="exampleFormControlInput1"
-					name="manager-introduce" value="${ leeDTO.managerIntroduce}"
+					name="manager-introduce" value="${ leeDTO.projectManagerIntroduce}"
 					disabled> <label for="exampleFormControlInput1"
 					class="form-label">창작자 계좌 </label> <input type="text"
 					class="form-control" id="exampleFormControlInput1"
-					name="manager-account" value="${ leeDTO.managerAccount}" disabled>
+					name="manager-account" value="${ leeDTO.projectMangerAccount}" disabled>
 				<label for="exampleFormControlInput1" class="form-label">창작자
 					프로필 사진 </label> <br> <img
-					src="/resources/uploads/${leeDTO.managerImageName }"><br>
+					src="/resources/uploads/${leeDTO.projectManagerImageName }"><br>
 				<br>
 			
 				<button class="btn btn-primary" type="button" onclick="yesButton()">승인</button>

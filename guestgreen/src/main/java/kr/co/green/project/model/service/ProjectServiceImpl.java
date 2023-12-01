@@ -51,8 +51,8 @@ public class ProjectServiceImpl implements ProjectService {
 
 //	창작자 등록
 	@Override
-	public int projectManagerEnroll(ProjectDTO projectleeDTO, int no, int projectNo) {
-		return projectDAO.projectManagerEnroll(con, projectleeDTO, no, projectNo);
+	public int projectManagerEnroll(ProjectDTO projectleeDTO, int memberNo, int projectNo) {
+		return projectDAO.projectManagerEnroll(con, projectleeDTO, memberNo, projectNo);
 	}
 
 //	관리자 승인 페이지

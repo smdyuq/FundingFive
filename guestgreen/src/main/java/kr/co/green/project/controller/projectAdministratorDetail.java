@@ -16,7 +16,7 @@ import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectServiceImpl;
 
-@WebServlet("/projectDetail.do")
+@WebServlet("/projectAdministrator.do")
 public class projectAdministratorDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,10 +31,10 @@ public class projectAdministratorDetail extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		HttpSession session = request.getSession();
-		int no = (int) session.getAttribute("no");
+		int memberNo = (int) session.getAttribute("memberNo");
 		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(no);
-		request.setAttribute("member", memberDTO);
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
+		request.setAttribute("memberDTO", memberDTO);
 
 		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 

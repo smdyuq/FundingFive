@@ -1,5 +1,5 @@
 function projectDetail(projectNo) {
-	const pageUrl = '/projectDetail.do?projectNo=' + projectNo;
+	const pageUrl = '/projectAdministrator.do?projectNo=' + projectNo;
 	window.location.href = pageUrl;
 }
 
