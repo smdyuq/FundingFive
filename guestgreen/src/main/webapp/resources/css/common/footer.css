@@ -47,6 +47,7 @@ a {
 	bottom: 0;
 	font-size: 0;
 	text-align: center;
+	background-color: whitesmoke;
 }
 
 .pop_wrap:after {

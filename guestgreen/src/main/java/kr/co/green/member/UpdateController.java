@@ -48,8 +48,9 @@ public class UpdateController extends HttpServlet {
 		memberDTO.setMemberName(memberName);
 		memberDTO.setMemberPhone(memberPhone);
 		memberDTO.setMemberAddr(memberAddr);
-		memberDTO.setMemberCreateDate(memberCreateDate);;
+		memberDTO.setMemberCreateDate(memberCreateDate);
 		memberDTO.setMemberUpdateDate(memberUpdateDate);
+		
 
 		MemberServiceImpl memberService = new MemberServiceImpl();
 		
