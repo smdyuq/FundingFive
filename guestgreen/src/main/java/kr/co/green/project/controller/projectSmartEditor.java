@@ -37,35 +37,23 @@ public class projectSmartEditor extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		
-		HttpSession session = request.getSession();
 
-		int memberNo = (int) session.getAttribute("memberNo");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNo);
-		request.setAttribute("memberDTO", memberDTO);
+		ProjectDTO projectDTO = new ProjectDTO();
+		projectDTO.setProjectName(request.getParameter("project-name"));
+		projectDTO.setProjectIntroduce(request.getParameter("project-introduce"));
+		projectDTO.setProjectKind(request.getParameter("project-kind"));
+		projectDTO.setProjectPrice(Integer.parseInt(request.getParameter("project-price")));
+		projectDTO.setProjectTargetAmount(Integer.parseInt(request.getParameter("project-target-amount")));
+		projectDTO.setProjectEndDate(request.getParameter("project-end-date"));
+		projectDTO.setProjectOuterImageName(request.getParameter("project-outer-image-name"));
+		projectDTO.setProjectOuterImagePath(request.getParameter("project-outer-image-path"));
+		projectDTO.setProjectInnerImageName(request.getParameter("project-inner-image-name"));
+		projectDTO.setProjectInnerImagePath(request.getParameter("project-inner-image-path"));
+		projectDTO.setProjectContent(request.getParameter("editorTxt"));
 
-		String projectContent = request.getParameter("editorTxt");
-
-		ProjectService projectservice = new ProjectServiceImpl();
-
-		ProjectDTO projectleeDTO = new ProjectDTO();
-		projectleeDTO.setProjectContent(projectContent);
-
-		int projectNo = projectservice.projectManagerNoSelect();
-
-//		프로젝트 스토리(상세내용) 등록
-		int result = projectservice.projectContentUpdate(projectleeDTO, projectNo);
-
-		if (result > 0) {
-			RequestDispatcher view = request.getRequestDispatcher("/views/project/projectManagerEnroll.jsp");
-
-			view.forward(request, response);
-		} else {
-			response.sendRedirect("/views/common/error.jsp");
-		}
+		request.setAttribute("projectDTO", projectDTO);
+		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectManagerEnroll.jsp");
+		view.forward(request, response);
 
 	}
 

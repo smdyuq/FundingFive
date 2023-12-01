@@ -10,23 +10,18 @@ public interface ProjectService {
 //	프로젝트 등록 페이지
 
 //	프로젝트 등록
-	public int projectEnroll(ProjectDTO projectleeDTO);
+	public int projectEnroll(ProjectDTO projectDTO);
 
 //	상세 페이지 이미지 등록
 	public int innerimageEnroll(ProjectDTO projectleeDTO2, int projectNo);
 
 //	프로젝트 스토리(상세내용) 페이지
 
-//	프로젝트 스토리(상세내용) 등록
-	public int projectContentUpdate(ProjectDTO projectleeDTO, int projectNo);
-
-//	창작자 등록 페이지
-
 //	프로젝트 번호 조회
-	public int projectManagerNoSelect();
+	public int projectNoSelect();
 
 //	창작자 등록
-	public int projectManagerEnroll(ProjectDTO projectleeDTO, int memberNo, int projectNo);
+	public int projectManagerEnroll(ProjectDTO projectDTO, int memberNo, int projectNo);
 
 //	관리자 승인 페이지
 
@@ -39,7 +34,7 @@ public interface ProjectService {
 //	승인페이지 상세보기 페이지
 
 //	승인페이지 상세보기 프로젝트 조회
-	public void projectDetail(ProjectDTO leeDTO);
+	public void projectDetail(ProjectDTO projectDTO);
 
 //	승인 버튼 누를시 업데이트
 	public int projectUpdate(int projectNo);

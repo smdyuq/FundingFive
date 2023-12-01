@@ -8,5 +8,5 @@ public interface SearchService {
 	public abstract SearchDTO[] getSearchHistory(int memberNo);
 
 	//인기검색어 조회
-	public abstract String[] getPopularSearch();
+	public abstract SearchDTO[] getPopularSearch();
 }

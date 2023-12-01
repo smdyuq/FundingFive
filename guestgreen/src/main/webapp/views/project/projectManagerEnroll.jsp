@@ -21,6 +21,17 @@
 				<hr>
 				<form action="/projectManagerEnroll.do" method="post"
 					enctype="multipart/form-data">
+					<input type="hidden" name="project-name" value="${projectDTO.projectName}">
+					<input type="hidden" name="project-introduce" value="${projectDTO.projectIntroduce}">
+					<input type="hidden" name="project-kind" value="${projectDTO.projectKind}">
+					<input type="hidden" name="project-price" value="${projectDTO.projectPrice}">
+					<input type="hidden" name="project-target-amount" value="${projectDTO.projectTargetAmount}">
+					<input type="hidden" name="project-end-date" value="${projectDTO.projectEndDate}">
+					<input type="hidden" name="project-outer-image-name" value="${projectDTO.projectOuterImageName}">
+					<input type="hidden" name="project-outer-image-path" value="${projectDTO.projectOuterImagePath}">
+					<input type="hidden" name="project-inner-image-name" value="${projectDTO.projectInnerImageName}">
+					<input type="hidden" name="project-inner-image-path" value="${projectDTO.projectInnerImagePath}">
+					<input type="hidden" name="project-content" value="${projectDTO.projectContent}">
 
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">프로젝트
