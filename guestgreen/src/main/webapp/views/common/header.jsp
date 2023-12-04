@@ -27,6 +27,7 @@
 	<div>
 		<c:if test="${empty sessionScope.memberNo}">
     <div>
+    	
         <a class="gnb-button-style" href="/form/loginform.do">로그인</a>
         <a class="gnb-button-style" href="/form/signupform.do">회원가입</a>
     </div>
