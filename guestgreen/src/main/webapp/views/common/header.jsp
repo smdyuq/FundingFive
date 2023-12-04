@@ -7,7 +7,7 @@
 		<!-- <img scr="" alt="로고"> 이미지로 바꿀거임-->
 		<a href="/form/home.do">로고</a>
 	</div>
-	
+
 	<div>
 		<c:if test="${empty sessionScope.memberNo}">
 			<a id="member-information"> 로그인을 해주세요.</a>

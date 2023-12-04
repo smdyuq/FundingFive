@@ -583,7 +583,7 @@ dd {
 	/* margin-bottom: 2%; */
 }
 
-/* 상단 이동 버튼 */
+/* /* 상단 이동 버튼 */
 #toTop {
 	position: fixed;
 	right: 100px;
@@ -598,7 +598,7 @@ dd {
 	text-align: center;
 	font-weight: 180;
 	cursor: pointer;
-}
+} */
 </style>
 
 <body>
@@ -1623,7 +1623,7 @@ dd {
 
 
 
-		<button id="toTop">Top</button>
+		<!-- <button id="toTop">Top</button> -->
 
 
 
@@ -1633,7 +1633,7 @@ dd {
 	<%@include file="./views/common/footer.jsp"%>
 </body>
 <script>
-	// 최상단 이동 버튼
+	/* // 최상단 이동 버튼
 
 	$(function() { // 보이기 | 숨기기 
 		$(window).scroll(function() {
@@ -1651,7 +1651,7 @@ dd {
 
 			}, 400);
 		});
-	});
+	}); */
 
 	// 슬라이드
 
