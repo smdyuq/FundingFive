@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 public class EncodingFilter implements Filter {
+
 	private String encoding;
 
 	public void init(FilterConfig fConfig) throws ServletException {
@@ -23,7 +24,6 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-
 		String requestURI = httpRequest.getRequestURI();
 		if (requestURI.endsWith(".css")) {
 			response.setContentType("text/css; charset=UTF-8");
@@ -37,5 +37,4 @@ public class EncodingFilter implements Filter {
 
 	public void destroy() {
 	}
-
 }

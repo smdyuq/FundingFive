@@ -4,8 +4,13 @@
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+<<<<<<< HEAD
 
   <filter>
+=======
+  
+<!--   <filter>
+>>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
   	<filter-name>EncodingFilter</filter-name>
   	<filter-class>kr.co.green.common.EncodingFilter</filter-class>
   <init-param>
@@ -16,7 +21,12 @@
  
    <filter-mapping>
   	<filter-name>EncodingFilter</filter-name>
+<<<<<<< HEAD
    	<url-pattern>/*</url-pattern>  
   </filter-mapping>
+=======
+  	<url-pattern>/*</url-pattern>context하위의 모든 요청에 대해 수행
+  </filter-mapping> -->
+>>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
   
 </web-app>

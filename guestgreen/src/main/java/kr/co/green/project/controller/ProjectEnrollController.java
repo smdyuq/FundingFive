@@ -40,13 +40,18 @@ public class ProjectEnrollController extends HttpServlet {
 
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
+
 		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+
+		System.out.println("1");
 
 		// 파일 업로드하려는 디렉토리 없으면 생성
 		File filePath = new File(uploadDirectory);
 		if (!filePath.exists()) {
 			filePath.mkdirs();
 		}
+
+		System.out.println("2");
 
 		String fileName = "";
 		String[] fileNameArr = new String[2];
@@ -57,9 +62,10 @@ public class ProjectEnrollController extends HttpServlet {
 				if (!fileName.equals("")) {
 					part.write(filePath + File.separator + fileName);
 					fileNameArr[index] = fileName;
+					System.out.println(fileNameArr[index]);
 					index++;
 					// 이미지 리사이징 (100 X 100)
-					resizeImage(uploadDirectory + "\\" + fileName, 100, 100);
+					resizeImage(uploadDirectory + "/" + fileName, 100, 100);
 				} else if (fileName.equals("")) {
 					uploadDirectory = "";
 				}

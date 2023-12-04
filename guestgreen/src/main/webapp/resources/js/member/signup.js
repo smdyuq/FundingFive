@@ -98,6 +98,8 @@ function duplicateId() {
 	    let verificationCode = document.getElementById("verificationCode").value;
 		console.log(numStr);
 	    
+		console.log(numStr);
+
 	    if(verificationCode === numStr){
 	    	alert('확인되었습니다.');
 	    	signupBtn.disabled = false;

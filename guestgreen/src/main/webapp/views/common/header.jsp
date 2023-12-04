@@ -26,6 +26,7 @@
 	</div>
 	<div>
 		<c:if test="${empty sessionScope.memberNo}">
+<<<<<<< HEAD
 			<div>
 				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
 					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
@@ -49,4 +50,30 @@
 			</c:if>
 		</c:if>
 	</div>
+=======
+
+			<div>
+				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
+					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
+			</div>
+		</c:if>
+		<c:if test="${not empty sessionScope.memberNo}">
+			<c:if test="${memberDTO.memberType == 1}">
+				<div>
+					<a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트 등록</a> <a
+						class="gnb-button-style" href="myPage.do?cpage=1">마이페이지</a> <a
+						class="gnb-button-style" href="/logout.do">로그아웃</a>
+				</div>
+			</c:if>
+			<c:if test="${memberDTO.memberType == 0}">
+				<div>
+					<a class="gnb-button-style" href="/administratorOk.do?cpage=1">프로젝트 관리</a> <a
+						class="gnb-button-style" href="/logout.do">로그아웃</a>
+				</div>
+			</c:if>
+		</c:if>
+	</div>
+
+
+>>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
 </header>
