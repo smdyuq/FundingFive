@@ -119,7 +119,6 @@ public class ProjectEnrollController extends HttpServlet {
 			}
 		}
 		return null;
-
 	}
 
 	// 이미지 리사이징

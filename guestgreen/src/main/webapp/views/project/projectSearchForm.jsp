@@ -5,20 +5,22 @@
 <html>
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>프로젝트 검색</title>
-<link href="/resources/css/project/projectSearch.css" rel="stylesheet" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>프로젝트 검색</title>
+	<link href="/resources/css/project/projectSearch.css" rel="stylesheet" />
+	<script src="/resources/js/search/projectSearch.js"></script>
 </head>
 
 <body>
 
     <div class="search_box_div">
         <img src="./search.png" alt="돋보기 이미지" style="width: 40px; height: 40px;">
-        <input type="text" class="search_box" id="search_box" placeholder="검색어를 입력해주세요." required>
-        <button class="search_btn">검색</button>
-        <button class="close_btn">X</button>
+        <div>
+	        <input type="text" class="search_box" id="search_box" placeholder="검색어를 입력해주세요." required>
+	        <button class="search_btn" onclick="projectSearch()">검색</button>
+	        <button class="close_btn">X</button>
+        </div>
     </div>
     <div class="recent_searches">
         <p>최근 검색어</p>
@@ -32,7 +34,7 @@
 	        <c:otherwise>
 	            <div class="recent_searches_result">
 	            	<c:forEach var="searching" items="${memberSearchArr}">
-	                	<div><a href="#">${searching.searchWord}</a><a href="#">x</a></div>
+	                	<div><a id="search-word">${searching.searchWord}</a><a onclick="deleteSearchHistory(${searching.searchWord})">x</a></div>
 	                </c:forEach>
 	            </div>
 	        </c:otherwise>   
@@ -45,23 +47,12 @@
         <c:choose>
 	        <c:when test="${empty popularSearchArr}">
 	            <div class="searche_row">
-	                <div><p>1</p><a href="#">임시값</a></div>
-	                <div><p>2</p><a href="#">임시값</a></div>
-	                <div><p>3</p><a href="#">임시값</a></div>
-	                <div><p>4</p><a href="#">임시값</a></div>
-	                <div><p>5</p><a href="#">임시값</a></div>
-	            </div>
-	            <div class="searche_row">
-	                <div><p>6</p><a href="#">임시값</a></div>
-	                <div><p>7</p><a href="#">임시값</a></div>
-	                <div><p>8</p><a href="#">임시값</a></div>
-	                <div><p>9</p><a href="#">임시값</a></div>
-	                <div><p>10</p><a href="#">임시값</a></div>
+	                <div><a href="#">인기검색어가 없습니다.</a></div>
 	            </div>
 	        </c:when>    
 	        <c:otherwise>
 	        	<c:forEach var="searching" items="${popularSearchArr}">
-	                	<div><a href="#">${searching.rowNum}</a><a href="#">${searching.searchWord}</a></div>
+	                	<div><a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a></div>
 	            </c:forEach>
 	        </c:otherwise>
         </c:choose>
