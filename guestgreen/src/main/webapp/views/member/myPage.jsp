@@ -7,7 +7,7 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/member/member.css">
 <script src="/resources/js/member/myPage.js"></script>
-
+ 
 <style>
 main {
 	padding: 10px;
