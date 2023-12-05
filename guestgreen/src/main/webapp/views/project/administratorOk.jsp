@@ -28,10 +28,15 @@
 			<div class="tabs">
 				<input id="project_approval" type="radio" name="tab_item" checked
 					onchange="showTabContent('project_approval')"> <label
-					class="tab_item" for="project_approval">프로젝트 승인 목록</label> <input
+					class="tab_item" for="project_approval">프로젝트 승인 목록</label> 
+					<input
 					id="project_completed" type="radio" name="tab_item"
 					onchange="showTabContent('project_completed')"> <label
 					class="tab_item" for="project_completed">완료된 프로젝트 목록</label>
+					<input
+					id="project_failure" type="radio" name="tab_item"
+					onchange="showTabContent('project_failure')"> <label
+					class="tab_item" for="project_failure">실패한 프로젝트 목록</label>
 			</div>
 
 			<div class="tab_content" id="project_approval_content">
@@ -116,7 +121,6 @@
 
 			<div class="tab_content" id="project_completed_content">
 				<form id="project-administratorok-form">
-					 <input type="hidden" name="idx" value="프로젝트 넘버 임시값" />
 					<table class="table">
 						<thead>
 							<tr>
@@ -125,7 +129,7 @@
 								<th>프로젝트 종료일</th>
 								<th>프로젝트 달성률</th>
 								<th>창작자 이름</th>
-
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -143,7 +147,53 @@
 											<td>프로젝트종료일 (임시데이터)</td>
 											<td>달성률(임시데이터)</td>
 											<td>창작자(임시데이터)</td>
+											<td><button>버튼</button></td>
 										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+
+						</tbody>
+					</table>
+
+					<!-- 페이징 처리 -->
+
+				</form>
+
+			</div>
+			
+			<div class="tab_content" id="project_failure_content">
+				<form id="project-administratorok-form">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>프로젝트 번호</th>
+								<th>프로젝트명</th>
+								<th>프로젝트 등록일</th>
+								<th>프로젝트 종료일</th>
+								<th>프로젝트 달성률</th>
+								<th>창작자 이름</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<c:choose>
+								<c:when test="${empty list}">
+									<tr>
+										<td colspan="5" class="text-center">등록된 프로젝트가 없습니다.</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="item" items="${list}">
+										<tr onclick="#">
+											<td>프로젝트번호(임시데이터)</td>
+											<td>프로젝트이름(임시데이터)</td>
+											<td>프로젝트시작일(임시데이터)</td>
+											<td>프로젝트종료일 (임시데이터)</td>
+											<td>달성률(임시데이터)</td>
+											<td>창작자(임시데이터)</td>
+										</tr>
+										
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
