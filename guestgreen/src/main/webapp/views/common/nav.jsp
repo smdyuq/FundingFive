@@ -20,7 +20,7 @@
 
 			</div>
 
-		<div onclick="projectSearch()">
+		<div onclick="getSearchForm()">
 			<input type="text" name="searchText" placeholder="검색어를 입력해주세요.">
 			<button type="button"> 검색</button>
 		</div>	
@@ -28,3 +28,4 @@
 </nav>
 
 <script src="/resources/js/common/nav.js"></script>
+<script src="/resources/js/search/projectSearch.js"></script>

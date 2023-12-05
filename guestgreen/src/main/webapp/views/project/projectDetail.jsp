@@ -106,10 +106,10 @@
 
 </body>
 
-</html>
-
 <script src="/resources/js/common/nav.js"></script>
 <script src="/resources/js/project/projectDetail.js"></script>
 <script src="/resources/js/common/common.js"></script>
+</html>
+
 
 

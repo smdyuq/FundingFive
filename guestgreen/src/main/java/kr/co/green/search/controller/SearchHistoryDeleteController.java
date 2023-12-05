@@ -22,15 +22,11 @@ public class SearchHistoryDeleteController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
-		int memberNo = (int)session.getAttribute("memberNo");
-		String recentSearchWord = request.getParameter("recentSearchWord");
-		
+		int searchNo = Integer.parseInt(request.getParameter("searchNo"));
 		
 		SearchService searchService = new SearchServiceImpl();
-		if(searchService.deleteSearchHistory(memberNo, recentSearchWord) > 0) {
-			
+		if(searchService.deleteSearchHistory(searchNo) > 0) {
+			response.sendRedirect("/searchForm.do");
 		}else {
 			System.out.println("검색어 삭제 실패");
 		}

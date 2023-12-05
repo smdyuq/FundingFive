@@ -10,6 +10,7 @@
 	<title>프로젝트 검색</title>
 	<link href="/resources/css/project/projectSearch.css" rel="stylesheet" />
 	<script src="/resources/js/search/projectSearch.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
 	        <c:otherwise>
 	            <div class="recent_searches_result">
 	            	<c:forEach var="searching" items="${memberSearchArr}">
-	                	<div><a id="search-word">${searching.searchWord}</a><a onclick="deleteSearchHistory(${searching.searchWord})">x</a></div>
+	                	<div id="search-words${searching.searchNo}"><a id="search-word">${searching.searchWord}</a><a onclick="deleteSearchHistory(${searching.searchNo})">x</a></div>
 	                </c:forEach>
 	            </div>
 	        </c:otherwise>   
@@ -52,7 +53,7 @@
 	        </c:when>    
 	        <c:otherwise>
 	        	<c:forEach var="searching" items="${popularSearchArr}">
-	                	<div><a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a></div>
+	                	<div onclick="searchPopularWord(${searching.searchWord})"><a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a></div>
 	            </c:forEach>
 	        </c:otherwise>
         </c:choose>

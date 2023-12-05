@@ -118,4 +118,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.projectUpdate(con, projectDTO);
 	}
 
+	//기한 만료된 프로젝트 조회(관리자)
+	@Override
+	public ArrayList<ProjectDTO> expiredProjectSelect(PageInfo pi) {
+		return projectDAO.expiredProjectSelect(con, pi);
+	}
+
 }

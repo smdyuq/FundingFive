@@ -5,7 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/resources/js/project/apiKey.js"></script>
 
+<script src="/resources/js/common/common.js"></script>
 <title>Insert title here</title>
 <link href="/resources/css/common/common.css" rel="stylesheet" />
 <link href="/resources/css/project/projectDonate.css" rel="stylesheet" />
@@ -15,8 +21,6 @@
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 
-
-<<<<<<< HEAD
 	<main>
 
 		<div class="main-container">
@@ -42,10 +46,10 @@
 						<p class="project-information">후원자 정보</p>
 						<div class="project-information-div">
 							<p class="project-information-name">이름</p>
-							<p>${memberDTO.name}</p>
+							<p>${memberDTO.memberName}</p>
 							<br>
 							<p class="project-information-name">연락처</p>
-							<p>${memberDTO.phone}</p>
+							<p>${memberDTO.memberPhone}</p>
 							<br>
 						</div>
 					</div>
@@ -53,10 +57,10 @@
 						<p class="project-information">프로젝트 정보</p>
 						<div class="project-information-div">
 							<p class="project-information-name">프로젝트 명</p>
-							<p>{}</p>
+							<p>${projectDTO.projectName}</p>
 							<br>
 							<p class="project-information-name">가격</p>
-							<p>{}</p>
+							<p>${projectDTO.projectPrice}</p>
 							<br>
 						</div>
 					</div>
@@ -67,10 +71,10 @@
 							<p>{}</p>
 							<br>
 							<p class="project-information-name">연락처</p>
-							<p>{}</p>
+							<p>${memberDTO.memberPhone}</p>
 							<br>
 							<p class="project-information-name">배송지</p>
-							<p>{}</p>
+							<p>${memberDTO.memberAddr}</p>
 							<br>
 							<p class="instructions">* 연락처 및 배송지 변경은 마이페이지에서 설정에서 가능합니다.</p>
 						</div>
@@ -103,7 +107,7 @@
 		var make_donate_id = '' + hours + minutes + seconds + milliseconds;
 		
 		function requestPay(project_name, project_price, member_name, 
-							member_phone, member_addr, project_no, member_no, project_current_percentage ) {
+							member_phone, member_addr, project_no, member_no, project_current_amount, project_target_amount ) {
 			IMP.request_pay({
                 pg : "kakaopay.TC0ONETIME",
                 pay_method : 'card',
@@ -127,6 +131,10 @@
 						project_price : project_price,
 						member_no : member_no,
 						project_current_amount : project_current_amount
+						project_target_amount : project_target_amount,
+						member_addr : member_addr,
+						member_phone : member_phone,
+						member_name : member_name
 			          }
 			        }).then((data) => {
 			        })
@@ -139,19 +147,12 @@
 		document.getElementById('donateButton').addEventListener('click', function(){
 			requestPay('${projectDTO.projectName}', '${projectDTO.projectPrice}',
 	                '${memberDTO.memberName}', '${memberDTO.memberPhone}', '${memberDTO.memberAddr}',
-	                '${projectDTO.projectNo}', '${memberDTO.memberNo}', '${projectDTO.projectCurrentAmount}');
+	                '${projectDTO.projectNo}', '${memberDTO.memberNo}', '${projectDTO.projectCurrentAmount}', '${projectDTO.projectTargetAmount}');
 		});
 		
 	</script>
 </body>
 </html>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/resources/js/project/apiKey.js"></script>
-
-<script src="/resources/js/common/common.js"></script>
 
 
 

@@ -11,7 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 public class EncodingFilter implements Filter {
-<<<<<<< HEAD
 	private String encoding;
 	
 	public void init(FilterConfig fConfig) throws ServletException {
@@ -34,29 +33,5 @@ public class EncodingFilter implements Filter {
 	}
 	public void destroy() {
 	}
-=======
-   private String encoding;
-   
-   public void init(FilterConfig fConfig) throws ServletException {
-      encoding = fConfig.getInitParameter("encoding");
-      if(encoding == null) {
-         encoding = "UTF-8";
-      }
-   }
-   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-      HttpServletRequest httpRequest = (HttpServletRequest) request;
-       String requestURI = httpRequest.getRequestURI();
-       if (requestURI.endsWith(".css")) {
-           response.setContentType("text/css; charset=UTF-8");
-       } else if(!requestURI.endsWith(".css")){
-           request.setCharacterEncoding(encoding);
-           response.setContentType("text/html; charset=UTF-8");
-           response.setCharacterEncoding("UTF-8");
-       }
-       chain.doFilter(request, response);
-   }
-   public void destroy() {
-   }
->>>>>>> 61de7a74f26ceb5338cae34a04f13c17c1860f0a
 
 }

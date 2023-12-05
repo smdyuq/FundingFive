@@ -60,4 +60,7 @@ public interface ProjectService {
 	// 후원 시 PROjECT테이블의 후원자 수, 후원 금액 업데이트
 	public abstract int projectUpdate(ProjectDTO projectDTO);
 
+	//기한 만료된 프로젝트 조회(관리자)
+	public ArrayList<ProjectDTO> expiredProjectSelect(PageInfo pi);
+
 }

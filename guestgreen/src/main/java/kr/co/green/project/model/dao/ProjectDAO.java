@@ -345,7 +345,9 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_no, project_name, project_price, project_current_amount FROM project" + "		WHERE project_no = ?";
+		String query = "SELECT project_no, project_name, project_price, project_current_amount, project_target_amount "
+				+ "		FROM project"
+					+ "WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -356,7 +358,7 @@ public class ProjectDAO {
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
 				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
-			}
+				projectDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -371,12 +373,11 @@ public class ProjectDAO {
 				+ "			project_current_percentage = ?" 
 				+ "	    WHERE project_no = ?";
 		int result = 0;
-		int projectCurrentPercentage = projectDTO.getProjectCurrentAmount() / projectDTO.getProjectTargetAmount() * 100;
-		projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectDTO.getProjectCurrentAmount());
-			pstmt.setInt(2, projectDTO.getProjectPrice() / projectDTO.getProjectCurrentAmount() * 100);
+			pstmt.setInt(2, projectDTO.getProjectCurrentPercentage());
 			pstmt.setInt(3, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -385,4 +386,46 @@ public class ProjectDAO {
 		return result;
 	}
 
+	public ArrayList<ProjectDTO> expiredProjectSelect(Connection con, PageInfo pi) {
+		String query = "SELECT p.project_no, p.project_name, p.project_register_date,"
+				+ "			   p.project_end_date, p.project_current_percentage,"
+				+ "			   pm.project_manager_name"
+				+ "		FROM project p"
+				+ "		JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no"
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
+		ArrayList<ProjectDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pi.getOffset()); 
+			pstmt.setInt(2, pi.getBoardLimit());
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+				projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				list.add(projectDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
