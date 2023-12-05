@@ -12,6 +12,8 @@
 
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
+	<%@include file="../../views/common/common.jsp"%>
+	
 	<main>
 		<h2>게시판 상세</h2>
     <form id="detail-form">

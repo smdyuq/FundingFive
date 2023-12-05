@@ -48,6 +48,30 @@
 			</c:if>
 		</c:if>
 	</div>
-
+	<div id="google_translate_element" style="display:none;"></div>
+    <select class="translation-links">
+        <option value="ko" data-lang="ko">한국어</option>
+        <option value="en" data-lang="en">영어</option>
+        <option value="ja" data-lang="ja">일본어</option>
+    </select>
+			</div>
 
 </header>
+<script src="/resources/js/common/nav.js"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ko', autoDisplay: true}, 'google_translate_element');
+        }
+
+        document.querySelector('.translation-links').addEventListener('change', function (event) {
+            const tolang = event.target.value;
+            const gtcombo = document.querySelector('.goog-te-combo');
+            if (gtcombo == null) {
+                alert("Error: Could not find Google translate Combolist.");
+                return false;
+            }
+            gtcombo.value = tolang;
+            gtcombo.dispatchEvent(new Event('change'));
+        });
+    </script>

@@ -137,6 +137,7 @@ a {
 }
 
 .question {
+	width : 100%;
 	font-size: 19px;
 	padding: 20px 0;
 	cursor: pointer;
@@ -155,11 +156,12 @@ a {
 }
 
 .que-1-toggle-text {
-	font-size: 15px
+	font-size: 15px;
 }
 
 .groupInfo {
 	padding-top: 3%;
+	width:100%;
 }
 
 .groupInfo-text {
