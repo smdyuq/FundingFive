@@ -27,11 +27,11 @@ main {
 			<div class="tabs">
 				<input id="information" type="radio" name="tab_item" checked
 					onchange="showTabContent('information')"> <label
-					class="tab_item" for="information">내 정보</label> <input
-					id="sponsorship" type="radio" name="tab_item"
+					class="tab_item" for="information">내 정보</label> 
+				<input id="sponsorship" type="radio" name="tab_item"
 					onchange="showTabContent('sponsorship')"> <label
-					class="tab_item" for="sponsorship">후원</label> <input id="project"
-					type="radio" name="tab_item" onchange="showTabContent('project')">
+					class="tab_item" for="sponsorship">후원</label> 
+				<input id="project" type="radio" name="tab_item" onchange="showTabContent('project')">
 				<label class="tab_item" for="project">프로젝트</label>
 			</div>
 
