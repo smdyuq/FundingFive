@@ -28,10 +28,15 @@
 			<div class="tabs">
 				<input id="project_approval" type="radio" name="tab_item" checked
 					onchange="showTabContent('project_approval')"> <label
-					class="tab_item" for="project_approval">프로젝트 승인 목록</label> <input
+					class="tab_item" for="project_approval">프로젝트 승인 목록</label> 
+					<input
 					id="project_completed" type="radio" name="tab_item"
 					onchange="showTabContent('project_completed')"> <label
 					class="tab_item" for="project_completed">완료된 프로젝트 목록</label>
+					<input
+					id="project_failure" type="radio" name="tab_item"
+					onchange="showTabContent('project_failure')"> <label
+					class="tab_item" for="project_failure">실패한 프로젝트 목록</label>
 			</div>
 
 			<div class="tab_content" id="project_approval_content">
@@ -49,7 +54,7 @@
 							</thead>
 							<tbody>
 								<c:choose>
-									<c:when test="${empty projectList }">
+									<c:when test="${empty projectList}">
 										<tr>
 											<td colspan="5" class="text-center">등록된 프로젝트가 없습니다.</td>
 										</tr>
@@ -115,8 +120,8 @@
 			</div>
 
 			<div class="tab_content" id="project_completed_content">
-				<form id="project-administratorok-form">
-					 <input type="hidden" name="idx" value="프로젝트 넘버 임시값" />
+				<form id="project-administratorok-form" >
+					<input type="hidden" name="status" value="success">
 					<table class="table">
 						<thead>
 							<tr>
@@ -126,19 +131,19 @@
 								<th>프로젝트 종료일</th>
 								<th>프로젝트 달성률</th>
 								<th>창작자 이름</th>
-
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${empty expiredList}">
+								<c:when test="${empty successfulProjectList}">
 									<tr>
-										<td colspan="5" class="text-center">기한 만료된 프로젝트가 없습니다.</td>
+										<td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach var="item" items="${expiredList}">
-										<tr onclick="#">
+									<c:forEach var="item" items="${successfulProjectList}">
+										<tr onclick="successfulProject(${item.projectNo})">
 											<td>${item.projectNo}</td>
 											<td>${item.projectName}</td>
 											<td>${item.projectRegisterDate}</td>
@@ -146,6 +151,52 @@
 											<td>${item.projectCurrentPercentage}</td>
 											<td>${item.projectManagerName}</td>
 										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+
+						</tbody>
+					</table>
+
+					<!-- 페이징 처리 -->
+
+				</form>
+
+			</div>
+			
+			<div class="tab_content" id="project_failure_content">
+				<form id="project-administratorok-form">
+				<input type="hidden" name="status" value="fail">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>프로젝트 번호</th>
+								<th>프로젝트명</th>
+								<th>프로젝트 등록일</th>
+								<th>프로젝트 종료일</th>
+								<th>프로젝트 달성률</th>
+								<th>창작자 이름</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<c:choose>
+								<c:when test="${empty failedProjectList}">
+									<tr>
+										<td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="item" items="${failedProjectList}">
+										<tr onclick="failedProject(${item.projectNo})">
+											<td>${item.projectNo}</td>
+											<td>${item.projectName}</td>
+											<td>${item.projectRegisterDate}</td>
+											<td>${item.projectEndDate}</td>
+											<td>${item.projectCurrentPercentage}</td>
+											<td>${item.projectManagerName}</td>
+										</tr>
+										
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>

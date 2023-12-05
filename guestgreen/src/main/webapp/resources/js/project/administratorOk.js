@@ -48,3 +48,19 @@ function noButton() {
 	window.onload = function() {
 		showTabContent('project_approval');
 	};
+
+
+	//출고 성사된 프로젝트
+	function successfulProject(projectNo){
+		let formId = document.getElementById("project-administratorok-form");
+		formId.action = "/expiredProject.do?projectNo=" + projectNo;
+		formId.method="post";
+		formId.submit();
+	}
+	//출고 실패한 프로젝트
+	function failedProject(projectNo){
+		let formId = document.getElementById("project-administratorok-form");
+		formId.action = "/expiredProject.do?projectNo=" + projectNo;
+		formId.method="post";
+		formId.submit();
+	}
