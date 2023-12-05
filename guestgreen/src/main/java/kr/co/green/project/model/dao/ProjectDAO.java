@@ -162,10 +162,6 @@ public class ProjectDAO {
 
 				list.add(projectleeDTO);
 			}
-
-			pstmt.close();
-			con.close();
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -386,7 +382,8 @@ public class ProjectDAO {
 		return result;
 	}
 
-	public ArrayList<ProjectDTO> expiredProjectSelect(Connection con, PageInfo pi) {
+	//기한 만료 된 프로젝트 중 달성율 100% 아래인 프로젝트 조회
+	public ArrayList<ProjectDTO> getFailedProjects(Connection con, PageInfo pi) {
 		String query = "SELECT p.project_no, p.project_name, p.project_register_date,"
 				+ "			   p.project_end_date, p.project_current_percentage,"
 				+ "			   pm.project_manager_name"
@@ -394,6 +391,41 @@ public class ProjectDAO {
 				+ "		JOIN project_manager pm"
 				+ "		ON   p.project_no = pm.project_no"
 				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage < 100"
+				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
+		ArrayList<ProjectDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pi.getOffset()); 
+			pstmt.setInt(2, pi.getBoardLimit());
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+				projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				list.add(projectDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//기한 만료 된 프로젝트 중 달성률 100% 이상인 프로젝트 조회
+	public ArrayList<ProjectDTO> getSuccessfulProjects(Connection con, PageInfo pi) {
+		String query = "SELECT p.project_no, p.project_name, p.project_register_date,"
+				+ "			   p.project_end_date, p.project_current_percentage,"
+				+ "			   pm.project_manager_name"
+				+ "		FROM project p"
+				+ "		JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no"
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage >= 100"
 				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
 		ArrayList<ProjectDTO> list = new ArrayList<>();
 		try {

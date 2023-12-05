@@ -118,10 +118,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.projectUpdate(con, projectDTO);
 	}
 
-	//기한 만료된 프로젝트 조회(관리자)
+	//기한 만료된 프로젝트 중 달성률 100 미만 조회(관리자)
 	@Override
-	public ArrayList<ProjectDTO> expiredProjectSelect(PageInfo pi) {
-		return projectDAO.expiredProjectSelect(con, pi);
+	public ArrayList<ProjectDTO> getFailedProjects(PageInfo pi) {
+		return projectDAO.getFailedProjects(con, pi);
+	}
+
+	//기한 만료된 프로젝트 중 달성률 100 이상 조회(관리자)
+	@Override
+	public ArrayList<ProjectDTO> getSuccessfulProjects(PageInfo pi) {
+		return projectDAO.getSuccessfulProjects(con, pi);
 	}
 
 }

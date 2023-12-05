@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <link rel="stylesheet" href="/resources/css/member/signup.css">
-
+  
 <script src="/resources/js/member/signup.js"></script>
 
 </head>
