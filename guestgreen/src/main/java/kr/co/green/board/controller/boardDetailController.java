@@ -24,8 +24,7 @@ public class boardDetailController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      request.setCharacterEncoding("UTF-8");
-	      response.setContentType("text/html; charset=utf-8");
+
 	      
 	      // idx 받기
 	      int idx = Integer.parseInt(request.getParameter("idx"));
@@ -34,20 +33,19 @@ public class boardDetailController extends HttpServlet {
 	      //조회수
 	      int result = boardService.boardView(idx);
 
-	          // 3. idx로 게시판 조회(SELECT)
-	          BoardDTO board = new BoardDTO();
-	          board.setIdx(idx);
+	      // 3. idx로 게시판 조회(SELECT)
+	      BoardDTO board = new BoardDTO();
+	      board.setIdx(idx);
 	          
-	          boardService.boardSelect(board);
+	      boardService.boardSelect(board);
 	          
-	          if(!Objects.isNull(board.getIdx())) {
-	             request.setAttribute("board", board);
-	             RequestDispatcher view = request.getRequestDispatcher("/views/board/boardDetail.jsp");
-	             view.forward(request, response);
-	          }else {
-	        	  AlertAndRedirect.alertRedirect(response, "로그인 이 필요합니다.", "views/member/login.jsp");
-	          }
-	       
+	      if(!Objects.isNull(board.getIdx())) {
+	         request.setAttribute("board", board);
+	         RequestDispatcher view = request.getRequestDispatcher("/views/board/boardDetail.jsp");
+	         view.forward(request, response);
+	      }else {
+	         AlertAndRedirect.alertRedirect(response, "로그인 이 필요합니다.", "views/member/login.jsp");
+	      }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

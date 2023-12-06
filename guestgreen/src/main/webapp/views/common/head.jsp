@@ -4,11 +4,15 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
+ 
 <title>Blog Post - Start Bootstrap Template</title>
 <!-- Core theme CSS (includes Bootstrap)-->
-<link rel="stylesheet" href="/resources/css/common/header.css">
-<link rel="stylesheet" href="/resources/css/common/footer.css">
-<link rel="stylesheet" href="/resources/css/common/nav.css">
+<link href="/resources/css/common/header.css" rel="stylesheet" />
+<link href="/resources/css/common/nav.css" rel="stylesheet" />
+<link href="/resources/css/common/footer.css" rel="stylesheet" />
+<link href="/resources/css/common/common.css" rel="stylesheet" />
+
 <!-- Bootstrap core JS-->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

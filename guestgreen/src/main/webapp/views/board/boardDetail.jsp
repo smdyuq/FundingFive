@@ -28,6 +28,10 @@
 			<div id="content">${board.content }</div>
 			<img src="/resources/uploads/${board.fileName }">
 
+			<!-- 게시글 이동 -->
+			<a href="/boardDetail.jsp?idx=${previousPost.idx}">이전글: ${previousPost.title}</a>
+			<a href="/boardDetail.jsp?idx=${nextPost.idx}">다음글: ${nextPost.title}</a>
+			<!-- 게시글 이동 -->
 
 			<!-- 글작성자 수정/삭제 가능 -->
 			<c:if test="${sessionScope.no == 1 }">

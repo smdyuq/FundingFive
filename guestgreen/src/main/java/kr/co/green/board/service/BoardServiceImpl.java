@@ -12,7 +12,7 @@ public class BoardServiceImpl implements BoardService{
 	private DatabaseConnection dc;
 	private BoardDAO boardDAO;
 	
-	// DB연결
+		// DB연결
 		public BoardServiceImpl() {
 			boardDAO = new BoardDAO();
 			dc = new DatabaseConnection();
@@ -54,6 +54,9 @@ public class BoardServiceImpl implements BoardService{
 		public int boardView(int idx) {
 			return boardDAO.boardView(con,idx);
 		}
+		
+		//게시글 이동
+
 		
 	
 }
