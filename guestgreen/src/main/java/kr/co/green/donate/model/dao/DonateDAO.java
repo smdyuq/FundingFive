@@ -2,7 +2,9 @@ package kr.co.green.donate.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import kr.co.green.donate.model.dto.DonateDTO;
 
@@ -29,4 +31,38 @@ public class DonateDAO {
 		}
 		return result;
 	}
+
+	//상품 배송을 위한 후원자 정보 조회
+	public ArrayList<DonateDTO> getSponserInfo(Connection con, int projectNo) {
+		String query = "SELECT p.project_name, p.project_price, d.member_name, d.member_phone, d.member_addr from project p"
+				+ "		JOIN donate d"
+				+ "		ON p.project_no = d.project_no"
+				+ "		WHERE p.project_no = ?";
+		ArrayList<DonateDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, projectNo);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				DonateDTO donateDTO = new DonateDTO();
+				donateDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				donateDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
+				donateDTO.setMemberName(rs.getString("MEMBER_NAME"));
+				donateDTO.setMemberPhone(rs.getString("MEMBER_PHONE"));
+				donateDTO.setMemberAddr(rs.getString("MEMBER_ADDR"));
+				list.add(donateDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
+
+
+
+
+
+
+
+

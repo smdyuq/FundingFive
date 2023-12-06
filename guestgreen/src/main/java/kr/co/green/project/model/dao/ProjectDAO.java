@@ -392,6 +392,7 @@ public class ProjectDAO {
 				+ "		ON   p.project_no = pm.project_no"
 				+ "		WHERE project_end_date - sysdate < 0"
 				+ "		AND project_current_percentage < 100"
+				+ "		AND project_confirm_status = 'Y'"
 				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
 		ArrayList<ProjectDTO> list = new ArrayList<>();
 		try {
@@ -426,6 +427,7 @@ public class ProjectDAO {
 				+ "		ON   p.project_no = pm.project_no"
 				+ "		WHERE project_end_date - sysdate < 0"
 				+ "		AND project_current_percentage >= 100"
+				+ "		AND project_confirm_status = 'Y'"
 				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
 		ArrayList<ProjectDTO> list = new ArrayList<>();
 		try {
@@ -450,6 +452,39 @@ public class ProjectDAO {
 		return list;
 	}
 
+	//프로젝트 창작자 이메일 조회
+	public String getProjectManagerEmail(Connection con, int projectNo) {
+		String query = "SELECT member_email FROM member m"
+				+ "		JOIN project_manager pm"
+				+ "		ON m.member_no = pm.member_no"
+				+ "		WHERE pm.project_no = ?";
+		String email = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, projectNo);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				email = rs.getString("MEMBER_EMAIL");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return email;
+	}
+
+	//프로젝트 만료 시 프로젝트 승인유무 'N'으로 변경
+	public void projectExpire(Connection con, int projectNo) {
+		String query = "UPDATE project"
+				+ "		SET project_confirm_status = 'N'"
+				+ "		WHERE project_no = ?";	
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,projectNo);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

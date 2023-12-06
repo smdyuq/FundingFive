@@ -9,9 +9,11 @@ public class DonateDTO {
 
 	private String donateId;
 	private int projectNo;
+	private String projectName;
 	private int memberNo;
 	private String memberName;
 	private String memberAddr;
 	private String memberPhone;
+	private int projectPrice;
 	
 }

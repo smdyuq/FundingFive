@@ -41,7 +41,7 @@
 
 			<div class="tab_content" id="project_approval_content">
 				<section>
-					<form id="project-administratorok-form">
+					<form id="project-list">
 						<input type="hidden" name="cpage" value="1">
 						<table class="table">
 							<thead>
@@ -120,7 +120,7 @@
 			</div>
 
 			<div class="tab_content" id="project_completed_content">
-				<form id="project-administratorok-form" >
+				<form id="project-success" >
 					<input type="hidden" name="status" value="success">
 					<table class="table">
 						<thead>
@@ -143,7 +143,8 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="item" items="${successfulProjectList}">
-										<tr onclick="successfulProject(${item.projectNo})">
+									<input type="hidden" name="project-no" value="${item.projectNo}">
+										<tr onclick="successfulProject()">
 											<td>${item.projectNo}</td>
 											<td>${item.projectName}</td>
 											<td>${item.projectRegisterDate}</td>
@@ -165,7 +166,7 @@
 			</div>
 			
 			<div class="tab_content" id="project_failure_content">
-				<form id="project-administratorok-form">
+				<form id="project-fail">
 				<input type="hidden" name="status" value="fail">
 					<table class="table">
 						<thead>
@@ -188,7 +189,8 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="item" items="${failedProjectList}">
-										<tr onclick="failedProject(${item.projectNo})">
+									<input type="hidden" name="project-no" value="${item.projectNo}">
+										<tr onclick="failedProject()">
 											<td>${item.projectNo}</td>
 											<td>${item.projectName}</td>
 											<td>${item.projectRegisterDate}</td>
@@ -196,7 +198,6 @@
 											<td>${item.projectCurrentPercentage}</td>
 											<td>${item.projectManagerName}</td>
 										</tr>
-										
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>

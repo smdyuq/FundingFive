@@ -54,16 +54,16 @@ public class projectAdministratorOkController extends HttpServlet {
 
 		//등록 요청된 프로젝트 조회
 		ArrayList<ProjectDTO> projectList = projectService.projectSelect(pi);
-		//기한 만료된 프로젝트 중 달성률 100미만 조회
-		ArrayList<ProjectDTO> failedProjectList = projectService.getFailedProjects(pi);
 		//기한 만료된 프로젝트 중 달성률 100이상 조회
 		ArrayList<ProjectDTO> successfulProjectList = projectService.getSuccessfulProjects(pi);
+		//기한 만료된 프로젝트 중 달성률 100미만 조회
+		ArrayList<ProjectDTO> failedProjectList = projectService.getFailedProjects(pi);
 
 		// 나머지 페이징 처리는 common
 		request.setAttribute("pi", pi);
 		request.setAttribute("projectList", projectList);
-		request.setAttribute("failedProjectList", failedProjectList);
 		request.setAttribute("successfulProjectList", successfulProjectList);
+		request.setAttribute("failedProjectList", failedProjectList);
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/administratorOk.jsp");
 		view.forward(request, response);
 	}

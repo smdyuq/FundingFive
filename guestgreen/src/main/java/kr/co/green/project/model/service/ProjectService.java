@@ -66,4 +66,10 @@ public interface ProjectService {
 	//기한 만료된 프로젝트 중 달성률 100이상 조회(관리자)
 	public ArrayList<ProjectDTO> getSuccessfulProjects(PageInfo pi);
 
+	//프로젝트 창작자 이메일 조회
+	public String getProjectManagerEmail(int projectNo);
+
+	//만료된 프로젝트 승인유무 'N'
+	public void projectExpire(int projectNo);
+
 }

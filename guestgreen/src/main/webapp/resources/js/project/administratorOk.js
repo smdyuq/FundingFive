@@ -51,16 +51,16 @@ function noButton() {
 
 
 	//출고 성사된 프로젝트
-	function successfulProject(projectNo){
-		let formId = document.getElementById("project-administratorok-form");
-		formId.action = "/expiredProject.do?projectNo=" + projectNo;
+	function successfulProject(){
+		let formId = document.getElementById("project-success");
+		formId.action = "/expiredProject.do";
 		formId.method="post";
 		formId.submit();
 	}
 	//출고 실패한 프로젝트
-	function failedProject(projectNo){
-		let formId = document.getElementById("project-administratorok-form");
-		formId.action = "/expiredProject.do?projectNo=" + projectNo;
+	function failedProject(){
+		let formId = document.getElementById("project-fail");
+		formId.action = "/expiredProject.do";
 		formId.method="post";
 		formId.submit();
 	}

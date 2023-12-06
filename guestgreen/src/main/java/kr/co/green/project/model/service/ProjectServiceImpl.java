@@ -130,4 +130,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.getSuccessfulProjects(con, pi);
 	}
 
+	//프로젝트 창작자 이메일 조회
+	@Override
+	public String getProjectManagerEmail(int projectNo) {
+		return projectDAO.getProjectManagerEmail(con, projectNo);
+	}
+
+	//만료된 프로젝트 승인유무 'N'
+	@Override
+	public void projectExpire(int projectNo) {
+		projectDAO.projectExpire(con, projectNo);
+	}
+
 }
