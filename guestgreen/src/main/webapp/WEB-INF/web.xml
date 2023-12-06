@@ -16,7 +16,9 @@
  
    <filter-mapping>
   	<filter-name>EncodingFilter</filter-name>
+
   	<url-pattern>/*</url-pattern>context하위의 모든 요청에 대해 수행
+
   </filter-mapping>
   
 </web-app>

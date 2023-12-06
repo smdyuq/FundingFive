@@ -54,6 +54,7 @@
 								<th style="text-align: left;">제목</th>
 								<th style="text-align: center; width: 120px;">작성자</th>
 								<th style="text-align: center; width: 120px;">작성일</th>
+								<th style="text-align: center; width: 120px;">조회수</th>
 								<!-- <th>조회수</th> -->
 							</tr>
 						</thead>
@@ -72,6 +73,7 @@
 											<td style="text-align: left;">${item.title }</td>
 											<td style="text-align: center; width: 120px;">관리자</td>
 											<td style="text-align: center; width: 120px;">${item.inDate }</td>
+											<td style="text-align: center; width: 120px;">${item.views }</td>
 											<!-- <td>${item.views }</td> -->
 										</tr>
 										<c:set var="row" value="${row-1 }" />
@@ -84,7 +86,7 @@
 	
 					<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
 	
-						<c:if test="${sessionScope.no == 1}">
+						<c:if test="${memberDTO.memberType == 0}">
 							<!-- 멤버 넘버가 1인 사람만 버튼이 보임. -->
 							<button class="btn btn-dark me-md-2" type="button"
 								onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
@@ -170,8 +172,10 @@
 			</div>
 		</div>
 
+
 	</main>
 
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
+
