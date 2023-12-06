@@ -22,3 +22,5 @@
 <!-- Core theme JS-->
 
 
+<script src="/resources/js/common/common.js"></script>
+
