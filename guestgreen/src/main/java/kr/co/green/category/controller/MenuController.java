@@ -27,8 +27,6 @@ public class MenuController extends HttpServlet {
 
 		CategoryServiceImpl categoryService = new CategoryServiceImpl();
 
-		ProjectDTO projectDTO = new ProjectDTO();
-
 		String menu = request.getParameter("menu");
 
 		ArrayList<ProjectDTO> list = new ArrayList<>();

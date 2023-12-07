@@ -10,6 +10,8 @@
 <head>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/resources/js/project/projectDetail.js"></script>
+
 
 <%@include file="./views/common/head.jsp"%>
 </head>
@@ -849,7 +851,7 @@ dd {
 				<div class=populaPage_List>
 					<div class="Popula-card-wrapper">
 						<c:forEach var="item" items="${popularity }">
-							<div class="popula-img">
+							<div class="popula-img" onclick="projectDetail(${item.projectNo})">
 								<a href="#"><img class="popular_img"
 									src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
 								<div class="ProjectCardNumbertop">1</div>
@@ -978,7 +980,8 @@ dd {
 
 							<div class="slides">
 								<c:forEach var="item" items="${recentProject }">
-									<div class="card-wrapper1">
+									<div class="card-wrapper1" onclick="projectDetail()">
+									<form id="detail-form">
 										<a href="#"><img class="Card_img"
 											src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
 										<span class="projectCardDetail">
@@ -991,6 +994,7 @@ dd {
 											</dt> <span class="percentage">${item.projectCurrentPercentage }%
 												달성</span>
 										</span>
+									</form>
 									</div>
 								</c:forEach>
 

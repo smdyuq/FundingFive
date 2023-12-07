@@ -25,8 +25,6 @@ public class MainController extends HttpServlet {
 			throws ServletException, IOException {
 		MainServiceImpl mainService = new MainServiceImpl();
 
-		ProjectDTO projectDTO = new ProjectDTO();
-
 //      배너 조회      
 		ArrayList<ProjectDTO> banner = mainService.bannerSelect();
 

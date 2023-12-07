@@ -27,8 +27,6 @@ public class CategoryController extends HttpServlet {
 
 		CategoryServiceImpl categoryService = new CategoryServiceImpl();
 
-		ProjectDTO projectDTO = new ProjectDTO();
-
 		String category = request.getParameter("category");
 
 		ArrayList<ProjectDTO> list = new ArrayList<>();
@@ -38,7 +36,6 @@ public class CategoryController extends HttpServlet {
 		if (category.equals("entire")) {
 			list = categoryService.categoryEntire();
 			title = "전체";
-
 		} else if (category.equals("Appliances")) {
 			list = categoryService.categoryAppliances();
 			title = "가전";

@@ -28,8 +28,21 @@ public class SearchFormController extends HttpServlet {
 		SearchService searchService = new SearchServiceImpl();
 		//검색어 테이블에서 검색기록 가져오기
 		int memberNo = 0;
-		if(session.getAttribute("memberNo") != null) {
+		if(session.getAttribute("memberNo") != null) {			//세션에 memberNo가 있다면 검색기록을 가져옴
 			memberNo = (int)session.getAttribute("memberNo");
+			
+			if(request.getParameter("status").equals("delete")) {
+				// 검색어 옆 x 누르면 자바스크립트에서 status를 변수로 보냄
+				System.out.println(request.getParameter("searchNo"));
+				int result = searchService.deleteSearchHistory(Integer.parseInt(request.getParameter("searchNo")));
+				
+				if(result>0) {
+					return;
+				}
+				else {
+					System.out.println("오류");
+				}
+			}
 			SearchDTO[] memberSearchArr = searchService.getSearchHistory(memberNo);
 			request.setAttribute("memberSearchArr", memberSearchArr);
 		}

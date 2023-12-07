@@ -46,7 +46,7 @@
 											<p class="project-text-unit">일</p>
 										</a>
 									</c:if>
-									<c:if test="${projectDTO.preojectRemainDate<=0}">
+									<c:if test="${projectDTO.projectRemainDate<=0}">
 										<p class="project-text-unit">종료된 프로젝트입니다.</p>
 									</c:if>
 								</div>
@@ -57,10 +57,10 @@
 									</a>
 								</div>
 								<div>
-									<a class="project-value">${projectDTO.getProjectTargetAmount}
+									<a class="project-value">${projectDTO.projectTargetAmount}
 										<p class="project-text-unit">원</p>
-									</a> <a class="project-value">${projectDTO.getProjectRegisterDate}
-										~ ${projectDTO.getProjectEndDate}
+									</a> <a class="project-value">${projectDTO.projectRegisterDate}
+										~ ${projectDTO.projectEndDate}
 										<p class="project-text-unit">펀딩기간</p>
 									</a> <a class="project-value">
 								</div>
@@ -106,10 +106,10 @@
 
 </body>
 
-</html>
-
 <script src="/resources/js/common/nav.js"></script>
 <script src="/resources/js/project/projectDetail.js"></script>
 <script src="/resources/js/common/common.js"></script>
+</html>
+
 
 

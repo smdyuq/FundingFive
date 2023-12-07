@@ -95,26 +95,15 @@ public class MemberDAO {
 			ResultSet rs = pstmt.executeQuery(); 
 			
 			while(rs.next()) { 
-				int resultNo = rs.getInt("MEMBER_NO");
-				String resultId = rs.getString("MEMBER_ID"); 
-				String resultPwd = rs.getString("MEMBER_PWD");
-				String resultName = rs.getString("MEMBER_NAME");
-				String resultPhone = rs.getString("MEMBER_PHONE");
-				String resultaddr = rs.getString("MEMBER_ADDR");
-				String resultCreateDate= rs.getString("MEMBER_Create_Date");
-				String resultUpdateDate= rs.getString("MEMBER_Update_Date");
-				int resultType = rs.getInt("MEMBER_TYPE");
-				
-				result.setMemberNo(resultNo);
-				result.setMemberId(resultId);
-				result.setMemberPwd(resultPwd);
-				result.setMemberName(resultName);
-				result.setMemberPhone(resultPhone);
-				result.setMemberAddr(resultaddr);
-				result.setMemberCreateDate(resultCreateDate);
-				result.setMemberUpdateDate(resultUpdateDate);
-				result.setMemberType(resultType);
-				
+				result.setMemberNo(rs.getInt("MEMBER_NO"));
+				result.setMemberId(rs.getString("MEMBER_ID")); 
+				result.setMemberPwd(rs.getString("MEMBER_PWD"));
+				result.setMemberName(rs.getString("MEMBER_NAME"));
+				result.setMemberPhone(rs.getString("MEMBER_PHONE"));
+				result.setMemberAddr(rs.getString("MEMBER_ADDR"));
+				result.setMemberCreateDate(rs.getString("MEMBER_Create_Date"));
+				result.setMemberUpdateDate(rs.getString("MEMBER_Update_Date"));
+				result.setMemberType(rs.getInt("MEMBER_TYPE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

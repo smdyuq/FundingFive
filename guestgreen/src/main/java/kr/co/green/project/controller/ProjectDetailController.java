@@ -29,32 +29,33 @@ public class ProjectDetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
-	}
+		
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		int projectNo = Integer.parseInt(request.getParameter("project-no"));
+		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 		ProjectDTO projectDTO;
 
 		// 프로젝트 상세페이지에 들어갈 요소 불러오기
 		ProjectService projectService = new ProjectServiceImpl();
 
 		// 조회수 증가		
-		int result1 = projectService.projectUpdateViews(projectNo);
+		int updatedViewsCount  = projectService.projectUpdateViews(projectNo);
 		
 		HttpSession session = request.getSession();
-		int memberNo = (int) session.getAttribute("memberNo");
-		// 최근 프로젝트 등록		
-		int result2 = projectService.RecentProject(projectNo, memberNo);
-
-		if (result1 > 0 && result2 > 0) {
+		int recentProject = 1;
+		
+		if(!Objects.isNull(session.getAttribute("memberNo"))) {
+			int memberNo = (int)session.getAttribute("memberNo");
+			// 최근 본 프로젝트 데이터 등록		
+			recentProject = projectService.recentProject(projectNo, memberNo);
+		}
+		
+		if (updatedViewsCount  > 0 && recentProject > 0) {
 			projectDTO = projectService.getProjectDetail(projectNo);
 
 			if (!Objects.isNull(projectDTO)) {
 
 				projectService.getProjectDday(projectDTO);
+				
 				if (!Objects.isNull(projectDTO.getProjectEndDate())) {
 
 					String registerDate = projectDTO.getProjectRegisterDate(); // 가져온 날짜 문자열
@@ -71,6 +72,7 @@ public class ProjectDetailController extends HttpServlet {
 					projectDTO.setProjectEndDate(endDate);
 					projectDTO.setProjectRemainDate(dDay);
 
+					
 					projectService.getProjectManagerDetail(projectDTO);
 
 					if (!Objects.isNull(projectDTO.getProjectManagerName())) {
@@ -83,6 +85,10 @@ public class ProjectDetailController extends HttpServlet {
 				AlertAndRedirect.alertRedirect(response, "프로젝트 상세페이지 조회 실패", "/");
 			}
 		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }

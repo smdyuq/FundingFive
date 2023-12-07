@@ -42,7 +42,7 @@ public class ProjectEnrollController extends HttpServlet {
 		Collection<Part> parts = request.getParts();
 
 
-		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+		String uploadDirectory = "C:\\Users\\LG\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
 
 		System.out.println("1");
@@ -145,7 +145,6 @@ public class ProjectEnrollController extends HttpServlet {
 			}
 		}
 		return null;
-
 	}
 
 	// 이미지 리사이징

@@ -9,12 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.co.green.common.PageInfo;
 import kr.co.green.common.Pagination;
-import kr.co.green.member.model.dto.MemberDTO;
-import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
@@ -55,12 +52,18 @@ public class projectAdministratorOkController extends HttpServlet {
 		Pagination page = new Pagination();
 		PageInfo pi = page.getPageInfo(listCount, cpage, pageLimit, boardLimit);
 
-//		 프로젝트 조회
-		ArrayList<ProjectDTO> list = projectService.projectSelect(pi);
+		//등록 요청된 프로젝트 조회
+		ArrayList<ProjectDTO> projectList = projectService.projectSelect(pi);
+		//기한 만료된 프로젝트 중 달성률 100이상 조회
+		ArrayList<ProjectDTO> successfulProjectList = projectService.getSuccessfulProjects(pi);
+		//기한 만료된 프로젝트 중 달성률 100미만 조회
+		ArrayList<ProjectDTO> failedProjectList = projectService.getFailedProjects(pi);
 
 		// 나머지 페이징 처리는 common
 		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
+		request.setAttribute("projectList", projectList);
+		request.setAttribute("successfulProjectList", successfulProjectList);
+		request.setAttribute("failedProjectList", failedProjectList);
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/administratorOk.jsp");
 		view.forward(request, response);
 	}

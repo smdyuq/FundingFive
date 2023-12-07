@@ -165,10 +165,6 @@ public class ProjectDAO {
 
 				list.add(projectleeDTO);
 			}
-
-			pstmt.close();
-			con.close();
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -274,7 +270,7 @@ public class ProjectDAO {
 
 		String query = "SELECT p.PROJECT_NO, p.PROJECT_NAME, p.PROJECT_INTRODUCE, p.PROJECT_CONTENT, p.PROJECT_KIND, "
 				+ "				p.PROJECT_PRICE, p.PROJECT_TARGET_AMOUNT, p.PROJECT_CURRENT_AMOUNT, p.PROJECT_SPONSER_NUMBER, "
-				+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, p.PROJECT_CURRENT_PERCENTAGE"
+				+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, p.PROJECT_CURRENT_PERCENTAGE, "
 				+ "				pii.PROJECT_INNER_IMAGE_NAME, pii.PROJECT_INNER_IMAGE_PATH"
 				+ "				FROM project p" + "		JOIN PROJECT_INNER_IMAGE pii "
 				+ "		ON p.PROJECT_NO = pii.PROJECT_NO " + "		WHERE p.PROJECT_NO = ?";
@@ -311,7 +307,7 @@ public class ProjectDAO {
 	// 프로젝트 시작일, 마감일 조회(쿼리문에서 DATE타입을 형변환 시켜와야함)
 	public void getProjectDday(Connection con, ProjectDTO projectDTO) {
 		String query = "SELECT  TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE,"
-				+ "				TO_CHAR(PROJECT_REGISTER_DATE, 'YYYY/MM/DD) AS PROJECT_REGISTER_DATE "
+				+ "				TO_CHAR(PROJECT_REGISTER_DATE, 'YYYY/MM/DD') AS PROJECT_REGISTER_DATE "
 				+ " 	FROM PROJECT" + "		WHERE project_no = ?";
 		try {
 			pstmt = con.prepareStatement(query);
@@ -349,8 +345,9 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_no, project_name, project_price, project_current_amount FROM project"
-				+ "		WHERE project_no = ?";
+		String query = "SELECT project_no, project_name, project_price, project_current_amount, project_target_amount "
+				+ "		FROM project"
+					+ "WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -361,7 +358,7 @@ public class ProjectDAO {
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
 				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
-			}
+				projectDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -376,12 +373,11 @@ public class ProjectDAO {
 
 				+ "	    WHERE project_no = ?";
 		int result = 0;
-		int projectCurrentPercentage = projectDTO.getProjectCurrentAmount() / projectDTO.getProjectTargetAmount() * 100;
-		projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectDTO.getProjectCurrentAmount());
-			pstmt.setInt(2, projectDTO.getProjectPrice() / projectDTO.getProjectCurrentAmount() * 100);
+			pstmt.setInt(2, projectDTO.getProjectCurrentPercentage());
 			pstmt.setInt(3, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -390,6 +386,109 @@ public class ProjectDAO {
 		return result;
 	}
 
+	//기한 만료 된 프로젝트 중 달성율 100% 아래인 프로젝트 조회
+	public ArrayList<ProjectDTO> getFailedProjects(Connection con, PageInfo pi) {
+		String query = "SELECT p.project_no, p.project_name, p.project_register_date,"
+				+ "			   p.project_end_date, p.project_current_percentage,"
+				+ "			   pm.project_manager_name"
+				+ "		FROM project p"
+				+ "		JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no"
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage < 100"
+				+ "		AND project_confirm_status = 'Y'"
+				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
+		ArrayList<ProjectDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pi.getOffset()); 
+			pstmt.setInt(2, pi.getBoardLimit());
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+				projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				list.add(projectDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//기한 만료 된 프로젝트 중 달성률 100% 이상인 프로젝트 조회
+	public ArrayList<ProjectDTO> getSuccessfulProjects(Connection con, PageInfo pi) {
+		String query = "SELECT p.project_no, p.project_name, p.project_register_date,"
+				+ "			   p.project_end_date, p.project_current_percentage,"
+				+ "			   pm.project_manager_name"
+				+ "		FROM project p"
+				+ "		JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no"
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage >= 100"
+				+ "		AND project_confirm_status = 'Y'"
+				+ "		ORDER BY project_end_date OFFSET ? ROWS FETCH FIRST ? ROWS ONLY";
+		ArrayList<ProjectDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pi.getOffset()); 
+			pstmt.setInt(2, pi.getBoardLimit());
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+				projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				list.add(projectDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//프로젝트 창작자 이메일 조회
+	public String getProjectManagerEmail(Connection con, int projectNo) {
+		String query = "SELECT member_email FROM member m"
+				+ "		JOIN project_manager pm"
+				+ "		ON m.member_no = pm.member_no"
+				+ "		WHERE pm.project_no = ?";
+		String email = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, projectNo);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				email = rs.getString("MEMBER_EMAIL");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return email;
+	}
+
+	//프로젝트 만료 시 프로젝트 승인유무 'N'으로 변경
+	public void projectExpire(Connection con, int projectNo) {
+		String query = "UPDATE project"
+				+ "		SET project_confirm_status = 'N'"
+				+ "		WHERE project_no = ?";	
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,projectNo);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	// 조회수 증가
 	public int projectUpdateViews(Connection con, int projectNo) {
 
@@ -410,7 +509,7 @@ public class ProjectDAO {
 	}
 
 	// 최근 프로젝트 등록
-	public int RecentProject(Connection con, int projectNo, int memberNo) {
+	public int recentProject(Connection con, int projectNo, int memberNo) {
 
 		String query = "INSERT INTO RECENT_PROJECT(RECENT_PROJECT_NO, PROJECT_NO, MEMBER_NO, RECENT_PROJECT_DATE) "
 				+ " VALUES(RECENT_PROJECT_NO_SEQ.NEXTVAL, ?, ?, DEFAULT)";
@@ -432,3 +531,13 @@ public class ProjectDAO {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

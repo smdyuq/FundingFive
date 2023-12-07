@@ -57,19 +57,30 @@ public class OrderResultController extends HttpServlet {
 		int projectPrice = jsonObject.has("project_price") ? jsonObject.get("project_price").getAsInt() : 0;
 		int memberNo = jsonObject.has("member_no") ? jsonObject.get("member_no").getAsInt() : 0;
 		int projectCurrentAmount = jsonObject.has("project_current_amount") ? jsonObject.get("project_current_amount").getAsInt() : 0;
+		int projectTargetAmount = jsonObject.has("project_target_amount") ? jsonObject.get("project_target_amount").getAsInt() : 0;
+		String memberAddr = jsonObject.has("member_addr") ? jsonObject.get("member_addr").getAsString() : "";
+		String memberPhone = jsonObject.has("member_phone") ? jsonObject.get("member_phone").getAsString() : "";
+		String memberName = jsonObject.has("member_name") ? jsonObject.get("member_name").getAsString() : "";
+		
+		ProjectService projectService = new ProjectServiceImpl();
+		
+		//달성률 업데이트를 위한 달성률 가져오기
 		
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectNo(projectNo);
 		projectDTO.setProjectPrice(projectPrice);
 		projectDTO.setProjectCurrentAmount(projectCurrentAmount + projectPrice);
+		projectDTO.setProjectCurrentPercentage(projectDTO.getProjectCurrentAmount()/projectTargetAmount*100);
 		
 		DonateDTO donateDTO = new DonateDTO();
 		donateDTO.setProjectNo(projectNo);
 		donateDTO.setMemberNo(memberNo);
 		donateDTO.setDonateId(donateId);
+		donateDTO.setMemberName(memberName);
+		donateDTO.setMemberAddr(memberAddr);
+		donateDTO.setMemberPhone(memberPhone);
 		
 		//project테이블에 후원자 수, 후원된 금액 갱신
-		ProjectService projectService = new ProjectServiceImpl();
 		int result1 = projectService.projectUpdate(projectDTO);
 		
 		if(result1>0) {
