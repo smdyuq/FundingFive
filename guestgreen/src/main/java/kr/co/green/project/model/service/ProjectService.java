@@ -72,4 +72,10 @@ public interface ProjectService {
 	//만료된 프로젝트 승인유무 'N'
 	public void projectExpire(int projectNo);
 
+	// 조회수 증가	
+	public int projectUpdateViews(int projectNo);
+
+	// 최근 프로젝트 등록	
+	public int recentProject(int projectNo, int memberNo);
+
 }

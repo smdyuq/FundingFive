@@ -15,6 +15,7 @@
 	<%@include file="../../views/common/common.jsp"%>
 	
 	<main>
+
 		<h2>게시판 상세</h2>
     <form id="detail-form">
         <input type="hidden" name="idx" value="${board.idx}" />
@@ -46,6 +47,7 @@
             <img src="/resources/uploads/${board.fileName }">
         </div>
         <div class="board_content_line"></div>
+
 
 
         <!-- 글작성자 수정/삭제 가능 -->

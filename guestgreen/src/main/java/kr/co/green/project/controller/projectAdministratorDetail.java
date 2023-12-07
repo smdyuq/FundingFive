@@ -1,7 +1,6 @@
 package kr.co.green.project.controller;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.co.green.member.model.dto.MemberDTO;
-import kr.co.green.member.model.service.MemberService;
-import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
@@ -39,7 +34,7 @@ public class projectAdministratorDetail extends HttpServlet {
 //		승인페이지 상세보기 프로젝트 조회
 		projectService.projectDetail(projectDTO);
 
-			// administratorOkPage로 포워딩
+		// administratorOkPage로 포워딩
 		request.setAttribute("projectDTO", projectDTO);
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/administratorOkPage.jsp");
 		view.forward(request, response);

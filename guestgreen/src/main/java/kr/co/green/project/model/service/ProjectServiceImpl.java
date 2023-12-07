@@ -33,7 +33,6 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.innerimageEnroll(con, projectDTO, projectNo);
 	}
 
-
 //	창작자 등록 페이지
 
 //	프로젝트 번호 조회
@@ -44,8 +43,10 @@ public class ProjectServiceImpl implements ProjectService {
 
 //	창작자 등록
 	@Override
+
 	public int projectManagerEnroll(ProjectDTO projectDTO, int memberNo, int projectNo) {
 		return projectDAO.projectManagerEnroll(con, projectDTO, memberNo, projectNo);
+
 	}
 
 //	관리자 승인 페이지
@@ -140,6 +141,17 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void projectExpire(int projectNo) {
 		projectDAO.projectExpire(con, projectNo);
+	}
+	// 조회수 증가
+	@Override
+	public int projectUpdateViews(int projectNo) {
+		return projectDAO.projectUpdateViews(con, projectNo);
+	}
+
+	// 최근 프로젝트 등록
+	@Override
+	public int recentProject(int projectNo, int memberNo) {
+		return projectDAO.recentProject(con, projectNo, memberNo);
 	}
 
 }

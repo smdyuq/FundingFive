@@ -56,7 +56,7 @@ main {
 						<div class="signup-input">
 							<label for="member-name">이름 </label> <input type="text"
 								id="member-name" name="member-name" onkeyup="validateName() "
-								value="${memberDTO.memberName}" required><br> <span
+								value="${sessionScope.memberName}" required><br> <span
 								id="nameMsg"></span>
 						</div>
 						<br>

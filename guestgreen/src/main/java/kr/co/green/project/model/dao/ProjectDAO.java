@@ -17,8 +17,8 @@ public class ProjectDAO {
 //	프로젝트 등록
 	public int projectEnroll(Connection con, ProjectDTO projectDTO) {
 
-		String query = "INSERT INTO PROJECT(PROJECT_NO, PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_CURRENT_AMOUNT, PROJECT_SPONSER_NUMBER, PROJECT_CONFIRM_STATUS, PROJECT_SALE_STATUS, PROJECT_REGISTER_DATE, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_OUTER_IMAGE_PATH, PROJECT_CURRENT_PERCENTAGE) "
-				+ " VALUES(project_no_seq.nextval, ?, ?, ?, ?, ?, ?,default, default, default, default, default, TO_DATE(?,'YYYY-MM-DD'), ?, ?, default)";
+		String query = "INSERT INTO PROJECT(PROJECT_NO, PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_CURRENT_AMOUNT, PROJECT_SPONSER_NUMBER, PROJECT_CONFIRM_STATUS, PROJECT_SALE_STATUS, PROJECT_REGISTER_DATE, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_OUTER_IMAGE_PATH, PROJECT_CURRENT_PERCENTAGE, PROJECT_VIEWS) "
+				+ " VALUES(project_no_seq.nextval, ?, ?, ?, ?, ?, ?,default, default, default, default, default, TO_DATE(?,'YYYY-MM-DD'), ?, ?, default, default)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -84,7 +84,9 @@ public class ProjectDAO {
 	}
 
 //	창작자 등록
+
 	public int projectManagerEnroll(Connection con, ProjectDTO projectDTO, int memberNo, int projectNo) {
+
 		String query = "INSERT INTO PROJECT_MANAGER(PROJECT_MANAGER_NAME, PROJECT_MANAGER_INTRODUCE, PROJECT_MANAGER_IMAGE_NAME, PROJECT_MANAGER_IMAGE_PATH, PROJECT_MANAGER_ACCOUNT, MEMBER_NO, PROJECT_NO)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
@@ -96,6 +98,7 @@ public class ProjectDAO {
 			pstmt.setString(3, projectDTO.getProjectManagerImageName());
 			pstmt.setString(4, projectDTO.getProjectManagerImagePath());
 			pstmt.setString(5, projectDTO.getProjectManagerAccount());
+
 			pstmt.setInt(6, memberNo);
 			pstmt.setInt(7, projectNo);
 
@@ -171,7 +174,7 @@ public class ProjectDAO {
 
 //	승인페이지 상세보기 프로젝트 조회
 	public void projectDetail(Connection con, ProjectDTO projectDTO) {
-		String query = "SELECT p1.PROJECT_NO ,PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_MANAGER_NAME, PROJECT_MANAGER_INTRODUCE, PROJECT_MANAGER_ACCOUNT, PROJECT_MANAGER_IMAGE_NAME FROM PROJECT p1 join project_manager p2 on p1.project_no = p2.project_no WHERE p1.PROJECT_NO = ?";
+		String query = "SELECT p1.PROJECT_NO ,PROJECT_NAME, PROJECT_INTRODUCE, PROJECT_CONTENT, PROJECT_KIND, PROJECT_PRICE, PROJECT_TARGET_AMOUNT, PROJECT_END_DATE, PROJECT_OUTER_IMAGE_NAME, PROJECT_MANAGER_NAME, PROJECT_MANAGER_INTRODUCE, PROJECT_MANAGER_ACCOUNT, PROJECT_MANAGER_IMAGE_NAME FROM PROJECT p1 join project_manager p2 on p1.project_no = p2.project_no  WHERE p1.PROJECT_NO = ?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -194,6 +197,7 @@ public class ProjectDAO {
 				projectDTO.setProjectManagerIntroduce(rs.getString("PROJECT_MANAGER_INTRODUCE"));
 				projectDTO.setProjectManagerAccount(rs.getString("PROJECT_MANAGER_ACCOUNT"));
 				projectDTO.setProjectManagerImageName(rs.getString("PROJECT_MANAGER_IMAGE_NAME"));
+
 			}
 
 		} catch (SQLException e) {
@@ -266,7 +270,7 @@ public class ProjectDAO {
 
 		String query = "SELECT p.PROJECT_NO, p.PROJECT_NAME, p.PROJECT_INTRODUCE, p.PROJECT_CONTENT, p.PROJECT_KIND, "
 				+ "				p.PROJECT_PRICE, p.PROJECT_TARGET_AMOUNT, p.PROJECT_CURRENT_AMOUNT, p.PROJECT_SPONSER_NUMBER, "
-				+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, p.PROJECT_CURRENT_PERCENTAGE"
+				+ "				p.PROJECT_OUTER_IMAGE_NAME, p.PROJECT_OUTER_IMAGE_PATH, p.PROJECT_CURRENT_PERCENTAGE, "
 				+ "				pii.PROJECT_INNER_IMAGE_NAME, pii.PROJECT_INNER_IMAGE_PATH"
 				+ "				FROM project p" + "		JOIN PROJECT_INNER_IMAGE pii "
 				+ "		ON p.PROJECT_NO = pii.PROJECT_NO " + "		WHERE p.PROJECT_NO = ?";
@@ -303,7 +307,7 @@ public class ProjectDAO {
 	// 프로젝트 시작일, 마감일 조회(쿼리문에서 DATE타입을 형변환 시켜와야함)
 	public void getProjectDday(Connection con, ProjectDTO projectDTO) {
 		String query = "SELECT  TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE,"
-				+ "				TO_CHAR(PROJECT_REGISTER_DATE, 'YYYY/MM/DD) AS PROJECT_REGISTER_DATE "
+				+ "				TO_CHAR(PROJECT_REGISTER_DATE, 'YYYY/MM/DD') AS PROJECT_REGISTER_DATE "
 				+ " 	FROM PROJECT" + "		WHERE project_no = ?";
 		try {
 			pstmt = con.prepareStatement(query);
@@ -363,10 +367,10 @@ public class ProjectDAO {
 
 	// 후원 성공 시 PROJECT테이블 후원자 수, 현재 후원 금액, 현재 후원 퍼센트 업데이트
 	public int projectUpdate(Connection con, ProjectDTO projectDTO) {
-		String query = "UPDATE project" 
-				+ "		SET project_sponser_number = project_sponser_number + 1, "
-				+ "			project_current_amount = ?, "
-				+ "			project_current_percentage = ?" 
+
+		String query = "UPDATE project" + "		SET project_sponser_number = project_sponser_number + 1, "
+				+ "			project_current_amount = ?, " + "			project_current_percentage = ?"
+
 				+ "	    WHERE project_no = ?";
 		int result = 0;
 
@@ -485,6 +489,47 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 	}
+	// 조회수 증가
+	public int projectUpdateViews(Connection con, int projectNo) {
+
+		String query = "UPDATE PROJECT SET PROJECT_VIEWS = PROJECT_VIEWS + 1 WHERE PROJECT_NO = ?";
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, projectNo);
+
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	// 최근 프로젝트 등록
+	public int recentProject(Connection con, int projectNo, int memberNo) {
+
+		String query = "INSERT INTO RECENT_PROJECT(RECENT_PROJECT_NO, PROJECT_NO, MEMBER_NO, RECENT_PROJECT_DATE) "
+				+ " VALUES(RECENT_PROJECT_NO_SEQ.NEXTVAL, ?, ?, DEFAULT)";
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setInt(1, projectNo);
+			pstmt.setInt(2, memberNo);
+
+			int result = pstmt.executeUpdate();
+
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 }
 
 

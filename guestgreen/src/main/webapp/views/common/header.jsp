@@ -13,10 +13,10 @@
 			<a id="member-information"> 로그인을 해주세요.</a>
 		</c:if>
 		<c:if test="${not empty sessionScope.memberNo}">
-			<c:if test="${memberDTO.memberType == 1}">
-				<a id="member-information"> ${memberDTO.memberName}님 안녕하세요.</a>
+			<c:if test="${sessionScope.memberType == 1}">
+				<a id="member-information"> ${sessionScope.memberName}님 안녕하세요.</a>
 			</c:if>
-			<c:if test="${memberDTO.memberType == 0}">
+			<c:if test="${sessionScope.memberType == 0}">
 				<a id="member-information"> 관리자님 안녕하세요.</a>
 			</c:if>
 		</c:if>
@@ -27,27 +27,30 @@
 	<div>
 		<c:if test="${empty sessionScope.memberNo}">
 
+
 			<div>
 				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
 					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
 			</div>
 		</c:if>
+		
 		<c:if test="${not empty sessionScope.memberNo}">
-			<c:if test="${memberDTO.memberType == 1}">
+			<c:if test="${sessionScope.memberType == 1}">
 				<div>
-					<a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트 등록</a> <a
-						class="gnb-button-style" href="myPage.do?cpage=1">마이페이지</a> <a
-						class="gnb-button-style" href="/logout.do">로그아웃</a>
+					<a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트
+						등록</a> <a class="gnb-button-style" href="myPage.do?cpage=1">마이페이지</a>
+					<a class="gnb-button-style" href="/logout.do">로그아웃</a>
 				</div>
 			</c:if>
-			<c:if test="${memberDTO.memberType == 0}">
+			<c:if test="${sessionScope.memberType == 0}">
 				<div>
-					<a class="gnb-button-style" href="/administratorOk.do?cpage=1">프로젝트 관리</a> <a
-						class="gnb-button-style" href="/logout.do">로그아웃</a>
+					<a class="gnb-button-style" href="/administratorOk.do?cpage=1">프로젝트
+						관리</a> <a class="gnb-button-style" href="/logout.do">로그아웃</a>
 				</div>
 			</c:if>
 		</c:if>
 	</div>
+
 	<div id="google_translate_element" style="display:none;"></div>
     <select class="translation-links">
         <option value="ko" data-lang="ko">한국어</option>
@@ -75,3 +78,4 @@
             gtcombo.dispatchEvent(new Event('change'));
         });
     </script>
+

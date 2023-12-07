@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.green.donate.model.dto.DonateDTO;
 import kr.co.green.donate.model.service.DonateService;
 import kr.co.green.donate.model.service.DonateServiceImpl;
-import kr.co.green.member.PhoneController;
+import kr.co.green.member.controller.PhoneController;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
 

@@ -1,6 +1,7 @@
 package kr.co.green.common;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class EncodingFilter implements Filter {
 	private String encoding;
@@ -33,5 +35,4 @@ public class EncodingFilter implements Filter {
 	}
 	public void destroy() {
 	}
-
 }
