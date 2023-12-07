@@ -33,6 +33,7 @@
 					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
 			</div>
 		</c:if>
+		
 		<c:if test="${not empty sessionScope.memberNo}">
 			<c:if test="${sessionScope.memberType == 1}">
 				<div>

@@ -22,11 +22,10 @@
 
 			<h3>프로젝트 정보</h3>
 			<div class="mb-3">
-				<input type="hidden" name="projectNo" value="${projectDTO.projectNo }">
-
-
-				<label for="exampleFormControlInput1" class="form-label">프로젝트
-					이름 </label> <input type="text" class="form-control"
+				<input type="hidden" name="projectNo"
+					value="${projectDTO.projectNo }"> <label
+					for="exampleFormControlInput1" class="form-label">프로젝트 이름 </label>
+				<input type="text" class="form-control"
 					id="exampleFormControlInput1" name="project-name"
 					value="${ projectDTO.projectName}" disabled> <label
 					for="exampleFormControlInput1" class="form-label">프로젝트 소개 </label>
@@ -53,7 +52,7 @@
 					value="${ projectDTO.projectEndDate}" disabled> <label
 					for="exampleFormControlInput1" class="form-label">프로젝트 이미지
 				</label> <br> <img
-					src="/resources/uploads/${projectDTO.projectOuterImageName }"><br>
+					src="/resources/uploads/outerimage/300x300/${projectDTO.projectOuterImageName }"><br>
 
 				<hr>
 
@@ -64,16 +63,17 @@
 					value="${ projectDTO.projectManagerName}" disabled> <label
 					for="exampleFormControlInput1" class="form-label">창작자 소개 </label> <input
 					type="text" class="form-control" id="exampleFormControlInput1"
-					name="manager-introduce" value="${ projectDTO.projectManagerIntroduce}"
+					name="manager-introduce"
+					value="${ projectDTO.projectManagerIntroduce}" disabled> <label
+					for="exampleFormControlInput1" class="form-label">창작자 계좌 </label> <input
+					type="text" class="form-control" id="exampleFormControlInput1"
+					name="manager-account" value="${ projectDTO.projectManagerAccount}"
 					disabled> <label for="exampleFormControlInput1"
-					class="form-label">창작자 계좌 </label> <input type="text"
-					class="form-control" id="exampleFormControlInput1"
-					name="manager-account" value="${ projectDTO.projectManagerAccount}" disabled>
-				<label for="exampleFormControlInput1" class="form-label">창작자
-					프로필 사진 </label> <br> <img
-					src="/resources/uploads/${projectDTO.projectManagerImageName }"><br>
+					class="form-label">창작자 프로필 사진 </label> <br> <img
+					src="/resources/uploads/managerimage/${projectDTO.projectManagerImageName }"><br>
+
 				<br>
-			
+
 				<button class="btn btn-primary" type="button" onclick="yesButton()">승인</button>
 				<button class="btn btn-primary" type="button" onclick="noButton()">거절</button>
 		</form>

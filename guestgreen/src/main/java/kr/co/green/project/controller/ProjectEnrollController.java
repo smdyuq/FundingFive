@@ -12,15 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import kr.co.green.member.model.dto.MemberDTO;
-import kr.co.green.member.model.service.MemberService;
-import kr.co.green.member.model.service.MemberServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
-import kr.co.green.project.model.service.ProjectService;
-import kr.co.green.project.model.service.ProjectServiceImpl;
 import net.coobird.thumbnailator.Thumbnails;
 
 @WebServlet("/projectEnroll.do")
@@ -46,7 +40,10 @@ public class ProjectEnrollController extends HttpServlet {
 
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
-		String uploadDirectory = "C:\\Users\\yh631\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+
+
+		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+
 
 		System.out.println("1");
 
@@ -88,7 +85,9 @@ public class ProjectEnrollController extends HttpServlet {
 						resizeImage(uploadDirectory + "/outerimage/300x300/" + fileName, 300, 300);
 					} else { // inner image
 						part.write(filePath + File.separator + "innerimage" + File.separator + fileName);
-						resizeImage(uploadDirectory + "/innerimage/" + fileName, 300, 300);
+
+						resizeImage(uploadDirectory + "/innerimage/" + fileName, 500, 500);
+
 					}
 
 					index++;

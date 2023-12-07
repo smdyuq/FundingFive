@@ -37,7 +37,7 @@ public class projectSmartEditor extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectName(request.getParameter("project-name"));
 		projectDTO.setProjectIntroduce(request.getParameter("project-introduce"));
@@ -50,8 +50,7 @@ public class projectSmartEditor extends HttpServlet {
 		projectDTO.setProjectInnerImageName(request.getParameter("project-inner-image-name"));
 		projectDTO.setProjectInnerImagePath(request.getParameter("project-inner-image-path"));
 		projectDTO.setProjectContent(request.getParameter("editorTxt"));
-		
-		
+
 		request.setAttribute("projectDTO", projectDTO);
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectManagerEnroll.jsp");
 		view.forward(request, response);

@@ -35,7 +35,7 @@ public class projectAdministratorOkController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		// 페이지 코드
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
 

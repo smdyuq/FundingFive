@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.green.board.service.BoardServiceImpl;
+import kr.co.green.board.model.service.BoardServiceImpl;
 
 @WebServlet("/boardDelete.do")
 public class boardDeleteController extends HttpServlet {

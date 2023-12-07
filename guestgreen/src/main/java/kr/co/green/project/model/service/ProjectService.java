@@ -60,4 +60,10 @@ public interface ProjectService {
 	// 후원 시 PROjECT테이블의 후원자 수, 후원 금액 업데이트
 	public abstract int projectUpdate(ProjectDTO projectDTO);
 
+	// 조회수 증가	
+	public int projectUpdateViews(int projectNo);
+
+	// 최근 프로젝트 등록	
+	public int RecentProject(int projectNo, int memberNo);
+
 }

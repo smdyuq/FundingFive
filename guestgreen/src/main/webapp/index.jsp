@@ -1,6 +1,8 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -648,7 +650,6 @@ dd {
 	font-weight: 180;
 	cursor: pointer;
 }
-
 </style>
 
 <body>
@@ -870,6 +871,44 @@ dd {
 					<a href="#" title="프로젝트 더보기" class="Project_ViewMore">인기 프로젝트
 						전체보기</a>
 
+
+
+					<div class="Popula-card-wrapper">
+						<div class="popula-img">
+							<a href="#"><img src="http://placehold.it/108x87"></a>
+						</div>
+						<div class="ProjectCardNumber">1</div>
+						<div class=projectCardDetail>
+							<dd>
+								<a href="#">카테고리</a><span><a href="#">브랜드명</a></span>
+							</dd>
+							<dt>
+								<a href="#" class="popula-project_Introduce">프로젝트 소개(테스트
+									텍스트)</a>
+							</dt>
+							<span class="percentage">798% 달성</span>
+						</div>
+					</div>
+
+					<div class="Popula-card-wrapper">
+						<div class="popula-img">
+							<a href="#"><img src="http://placehold.it/108x87"></a>
+						</div>
+						<div class="ProjectCardNumber">1</div>
+						<div class=projectCardDetail>
+							<dd>
+								<a href="#">카테고리</a><span><a href="#">브랜드명</a></span>
+							</dd>
+							<dt>
+								<a href="#" class="popula-project_Introduce">프로젝트 소개(테스트
+									텍스트)</a>
+							</dt>
+							<span class="percentage">798% 달성</span>
+						</div>
+					</div>
+
+					<a href="/menu.do?menu=popularity" title="프로젝트 더보기"
+						class="Project_ViewMore">프로젝트 더보기</a>
 
 				</div>
 			</div>
