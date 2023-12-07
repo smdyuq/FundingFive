@@ -16,7 +16,6 @@
 	<%@include file="../../views/common/nav.jsp"%>
 
 
-<<<<<<< HEAD
 	<main>
 
 		<div class="main-container">

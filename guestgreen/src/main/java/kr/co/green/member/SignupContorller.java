@@ -40,6 +40,12 @@ public class SignupContorller extends HttpServlet {
 		String name = request.getParameter("member-name");
 		String phone = request.getParameter("member-phone");
 		String addr = request.getParameter("member-addr");
+		
+		System.out.println(id);
+		System.out.println(pwd);
+		System.out.println(name);
+		System.out.println(phone);
+		System.out.println(addr);
 
 		//id유효성 검사 
 		String idRegex = "^[a-zA-Z0-9]{4,12}$";
@@ -64,9 +70,11 @@ public class SignupContorller extends HttpServlet {
 			MemberDTO memberDTO = new MemberDTO(id, hashedPassword, name, phone, addr);
 			
 			// 서비스 호출
-			MemberServiceImpl memberService = new MemberServiceImpl();
+			MemberServiceImpl memberService = new MemberServiceImpl(); 
 			int result = memberService.memberSignUp(memberDTO);
 
+			System.out.println("result"+result);
+			
 			if (result > 0) {
 				// 회원가입 성공
 				AlertAndRedirect.alertRedirect(response, "회원가입에 성공했습니다.", "/");

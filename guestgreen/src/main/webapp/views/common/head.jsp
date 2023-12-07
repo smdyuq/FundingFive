@@ -7,6 +7,8 @@
 
  
 <title>Blog Post - Start Bootstrap Template</title>
+
+
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/common/header.css" rel="stylesheet" />
 <link href="/resources/css/common/nav.css" rel="stylesheet" />
@@ -21,4 +23,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 
+
 <script src="/resources/js/common/common.js"></script>
+

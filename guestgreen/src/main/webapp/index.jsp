@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -598,7 +599,9 @@ dd {
 	text-align: center;
 	font-weight: 180;
 	cursor: pointer;
-} */
+}
+*
+/
 </style>
 
 <body>
@@ -607,7 +610,7 @@ dd {
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
 	<%@include file="./views/common/common.jsp"%>
-	
+
 	<main>
 
 
@@ -901,11 +904,10 @@ dd {
 				</div>
 			</div>
 		</div>
-
-		<img class="banner"
-			src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
-			width="1160px" height="181.1px">
-
+		<!-- 배너 이미지 변경 -->
+		<img class="banner" src="/resources/image/banner.jpg" width="1160px"
+			height="181.1px">
+		<!-- 배너 이미지 변경 -->
 		<div class="jb-division-line"></div>
 
 		<div class="Container">
@@ -1204,11 +1206,12 @@ dd {
 
 
 
-
-		<br> <img class="banner"
-			src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/011/original/0db28a55-2b32-4966-b078-7e400c0dd528.jpg?q=80"
+		<!-- 배너 -->
+		<br> <img class="banner" src="/resources/image/t1.png"
 			width="1160px" height="181.1px">
 		<div class="jb-division-line"></div>
+		<!-- /배너 -->
+
 
 		<div class="Container">
 			<div class="FrontPage_ListTitle">내가 본 프로젝트와 비슷해요</div>
@@ -1654,7 +1657,6 @@ dd {
 	}); */
 
 	// 슬라이드
-
 	let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
 			.find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
 			.find(".slides"), slidesBtn = slidesWrap.find(".slides_btn");

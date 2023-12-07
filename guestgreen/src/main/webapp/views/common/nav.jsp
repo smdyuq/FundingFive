@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <nav>
 	<div class="nav-menu">
 		<div>
@@ -25,3 +26,7 @@
 		</div>
 	</div>
 </nav>
+
+<script src="/resources/js/common/nav.js"></script>
+
+

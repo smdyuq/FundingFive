@@ -185,8 +185,6 @@ main {
 						</div>
 						<hr>
 					</div>
-
-
 					<div class="project-div2">
 						<p>여기는 프로젝트 승인유무 C</p>
 						<div class="table-container">

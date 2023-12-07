@@ -2,7 +2,6 @@
 
 .container {
 	display: flex;
-	height: 100vh;
 }
 
 .menu-container {
@@ -78,7 +77,7 @@
 .faq-content {
 	display: none;
 	padding: 10px;
-	width:100%;
+	width: 100%;
 	background-color: #f0f0f0;
 }
 
@@ -88,68 +87,72 @@
 	font-weight: 600;
 }
 
-
-
-
-
-       table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1rem auto;
-  background-color: white;
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1rem auto;
+	background-color: white;
 }
-
-
 
 /* 테이블 행 */
 td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
 }
 
 th {
-  padding:10px 8px 10px 8px;
-  text-align: left;
-  text-align: center;
-  border-bottom: 1px solid gray;
-  color: #000;
+	padding: 10px 8px 10px 8px;
+	text-align: left;
+	text-align: center;
+	border-bottom: 1px solid gray;
+	color: #000;
 }
 
-.table_table_hover{
-    margin: 0px;
-    width: 100%;
+.table_table_hover {
+	margin: 0px;
+	width: 100%;
 }
 
 /* 테이블 올렸을 때 */
 tbody tr:hover {
-  background-color: #d3d3d3;
-  opacity: 0.9;
-  cursor: pointer;
+	background-color: #d3d3d3;
+	opacity: 0.9;
+	cursor: pointer;
 }
 
 /* 테이블 비율 */
-th:nth-child(1),
-td:nth-child(1) {
-  width: 15%;
+th:nth-child(1), td:nth-child(1) {
+	width: 15%;
 }
 
-th:nth-child(2),
-td:nth-child(2) {
-  width: 55%;
+th:nth-child(2), td:nth-child(2) {
+	width: 55%;
 }
 
-th:nth-child(3),
-td:nth-child(3) {
-  width: 30%;
+th:nth-child(3), td:nth-child(3) {
+	width: 30%;
 }
 
 th, td {
-  border-left: none;
-  border-right: none;
+	border-left: none;
+	border-right: none;
 }
 
-main{
-	width: 96%;
+main {
+	width: 90%;
+}
+
+/* 공지 등록 버튼 */
+.board_btn_div {
+	margin: 20px 10px 20px 10px;
+	display: flex;
+	align-items: last baseline;
+	justify-content: flex-end;
+}
+
+.notice_registration_btn {
+	margin-left: 10px;
+	padding: 5px 8px 5px 8px;
 }

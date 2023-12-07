@@ -16,12 +16,13 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> boardList(Connection con, PageInfo pi, String searchText) {
 
 		ArrayList<BoardDTO> list = new ArrayList<>();
-		String query = "select BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_IN_DATE, BOARD_UPDATE_DATE, BOARD_VIEWS, MEMBER_NO"
-				+ "			from BOARD "
-				+ "			where BOARD_DELETE_DATE is null"
-				+ "			and BOARD_TITLE like '%'||?||'%'"
-				+ "			order by BOARD_IN_DATE desc"
-				+ "			offset ? row fetch first ? row only";
+		String query =
+		 "select BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_IN_DATE, BOARD_UPDATE_DATE, BOARD_VIEWS, MEMBER_NO"
+		 + "			from BOARD " + "			where BOARD_DELETE_DATE is null" 
+		 + "			and BOARD_TITLE like '%'||?||'%'"
+		 + "			order by BOARD_IN_DATE desc"
+		 +"			offset ? row fetch first ? row only";
+		
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -38,6 +39,7 @@ public class BoardDAO {
 				String board_indate = rs.getString("BOARD_IN_DATE");
 				int views = rs.getInt("BOARD_VIEWS");
 				String writer = rs.getString("MEMBER_NO");
+				
 
 				BoardDTO board = new BoardDTO();
 				board.setIdx(board_no);
@@ -45,6 +47,7 @@ public class BoardDAO {
 				board.setInDate(board_indate);
 				board.setViews(views);
 				board.setWriter(writer);
+				
 
 				list.add(board);
 
@@ -246,4 +249,6 @@ public class BoardDAO {
 		
 		return 0;
 	}
+
+
 }
