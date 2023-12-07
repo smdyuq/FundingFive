@@ -2,6 +2,7 @@ package kr.co.green.board.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,10 +31,6 @@ public class boardListController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		int memberNo = (int)session.getAttribute("memberNo");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNo);
 		
 		//현재 페이지
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -49,14 +46,22 @@ public class boardListController extends HttpServlet {
 		//한페이지에 들어갈 게시글 수
 		int boardLimit = 10;
 		
+		
 		//페이징
 		Pagination page = new Pagination();
 		PageInfo pi = page.getPageInfo(listCount, cpage, pageLimit, boardLimit);
 		
 		//목록 불러오기
-	      ArrayList<BoardDTO> list = boardService.boardList(pi,searchText);
-	      
-	      
+	    ArrayList<BoardDTO> list = boardService.boardList(pi,searchText);
+	    
+	    //세션통하여 멤버타입 가져오기
+		HttpSession session = request.getSession();
+		if(!Objects.isNull(session.getAttribute("memberNo"))) {
+			int memberNo = (int)session.getAttribute("memberNo");
+			MemberServiceImpl memberService = new MemberServiceImpl();
+			MemberDTO memberDTO = memberService.memberSelect(memberNo);
+			request.setAttribute("memberDTO", memberDTO);
+		}
    
 	    //글번호
 	      int row = listCount - (cpage -1)* boardLimit;
@@ -66,12 +71,11 @@ public class boardListController extends HttpServlet {
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
-	      request.setAttribute("memberDTO", memberDTO);
 	      
 	      
 	      RequestDispatcher view = request.getRequestDispatcher("/views/board/boardList.jsp");
 	      view.forward(request, response);
-	      	      
+	      
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
