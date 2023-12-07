@@ -36,13 +36,12 @@
 						<label for="exampleFormControlInput1" class="form-label">프로젝트
 							카테고리 </label><select class="form-select"
 							aria-label="Default select example" name="project-kind">
-							<option selected>카테고리를 선택해주세요.</option>
-							<option value="Entire">전체</option>
-							<option value="Home Appliances">가전</option>
-							<option value="Clothes">의류</option>
-							<option value="Perfume and Beauty">향수·뷰티</option>
-							<option value="Food">푸드</option>
-							<option value="Jewelry">주얼리</option>
+							<option selected>카테고리를 선택해주세요.</option>					
+							<option value="가전">가전</option>
+							<option value="의류">의류</option>
+							<option value="뷰티">뷰티</option>
+							<option value="푸드">푸드</option>
+							<option value="주얼리">주얼리</option>
 						</select> <label for="exampleFormControlInput1" class="form-label">프로젝트
 							가격 </label> <input type="text" class="form-control"
 							id="exampleFormControlInput1" name="project-price"
