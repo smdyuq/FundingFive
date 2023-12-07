@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<<<<<<< HEAD
+
 <nav>
 	<div class="nav-menu">
 		<div>
@@ -27,16 +27,12 @@
 				<li><a href="/boardList.do?cpage=1">공지사항</a></li>
 			</ul>
 
-
-
-
-
-
 			<div onclick="projectSearch()">
 				<input type="text" name="searchText" placeholder="검색어를 입력해주세요.">
 				<button type="button">검색</button>
 			</div>
 		</div>
+	</div>
 </nav>
 
 <script src="/resources/js/common/nav.js"></script>

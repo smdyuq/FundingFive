@@ -47,10 +47,10 @@ public class loginController extends HttpServlet {
 			session.setAttribute("memberName", memberDTO.getMemberName());
 			session.setAttribute("memberType", memberDTO.getMemberType());
 
-			request.setAttribute("memberDTO", memberDTO);
-
-			RequestDispatcher view = request.getRequestDispatcher("/");
-			view.forward(request, response);
+//			request.setAttribute("memberDTO", memberDTO);
+			response.sendRedirect("/main.do");
+//			RequestDispatcher view = request.getRequestDispatcher("/main.do");
+//			view.forward(request, response);
 		} else {
 			AlertAndRedirect.alertRedirect(response, "로그인에 실패했습니다.", "/");
 		}
