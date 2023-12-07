@@ -25,11 +25,11 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchWord = request.getParameter("searchWord");
 		SearchService searchService = new SearchServiceImpl();
-		ArrayList<ProjectDTO> searchedProjectList = searchService.getSearchedProject(searchWord);
+//		ArrayList<ProjectDTO> searchedProjectList = searchService.getSearchedProject(searchWord);
 		
-		request.setAttribute("list", searchedProjectList);
-		RequestDispatcher view = request.getRequestDispatcher("/");
-		view.forward(request, response);
+//		request.setAttribute("list", searchedProjectList);
+//		RequestDispatcher view = request.getRequestDispatcher("/");
+//		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
