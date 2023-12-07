@@ -67,15 +67,10 @@ public class PhoneController extends HttpServlet {
 	        
         }else if(status.equals("fail")) {
         	
-        	System.out.println("status : " + status);
-        	System.out.println("projectNo : " + projectNo);
-        	
         	DonateService donateService = new DonateServiceImpl();
         	ArrayList<DonateDTO> sponserList = donateService.getSponserInfo(projectNo);
         	
-        	System.out.println("sponserList.getMemberPhone() : " + sponserList.get(0).getMemberPhone());
-        	
-        	message.setFrom("01051252955");
+        	message.setFrom("");	//발신자 번호
         	for(int i=0; i<sponserList.size(); i++) {
     	        message.setTo(sponserList.get(i).getMemberPhone());
     	        message.setText(sponserList.get(i).getMemberName() + "님, " 
@@ -91,11 +86,9 @@ public class PhoneController extends HttpServlet {
 	          }
         	}
         	
-        	System.out.println("for문 탈출");
         	ProjectService projectService = new ProjectServiceImpl();	//프로젝트 승인유무 'N'으로 변경
         	projectService.projectExpire(projectNo);
         	response.sendRedirect("/administratorOk.do?cpage=1");
-        	
         }
     }
 
