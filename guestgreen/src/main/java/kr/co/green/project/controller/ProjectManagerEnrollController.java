@@ -22,9 +22,9 @@ import kr.co.green.project.model.service.ProjectServiceImpl;
 import net.coobird.thumbnailator.Thumbnails;
 
 @WebServlet("/projectManagerEnroll.do")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1MB
-		maxFileSize = 1024 * 1024 * 5, // 5MB
-		maxRequestSize = 1024 * 1024 * 5 * 5 // 25MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, // 1MB
+		maxFileSize = 1024 * 1024 * 5 * 10, // 5MB
+		maxRequestSize = 1024 * 1024 * 10 * 10 // 25MB
 )
 public class ProjectManagerEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

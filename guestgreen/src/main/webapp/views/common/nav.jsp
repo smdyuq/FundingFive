@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<<<<<<< HEAD
 <nav>
 	<div class="nav-menu">
 		<div>
@@ -26,13 +27,41 @@
 				<li><a href="/boardList.do?cpage=1">공지사항</a></li>
 			</ul>
 
-		</div>
 
-		<div onclick="projectSearch()">
-			<input type="text" name="searchText" placeholder="검색어를 입력해주세요.">
-			<button type="button">검색</button>
+
+
+
+
+			<div onclick="projectSearch()">
+				<input type="text" name="searchText" placeholder="검색어를 입력해주세요.">
+				<button type="button">검색</button>
+			</div>
 		</div>
-	</div>
 </nav>
 
 <script src="/resources/js/common/nav.js"></script>
+<!-- 번역기 -->
+<script
+	src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage : 'ko',
+			autoDisplay : true
+		}, 'google_translate_element');
+	}
+
+	document.querySelector('.translation-links').addEventListener('change',
+			function(event) {
+				const tolang = event.target.value;
+				const gtcombo = document.querySelector('.goog-te-combo');
+				if (gtcombo == null) {
+					alert("Error: Could not find Google translate Combolist.");
+					return false;
+				}
+				gtcombo.value = tolang;
+				gtcombo.dispatchEvent(new Event('change'));
+			});
+</script>
+<!-- /번역기 -->
+

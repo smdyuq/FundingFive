@@ -18,9 +18,9 @@ import kr.co.green.project.model.dto.ProjectDTO;
 import net.coobird.thumbnailator.Thumbnails;
 
 @WebServlet("/projectEnroll.do")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1MB
-		maxFileSize = 1024 * 1024 * 5, // 5MB
-		maxRequestSize = 1024 * 1024 * 5 * 5 // 25MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 30, // 2KB
+		maxFileSize = 1024 * 1024 * 20, // 1KB
+		maxRequestSize = 1024 * 1024 * 10 * 10 // 25MB
 )
 public class ProjectEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +41,9 @@ public class ProjectEnrollController extends HttpServlet {
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 
+
 		String uploadDirectory = "C:\\Users\\tmddu\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+
 
 		System.out.println("1");
 
@@ -83,7 +85,9 @@ public class ProjectEnrollController extends HttpServlet {
 						resizeImage(uploadDirectory + "/outerimage/300x300/" + fileName, 300, 300);
 					} else { // inner image
 						part.write(filePath + File.separator + "innerimage" + File.separator + fileName);
+
 						resizeImage(uploadDirectory + "/innerimage/" + fileName, 500, 500);
+
 					}
 
 					index++;

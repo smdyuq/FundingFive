@@ -57,12 +57,14 @@ input[type=file]::file-selector-button {
 				<form action="/projectEnroll.do" method="post"
 					enctype="multipart/form-data">
 
+
 					<div class="project_content_div">
 						<div>
 							<label class="form-label">프로젝트 이름 </label><br> <input
 								type="text" class="form-control" id="exampleFormControlInput1"
 								name="project-name" placeholder="프로젝트 이름을 작성해주세요." required>
 						</div>
+
 
 						<div>
 							<label class="form-label">프로젝트 소개 </label><br> <input

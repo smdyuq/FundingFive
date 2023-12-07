@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.green.board.model.dto.BoardDTO;
 import kr.co.green.board.model.service.BoardServiceImpl;
 import kr.co.green.board.model.service.PageInfo;
 import kr.co.green.board.model.service.Pagination;
+import kr.co.green.member.model.dto.MemberDTO;
+import kr.co.green.member.model.service.MemberServiceImpl;
+
 
 
 @WebServlet("/boardList.do")
@@ -27,7 +31,10 @@ public class boardListController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		int memberNo = (int)session.getAttribute("memberNo");
+		MemberServiceImpl memberService = new MemberServiceImpl();
+		MemberDTO memberDTO = memberService.memberSelect(memberNo);
 		
 		//현재 페이지
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -49,7 +56,9 @@ public class boardListController extends HttpServlet {
 		
 		//목록 불러오기
 	      ArrayList<BoardDTO> list = boardService.boardList(pi,searchText);
-
+	      
+	      
+   
 	    //글번호
 	      int row = listCount - (cpage -1)* boardLimit;
 	      request.setAttribute("row", row);
@@ -58,9 +67,12 @@ public class boardListController extends HttpServlet {
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
+	      request.setAttribute("memberDTO", memberDTO);
+	      
 	      
 	      RequestDispatcher view = request.getRequestDispatcher("/views/board/boardList.jsp");
 	      view.forward(request, response);
+	      	      
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

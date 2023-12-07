@@ -27,60 +27,60 @@ public class MainController extends HttpServlet {
 
 		ProjectDTO projectDTO = new ProjectDTO();
 
-//		배너 조회		
+//      배너 조회      
 		ArrayList<ProjectDTO> banner = mainService.bannerSelect();
 
-//		주목할만한 프로젝트 조회
+//      주목할만한 프로젝트 조회
 		ArrayList<ProjectDTO> noteworthy = mainService.noteworthySelect();
 
-//		인기 프로젝트 조회
+//      인기 프로젝트 조회
 		ArrayList<ProjectDTO> popularity = mainService.popularitySelect();
 
-//		마감 임박 프로젝트 조회
+//      마감 임박 프로젝트 조회
 		ArrayList<ProjectDTO> Deadline = mainService.DeadlineSelect();
 
-//		최근 본 프로젝트 조회
+//      최근 본 프로젝트 조회
 		ArrayList<ProjectDTO> recentProject = mainService.recentProjectSelect();
 
-//		이런 프로젝트 어때요 조회
+//      이런 프로젝트 어때요 조회
 		ArrayList<ProjectDTO> Recommended = mainService.RecommendedSelect();
 
-//		신규 프로젝트 조회
+//      신규 프로젝트 조회
 		ArrayList<ProjectDTO> newProject = mainService.newProjectSelect();
 
-//		달성완료 프로젝트 조회
+//      공개예정 프로젝트 조회
 		ArrayList<ProjectDTO> completeProject = mainService.completeProjectSelect();
 
-//		오늘 오픈한 프로젝트 조회
+//      오늘 오픈한 프로젝트 조회
 		ArrayList<ProjectDTO> todayProject = mainService.todayProjectSelect();
 
 		// list
 
-// 		배너 조회 list	
+//       배너 조회 list   
 		request.setAttribute("banner", banner);
 
-// 		주목할만한 프로젝트 조회 list		
+//       주목할만한 프로젝트 조회 list      
 		request.setAttribute("noteworthy", noteworthy);
 
-//		인기 프로젝트 조회 list
+//      인기 프로젝트 조회 list
 		request.setAttribute("popularity", popularity);
 
-//		마감 임박 프로젝트 조회 list
+//      마감 임박 프로젝트 조회 list
 		request.setAttribute("Deadline", Deadline);
 
-//		최근 본 프로젝트 조회 list
+//      최근 본 프로젝트 조회 list
 		request.setAttribute("recentProject", recentProject);
 
-//		이런 프로젝트 어때요 조회 list
+//      이런 프로젝트 어때요 조회 list
 		request.setAttribute("Recommended", Recommended);
 
-//		신규 프로젝트 조회 list
+//      신규 프로젝트 조회 list
 		request.setAttribute("newProject", newProject);
 
-//		공개 예정 프로젝트 조회 list
+//      공개 예정 프로젝트 조회 list
 		request.setAttribute("completeProject", completeProject);
 
-//		오늘 오픈한 프로젝트 조회 list
+//      오늘 오픈한 프로젝트 조회 list
 		request.setAttribute("todayProject", todayProject);
 
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
