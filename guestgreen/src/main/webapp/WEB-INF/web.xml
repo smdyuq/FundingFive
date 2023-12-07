@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>ServletProject</display-name>
-  <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
-  </welcome-file-list>
-<<<<<<< HEAD
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>ServletProject</display-name>
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
 
-  <filter>
-=======
-  
-<!--   <filter>
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
-  	<filter-name>EncodingFilter</filter-name>
-  	<filter-class>kr.co.green.common.EncodingFilter</filter-class>
-  <init-param>
-  	<param-name>encoding</param-name>
-  	<param-value>UTF-8</param-value>
-  </init-param>
-  </filter>
- 
-   <filter-mapping>
-  	<filter-name>EncodingFilter</filter-name>
-<<<<<<< HEAD
-   	<url-pattern>/*</url-pattern>  
-  </filter-mapping>
-=======
-  	<url-pattern>/*</url-pattern>context하위의 모든 요청에 대해 수행
-  </filter-mapping> -->
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
-  
+	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>kr.co.green.common.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 </web-app>

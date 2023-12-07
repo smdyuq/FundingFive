@@ -60,12 +60,35 @@ public class ProjectEnrollController extends HttpServlet {
 			if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
 				fileName = getFileName(part);
 				if (!fileName.equals("")) {
-					part.write(filePath + File.separator + fileName);
 					fileNameArr[index] = fileName;
-					System.out.println(fileNameArr[index]);
+					if (index == 0) { // outer image
+						part.write(filePath + File.separator + "outerimage" + File.separator + "180x153"
+								+ File.separator + fileName);
+						part.write(filePath + File.separator + "outerimage" + File.separator + "130x105"
+								+ File.separator + fileName);
+						part.write(filePath + File.separator + "outerimage" + File.separator + "230x185"
+								+ File.separator + fileName);
+						part.write(filePath + File.separator + "outerimage" + File.separator + "760x280"
+								+ File.separator + fileName);
+						part.write(filePath + File.separator + "outerimage" + File.separator + "160x120"
+								+ File.separator + fileName);
+						part.write(filePath + File.separator + "outerimage" + File.separator + "300x300"
+								+ File.separator + fileName);
+
+						resizeImage(uploadDirectory + "/outerimage/180x153/" + fileName, 180, 153);
+						resizeImage(uploadDirectory + "/outerimage/130x105/" + fileName, 130, 105);
+						resizeImage(uploadDirectory + "/outerimage/230x185/" + fileName, 230, 185);
+						resizeImage(uploadDirectory + "/outerimage/760x280/" + fileName, 760, 280);
+						resizeImage(uploadDirectory + "/outerimage/160x120/" + fileName, 160, 120);
+						resizeImage(uploadDirectory + "/outerimage/300x300/" + fileName, 300, 300);
+					} else { // inner image
+						part.write(filePath + File.separator + "innerimage" + File.separator + fileName);
+						resizeImage(uploadDirectory + "/innerimage/" + fileName, 500, 500);
+					}
+
 					index++;
-					// 이미지 리사이징 (100 X 100)
-					resizeImage(uploadDirectory + "/" + fileName, 100, 100);
+					// 이미지 리사이징 (width X height)
+
 				} else if (fileName.equals("")) {
 					uploadDirectory = "";
 				}

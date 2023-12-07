@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> --%>
-=======
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -603,7 +600,9 @@ dd {
 	text-align: center;
 	font-weight: 180;
 	cursor: pointer;
-} */
+}
+*
+/
 </style>
 
 <body>
@@ -612,7 +611,7 @@ dd {
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
 	<%@include file="./views/common/common.jsp"%>
-	
+
 	<main>
 
 
@@ -902,7 +901,7 @@ dd {
 						</div>
 					</div>
 
-					<a href="#" title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
+					<a href="/menu.do?menu=popularity" title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
 				</div>
 			</div>
 		</div>
@@ -1659,7 +1658,6 @@ dd {
 	}); */
 
 	// 슬라이드
-
 	let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
 			.find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
 			.find(".slides"), slidesBtn = slidesWrap.find(".slides_btn");

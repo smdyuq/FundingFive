@@ -52,7 +52,7 @@
 					value="${ projectDTO.projectEndDate}" disabled> <label
 					for="exampleFormControlInput1" class="form-label">프로젝트 이미지
 				</label> <br> <img
-					src="/resources/uploads/${projectDTO.projectOuterImageName }"><br>
+					src="/resources/uploads/outerimage/300x300/${projectDTO.projectOuterImageName }"><br>
 
 				<hr>
 
@@ -70,7 +70,7 @@
 					name="manager-account" value="${ projectDTO.projectManagerAccount}"
 					disabled> <label for="exampleFormControlInput1"
 					class="form-label">창작자 프로필 사진 </label> <br> <img
-					src="/resources/uploads/${projectDTO.projectManagerImageName }"><br>
+					src="/resources/uploads/managerimage/${projectDTO.projectManagerImageName }"><br>
 
 				<br>
 

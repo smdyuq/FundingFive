@@ -119,4 +119,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.projectUpdate(con, projectDTO);
 	}
 
+	// 조회수 증가
+	@Override
+	public int projectUpdateViews(int projectNo) {
+		return projectDAO.projectUpdateViews(con, projectNo);
+	}
+
+	// 최근 프로젝트 등록
+	@Override
+	public int RecentProject(int projectNo, int memberNo) {
+		return projectDAO.RecentProject(con, projectNo, memberNo);
+	}
+
 }
