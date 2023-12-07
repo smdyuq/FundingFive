@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.green.board.dto.BoardDTO;
-import kr.co.green.board.service.BoardServiceImpl;
-import kr.co.green.board.service.PageInfo;
-import kr.co.green.board.service.Pagination;
+import kr.co.green.board.model.dto.BoardDTO;
+import kr.co.green.board.model.service.BoardServiceImpl;
+import kr.co.green.board.model.service.PageInfo;
+import kr.co.green.board.model.service.Pagination;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
+
 
 
 @WebServlet("/boardList.do")

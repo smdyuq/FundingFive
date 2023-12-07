@@ -5,11 +5,46 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
+<style>
+.form-label {
+	font-size: 17px;
+}
+
+/* 텍스트 인풋박스 */
+.project_content_div>div>input {
+	width: 100%;
+	height: 30px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.form-select {
+	width: 100%;
+	height: 30px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+/* 파일 인풋박스 */
+input[type=file]::file-selector-button {
+	width: 150px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 10px;
+	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
+	color: #fff;
+}
+
+}
+
+/* 다음 버튼 */
+.next_btn {
+	margin-top: 5%;
+	padding: 10px 15px 10px 15px; /* 상단 우측 하단 좌측 */
+	font-size: 15px;
+}
+</style>
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -21,35 +56,58 @@
 				<hr>
 				<form action="/projectManagerEnroll.do" method="post"
 					enctype="multipart/form-data">
-					<input type="hidden" name="project-name" value="${projectDTO.projectName}">
-					<input type="hidden" name="project-introduce" value="${projectDTO.projectIntroduce}">
-					<input type="hidden" name="project-kind" value="${projectDTO.projectKind}">
-					<input type="hidden" name="project-price" value="${projectDTO.projectPrice}">
-					<input type="hidden" name="project-target-amount" value="${projectDTO.projectTargetAmount}">
-					<input type="hidden" name="project-end-date" value="${projectDTO.projectEndDate}">
-					<input type="hidden" name="project-outer-image-name" value="${projectDTO.projectOuterImageName}">
-					<input type="hidden" name="project-outer-image-path" value="${projectDTO.projectOuterImagePath}">
-					<input type="hidden" name="project-inner-image-name" value="${projectDTO.projectInnerImageName}">
-					<input type="hidden" name="project-inner-image-path" value="${projectDTO.projectInnerImagePath}">
-					<input type="hidden" name="project-content" value="${projectDTO.projectContent}">
+					<input type="hidden" name="project-name"
+						value="${projectDTO.projectName}"> <input type="hidden"
+						name="project-introduce" value="${projectDTO.projectIntroduce}">
+					<input type="hidden" name="project-kind"
+						value="${projectDTO.projectKind}"> <input type="hidden"
+						name="project-price" value="${projectDTO.projectPrice}"> <input
+						type="hidden" name="project-target-amount"
+						value="${projectDTO.projectTargetAmount}"> <input
+						type="hidden" name="project-end-date"
+						value="${projectDTO.projectEndDate}"> <input type="hidden"
+						name="project-outer-image-name"
+						value="${projectDTO.projectOuterImageName}"> <input
+						type="hidden" name="project-outer-image-path"
+						value="${projectDTO.projectOuterImagePath}"> <input
+						type="hidden" name="project-inner-image-name"
+						value="${projectDTO.projectInnerImageName}"> <input
+						type="hidden" name="project-inner-image-path"
+						value="${projectDTO.projectInnerImagePath}"> <input
+						type="hidden" name="project-content"
+						value='${projectDTO.projectContent}'>
 
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">프로젝트
-							창작자 이름 </label> <input type="text" class="form-control"
-							id="exampleFormControlInput1" name="project-manager-name"
-							required> <label for="exampleFormControlInput1"
-							class="form-label">프로젝트 창작자 소개 </label> <input type="text"
-							class="form-control" id="exampleFormControlInput1"
-							name="project-manager-introduce" required> <label
-							for="exampleFormControlInput1" class="form-label">프로젝트
-							창작자 계좌 </label> <input type="text" class="form-control"
-							id="exampleFormControlInput1" name="project-manager-account"
-							required> <label for="exampleFormControlInput1"
-							class="form-label">프로젝트 창작자 프로필 이미지 </label> <input type="file"
-							class="form-control" id="exampleFormControlInput1"
-							name="project_manager_image" required> <br>
+					<div class="project_content_div">
 
-						<button class="btn btn-primary" type="submit">프로젝트 등록</button>
+						<div>
+							<label for="exampleFormControlInput1" class="form-label">프로젝트
+								창작자 이름 </label> <input type="text" class="form-control"
+								id="exampleFormControlInput1" name="project-manager-name"
+								required>
+						</div>
+
+						<div>
+							<label for="exampleFormControlInput1" class="form-label">프로젝트
+								창작자 소개 </label> <input type="text" class="form-control"
+								id="exampleFormControlInput1" name="project-manager-introduce"
+								required>
+						</div>
+
+						<div>
+							<label for="exampleFormControlInput1" class="form-label">프로젝트
+								창작자 계좌 </label> <input type="text" class="form-control"
+								id="exampleFormControlInput1" name="project-manager-account"
+								required>
+						</div>
+
+						<div>
+							<label for="exampleFormControlInput1" class="form-label">프로젝트
+								창작자 프로필 이미지 </label> <input type="file" class="form-control"
+								id="exampleFormControlInput1" name="project_manager_image"
+								required>
+						</div>
+
+						<button class="next_btn" type="submit">프로젝트 등록</button>
 				</form>
 			</div>
 		</section>

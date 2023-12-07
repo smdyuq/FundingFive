@@ -33,7 +33,6 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.innerimageEnroll(con, projectDTO, projectNo);
 	}
 
-
 //	창작자 등록 페이지
 
 //	프로젝트 번호 조회
@@ -44,8 +43,10 @@ public class ProjectServiceImpl implements ProjectService {
 
 //	창작자 등록
 	@Override
+
 	public int projectManagerEnroll(ProjectDTO projectDTO, int memberNo, int projectNo) {
 		return projectDAO.projectManagerEnroll(con, projectDTO, memberNo, projectNo);
+
 	}
 
 //	관리자 승인 페이지
@@ -116,6 +117,41 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public int projectUpdate(ProjectDTO projectDTO) {
 		return projectDAO.projectUpdate(con, projectDTO);
+	}
+
+	//기한 만료된 프로젝트 중 달성률 100 미만 조회(관리자)
+	@Override
+	public ArrayList<ProjectDTO> getFailedProjects(PageInfo pi) {
+		return projectDAO.getFailedProjects(con, pi);
+	}
+
+	//기한 만료된 프로젝트 중 달성률 100 이상 조회(관리자)
+	@Override
+	public ArrayList<ProjectDTO> getSuccessfulProjects(PageInfo pi) {
+		return projectDAO.getSuccessfulProjects(con, pi);
+	}
+
+	//프로젝트 창작자 이메일 조회
+	@Override
+	public String getProjectManagerEmail(int projectNo) {
+		return projectDAO.getProjectManagerEmail(con, projectNo);
+	}
+
+	//만료된 프로젝트 승인유무 'N'
+	@Override
+	public void projectExpire(int projectNo) {
+		projectDAO.projectExpire(con, projectNo);
+	}
+	// 조회수 증가
+	@Override
+	public int projectUpdateViews(int projectNo) {
+		return projectDAO.projectUpdateViews(con, projectNo);
+	}
+
+	// 최근 프로젝트 등록
+	@Override
+	public int recentProject(int projectNo, int memberNo) {
+		return projectDAO.recentProject(con, projectNo, memberNo);
 	}
 
 }

@@ -1,6 +1,7 @@
 package kr.co.green.donate.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import kr.co.green.common.DatabaseConnection;
 import kr.co.green.donate.model.dao.DonateDAO;
@@ -22,6 +23,12 @@ public class DonateServiceImpl implements DonateService{
 	@Override
 	public int donateEnroll(DonateDTO donateDTO) {
 		return donateDAO.donateEnroll(con, donateDTO);
+	}
+
+	//상품 배송을 위한 후원자 정보 조회
+	@Override
+	public ArrayList<DonateDTO> getSponserInfo(int projectNo) {
+		return donateDAO.getSponserInfo(con, projectNo);
 	}
 
 	

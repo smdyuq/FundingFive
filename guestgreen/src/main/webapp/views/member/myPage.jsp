@@ -33,6 +33,7 @@ main {
 					class="tab_item" for="sponsorship">후원</label> 
 				<input id="project" type="radio" name="tab_item" onchange="showTabContent('project')">
 				<label class="tab_item" for="project">프로젝트</label>
+				<label class="tab_item" for="shipping">배송조회</label> 
 			</div>
 
 			<div class="tab_content" id="information_content">
@@ -55,7 +56,7 @@ main {
 						<div class="signup-input">
 							<label for="member-name">이름 </label> <input type="text"
 								id="member-name" name="member-name" onkeyup="validateName() "
-								value="${memberDTO.memberName}" required><br> <span
+								value="${sessionScope.memberName}" required><br> <span
 								id="nameMsg"></span>
 						</div>
 						<br>
@@ -134,7 +135,6 @@ main {
 				</div>
 			</div>
 
-			<!-- </div> -->
 			<div>
 				<div class="tab_content" id="project_content">
 					<div class="project-div1">
@@ -279,6 +279,7 @@ main {
 					</div>
 				</div>
 			</div>
+        </div>
 	</main>
 
 	<%@include file="../../views/common/footer.jsp"%>

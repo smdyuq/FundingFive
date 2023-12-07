@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import kr.co.green.board.service.BoardServiceImpl;
+import kr.co.green.board.model.service.BoardServiceImpl;
 
 @WebServlet("/boardUpdate.do")
 @MultipartConfig(

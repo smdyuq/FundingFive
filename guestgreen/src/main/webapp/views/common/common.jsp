@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
+
 	 <div class="floating_btn">
         <div class="talk">
             <img id="kakao-talk-channel-chat-button" src="/resources/image/talk_btn.png">
@@ -8,6 +9,7 @@
         <input class="top-button" type="image" src="/resources/image/top.png" alt="top">
         
     </div>
+
 
 <!-- 챗봇 상담 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>

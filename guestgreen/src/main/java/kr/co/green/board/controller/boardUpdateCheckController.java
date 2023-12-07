@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.green.board.dto.BoardDTO;
-import kr.co.green.board.service.BoardServiceImpl;
+import kr.co.green.board.model.dto.BoardDTO;
+import kr.co.green.board.model.service.BoardServiceImpl;
 
 @WebServlet("/boardUpdateCheck.do")
 public class boardUpdateCheckController extends HttpServlet {

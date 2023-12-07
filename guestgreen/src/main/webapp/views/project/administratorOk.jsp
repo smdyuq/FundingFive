@@ -41,7 +41,7 @@
 
 			<div class="tab_content" id="project_approval_content">
 				<section>
-					<form id="project-administratorok-form">
+					<form id="project-list">
 						<input type="hidden" name="cpage" value="1">
 						<table class="table">
 							<thead>
@@ -54,13 +54,13 @@
 							</thead>
 							<tbody>
 								<c:choose>
-									<c:when test="${empty list }">
+									<c:when test="${empty projectList}">
 										<tr>
 											<td colspan="5" class="text-center">등록된 프로젝트가 없습니다.</td>
 										</tr>
 									</c:when>
 									<c:otherwise>
-										<c:forEach var="item" items="${list }">
+										<c:forEach var="item" items="${projectList }">
 											<tr onclick="projectDetail(${item.projectNo})">
 												<td>${item.projectName }</td>
 												<td>${item.projectRegisterDate }</td>
@@ -120,10 +120,12 @@
 			</div>
 
 			<div class="tab_content" id="project_completed_content">
-				<form id="project-administratorok-form">
+				<form id="project-success" >
+					<input type="hidden" name="status" value="success">
 					<table class="table">
 						<thead>
 							<tr>
+								<th>프로젝트 번호</th>
 								<th>프로젝트명</th>
 								<th>프로젝트 등록일</th>
 								<th>프로젝트 종료일</th>
@@ -134,20 +136,21 @@
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${empty list}">
+								<c:when test="${empty successfulProjectList}">
 									<tr>
-										<td colspan="5" class="text-center">등록된 프로젝트가 없습니다.</td>
+										<td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach var="item" items="${list}">
-										<tr onclick="#">
-											<td>프로젝트이름(임시데이터)</td>
-											<td>프로젝트시작일(임시데이터)</td>
-											<td>프로젝트종료일 (임시데이터)</td>
-											<td>달성률(임시데이터)</td>
-											<td>창작자(임시데이터)</td>
-											<td><button>버튼</button></td>
+									<c:forEach var="item" items="${successfulProjectList}">
+									<input type="hidden" name="project-no" value="${item.projectNo}">
+										<tr onclick="successfulProject()">
+											<td>${item.projectNo}</td>
+											<td>${item.projectName}</td>
+											<td>${item.projectRegisterDate}</td>
+											<td>${item.projectEndDate}</td>
+											<td>${item.projectCurrentPercentage}</td>
+											<td>${item.projectManagerName}</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
@@ -163,7 +166,8 @@
 			</div>
 			
 			<div class="tab_content" id="project_failure_content">
-				<form id="project-administratorok-form">
+				<form id="project-fail">
+				<input type="hidden" name="status" value="fail">
 					<table class="table">
 						<thead>
 							<tr>
@@ -178,22 +182,22 @@
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${empty list}">
+								<c:when test="${empty failedProjectList}">
 									<tr>
-										<td colspan="5" class="text-center">등록된 프로젝트가 없습니다.</td>
+										<td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach var="item" items="${list}">
-										<tr onclick="#">
-											<td>프로젝트번호(임시데이터)</td>
-											<td>프로젝트이름(임시데이터)</td>
-											<td>프로젝트시작일(임시데이터)</td>
-											<td>프로젝트종료일 (임시데이터)</td>
-											<td>달성률(임시데이터)</td>
-											<td>창작자(임시데이터)</td>
+									<c:forEach var="item" items="${failedProjectList}">
+									<input type="hidden" name="project-no" value="${item.projectNo}">
+										<tr onclick="failedProject()">
+											<td>${item.projectNo}</td>
+											<td>${item.projectName}</td>
+											<td>${item.projectRegisterDate}</td>
+											<td>${item.projectEndDate}</td>
+											<td>${item.projectCurrentPercentage}</td>
+											<td>${item.projectManagerName}</td>
 										</tr>
-										
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
