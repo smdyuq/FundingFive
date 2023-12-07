@@ -20,4 +20,5 @@ public interface BoardService {
 	public int boardUpdate(int idx, String title, String content, String fileName, String uploadDirectory);
 	//조회수 증가
 	public int boardView(int idx);
+	
 }

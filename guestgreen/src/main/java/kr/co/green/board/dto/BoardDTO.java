@@ -11,10 +11,9 @@ public class BoardDTO {
 	private int views;	//조회수
 	private String writer;	//작성자
 	
-	
 	private String fileName;	//파일 이름
 	private String filePath;	//파일 경로
-
+	
 	public String getFileName() {
 		return fileName;
 	}
@@ -27,8 +26,6 @@ public class BoardDTO {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-	
-	
 	public int getIdx() {
 		return idx;
 	}

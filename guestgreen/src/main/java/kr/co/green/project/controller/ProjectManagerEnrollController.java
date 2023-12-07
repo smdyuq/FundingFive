@@ -44,6 +44,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int memberNo = (int) session.getAttribute("memberNo");
 
+
 		   Collection<Part> parts = request.getParts();
 		      String uploadDirectory = "C:\\Users\\yh631\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
@@ -71,6 +72,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		            fileName = "";
 		         }
 		      }
+
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectName(request.getParameter("project-name"));

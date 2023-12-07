@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <%@include file="./views/common/head.jsp"%>
@@ -647,6 +648,7 @@ dd {
 	font-weight: 180;
 	cursor: pointer;
 }
+
 </style>
 
 <body>
@@ -872,12 +874,14 @@ dd {
 				</div>
 			</div>
 		</div>
+
 		<br>
 		</div>
 
 		<img class="banner"
 			src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
 			width="1160px" height="181.1px">
+
 
 		<div class="jb-division-line"></div>
 
@@ -1144,7 +1148,16 @@ dd {
 			</div>
 		</div>
 
+
+
+
+		<!-- 배너 -->
+		<br> <img class="banner" src="/resources/image/t1.png"
+			width="1160px" height="181.1px">
+
 		<div class="jb-division-line"></div>
+		<!-- /배너 -->
+
 
 		<div class="Container">
 			<div class="FrontPage_ListTitle">오늘 오픈한 프로젝트</div>
