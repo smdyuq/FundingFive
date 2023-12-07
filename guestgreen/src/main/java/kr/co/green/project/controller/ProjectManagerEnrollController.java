@@ -21,9 +21,9 @@ import kr.co.green.project.model.service.ProjectServiceImpl;
 import net.coobird.thumbnailator.Thumbnails;
 
 @WebServlet("/projectManagerEnroll.do")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1MB
-		maxFileSize = 1024 * 1024 * 5, // 5MB
-		maxRequestSize = 1024 * 1024 * 5 * 5 // 25MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, // 1MB
+		maxFileSize = 1024 * 1024 * 5 * 10, // 5MB
+		maxRequestSize = 1024 * 1024 * 10 * 10 // 25MB
 )
 public class ProjectManagerEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,34 +44,35 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int memberNo = (int) session.getAttribute("memberNo");
 
-		// 파일 업로드
-		Collection<Part> parts = request.getParts();
 
-		String uploadDirectory = "C:\\Users\\jaeyun\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources";
+		   Collection<Part> parts = request.getParts();
+		      String uploadDirectory = "C:\\Users\\yh631\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
+		      // 파일 업로드하려는 디렉토리 없으면 생성
+		      File filePath = new File(uploadDirectory);
+		      if (!filePath.exists()) {
+		         filePath.mkdirs();
+		      }
 
-		// 파일 업로드하려는 디렉토리 없으면 생성
-		File filePath = new File(uploadDirectory);
-		if (!filePath.exists()) {
-			filePath.mkdirs();
-		}
+		      String fileName = "";
+		      for (Part part : parts) {
 
-		String fileName = "";
-		for (Part part : parts) {
+		         if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
+		            fileName = getFileName(part);
+		            if (!fileName.equals("")) {
+		               part.write(filePath + File.separator + "managerimage" + File.separator + fileName);
 
-			if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
-				fileName = getFileName(part);
-				if (!fileName.equals("")) {
-					part.write(filePath + File.separator + fileName);
-					// 이미지 리사이징 (100 X 100)					
-					resizeImage(uploadDirectory + "/" + fileName, 100, 100);
-				} else if (fileName.equals("")) {
-					uploadDirectory = "";
-				}
-			} else {
-				fileName = "";
-			}
-		}
+		               // 이미지 리사이징 (managerImage) (width X height)
+		               resizeImage(uploadDirectory + "/managerimage/" + fileName, 100, 100);
+
+		            } else if (fileName.equals("")) {
+		               uploadDirectory = "";
+		            }
+		         } else {
+		            fileName = "";
+		         }
+		      }
+
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectName(request.getParameter("project-name"));
