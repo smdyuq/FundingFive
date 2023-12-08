@@ -38,9 +38,6 @@ public class FormController extends HttpServlet {
 			nextPage = "/views/project/projectEnroll.jsp";
 		}
 		else if(action.equals("/home.do")){
-			HttpSession session = request.getSession();
-			if(session.getAttribute("memberNo") != null) {
-			}
 			nextPage = "/"; // 홈으로 이동
 		}
 
