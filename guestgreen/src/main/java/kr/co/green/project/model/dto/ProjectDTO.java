@@ -10,7 +10,7 @@ public class ProjectDTO {
 	private int projectPrice;
 	private int projectTargetAmount;
 	private int projectCurrentAmount;
-	private double projectCurrentPercentage ;
+	private double projectCurrentPercentage;
 	private int projectSponserNumber;
 	private String projectConfirmStatus;
 	private String projectSaleStatus;
@@ -19,8 +19,17 @@ public class ProjectDTO {
 	private String projectOuterImageName;
 	private String projectOuterImagePath;
 	private long projectRemainDate;
+	private int projectRankNumber;
 
-//	상세이미지
+	public int getProjectRankNumber() {
+		return projectRankNumber;
+	}
+
+	public void setProjectRankNumber(int projectRankNumber) {
+		this.projectRankNumber = projectRankNumber;
+	}
+
+	// 상세이미지
 	private String projectInnerImageName;
 	private String projectInnerImagePath;
 
@@ -179,8 +188,6 @@ public class ProjectDTO {
 		this.projectOuterImagePath = projectOuterImagePath;
 	}
 
-
-
 	public String getProjectInnerImageName() {
 		return projectInnerImageName;
 	}
@@ -237,8 +244,8 @@ public class ProjectDTO {
 		this.projectManagerImagePath = projectManagerImagePath;
 	}
 
-
 	public double getProjectCurrentPercentage() {
+
 		return projectCurrentPercentage;
 	}
 
