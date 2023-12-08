@@ -15,15 +15,15 @@
 	<main>
 
 		<div class="project-cartegory">
+					<div>${title }</div>
 			<c:forEach var="item" items="${list }">
 				
-					<div>${title }</div>
 
 					<div class="product_container">
 						<div class="product">
 							<div class="img_div">
 								<a class="img_div_a" href=""><img
-									src="${item.projectOuterImageName }" alt="상품 이미지"></a>
+									src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }" alt="상품 이미지"></a>
 							</div>
 							<a href="#" class="category_name">${item.projectKind }</a><a
 								class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>

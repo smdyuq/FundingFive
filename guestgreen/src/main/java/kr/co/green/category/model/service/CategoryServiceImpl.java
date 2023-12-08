@@ -55,6 +55,12 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.categoryJewelry(con);
 	}
 
+//	카테고리 크리스마스 조회
+	@Override
+	public ArrayList<ProjectDTO> categoryChristmas() {
+		return categoryDAO.categoryChristmas(con);
+	}
+
 //	진행중인, 달성완료, 인기 프로젝트 조회
 
 //	진행중인 프로젝트 조회

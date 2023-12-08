@@ -51,6 +51,9 @@ public class CategoryController extends HttpServlet {
 		} else if (category.equals("Jewelry")) {
 			list = categoryService.categoryJewelry();
 			title = "주얼리";
+		} else if (category.equals("Christmas")) {
+			list = categoryService.categoryChristmas();
+			title = "크리스마스";
 		}
 
 		request.setAttribute("title", title);

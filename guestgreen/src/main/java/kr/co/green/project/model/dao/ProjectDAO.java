@@ -347,7 +347,7 @@ public class ProjectDAO {
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
 		String query = "SELECT project_no, project_name, project_price, project_current_amount, project_target_amount "
 				+ "		FROM project"
-					+ "WHERE project_no = ?";
+					+ " WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
