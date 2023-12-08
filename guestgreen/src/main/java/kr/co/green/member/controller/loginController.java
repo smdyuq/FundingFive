@@ -1,8 +1,8 @@
 package kr.co.green.member.controller;
 
 import java.io.IOException;
+import java.util.Objects;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,11 +46,17 @@ public class loginController extends HttpServlet {
 			session.setAttribute("memberNo", memberDTO.getMemberNo());
 			session.setAttribute("memberName", memberDTO.getMemberName());
 			session.setAttribute("memberType", memberDTO.getMemberType());
-
-//			request.setAttribute("memberDTO", memberDTO);
+			
+			if(!Objects.isNull(session.getAttribute("click")) && !Objects.isNull(session.getAttribute("projectNo"))) {
+				int projectNo = (int)session.getAttribute("projectNo");
+				int result = memberService.memberLike(memberDTO.getMemberNo(), projectNo);
+				if(result > 0) {
+					System.out.println("좋아요 성공. db확인 요망");
+				}else {
+					System.out.println("좋아요 실패");
+				}
+			}
 			response.sendRedirect("/main.do");
-//			RequestDispatcher view = request.getRequestDispatcher("/main.do");
-//			view.forward(request, response);
 		} else {
 			AlertAndRedirect.alertRedirect(response, "로그인에 실패했습니다.", "/");
 		}

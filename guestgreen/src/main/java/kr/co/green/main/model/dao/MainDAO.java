@@ -12,349 +12,59 @@ public class MainDAO {
 
 	private PreparedStatement pstmt;
 
-//	배너 조회
-	public ArrayList<ProjectDTO> bannerSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
+	String[] queryArr = {
+			"SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
+					+ " ORDER BY PROJECT_VIEWS DESC FETCH FIRST 4 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
+					+ " FROM (SELECT PROJECT.*, ROW_NUMBER() OVER (ORDER BY PROJECT_VIEWS DESC) as RANK FROM PROJECT WHERE PROJECT_CONFIRM_STATUS = 'Y') P1"
+					+ " JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE P1.RANK BETWEEN 5 AND 12",
+			"SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
+					+ " ORDER BY PROJECT_CURRENT_PERCENTAGE DESC FETCH FIRST 5 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
+					+ " AND PROJECT_END_DATE BETWEEN SYSDATE AND SYSDATE + 1 FETCH FIRST 4 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE "
+					+ " FROM RECENT_PROJECT P3 JOIN PROJECT P1 ON P3.PROJECT_NO = P1.PROJECT_NO"
+					+ "	JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE P1.PROJECT_CONFIRM_STATUS = 'Y'"
+					+ " ORDER BY P3.RECENT_PROJECT_DATE DESC FETCH FIRST 4 ROWS ONLY",
+			"SELECT * FROM (SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
+					+ "  FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
+					+ "  WHERE P1.PROJECT_CONFIRM_STATUS = 'Y'"
+					+ "  ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <= 10 FETCH FIRST 4 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
+					+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
+					+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' ORDER BY P1.PROJECT_REGISTER_DATE DESC FETCH FIRST 4 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
+					+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
+					+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' AND PROJECT_CURRENT_PERCENTAGE >= 100 FETCH FIRST 4 ROWS ONLY",
+			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
+					+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
+					+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' AND TRUNC(P1.PROJECT_REGISTER_DATE) = TRUNC(SYSDATE) order by project_register_date desc FETCH FIRST 4 ROWS ONLY" };
 
-		String query = "SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
-				+ " ORDER BY PROJECT_VIEWS DESC FETCH FIRST 4 ROWS ONLY";
+	// 프로젝트 조회 공통 메소드
+	public void projectSelect(Connection con, ArrayList<ProjectDTO>[] arr) {
 
-		try {
-			pstmt = con.prepareStatement(query);
+		for (int i = 0; i < arr.length; i++) {
+			try {
+				pstmt = con.prepareStatement(queryArr[i]);
 
-			ResultSet rs = pstmt.executeQuery();
+				ResultSet rs = pstmt.executeQuery();
+			
+				while (rs.next()) {
+					ProjectDTO projectDTO = new ProjectDTO();
+					projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+					projectDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
+					projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+					projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+					projectDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
+					projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
 
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
+					arr[i].add(projectDTO);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 
-		return list;
-	}
-
-//	주목할만한 프로젝트 조회
-	public ArrayList<ProjectDTO> noteworthySelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
-				+ " FROM (SELECT PROJECT.*, ROW_NUMBER() OVER (ORDER BY PROJECT_VIEWS DESC) as RANK FROM PROJECT WHERE PROJECT_CONFIRM_STATUS = 'Y') P1"
-				+ " JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE P1.RANK BETWEEN 5 AND 12";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	인기 프로젝트 조회
-	public ArrayList<ProjectDTO> popularitySelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
-				+ " ORDER BY PROJECT_CURRENT_PERCENTAGE DESC FETCH FIRST 5 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	마감 임박 프로젝트 조회
-	public ArrayList<ProjectDTO> DeadlineSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
-				+ " AND PROJECT_END_DATE BETWEEN SYSDATE AND SYSDATE + 1 FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	최근 본 프로젝트 조회
-	public ArrayList<ProjectDTO> recentProjectSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE "
-				+ " FROM RECENT_PROJECT P3 JOIN PROJECT P1 ON P3.PROJECT_NO = P1.PROJECT_NO"
-				+ "	JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
-				+ " ORDER BY P3.RECENT_PROJECT_DATE DESC FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	이런 프로젝트 어때요 조회
-	public ArrayList<ProjectDTO> RecommendedSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT * FROM (SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
-				+ "  FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
-				+ "  WHERE P1.PROJECT_CONFIRM_STATUS = 'Y'"
-				+ "  ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <= 10 FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	신규 프로젝트 조회
-	public ArrayList<ProjectDTO> newProjectSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
-				+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
-				+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' ORDER BY P1.PROJECT_REGISTER_DATE DESC FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	달성 완료 프로젝트 조회	
-	public ArrayList<ProjectDTO> completeProjectSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
-				+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
-				+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' AND PROJECT_CURRENT_PERCENTAGE >= 100 FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-//	오늘 오픈한 프로젝트 조회
-	public ArrayList<ProjectDTO> todayProjectSelect(Connection con) {
-		ArrayList<ProjectDTO> list = new ArrayList<>();
-
-		String query = "SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
-				+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
-				+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' AND TRUNC(P1.PROJECT_REGISTER_DATE) = TRUNC(SYSDATE) order by project_register_date desc FETCH FIRST 4 ROWS ONLY";
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int projectNo = rs.getInt("PROJECT_NO");
-				String projectOuterImageName = rs.getString("PROJECT_OUTER_IMAGE_NAME");
-				String projectKind = rs.getString("PROJECT_KIND");
-				String projectManagerName = rs.getString("PROJECT_MANAGER_NAME");
-				String projectIntroduce = rs.getString("PROJECT_INTRODUCE");
-				int projectCurrentPercentage = rs.getInt("PROJECT_CURRENT_PERCENTAGE");
-
-				ProjectDTO projectDTO = new ProjectDTO();
-				projectDTO.setProjectNo(projectNo);
-				projectDTO.setProjectOuterImageName(projectOuterImageName);
-				projectDTO.setProjectKind(projectKind);
-				projectDTO.setProjectManagerName(projectManagerName);
-				projectDTO.setProjectIntroduce(projectIntroduce);
-				projectDTO.setProjectCurrentPercentage(projectCurrentPercentage);
-
-				list.add(projectDTO);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
 	}
 
 }

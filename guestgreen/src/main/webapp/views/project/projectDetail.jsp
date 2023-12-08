@@ -26,7 +26,7 @@
 				<div class="project-name">${projectDTO.projectName}</div>
 				<div class="project-information">
 					<div class="project-img">
-						<img src="${projectDTO.projectOuterImagePath}" alt="">
+						<img src="/resources/uploads/innerimage/${projectDTO.projectInnerImageName}" alt="">
 					</div>
 					<div class="project-description">
 						<div class="project-text-alignment">
@@ -78,8 +78,7 @@
 			</div>
 			<div class="product-div">
 				<div class="product-description">
-					<p>제품 상세 설명(이미지, 글)</p>
-					<p>테스트입니다</p>
+					${projectDTO.projectContent}
 				</div>
 				<div class="originator-div">
 					<p>창작자 소개</p>
