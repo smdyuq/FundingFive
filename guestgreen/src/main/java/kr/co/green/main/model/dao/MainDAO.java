@@ -40,7 +40,7 @@ public class MainDAO {
 			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
 					+ " FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO"
 					+ " WHERE P1.PROJECT_CONFIRM_STATUS = 'Y' AND P1.PROJECT_KIND = '크리스마스'"
-					+ " ORDER BY PROJECT_REGISTER_DATE DESC FETCH FIRST 8 ROWS ONLY"};
+					+ " ORDER BY PROJECT_REGISTER_DATE DESC FETCH FIRST 8 ROWS ONLY" };
 
 	// 프로젝트 조회 공통 메소드
 	public void projectSelect(Connection con, ArrayList<ProjectDTO>[] arr) {
@@ -66,6 +66,7 @@ public class MainDAO {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 //	인기 프로젝트 조회

@@ -35,7 +35,7 @@
 	        <c:otherwise>
 	            <div class="recent_searches_result">
 	            	<c:forEach var="searching" items="${memberSearchArr}">
-	                	<div id="search-words${searching.searchNo}"><a id="search-word">${searching.searchWord}</a><a onclick="deleteSearchHistory(${searching.searchNo})">x</a></div>
+	                	<div id="search-words"><a id="search-word" onclick="searchSelectedrWord('${searching.searchWord}')">${searching.searchWord}</a><a onclick="deleteSearchHistory('${searching.searchNo}')">x</a></div>
 	                </c:forEach>
 	            </div>
 	        </c:otherwise>   
@@ -53,7 +53,8 @@
 	        </c:when>    
 	        <c:otherwise>
 	        	<c:forEach var="searching" items="${popularSearchArr}">
-	                	<div onclick="searchPopularWord(${searching.searchWord})"><a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a></div>
+	                	<div><a>${searching.rowNum}</a>
+	                	<a id="popular-search" onclick="searchSelectedrWord('${searching.searchWord}')">${searching.searchWord}</a></div>
 	            </c:forEach>
 	        </c:otherwise>
         </c:choose>
