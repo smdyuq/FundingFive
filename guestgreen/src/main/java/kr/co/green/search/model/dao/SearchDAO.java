@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.search.model.dto.SearchDTO;
 
 public class SearchDAO {
@@ -104,6 +106,61 @@ public class SearchDAO {
 		return result;
 	}
 
+	//프로젝트 검색
+	public void getSearchedProject(Connection con, String searchWord, ArrayList<ProjectDTO> searchedProjectList) {
+		
+		String query = " SELECT p1.*, pm.PROJECT_MANAGER_NAME FROM (SELECT PROJECT_NO, PROJECT_NAME, PROJECT_OUTER_IMAGE_NAME, "
+			          + "												  PROJECT_KIND, PROJECT_INTRODUCE, "
+			          + "                                                 PROJECT_CURRENT_PERCENTAGE, PROJECT_CURRENT_AMOUNT,"
+			          + "												  TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE"
+			          + "                                          FROM project"
+					  + "                                          WHERE project_name LIKE '%' || ? || '%')p1 "
+					  + " JOIN PROJECT_MANAGER PM "
+					  + " ON P1.PROJECT_NO = PM.PROJECT_NO";
+		
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, searchWord);
+				ResultSet rs = pstmt.executeQuery();
+			
+				while (rs.next()) {
+					ProjectDTO projectDTO = new ProjectDTO();
+					projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+					projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+					projectDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
+					projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+					projectDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+					projectDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
+					projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+					projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
+					projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+					
+					searchedProjectList.add(projectDTO);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+
+	//검색결과 수 반환
+	public int getSearchedCount(Connection con, String searchWord) {
+		String query = "SELECT count(*) AS cnt FROM project "
+					 + " WHERE project_name LIKE '%' || ? || '%'";
+		
+		int searchCount = 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchWord);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				searchCount = rs.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return searchCount;
+	}
 }
 
 

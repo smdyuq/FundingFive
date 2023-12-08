@@ -31,7 +31,9 @@ function searchPopularWord(searchWord){
 	window.location.href = '/searchPopularWord.do?searchWord=' + searchWord;
 }
 
-
+function seachRecentProject(searchWord){
+	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
+}
 
 
 

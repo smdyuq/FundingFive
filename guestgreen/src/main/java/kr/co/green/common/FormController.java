@@ -40,21 +40,16 @@ public class FormController extends HttpServlet {
 		else if(action.equals("/home.do")){
 			HttpSession session = request.getSession();
 			if(session.getAttribute("memberNo") != null) {
-				int memberNo = (int)session.getAttribute("memberNo");
-				MemberServiceImpl memberService = new MemberServiceImpl();
-				MemberDTO memberDTO = memberService.memberSelect(memberNo);
-				request.setAttribute("memberDTO", memberDTO);
 			}
 			nextPage = "/"; // 홈으로 이동
 		}
 
 
-	// 페이지 포워딩
-	if(!nextPage.isEmpty())
-	{
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		dispatcher.forward(request, response);
-	}
+		// 페이지 포워딩
+		if(!nextPage.isEmpty()){
+			response.sendRedirect(nextPage);
+		}
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

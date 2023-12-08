@@ -41,19 +41,13 @@ public class ProjectEnrollController extends HttpServlet {
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 
-
 		String uploadDirectory = "C:\\Users\\LG\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
-
-
-		System.out.println("1");
 
 		// 파일 업로드하려는 디렉토리 없으면 생성
 		File filePath = new File(uploadDirectory);
 		if (!filePath.exists()) {
 			filePath.mkdirs();
 		}
-
-		System.out.println("2");
 
 		String fileName = "";
 		String[] fileNameArr = new String[2];

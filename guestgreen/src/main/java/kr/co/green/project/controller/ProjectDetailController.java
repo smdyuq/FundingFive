@@ -29,7 +29,6 @@ public class ProjectDetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
 		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 		ProjectDTO projectDTO;

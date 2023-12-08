@@ -1,8 +1,10 @@
 package kr.co.green.search.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import kr.co.green.common.DatabaseConnection;
+import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.search.model.dao.SearchDAO;
 import kr.co.green.search.model.dto.SearchDTO;
 
@@ -33,6 +35,18 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public int deleteSearchHistory(int searchNo) {
 		return searchDAO.deleteSearchHistory(con, searchNo);
+	}
+
+	//프로젝트 검색
+	@Override
+	public void getSearchedProject(String searchWord, ArrayList<ProjectDTO> searchedProjectList) {
+		searchDAO.getSearchedProject(con, searchWord, searchedProjectList);
+	}
+
+	//검색결과 수 조회
+	@Override
+	public int getSearchedCount(String searchWord) {
+		return searchDAO.getSearchedCount(con, searchWord);
 	}
 
 }

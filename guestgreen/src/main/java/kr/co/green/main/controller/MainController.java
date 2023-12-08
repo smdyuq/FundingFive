@@ -24,62 +24,53 @@ public class MainController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MainServiceImpl mainService = new MainServiceImpl();
-
-//      배너 조회      
-		ArrayList<ProjectDTO> banner = mainService.bannerSelect();
-
-//      주목할만한 프로젝트 조회
-		ArrayList<ProjectDTO> noteworthy = mainService.noteworthySelect();
-
-//      인기 프로젝트 조회
-		ArrayList<ProjectDTO> popularity = mainService.popularitySelect();
-
-//      마감 임박 프로젝트 조회
-		ArrayList<ProjectDTO> Deadline = mainService.DeadlineSelect();
-
-//      최근 본 프로젝트 조회
-		ArrayList<ProjectDTO> recentProject = mainService.recentProjectSelect();
-
-//      이런 프로젝트 어때요 조회
-		ArrayList<ProjectDTO> Recommended = mainService.RecommendedSelect();
-
-//      신규 프로젝트 조회
-		ArrayList<ProjectDTO> newProject = mainService.newProjectSelect();
-
-//      공개예정 프로젝트 조회
-		ArrayList<ProjectDTO> completeProject = mainService.completeProjectSelect();
-
-//      오늘 오픈한 프로젝트 조회
-		ArrayList<ProjectDTO> todayProject = mainService.todayProjectSelect();
-
+		
+		String[] nameArr = {"banner", "noteWorthy", "popularity", "deadLine", "recentProject", 
+				"recommended", "newProject", "completeProject", "todayProject"};
+		
+		ArrayList<ProjectDTO>[] arr = new ArrayList[9];
+		
+		for(int i=0; i<arr.length; i++ ) {
+			arr[i] = new ArrayList<ProjectDTO>();
+		}
+		
+		mainService.projectSelect(arr);
+		
+		for(int i=0; i<arr.length; i++) {
+			request.setAttribute(nameArr[i], arr[i]);
+		}
+		
+		
+		
+		
 		// list
 
-//       배너 조회 list   
-		request.setAttribute("banner", banner);
-
-//       주목할만한 프로젝트 조회 list      
-		request.setAttribute("noteworthy", noteworthy);
-
-//      인기 프로젝트 조회 list
-		request.setAttribute("popularity", popularity);
-
-//      마감 임박 프로젝트 조회 list
-		request.setAttribute("Deadline", Deadline);
-
-//      최근 본 프로젝트 조회 list
-		request.setAttribute("recentProject", recentProject);
-
-//      이런 프로젝트 어때요 조회 list
-		request.setAttribute("Recommended", Recommended);
-
-//      신규 프로젝트 조회 list
-		request.setAttribute("newProject", newProject);
-
-//      공개 예정 프로젝트 조회 list
-		request.setAttribute("completeProject", completeProject);
-
-//      오늘 오픈한 프로젝트 조회 list
-		request.setAttribute("todayProject", todayProject);
+////       배너 조회 list   
+//		request.setAttribute("banner", banner);
+//
+////       주목할만한 프로젝트 조회 list      
+//		request.setAttribute("noteworthy", noteworthy);
+//
+////      인기 프로젝트 조회 list
+//		request.setAttribute("popularity", popularity);
+//
+////      마감 임박 프로젝트 조회 list
+//		request.setAttribute("Deadline", Deadline);
+//
+////      최근 본 프로젝트 조회 list
+//		request.setAttribute("recentProject", recentProject);
+//
+////      이런 프로젝트 어때요 조회 list
+//		request.setAttribute("Recommended", Recommended);
+//
+////      신규 프로젝트 조회 list
+//		request.setAttribute("newProject", newProject);
+//
+////      공개 예정 프로젝트 조회 list
+//		request.setAttribute("completeProject", completeProject);
+//
+////      오늘 오픈한 프로젝트 조회 list
+//		request.setAttribute("todayProject", todayProject);
 
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
 		view.forward(request, response);

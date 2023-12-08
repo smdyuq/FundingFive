@@ -50,6 +50,7 @@ public class MypageController extends HttpServlet {
 				request.setAttribute("projectApprovedList", projectApprovedList);
 				request.setAttribute("projectRejectedList", projectRejectedList);
 				request.setAttribute("memberDTO", memberDTO);
+				
 				RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");
 				view.forward(request, response);
 		}

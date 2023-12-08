@@ -1,5 +1,8 @@
 package kr.co.green.search.model.service;
 
+import java.util.ArrayList;
+
+import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.search.model.dto.SearchDTO;
 
 public interface SearchService {
@@ -12,4 +15,9 @@ public interface SearchService {
 
 	//선택한 회원 검색기록 삭제
 	public abstract int deleteSearchHistory(int searchNo);
+
+	//프로젝트 검색
+	public abstract void getSearchedProject(String searchWord, ArrayList<ProjectDTO> searchedProjectList);
+
+	public abstract int getSearchedCount(String searchWord);
 }
