@@ -19,5 +19,9 @@ public interface SearchService {
 	//프로젝트 검색
 	public abstract void getSearchedProject(String searchWord, ArrayList<ProjectDTO> searchedProjectList);
 
+	//검색된 프로젝트 수 조회
 	public abstract int getSearchedCount(String searchWord);
+
+	//검색어 테이블에 등록
+	public abstract void searchWordEnroll(String searchWord, int memberNo);
 }

@@ -49,4 +49,10 @@ public class SearchServiceImpl implements SearchService {
 		return searchDAO.getSearchedCount(con, searchWord);
 	}
 
+	//검색어 테이블에 등록
+	@Override
+	public void searchWordEnroll(String searchWord, int memberNo) {
+		searchDAO.searchWordEnroll(con, searchWord, memberNo);
+	}
+
 }

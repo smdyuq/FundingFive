@@ -345,9 +345,10 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_no, project_name, project_price, project_current_amount, project_target_amount "
-				+ "		FROM project"
-					+ "WHERE project_no = ?";
+		String query = "SELECT project_no, project_kind, project_name, project_price, "
+					+ "	project_current_amount, project_target_amount, project_current_percentage "
+					+ "	FROM project"
+					+ " WHERE project_no = ?";
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -355,10 +356,13 @@ public class ProjectDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				projectDTO.setProjectNo(projectNo);
+				projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
 				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
-				projectDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));			}
+				projectDTO.setProjectTargetAmount(rs.getInt("PROJECT_TARGET_AMOUNT"));	
+				projectDTO.setProjectCurrentPercentage(rs.getInt("PROJECT_CURRENT_PERCENTAGE"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -377,7 +381,7 @@ public class ProjectDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectDTO.getProjectCurrentAmount());
-			pstmt.setInt(2, projectDTO.getProjectCurrentPercentage());
+			pstmt.setDouble(2, projectDTO.getProjectCurrentPercentage());
 			pstmt.setInt(3, projectDTO.getProjectNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

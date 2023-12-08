@@ -93,7 +93,8 @@ public class SearchDAO {
 
 	//선택한 검색기록 삭제
 	public int deleteSearchHistory(Connection con, int searchNo) {
-		String query = "DELETE FROM searching"
+		String query = "UPDATE searching"
+				+ "		SET search_status = 'N'"
 				+ "		WHERE search_no = ?";
 		int result = 0;
 		try {
@@ -160,6 +161,28 @@ public class SearchDAO {
 			e.printStackTrace();
 		}
 		return searchCount;
+	}
+
+	//검색어 테이블 등록
+	public void searchWordEnroll(Connection con, String searchWord, int memberNo) {
+		String query = "";
+		if(memberNo == 0) {
+			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, NULL)";
+		}
+		else {
+			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, ?)";
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchWord);
+	        if (memberNo != 0) {
+	            pstmt.setInt(2, memberNo);
+	        }
+		    pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
 

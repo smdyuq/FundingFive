@@ -10,7 +10,7 @@ public class ProjectDTO {
 	private int projectPrice;
 	private int projectTargetAmount;
 	private int projectCurrentAmount;
-	private int projectCurrentPercentage ;
+	private double projectCurrentPercentage ;
 	private int projectSponserNumber;
 	private String projectConfirmStatus;
 	private String projectSaleStatus;
@@ -238,11 +238,11 @@ public class ProjectDTO {
 	}
 
 
-	public int getProjectCurrentPercentage() {
+	public double getProjectCurrentPercentage() {
 		return projectCurrentPercentage;
 	}
 
-	public void setProjectCurrentPercentage(int projectCurrentPercentage) {
+	public void setProjectCurrentPercentage(double projectCurrentPercentage) {
 		this.projectCurrentPercentage = projectCurrentPercentage;
 	}
 

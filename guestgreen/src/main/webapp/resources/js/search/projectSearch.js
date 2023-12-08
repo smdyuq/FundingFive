@@ -27,11 +27,7 @@ function deleteSearchHistory(searchNo){
 	
 }
 
-function searchPopularWord(searchWord){
-	window.location.href = '/searchPopularWord.do?searchWord=' + searchWord;
-}
-
-function seachRecentProject(searchWord){
+function searchSelectedrWord(searchWord){
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
