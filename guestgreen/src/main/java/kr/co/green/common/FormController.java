@@ -36,13 +36,11 @@ public class FormController extends HttpServlet {
 		} else if (action.equals("/projectEnrollForm.do")) {
 
 			nextPage = "/views/project/projectEnroll.jsp";
-		}
-		else if(action.equals("/home.do")){
-			HttpSession session = request.getSession();
-			if(session.getAttribute("memberNo") != null) {
-			}
+		} else if (action.equals("/home.do")) {
+
 			nextPage = "/"; // 홈으로 이동
 		}
+
 
 
 		// 페이지 포워딩
@@ -50,6 +48,7 @@ public class FormController extends HttpServlet {
 			response.sendRedirect(nextPage);
 		}
 	
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
