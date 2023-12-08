@@ -25,6 +25,7 @@ public class MainController extends HttpServlet {
 			throws ServletException, IOException {
 		MainServiceImpl mainService = new MainServiceImpl();
 		
+
 		String[] nameArr = {"banner", "noteWorthy", "popularity", "deadLine", "recentProject", 
 				"recommended", "newProject", "completeProject", "todayProject"};
 		
@@ -43,34 +44,7 @@ public class MainController extends HttpServlet {
 		
 		
 		
-		// list
 
-////       배너 조회 list   
-//		request.setAttribute("banner", banner);
-//
-////       주목할만한 프로젝트 조회 list      
-//		request.setAttribute("noteworthy", noteworthy);
-//
-////      인기 프로젝트 조회 list
-//		request.setAttribute("popularity", popularity);
-//
-////      마감 임박 프로젝트 조회 list
-//		request.setAttribute("Deadline", Deadline);
-//
-////      최근 본 프로젝트 조회 list
-//		request.setAttribute("recentProject", recentProject);
-//
-////      이런 프로젝트 어때요 조회 list
-//		request.setAttribute("Recommended", Recommended);
-//
-////      신규 프로젝트 조회 list
-//		request.setAttribute("newProject", newProject);
-//
-////      공개 예정 프로젝트 조회 list
-//		request.setAttribute("completeProject", completeProject);
-//
-////      오늘 오픈한 프로젝트 조회 list
-//		request.setAttribute("todayProject", todayProject);
 
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
 		view.forward(request, response);

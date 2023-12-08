@@ -41,12 +41,12 @@ public class FormController extends HttpServlet {
 			nextPage = "/"; // 홈으로 이동
 		}
 
-
 		// 페이지 포워딩
 		if(!nextPage.isEmpty()){
 			response.sendRedirect(nextPage);
 		}
 	
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

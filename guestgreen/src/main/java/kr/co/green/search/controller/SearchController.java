@@ -39,6 +39,7 @@ public class SearchController extends HttpServlet {
 		}
 		
 		SearchService searchService = new SearchServiceImpl();
+
 		
 		searchService.searchWordEnroll(searchWord, memberNo);
 		
@@ -64,6 +65,7 @@ public class SearchController extends HttpServlet {
 		request.setAttribute("searchCount", searchCount);
 		RequestDispatcher view = request.getRequestDispatcher("/views/project/projectSearchResult.jsp");
 		view.forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
