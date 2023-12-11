@@ -24,6 +24,9 @@ public interface CategoryService {
 //	카테고리 주얼리 조회
 	public ArrayList<ProjectDTO> categoryJewelry();
 
+//	카테고리 크리스마스 조회
+	public ArrayList<ProjectDTO> categoryChristmas();
+
 //	진행중인, 달성완료, 인기 프로젝트 조회
 
 //	진행중인 프로젝트 조회

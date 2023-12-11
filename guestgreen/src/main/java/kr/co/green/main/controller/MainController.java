@@ -24,27 +24,26 @@ public class MainController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MainServiceImpl mainService = new MainServiceImpl();
-		
 
-		String[] nameArr = {"banner", "noteWorthy", "popularity", "deadLine", "recentProject", 
-				"recommended", "newProject", "completeProject", "todayProject"};
-		
+		String[] nameArr = { "banner", "noteWorthy", "deadLine", "recentProject", "recommended", "newProject",
+				"completeProject", "todayProject", "christmasProject" };
+
 		ArrayList<ProjectDTO>[] arr = new ArrayList[9];
-		
-		for(int i=0; i<arr.length; i++ ) {
+
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] = new ArrayList<ProjectDTO>();
 		}
-		
+
 		mainService.projectSelect(arr);
-		
-		for(int i=0; i<arr.length; i++) {
+
+		for (int i = 0; i < arr.length; i++) {
 			request.setAttribute(nameArr[i], arr[i]);
 		}
-		
-		
-		
-		
 
+//		인기 프로젝트 조회
+		ArrayList<ProjectDTO> popularity = mainService.projectPopularity();
+
+		request.setAttribute("popularity", popularity);
 
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
 		view.forward(request, response);

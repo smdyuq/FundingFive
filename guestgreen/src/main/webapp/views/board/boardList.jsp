@@ -82,22 +82,22 @@
 							</c:choose>
 	
 						</tbody>
+						
 					</table>
-	
-					<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
-	
-						<c:if test="${memberDTO.memberType == 0}">
-							<!-- 멤버 넘버가 1인 사람만 버튼이 보임. -->
-							<button class="btn btn-dark me-md-2" type="button"
-								onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
-								등록</button>
-						</c:if>
-						<form action="/boardList.do" method="get">
-							<input type="hidden" name="cpage" value="1"> <input
-								type="search" name="searchText" placeholder="검색어를 입력하세요">
-							<button type="submit">검색</button>
-						</form>
-					</div>
+						<div class="d-grid gap-2d-md-flex justify-content-end float-right ">
+		
+							<c:if test="${sessionScope.memberType == 0}">
+								<!-- 멤버 넘버가 1인 사람만 버튼이 보임. -->
+								<button class="btn btn-dark me-md-2" type="button"
+									onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
+									등록</button>
+							</c:if>
+							<form action="/boardList.do" method="get">
+								<input type="hidden" name="cpage" value="1"> <input
+									type="search" name="searchText" placeholder="검색어를 입력하세요">
+								<button type="submit">검색</button>
+							</form>
+						</div>
 					</table>
 	
 	

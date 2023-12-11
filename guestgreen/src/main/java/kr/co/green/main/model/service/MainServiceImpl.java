@@ -24,7 +24,11 @@ public class MainServiceImpl implements MainService {
 	public void projectSelect(ArrayList<ProjectDTO>[] list) {
 		mainDAO.projectSelect(con, list);
 	}
-	
-	
+
+//	인기 프로젝트 조회
+	@Override
+	public ArrayList<ProjectDTO> projectPopularity() {
+		return mainDAO.projectPopularity(con);
+	}
 
 }

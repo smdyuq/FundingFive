@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+
 <style>
 .form-label {
 	font-size: 17px;
@@ -40,11 +41,22 @@ input[type=file]::file-selector-button {
 
 /* 다음 버튼 */
 .next_btn {
-	margin-top: 5%;
-	padding: 10px 15px 10px 15px; /* 상단 우측 하단 좌측 */
-	font-size: 15px;
+	font-style : ;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  
+}
+
+.next_btn{
+
 }
 </style>
+
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -85,6 +97,7 @@ input[type=file]::file-selector-button {
 								<option value="뷰티">뷰티</option>
 								<option value="푸드">푸드</option>
 								<option value="주얼리">주얼리</option>
+								<option value="크리스마스">크리스마스</option>
 							</select>
 						</div>
 
@@ -108,14 +121,14 @@ input[type=file]::file-selector-button {
 						</div>
 
 						<div class="file-input-container">
-							<label class="form-label">프로젝트 메인 이미지 </label> <br> <input
+							<label class="form-label">프로젝트 메인 페이지 이미지 </label> <br> <input
 								type="file" class="form-file-control"
 								id="exampleFormControlInput1" name="project_outer_image"
 								required>
 						</div>
 
 						<div class="file-input-container">
-							<label class="form-label">프로젝트 상세 이미지</label> <br> <input
+							<label class="form-label">프로젝트 상세 메인 이미지</label> <br> <input
 								type="file" class="form-file-control"
 								id="exampleFormControlInput1" name="project_inner_image"
 								required><br>
