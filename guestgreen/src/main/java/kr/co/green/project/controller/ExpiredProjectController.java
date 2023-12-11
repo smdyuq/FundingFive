@@ -52,7 +52,7 @@ public class ExpiredProjectController extends HttpServlet {
 					PasswordAuthentication pa;
 					public MailAuth() {
 						String mailId = "nobuts98@gmail.com";
-						String mailPwd = "wszk brlx qgjq yuoe";	// 나중에 암호화 필수
+						String mailPwd = "";	// 나중에 암호화 필수
 						pa = new PasswordAuthentication(mailId, mailPwd);
 					}
 					public PasswordAuthentication getPasswordAuthentication() {
