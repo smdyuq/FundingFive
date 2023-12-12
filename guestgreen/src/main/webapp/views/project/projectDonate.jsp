@@ -30,12 +30,11 @@
 						<img src="" alt="이미지">
 					</div>
 					<div class="main-text">
-						<div class="main-cartegory">카테고리 명</div>
-						<div class="main-project-name">프로젝트명</div>
+						<div class="main-cartegory">${projectDTO.projectKind}</div>
+						<div class="main-project-name">${projectDTO.projectName}</div>
 						<div class="main-price">
-							<p>00000원</p>
-							<p class="main-percent">000%</p>
-							<p>n일 남음</p>
+							<p>${projectDTO.projectPrice}원</p>
+							<p class="main-percent">${projectDTO.projectCurrentPercentage}%</p>
 						</div>
 					</div>
 				</div>
@@ -126,11 +125,11 @@
 			          method: "post",
 			          headers: { "Content-Type": "application/json" },
 			          data: {
-			            donate_id: "IMP" + make_donate_id,
+			            donate_id: "IMP" + make_donate_id, 
 						project_no : project_no,
 						project_price : project_price,
 						member_no : member_no,
-						project_current_amount : project_current_amount
+						project_current_amount : project_current_amount,
 						project_target_amount : project_target_amount,
 						member_addr : member_addr,
 						member_phone : member_phone,

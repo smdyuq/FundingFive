@@ -33,7 +33,6 @@ public class SearchFormController extends HttpServlet {
 			
 			if(request.getParameter("status").equals("delete")) {
 				// 검색어 옆 x 누르면 자바스크립트에서 status를 변수로 보냄
-				System.out.println(request.getParameter("searchNo"));
 				int result = searchService.deleteSearchHistory(Integer.parseInt(request.getParameter("searchNo")));
 				
 				if(result>0) {

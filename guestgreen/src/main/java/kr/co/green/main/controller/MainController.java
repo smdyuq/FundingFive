@@ -15,80 +15,44 @@ import kr.co.green.project.model.dto.ProjectDTO;
 
 @WebServlet("/main.do")
 public class MainController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
-	public MainController() {
-		super();
-	}
+   public MainController() {
+      super();
+   }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		MainServiceImpl mainService = new MainServiceImpl();
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+      MainServiceImpl mainService = new MainServiceImpl();
 
-//      배너 조회      
-		ArrayList<ProjectDTO> banner = mainService.bannerSelect();
+      String[] nameArr = { "banner", "noteWorthy", "deadLine", "recentProject", "recommended", "newProject",
+            "completeProject", "todayProject", "christmasProject" };
 
-//      주목할만한 프로젝트 조회
-		ArrayList<ProjectDTO> noteworthy = mainService.noteworthySelect();
+      ArrayList<ProjectDTO>[] arr = new ArrayList[9];
+
+      for (int i = 0; i < arr.length; i++) {
+         arr[i] = new ArrayList<ProjectDTO>();
+      }
+
+      mainService.projectSelect(arr);
+
+      for (int i = 0; i < arr.length; i++) {
+         request.setAttribute(nameArr[i], arr[i]);
+      }
 
 //      인기 프로젝트 조회
-		ArrayList<ProjectDTO> popularity = mainService.popularitySelect();
+      ArrayList<ProjectDTO> popularity = mainService.projectPopularity();
 
-//      마감 임박 프로젝트 조회
-		ArrayList<ProjectDTO> Deadline = mainService.DeadlineSelect();
+      request.setAttribute("popularity", popularity);
 
-//      최근 본 프로젝트 조회
-		ArrayList<ProjectDTO> recentProject = mainService.recentProjectSelect();
+      RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+      view.forward(request, response);
 
-//      이런 프로젝트 어때요 조회
-		ArrayList<ProjectDTO> Recommended = mainService.RecommendedSelect();
+   }
 
-//      신규 프로젝트 조회
-		ArrayList<ProjectDTO> newProject = mainService.newProjectSelect();
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
 
-//      공개예정 프로젝트 조회
-		ArrayList<ProjectDTO> completeProject = mainService.completeProjectSelect();
-
-//      오늘 오픈한 프로젝트 조회
-		ArrayList<ProjectDTO> todayProject = mainService.todayProjectSelect();
-
-		// list
-
-//       배너 조회 list   
-		request.setAttribute("banner", banner);
-
-//       주목할만한 프로젝트 조회 list      
-		request.setAttribute("noteworthy", noteworthy);
-
-//      인기 프로젝트 조회 list
-		request.setAttribute("popularity", popularity);
-
-//      마감 임박 프로젝트 조회 list
-		request.setAttribute("Deadline", Deadline);
-
-//      최근 본 프로젝트 조회 list
-		request.setAttribute("recentProject", recentProject);
-
-//      이런 프로젝트 어때요 조회 list
-		request.setAttribute("Recommended", Recommended);
-
-//      신규 프로젝트 조회 list
-		request.setAttribute("newProject", newProject);
-
-//      공개 예정 프로젝트 조회 list
-		request.setAttribute("completeProject", completeProject);
-
-//      오늘 오픈한 프로젝트 조회 list
-		request.setAttribute("todayProject", todayProject);
-
-		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-		view.forward(request, response);
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
+   }
 
 }

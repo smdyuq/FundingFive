@@ -54,6 +54,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.memberDelete(con, memberNo);
 	}
 
+	//좋아요 메소드
+	@Override
+	public int memberLike(int memberNo, int projectNo) {
+		return memberDAO.memberLike(con, memberNo, projectNo);
+	}
+
 }
 
 

@@ -152,6 +152,23 @@ public class MemberDAO {
 		}
 		return 0;
 	}
+
+	//좋아요 메소드
+	public int memberLike(Connection con, int memberNo, int projectNo) {
+		String query = "INSERT INTO USER_LIKES "
+				+ "		VALUES(USER_LIKES_NO_SEQ.nextval, memberNo, projectNo)";
+		
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, projectNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
 
 

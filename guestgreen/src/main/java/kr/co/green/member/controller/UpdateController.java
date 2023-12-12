@@ -56,7 +56,7 @@ public class UpdateController extends HttpServlet {
 		
 
 		if (memberService.memberUpdate(memberDTO, memberNo) > 0) {
-		    AlertAndRedirect.alertRedirect(response, "회원정보를 수정했습니다.", "/views/member/myPage.jsp");
+		    AlertAndRedirect.alertRedirect(response, "회원정보를 수정했습니다.", "/myPage.do");
 
 		} else {
 			AlertAndRedirect.alertRedirect(response, "회원정보 수정에 실패했습니다.", "/");

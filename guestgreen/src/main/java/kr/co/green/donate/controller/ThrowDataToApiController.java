@@ -22,52 +22,42 @@ import kr.co.green.project.model.service.ProjectServiceImpl;
 @WebServlet("/getData.do")
 public class ThrowDataToApiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ThrowDataToApiController() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		int memberNo = (int)(session.getAttribute("memberNo"));
-		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
-		
-		//로그인 된 유저 정보 가져오기
-		MemberService memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNo);
-		
-		
-		if(!Objects.isNull(memberDTO)) {
-			//프로젝트 정보(이름, 가격) 가져오기
-			ProjectService projectService = new ProjectServiceImpl();
-			ProjectDTO projectDTO = projectService.getProjectBasicInfo(projectNo);
-			if(!Objects.isNull(projectDTO)) {
-				request.setAttribute("memberDTO", memberDTO);
-				request.setAttribute("projectDTO", projectDTO);
-				RequestDispatcher view = request.getRequestDispatcher("/views/project/projectDonate.jsp");
-				view.forward(request, response);
-			}
-			else {
-				
-			}
-		}else {
-			AlertAndRedirect.alertRedirect(response, "회원정보를 불러오지 못했습니다. 다시 시도해주세요.", "/views/project/projectDetail.jsp");
-		}
-		
+	public ThrowDataToApiController() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+
+		if (Objects.isNull(session.getAttribute("memberNo"))) {
+			AlertAndRedirect.alertRedirect(response, "로그인 후 이용해주세요.", "/views/member/login.jsp");
+		} else {
+			int memberNo = (int) (session.getAttribute("memberNo"));
+			int projectNo = Integer.parseInt(request.getParameter("projectNo"));
+
+			// 로그인 된 유저 정보 가져오기
+			MemberService memberService = new MemberServiceImpl();
+			MemberDTO memberDTO = memberService.memberSelect(memberNo);
+
+			if (!Objects.isNull(memberDTO)) {
+				// 프로젝트 정보(이름, 가격) 가져오기
+				ProjectService projectService = new ProjectServiceImpl();
+				ProjectDTO projectDTO = projectService.getProjectBasicInfo(projectNo);
+				if (!Objects.isNull(projectDTO)) {
+					request.setAttribute("memberDTO", memberDTO);
+					request.setAttribute("projectDTO", projectDTO);
+					RequestDispatcher view = request.getRequestDispatcher("/views/project/projectDonate.jsp");
+					view.forward(request, response);
+				}
+			}
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-

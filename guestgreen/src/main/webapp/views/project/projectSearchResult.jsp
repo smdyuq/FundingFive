@@ -37,9 +37,3 @@
                     <p class="remaining_days">{남은 날짜}일 남음</p>
                 </div>
             </div>
-        </div>
-    </main>
-
-	<%@include file="../../views/common/footer.jsp"%>
-</body>
-</html>

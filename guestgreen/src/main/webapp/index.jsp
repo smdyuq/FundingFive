@@ -12,6 +12,46 @@
 </head>
 
 <style>
+
+.card-wrapper0 {
+   position: relative;
+   width: 21%;
+   height: 28vh;
+   padding-bottom: 2%;
+}
+
+#like {
+   fill: #ddd;
+}
+
+#like.active {
+   fill: red;
+}
+
+.LikeBtn {
+   background-color: transparent;
+   border: 0;
+   outline: 0;
+}
+
+.LikeButton_Wrapper {
+   position: relative;
+   right: 3.5%;
+   top: 14.6vh;
+   width: 2vw;
+   height: 2vh;
+    border:  10px solid rgba(255,  0,  0,  .5);
+}
+
+.card-wrapper2 {
+   width: 180px;
+}
+
+.card {
+   width: 210px;
+   height: 150px;
+}
+
 .btn_text {
    font-style: normal;
    font-weight: 900;
@@ -381,11 +421,13 @@ dd>span::before {
 }
 
 .frontPageCard_Container {
-   height: auto;
-   margin-top: 3%;
+   width: 800px;
+   height: 580px;
+   margin-top: 2%;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   height: auto;
 }
 
 .frontPage_Card {
@@ -404,7 +446,7 @@ dd>span::before {
    overflow: hidden;
    text-overflow: ellipsis;
    flex: 0 1 auto;
-   width: 80%;
+   width: 10.5vw;
 }
 
 .category-brand {
@@ -421,10 +463,10 @@ dd>span::before {
 
 .card-wrapper {
    position: relative;
-   width: 23%;
-   height: 25%;
-   padding-right: 2%;
+   width: 21%;
+   height: 33vh;
    padding-bottom: 2%;
+   margin-right:3%
 }
 
 .card-wrapper-last {
@@ -441,7 +483,7 @@ dd>span::before {
    display: -webkit-box;
    -webkit-box-orient: vertical;
    -webkit-line-clamp: 2;
-   width: 180px;
+   width: 100%;
    height: 50px;
 }
 
@@ -478,7 +520,7 @@ dd>span::before {
 }
 
 .Popula-card-wrapper>div {
-   width: 100%;
+   width: 22vw;
 }
 
 .ProjectCardNumber {
@@ -510,7 +552,7 @@ dd>span::before {
    display: -webkit-box;
    -webkit-box-orient: vertical;
    -webkit-line-clamp: 2;
-   width: 60%
+   width: 86%
 }
 
 .FrontPage_viewTotal {
@@ -521,7 +563,7 @@ dd>span::before {
 
 .popular-project-header {
    justify-content: space-between;
-   margin-bottom: 8%;
+   margin-bottom: 3%;
    display: flex;
    width: 88%;
    flex-wrap: wrap;
@@ -668,13 +710,13 @@ dd {
 
 .Container_1page {
    width: 100%;
-   height: auto;
+   height: 560px;
    display: flex;
 }
 
 .ContentInfo_Container {
-   width: 280px;
-   height: 250px;
+   width: 480px;
+   height: 300px;
    padding-right: 5%;
 }
 
@@ -783,7 +825,7 @@ dd {
    <main>
 
 
-      <div class="FrontPage_Main notranslate">
+      <div class="FrontPage_Main">
          <div class="FrontPage_HomeWrapper">
             <div class="FrontPage_StyleHero">
 
@@ -838,11 +880,10 @@ dd {
 
                   <div class="FrontCard_Container">
                      <c:forEach var="item" items="${noteWorthy }">
-                        <div class="card-wrapper">
+                        <div class="card-wrapper0">
                            <a href="#"><img class="eximg"
-                              src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
-
-                           <span class="projectCardDetail">
+                              src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
+                           </a> <span class="projectCardDetail">
                               <dd>
 
                                  <input type="hidden" value=${item.projectNo }> <a
@@ -853,6 +894,16 @@ dd {
                               </dt> <span class="percentage">${item.projectCurrentPercentage }%
                                  달성</span>
                            </span>
+                        </div>
+                        <div class="LikeButton_Wrapper">
+                           <button class="LikeBtn">
+                              <svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
+                                 width="16" viewBox="0 0 512 512">
+                                 <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                 <path
+                                    d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+                           </button>
                         </div>
                      </c:forEach>
 
@@ -878,7 +929,10 @@ dd {
                            onclick="projectDetail(${item.projectNo})">
                            <a href="#"><img class="popular_img"
                               src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
-                           <div class="ProjectCardNumbertop">1</div>
+                           <div class="ProjectCardNumbertop">
+                              ${item.projectRankNumber }</div>
+
+
                            <div class="projectCardDetail">
                               <dd>
 
@@ -912,7 +966,7 @@ dd {
          <div class="Container">
             <div class="FrontPage_ListTitle">마감임박! 마지막 기회</div>
             <div id="countdown">
-               <Strong id="counttime "></Strong><span id="count-time">남았어요</span>
+               <Strong id="counttime"></Strong><span id="count-time">남았어요</span>
             </div>
 
 
@@ -1125,7 +1179,7 @@ dd {
 
          <div class="Container_1page">
             <div class="ContentInfo_Container">
-               <img src="resources/image/크리스마스.jpg">
+               <img src="/resources/image/크리스마스 이미지.jpg">
 
 
                <div class="Content_TextInfobox">
@@ -1135,16 +1189,39 @@ dd {
                         텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의 어드벤트
                         캘린더까지!</div>
                </div>
-               </a> <a href="#" title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
+               </a> <a href="http://localhost/category.do?category=Christmas"
+                  title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
             </div>
-            <div class="lines_Collection_Contents_div">
+
+            <div class="FrontCard_Container">
+               <c:forEach var="item" items="${christmasProject }">
+                  <div class="card">
+                     <div class="card-wrapper2">
+                        <a href="#"><img class="eximg"
+                           src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+
+                        <span class="projectCardDetail">
+                           <dd>
+
+                              <input type="hidden" value=${item.projectNo }> <a
+                                 href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+                           </dd>
+                           <dt>
+                              <a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
+                           </dt> <span class="percentage">${item.projectCurrentPercentage }%
+                              달성</span>
+                        </span>
+                     </div>
+                  </div>
+
+               </c:forEach>
+
+
+            </div>
+
+            <!-- <div class="lines_Collection_Contents_div">
                <div class="lines_Collection_Contents">
-                  <c:forEach var="item" items="${todayProject }">
-                  
-                  
-                  
-                  </c:forEach>
-                  
+
                   <div class="lines_card-wrapper">
                      <a href="#"><img class="lines_card-wrapper_img"
                         src="http://placehold.it/180x145"></a><br>
@@ -1222,7 +1299,7 @@ dd {
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
 
@@ -1236,6 +1313,14 @@ dd {
 
 
 <script>
+
+   // 좋아요 버튼
+   
+    var btn = document.getElementById("like")
+
+  btn.addEventListener('click',function(){
+            btn.classList.toggle('active')
+    })
 
    // 최상단 이동 버튼
 
@@ -1400,5 +1485,7 @@ dd {
                   + '<Strong class="t_colon">:</Strong>'
                   + '<Strong class="t_sec">' + sec + '</Strong>')
    }, 1000);
+   
+   
 </script>
 </html>
