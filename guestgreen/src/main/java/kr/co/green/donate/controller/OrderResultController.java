@@ -55,6 +55,7 @@ public class OrderResultController extends HttpServlet {
 
 		String donateId = jsonObject.has("donate_id") ? jsonObject.get("donate_id").getAsString() : "";
 		int projectNo = jsonObject.has("project_no") ? jsonObject.get("project_no").getAsInt() : 0;
+		String projectName = jsonObject.has("project_name") ? jsonObject.get("project_name").getAsString() : "";
 		int projectPrice = jsonObject.has("project_price") ? jsonObject.get("project_price").getAsInt() : 0;
 		int memberNo = jsonObject.has("member_no") ? jsonObject.get("member_no").getAsInt() : 0;
 		int projectCurrentAmount = jsonObject.has("project_current_amount")
@@ -73,12 +74,10 @@ public class OrderResultController extends HttpServlet {
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectNo(projectNo);
+		projectDTO.setProjectName(projectName);	
 		projectDTO.setProjectPrice(projectPrice);
 		projectDTO.setProjectCurrentAmount(projectCurrentAmount + projectPrice);
-
-		
 		projectDTO.setProjectCurrentPercentage((double)projectDTO.getProjectCurrentAmount()/projectTargetAmount*100);
-		
 
 		DonateDTO donateDTO = new DonateDTO();
 		donateDTO.setProjectNo(projectNo);
@@ -87,7 +86,6 @@ public class OrderResultController extends HttpServlet {
 		donateDTO.setMemberName(memberName);
 		donateDTO.setMemberAddr(memberAddr);
 		donateDTO.setMemberPhone(memberPhone);
-
 		
 		//project테이블에 후원자 수, 후원된 금액 갱신
 		int projectUpdate = projectService.projectUpdate(projectDTO);
@@ -97,13 +95,19 @@ public class OrderResultController extends HttpServlet {
 			DonateService donateService = new DonateServiceImpl();
 			int donateEnroll = donateService.donateEnroll(donateDTO);
 			if(donateEnroll>0) {
+				JsonObject jsonResponse = new JsonObject();
+				jsonResponse.addProperty("projectName", projectName); 
+				jsonResponse.addProperty("projectPrice", projectPrice); 
+				jsonResponse.addProperty("memberName", memberName); 
+				jsonResponse.addProperty("memberPhone", memberPhone); 
+				jsonResponse.addProperty("memberAddr", memberAddr); 
 
-				AlertAndRedirect.alertRedirect(response, "결제가 완료되었습니다.", "/");
+				response.getWriter().write(jsonResponse.toString());
 			} else {
-				AlertAndRedirect.alertRedirect(response, "DONATE테이블 등록 실패", "/");
+				System.out.println("실패");
 			}
 		} else {
-			AlertAndRedirect.alertRedirect(response, "API에서 불러온 객체 PROJECT테이블 업데이트 실패", "/");
+			System.out.println("실패2");
 		}
 	}
 

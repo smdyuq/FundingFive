@@ -37,7 +37,6 @@ public class PhoneController extends HttpServlet {
     	System.out.println("status:" + status);
         Message message = new Message();
         if(status == null) {
-        	System.out.println("status2:" + status);
         	String memberPhone = request.getParameter("memberPhone");
 	        
 	        Random rand  = new Random();

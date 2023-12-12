@@ -7,13 +7,12 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
 <script src="/resources/js/project/administratorOk.js"></script>
-
+<script src="/resources/js/project/apiKey.js"></script>
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
    rel="stylesheet"
    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
    crossorigin="anonymous">
-
 
 </head>
 <body>
@@ -118,43 +117,43 @@
                </form>
             </section>
          </div>
-
-         <div class="tab_content" id="project_completed_content">
-            <form id="project-success" >
-               <input type="hidden" name="status" value="success">
-               <table class="table">
-                  <thead>
-                     <tr>
-                        <th>프로젝트 번호</th>
-                        <th>프로젝트명</th>
-                        <th>프로젝트 등록일</th>
-                        <th>프로젝트 종료일</th>
-                        <th>프로젝트 달성률</th>
-                        <th>창작자 이름</th>
-                        <th></th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <c:choose>
-                        <c:when test="${empty successfulProjectList}">
-                           <tr>
-                              <td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
-                           </tr>
-                        </c:when>
-                        <c:otherwise>
-                           <c:forEach var="item" items="${successfulProjectList}">
-                           <input type="hidden" name="project-no" value="${item.projectNo}">
-                              <tr onclick="successfulProject()">
-                                 <td>${item.projectNo}</td>
-                                 <td>${item.projectName}</td>
-                                 <td>${item.projectRegisterDate}</td>
-                                 <td>${item.projectEndDate}</td>
-                                 <td>${item.projectCurrentPercentage}</td>
-                                 <td>${item.projectManagerName}</td>
-                              </tr>
-                           </c:forEach>
-                        </c:otherwise>
-                     </c:choose>
+			<div class="tab_content" id="project_completed_content">
+				<form id="project-success" >
+					<input type="hidden" name="status" value="success">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>프로젝트 번호</th>
+								<th>프로젝트명</th>
+								<th>프로젝트 등록일</th>
+								<th>프로젝트 종료일</th>
+								<th>프로젝트 달성률</th>
+								<th>창작자 이름</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:choose>
+								<c:when test="${empty successfulProjectList}">
+									<tr>
+										<td colspan="5" class="text-center">만료된 프로젝트가 없습니다.</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="item" items="${successfulProjectList}">
+									<input type="hidden" name="project-no" value="${item.projectNo}">
+									<input type="hidden" id="google-api-secret-key" name="google-api-secret-key">
+										<tr onclick="successfulProject()">
+											<td>${item.projectNo}</td>
+											<td>${item.projectName}</td>
+											<td>${item.projectRegisterDate}</td>
+											<td>${item.projectEndDate}</td>
+											<td>${item.projectCurrentPercentage}</td>
+											<td>${item.projectManagerName}</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 
                   </tbody>
                </table>

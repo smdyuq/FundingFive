@@ -28,7 +28,6 @@ import kr.co.green.member.controller.PhoneController;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
 
-
 @WebServlet("/expiredProject.do")
 public class ExpiredProjectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +51,7 @@ public class ExpiredProjectController extends HttpServlet {
 					PasswordAuthentication pa;
 					public MailAuth() {
 						String mailId = "nobuts98@gmail.com";
-						String mailPwd = "";	// 나중에 암호화 필수
+						String mailPwd = request.getParameter("google-api-secret-key");	
 						pa = new PasswordAuthentication(mailId, mailPwd);
 					}
 					public PasswordAuthentication getPasswordAuthentication() {

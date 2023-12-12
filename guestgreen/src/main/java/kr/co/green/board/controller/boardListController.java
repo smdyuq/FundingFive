@@ -18,24 +18,15 @@ import kr.co.green.board.model.service.Pagination;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
-
-
 @WebServlet("/boardList.do")
 public class boardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
     public boardListController() {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		int memberNo = (int)session.getAttribute("memberNo");
-		MemberServiceImpl memberService = new MemberServiceImpl();
-		MemberDTO memberDTO = memberService.memberSelect(memberNo);
-		
 		//현재 페이지
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
 		//검색
@@ -56,8 +47,6 @@ public class boardListController extends HttpServlet {
 		
 		//목록 불러오기
 	      ArrayList<BoardDTO> list = boardService.boardList(pi,searchText);
-	      
-	      
    
 	    //글번호
 	      int row = listCount - (cpage -1)* boardLimit;
@@ -67,8 +56,6 @@ public class boardListController extends HttpServlet {
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
-	      request.setAttribute("memberDTO", memberDTO);
-	      
 	      
 	      RequestDispatcher view = request.getRequestDispatcher("/views/board/boardList.jsp");
 	      view.forward(request, response);

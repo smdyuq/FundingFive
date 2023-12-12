@@ -7,7 +7,12 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/member/member.css">
 <script src="/resources/js/member/myPage.js"></script>
-
+<script src="/resources/js/project/apiKey.js"></script>
+<style>
+main {
+	padding: 10px;
+}
+</style>
 </head>
 
 <body>
@@ -215,13 +220,13 @@
 								</thead>
 								<tbody class="project-tbody">
 									<c:choose>
-										<c:when test="${empty projectRejectedList}">
+										<c:when test="${empty projectPendingList}">
 											<tr>
 												<td colspan="7" class="text-center">대기중인 프로젝트가 없습니다.</td>
 											</tr>
 										</c:when>
 										<c:otherwise>
-											<c:forEach var="project" items="${projectRejectedList}">
+											<c:forEach var="project" items="${projectPendingList}">
 												<tr>
 													<th>프로젝트 이미지</th>
 													<th>프로젝트명</th>
@@ -333,6 +338,31 @@
 								</c:otherwise>
 							</c:choose>
 						</div>
+					</div>
+				</div>
+
+				<!-- 배송조회 -->
+				<div id="shipping_information" class="content-section"
+					style="display: none;">
+					<h2>배송조회</h2>
+					<div class="table-container">
+						<form action="http://info.sweettracker.co.kr/tracking/3"
+							method="post">
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="t_key"
+									name="t_key">
+							</div>
+							<div class="form-group">
+								<input type="hidden" class="form-control" name="t_code"
+									id="t_code" value="04">
+							</div>
+							<div class="form-group">
+								<label for="t_invoice">운송장 번호</label> <input type="text"
+									class="form-control" name="t_invoice" id="t_invoice"
+									placeholder="운송장 번호">
+							</div>
+							<button type="submit" class="btn btn-default">조회하기</button>
+						</form>
 					</div>
 				</div>
 			</div>
