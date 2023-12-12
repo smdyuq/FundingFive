@@ -1314,13 +1314,6 @@ dd {
 
 <script>
 
-   // 좋아요 버튼
-   
-  var btn = document.getElementById("like");
-
-  btn.addEventListener('click',function(){
-            btn.classList.toggle('active')
-    })
 
    // 최상단 이동 버튼
 
@@ -1486,6 +1479,13 @@ dd {
                   + '<Strong class="t_sec">' + sec + '</Strong>')
    }, 1000);
    
+   // 좋아요 버튼
    
+   var btn = document.getElementById("like");
+
+   btn.addEventListener('click',function(){
+             btn.classList.toggle('active')
+     })
+
 </script>
 </html>
