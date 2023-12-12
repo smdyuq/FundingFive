@@ -56,6 +56,7 @@ body {
 	width: 30px;
 }
 
+
 .search_btn:hover{
 	cursor: pointer;
 }
@@ -66,14 +67,17 @@ body {
 	font-weight: 500;
 }
 
+
 .recent_searches {
 	width: 75%;
 	margin: 0 auto;
 }
 
+
 .recent_searches_result {
 	white-space: nowrap;
 	overflow: scroll;
+
 }
 
 /* 스크롤바 스타일 감추기 */

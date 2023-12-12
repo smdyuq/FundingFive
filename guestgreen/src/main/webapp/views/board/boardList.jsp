@@ -85,6 +85,10 @@
 								등록</button>
 						</c:if>
 					</div>
+<<<<<<< HEAD
+=======
+					</table>
+>>>>>>> branch 'nayoung' of https://github.com/smdyuq/guestgreen.git
 
 
 					<nav aria-label="Page navigation example">
@@ -178,6 +182,7 @@
 
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
+
 </html>
 <script>
     // 좌측 메뉴
@@ -216,4 +221,7 @@
         });
     };
 </script>
+
+
+</html>
 

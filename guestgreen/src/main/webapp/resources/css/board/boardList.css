@@ -81,6 +81,7 @@
 	background-color: #f0f0f0;
 }
 
+
 .faq-title:hover {
     color: gray;
 }
@@ -89,11 +90,6 @@
     color: gray;
 }
 
-.text_q {
-	display: inline;
-	font-size: 20px;
-	font-weight: 600;
-}
 
 table {
 	border-collapse: collapse;

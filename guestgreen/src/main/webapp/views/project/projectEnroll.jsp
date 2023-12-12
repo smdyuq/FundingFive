@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <%@include file="../../views/common/head.jsp"%>
 <style>
+
 
 .project-enroll-form{
 	padding-left:10%;
@@ -39,6 +41,7 @@
 	height: 30px;
 	margin-top: 2%;
 	margin-bottom: 40px;
+
 }
 
 /* 파일 인풋박스 */
@@ -65,6 +68,7 @@ input[type=file]::file-selector-button {
 <body>
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
+
 	<main>
 		<section>
 			<div class="project-enroll-form">
@@ -73,6 +77,13 @@ input[type=file]::file-selector-button {
 				<form action="/projectEnroll.do" method="post"
 					enctype="multipart/form-data">
 
+
+                    <div class="project_content_div">
+                        <div>
+                            <label class="form-label">프로젝트 이름 </label><br>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="project-name"
+                                placeholder="프로젝트 이름을 작성해주세요." required>
+                        </div>
 
 					<div class="project_content_div">
 						<div>
@@ -143,6 +154,7 @@ input[type=file]::file-selector-button {
 			</div>
 		</section>
 	</main>
+
 	<%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>

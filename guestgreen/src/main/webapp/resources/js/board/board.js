@@ -29,4 +29,3 @@ function back(idx) {
 	const pageUrl = '/boardDetail.do?idx=' + idx;
 	window.location.href = pageUrl;
 }
-

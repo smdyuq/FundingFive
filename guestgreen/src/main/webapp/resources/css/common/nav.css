@@ -8,11 +8,13 @@
 
         }
 
+
         .nav_parent_div>div {
             display: flex;
             align-items: center;
             justify-content: flex-end;
         }
+
 
 
         /* 왼쪽 메뉴 */
