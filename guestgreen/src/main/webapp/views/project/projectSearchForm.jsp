@@ -24,7 +24,7 @@
 				<input type="text" class="search_box" id="search_box"
 					placeholder="검색어를 입력해주세요." required>
 				<!-- 검색결과 페이지 이동 -->
-				<button class="search_btn">
+				<button class="search_btn" onclick="projectSearch()">
 					<img src="resources/image/search.png" alt="돋보기 이미지"
 						style="width: 40px; height: 40px;">
 				</button>
@@ -42,7 +42,7 @@
 					<c:otherwise>
 						<div class="recent_searches_result">
 							<c:forEach var="searching" items="${memberSearchArr}">
-								<div class="searches_result_div">
+								<div class="searches_result_div" onclick="searchSelectedWord('${searching.searchWord}')">
 									<div id="search-words${searching.searchNo}">
 										<a id="search-word">${searching.searchWord}</a> <a
 											onclick="deleteSearchHistory(${searching.searchNo})">x</a>
@@ -68,7 +68,7 @@
 						<c:forEach var="searching" items="${popularSearchArr}">
 							<div class="search_row_div" style="background-color: aqua;">
 								<div class="searche_row">
-									<div onclick="searchPopularWord(${searching.searchWord})">
+									<div onclick="searchSelectedWord('${searching.searchWord}')">
 										<a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a>
 									</div>
 								</div>

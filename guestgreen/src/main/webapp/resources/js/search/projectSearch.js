@@ -26,7 +26,7 @@ function deleteSearchHistory(searchNo){
 	})
 }
 
-function searchSelectedrWord(searchWord){
+function searchSelectedWord(searchWord){
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 

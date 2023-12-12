@@ -1,6 +1,9 @@
 package kr.co.green.member.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -57,10 +60,28 @@ public class MypageController extends HttpServlet {
 		ArrayList<ProjectDTO> projectLikedList = new ArrayList<>();
 		projectService.getUserWishList(memberNo, projectLikedList);
 		
+		//관심있는 프로젝트 목록
+		//projectOuterImageName, projectKind, projectManagerName, projectName, projectIntroduce, projectCurrnetPercentage,
+		//projectCurrentAmount, proejctRemainDate
+		ArrayList<MemberBoardDTO> memberWishList = memberBoardService.getLikedProject(memberNo);
+		
+		//디데이 계산
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate currentDate = LocalDate.now();
+		
+		for(int i=0; i<memberWishList.size(); i++) {
+			String endDate = memberWishList.get(i).getProjectEndDate();
+			LocalDate endDateLocalDateType = LocalDate.parse(endDate, formatter);
+			long dDay = ChronoUnit.DAYS.between(currentDate, endDateLocalDateType);
+			memberWishList.get(i).setProjectEndDate(endDate);
+			memberWishList.get(i).setProjectRemainDate(dDay);
+		}
+		
 		//프로젝트 리스트가 비어있어도 보냄
 		request.setAttribute("projectApprovedList", projectApprovedList);
 		request.setAttribute("projectRejectedList", projectRejectedList);
 		request.setAttribute("projectPendingList", projectPendingList);
+		request.setAttribute("memberWishList", memberWishList);
 		request.setAttribute("memberDTO", memberDTO);
 				
 		RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");

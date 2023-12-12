@@ -352,10 +352,6 @@ body {
 	font-size: larger;
 }
 
-img {
-	width: 100%;
-	height: auto;
-}
 
 /* 이미지 */
 .popular_img {
