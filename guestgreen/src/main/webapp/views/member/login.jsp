@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
-<%@include file="../../views/common/head.jsp"%>
+	<%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/member/login.css">
 </head>
 <body>
-	<%@include file="../../views/common/header.jsp"%>
-<%@include file="../../views/common/common.jsp"%>
+	<%@include file="../../views/common/header.jsp" %>
+	<%@include file="../../views/common/common.jsp"%>
 
 	<main>
 		<section>
