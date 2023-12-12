@@ -6,23 +6,39 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <style>
+
+.project-enroll-form{
+	padding-left:10%;
+	padding-right:10%
+}
 .form-label {
 	font-size: 17px;
+}
+
+.thick-line {
+	border-top: 2px solid #000;
+	margin-bottom: 40px;
+	margin-top: 3%;
 }
 
 /* 텍스트 인풋박스 */
 .project_content_div>div>input {
 	width: 100%;
 	height: 30px;
-	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-top: 1%;
+	margin-bottom: 40px;
+}
+
+.form-control {
+	border: none;
+	border-bottom: 1px solid black;
 }
 
 .form-select {
 	width: 100%;
 	height: 30px;
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-bottom: 40px;
 }
 
 /* 파일 인풋박스 */
@@ -53,7 +69,7 @@ input[type=file]::file-selector-button {
 		<section>
 			<div class="project-enroll-form">
 				<h2>프로젝트 등록</h2>
-				<hr>
+				<hr class="thick-line">
 				<form action="/projectEnroll.do" method="post"
 					enctype="multipart/form-data">
 
@@ -123,7 +139,6 @@ input[type=file]::file-selector-button {
 
 						<button class="next_btn" type="submit">다음</button>
 					</div>
-
 				</form>
 			</div>
 		</section>

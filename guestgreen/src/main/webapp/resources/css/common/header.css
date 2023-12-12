@@ -15,36 +15,49 @@
         margin-top: auto;
         flex: 1; 
         align-self: flex-start; 
-        width: 80%;
+        width: 90%;
      	margin:0px auto;
     }
 
     
- /* GNB */
-    header {
-        color: black;
-        padding: 25px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;       
+         /* 헤더 전체 div */
+        .header_parent_div {
+            display: flex;
+            padding-right: 6%;
+            background-color: gainsboro;
+            padding-top: 0.5%;
+            padding-bottom: 0.5%;
+            justify-content: flex-end;
         }
 
-    header a {
-        color: black;
-        text-decoration: none;
-        margin: 0 10px;
-    } 
+        .header_parent_div>div {
+            margin-left: 1%;
+        }
 
-    #member-information{
-        color: gray;
-        font-size: 14px;
-    }
+        /* 멤버 안내문구 css */
+        #member-information {
+            font-size: 14px;
+            color: gray;
+        }
 
-        /* 로고 왼쪽 정렬 */
-    header > div:first-child {
-        margin-right: auto;
-    }
-    #member-information {
-        margin-left: auto;
-        margin-right: 10px;
-    } 
+        /* 버튼 css */
+        .gnb_button_div {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .gnb-button-style {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+
+        .logo {
+            margin-top: 1%;
+            padding-bottom: 1%;
+        }
+
+        .gnb_button_div a,
+        .gnb_button_div div {
+            display: inline;
+        }

@@ -1,5 +1,5 @@
 //페이지 상세보기
-function detailPage(idx){
+function detailPage(idx) {
 	const pageUrl = '/boardDetail.do?idx=' + idx;
 	window.location.href = pageUrl;
 }
@@ -12,20 +12,21 @@ function boardEnroll(){
 	form.submit();
 }*/
 //게시글 삭제
-function boardDelete(){
+function boardDelete() {
 	const form = document.getElementById("detail-form");
-	
+
 	form.action = "/boardDelete.do";
 	form.method = "post";
 	form.submit();
 }
 //수정 페이지 이동
-function boardUpdateCheck(idx){
+function boardUpdateCheck(idx) {
 	const pageUrl = '/boardUpdateCheck.do?idx=' + idx;
 	window.location.href = pageUrl;
 }
 //수정 페이지 - 취소 버튼
-function back(idx){
+function back(idx) {
 	const pageUrl = '/boardDetail.do?idx=' + idx;
 	window.location.href = pageUrl;
 }
+
