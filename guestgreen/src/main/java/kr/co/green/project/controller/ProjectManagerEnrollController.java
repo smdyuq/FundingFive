@@ -64,7 +64,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 					part.write(filePath + File.separator + "managerimage" + File.separator + fileName);
 
 					// 이미지 리사이징 (managerImage) (width X height)
-					resizeImage(uploadDirectory + "/managerimage/" + fileName, 100, 100);
+					resizeImage(uploadDirectory + "/managerimage/" + fileName, 120, 120);
 
 				} else if (fileName.equals("")) {
 					uploadDirectory = "";
