@@ -9,4 +9,7 @@ public interface SearchService {
 
 	//인기검색어 조회
 	public abstract SearchDTO[] getPopularSearch();
+
+	//선택한 회원 검색기록 삭제
+	public abstract int deleteSearchHistory(int searchNo);
 }

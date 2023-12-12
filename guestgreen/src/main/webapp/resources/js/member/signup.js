@@ -19,7 +19,7 @@ function duplicateId() {
 	            memberId: id
 	        },
 	        contentType: "application/x-www-form-urlencoded",
-	        success: function (res) {
+	        success: function(res) {
 	            if (res === 'true') {
 	                idCheck.style.color = "red";
 	                idCheck.innerHTML = "중복된 아이디입니다.";
@@ -28,7 +28,7 @@ function duplicateId() {
 	                idCheck.innerHTML = "사용 가능한 아이디입니다.";
 	            }
 	        },
-	        error: function (response) {
+	        error: function(res) {
 	        }
 	    })
     	
@@ -96,6 +96,7 @@ function duplicateId() {
 	  function randomExample() {
 	    // 여기에 인증하기 처리하는 코드 작성
 	    let verificationCode = document.getElementById("verificationCode").value;
+		console.log(numStr);
 	    
 		console.log(numStr);
 

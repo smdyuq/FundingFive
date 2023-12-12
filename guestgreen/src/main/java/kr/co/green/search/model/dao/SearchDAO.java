@@ -11,12 +11,12 @@ public class SearchDAO {
 	private PreparedStatement pstmt;
 
 	//회원 검색기록 조회
-	public SearchDTO[] getMemberSearch(Connection con, int memberNo) {
+	public SearchDTO[] getSearchHistory(Connection con, int memberNo) {
 		String query = "SELECT SEARCH_NO, "
 				+ "			   SEARCH_WORD"
 				+ "		FROM SEARCHING"
 				+ "		WHERE MEMBER_NO = ?"
-				+ "		AND SEARCH_STATUS = 'N'"
+				+ "		AND SEARCH_STATUS = 'Y'"
 				+ "		AND ROWNUM <= 5"
 				+ "		ORDER BY SEARCH_DATE DESC";
 		SearchDTO[] arr = new SearchDTO[5];
@@ -50,6 +50,7 @@ public class SearchDAO {
 		}
 	}
 
+	//인기 검색어 조회
 	public SearchDTO[] getPopularSearch(Connection con) {
 		String query = "SELECT ROWNUM, SEARCH_WORD FROM "
 					+ " ( SELECT SEARCH_WORD, COUNT(SEARCH_WORD) AS cnt "
@@ -86,6 +87,21 @@ public class SearchDAO {
 		    return arr;
 		}
 		
+	}
+
+	//선택한 검색기록 삭제
+	public int deleteSearchHistory(Connection con, int searchNo) {
+		String query = "DELETE FROM searching"
+				+ "		WHERE search_no = ?";
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, searchNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

@@ -32,13 +32,14 @@ public class FormController extends HttpServlet {
 			nextPage = "/views/member/login.jsp";
 		} else if (action.equals("/signupform.do")) {
 			nextPage = "/views/member/signup.jsp"; // 홈>회원가입페이지 이동
+
 		} else if (action.equals("/projectEnrollForm.do")) {
+
 			nextPage = "/views/project/projectEnroll.jsp";
-		}
-		else if(action.equals("/home.do")){
+		} else if (action.equals("/home.do")) {
 			HttpSession session = request.getSession();
-			if(session.getAttribute("memberNo") != null) {
-				int memberNo = (int)session.getAttribute("memberNo");
+			if (session.getAttribute("memberNo") != null) {
+				int memberNo = (int) session.getAttribute("memberNo");
 				MemberServiceImpl memberService = new MemberServiceImpl();
 				MemberDTO memberDTO = memberService.memberSelect(memberNo);
 				request.setAttribute("memberDTO", memberDTO);
@@ -46,13 +47,10 @@ public class FormController extends HttpServlet {
 			nextPage = "/"; // 홈으로 이동
 		}
 
-
-	// 페이지 포워딩
-	if(!nextPage.isEmpty())
-	{
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		dispatcher.forward(request, response);
-	}
+		// 페이지 포워딩
+		if (!nextPage.isEmpty()) {
+			response.sendRedirect(nextPage);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

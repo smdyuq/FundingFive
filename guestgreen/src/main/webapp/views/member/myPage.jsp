@@ -7,7 +7,7 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/member/member.css">
 <script src="/resources/js/member/myPage.js"></script>
-
+ 
 <style>
 main {
 	padding: 10px;
@@ -27,12 +27,13 @@ main {
 			<div class="tabs">
 				<input id="information" type="radio" name="tab_item" checked
 					onchange="showTabContent('information')"> <label
-					class="tab_item" for="information">내 정보</label> <input
-					id="sponsorship" type="radio" name="tab_item"
+					class="tab_item" for="information">내 정보</label> 
+				<input id="sponsorship" type="radio" name="tab_item"
 					onchange="showTabContent('sponsorship')"> <label
-					class="tab_item" for="sponsorship">후원</label> <input id="project"
-					type="radio" name="tab_item" onchange="showTabContent('project')">
+					class="tab_item" for="sponsorship">후원</label> 
+				<input id="project" type="radio" name="tab_item" onchange="showTabContent('project')">
 				<label class="tab_item" for="project">프로젝트</label>
+				<label class="tab_item" for="shipping">배송조회</label> 
 			</div>
 
 			<div class="tab_content" id="information_content">
@@ -134,7 +135,6 @@ main {
 				</div>
 			</div>
 
-			<!-- </div> -->
 			<div>
 				<div class="tab_content" id="project_content">
 					<div class="project-div1">
@@ -279,6 +279,7 @@ main {
 					</div>
 				</div>
 			</div>
+        </div>
 	</main>
 
 	<%@include file="../../views/common/footer.jsp"%>

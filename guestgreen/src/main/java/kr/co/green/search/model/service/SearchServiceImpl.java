@@ -20,13 +20,19 @@ public class SearchServiceImpl implements SearchService {
 	//회원 검색기록 조회
 	@Override
 	public SearchDTO[] getSearchHistory(int memberNo) {
-		return searchDAO.getMemberSearch(con, memberNo);
+		return searchDAO.getSearchHistory(con, memberNo);
 	}
 
 	//인기검색어 조회
 	@Override
 	public SearchDTO[] getPopularSearch() {
 		return searchDAO.getPopularSearch(con);
+	}
+
+	//선택한 회원 검색기록 삭제
+	@Override
+	public int deleteSearchHistory(int searchNo) {
+		return searchDAO.deleteSearchHistory(con, searchNo);
 	}
 
 }

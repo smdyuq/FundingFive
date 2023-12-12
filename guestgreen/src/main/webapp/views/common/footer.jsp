@@ -17,7 +17,7 @@
 						<div id="pop_info" class="pop_wrap" style="display: none;">
 							<div class="pop_inner">
 							<button type="button" class="btn_close">
-                                        <img src="/resources/image/footer_pop_inner_close.png" alt="close">
+                                       <img src="/resources/image/footer_pop_inner_close.png" alt="close">
                                     </button>
                                     <div>
 								<p class="dsc">

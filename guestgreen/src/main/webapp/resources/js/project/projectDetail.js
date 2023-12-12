@@ -37,6 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 });
 
+function projectDetail(projectNo){
+	const pageUrl = 'projectDetail.do?projectNo='+projectNo;
+	window.location.href = pageUrl;
+}
 
 function projectDonate(projectNo) {
 	const pageUrl = '/getData.do?projectNo=' + projectNo;

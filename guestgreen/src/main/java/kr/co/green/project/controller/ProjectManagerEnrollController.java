@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import kr.co.green.common.AlertAndRedirect;
+//github.com/smdyuq/guestgreen.git
 import kr.co.green.project.model.dto.ProjectDTO;
 import kr.co.green.project.model.service.ProjectService;
 import kr.co.green.project.model.service.ProjectServiceImpl;
@@ -40,37 +41,38 @@ public class ProjectManagerEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		int memberNo = (int) session.getAttribute("memberNo");
 
-		   Collection<Part> parts = request.getParts();
-		      String uploadDirectory = "C:\\Users\\yh631\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+		// 파일 업로드
+		Collection<Part> parts = request.getParts();
+		String uploadDirectory = "C:\\Users\\yh631\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
-		      // 파일 업로드하려는 디렉토리 없으면 생성
-		      File filePath = new File(uploadDirectory);
-		      if (!filePath.exists()) {
-		         filePath.mkdirs();
-		      }
+		// 파일 업로드하려는 디렉토리 없으면 생성
+		File filePath = new File(uploadDirectory);
+		if (!filePath.exists()) {
+			filePath.mkdirs();
+		}
 
-		      String fileName = "";
-		      for (Part part : parts) {
+		String fileName = "";
+		for (Part part : parts) {
 
-		         if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
-		            fileName = getFileName(part);
-		            if (!fileName.equals("")) {
-		               part.write(filePath + File.separator + "managerimage" + File.separator + fileName);
+			if (getFileName(part) != null || !Objects.isNull(getFileName(part))) {
+				fileName = getFileName(part);
+				if (!fileName.equals("")) {
+					part.write(filePath + File.separator + "managerimage" + File.separator + fileName);
 
-		               // 이미지 리사이징 (managerImage) (width X height)
-		               resizeImage(uploadDirectory + "/managerimage/" + fileName, 100, 100);
+					// 이미지 리사이징 (managerImage) (width X height)
+					resizeImage(uploadDirectory + "/managerimage/" + fileName, 100, 100);
 
-		            } else if (fileName.equals("")) {
-		               uploadDirectory = "";
-		            }
-		         } else {
-		            fileName = "";
-		         }
-		      }
+				} else if (fileName.equals("")) {
+					uploadDirectory = "";
+				}
+			} else {
+				fileName = "";
+			}
+		}
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectName(request.getParameter("project-name"));
@@ -91,16 +93,18 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		projectDTO.setProjectManagerImagePath(uploadDirectory);
 
 		ProjectService projectService = new ProjectServiceImpl();
-		
-		if(projectService.projectEnroll(projectDTO)>0){			//1. 프로젝트 등록하기
-			int projectNo = projectService.projectNoSelect();	//2. 등록한 프로젝트의 번호 가져오기
-			if(projectNo != 0) {											
-				if(projectService.innerimageEnroll(projectDTO, projectNo)>0) {		//3. 프로젝트 내부이미지 등록하기
-					if(projectService.projectManagerEnroll(projectDTO, memberNo, projectNo)>0) {	//4. 프로젝트 창작자 정보 등록하기
+
+		if (projectService.projectEnroll(projectDTO) > 0) { // 1. 프로젝트 등록하기
+			int projectNo = projectService.projectNoSelect(); // 2. 등록한 프로젝트의 번호 가져오기
+			if (projectNo != 0) {
+				if (projectService.innerimageEnroll(projectDTO, projectNo) > 0) { // 3. 프로젝트 내부이미지 등록하기
+					if (projectService.projectManagerEnroll(projectDTO, memberNo, projectNo) > 0) { // 4. 프로젝트 창작자 정보
+																									// 등록하기
 						AlertAndRedirect.alertRedirect(response, "관리자가 승인하면 프로젝트가 등록됩니다.", "/");
 					}
 				}
 			}
+
 		}
 	}
 
