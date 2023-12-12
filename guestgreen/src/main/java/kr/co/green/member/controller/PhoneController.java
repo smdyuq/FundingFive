@@ -35,7 +35,7 @@ public class PhoneController extends HttpServlet {
     	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("", "", "https://api.coolsms.co.kr");
         																	//API키, API 시크릿 키
         Message message = new Message();
-        if(status.equals(null)) {
+        if(status == null) {
         	String memberPhone = request.getParameter("memberPhone");
 	        
 	        Random rand  = new Random();

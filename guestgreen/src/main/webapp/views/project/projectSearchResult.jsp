@@ -5,6 +5,7 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 	<link rel="stylesheet" href="/resources/css/project/projectSearchResult.css">
+	<script src="/resources/js/project/projectDetail.js"></script>
 </head>
 <body>
 
@@ -16,7 +17,6 @@
         <div class="project-search">
             <div class="search_word">
                 <p>'<span>${searchWord}</span>'에 대한 검색결과 입니다.</p>
-                
             </div>
             <div class="Search_results_number">
                 <p><span>${searchCount}</span>건의 검색결과</p>
@@ -25,7 +25,7 @@
         <hr class="thick-line">
         <div class="product_container">
         <c:forEach var="item" items="${searchedProjectList}">
-            <div class="product">
+            <div class="product" onclick="projectDetail('${item.projectNo}')">
                 <div class="img_div">
                     <a class="img_div_a" href=""><img src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName}" alt="상품 이미지"></a>
                 </div>

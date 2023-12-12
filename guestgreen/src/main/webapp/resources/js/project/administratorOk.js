@@ -46,9 +46,10 @@ function noButton() {
 	}
 
 	window.onload = function() {
+		const googleApiSecretKey = document.getElementById("google-api-secret-key");
+		googleApiSecretKey.value = config.google_api_secret_key;
 		showTabContent('project_approval');
 	};
-
 
 	//출고 성사된 프로젝트
 	function successfulProject(){

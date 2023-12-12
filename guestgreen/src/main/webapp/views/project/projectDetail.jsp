@@ -66,10 +66,8 @@
 								</div>
 							</div>
 							<div class="sponsor-button">
-
 								<button class="btn btn-dark me-md-2" type="button"
 									onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
-
 							</div>
 						</div>
 					</div>

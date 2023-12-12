@@ -7,13 +7,12 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
 <script src="/resources/js/project/administratorOk.js"></script>
-
+<script src="/resources/js/project/apiKey.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
-
 
 </head>
 <body>
@@ -144,6 +143,7 @@
 								<c:otherwise>
 									<c:forEach var="item" items="${successfulProjectList}">
 									<input type="hidden" name="project-no" value="${item.projectNo}">
+									<input type="hidden" id="google-api-secret-key" name="google-api-secret-key">
 										<tr onclick="successfulProject()">
 											<td>${item.projectNo}</td>
 											<td>${item.projectName}</td>

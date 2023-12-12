@@ -26,8 +26,6 @@
 	</div>
 	<div>
 		<c:if test="${empty sessionScope.memberNo}">
-
-
 			<div>
 				<a class="gnb-button-style" href="/form/loginform.do">로그인</a> <a
 					class="gnb-button-style" href="/form/signupform.do">회원가입</a>
@@ -38,7 +36,7 @@
 			<c:if test="${sessionScope.memberType == 1}">
 				<div>
 					<a class="gnb-button-style" href="/form/projectEnrollForm.do">프로젝트
-						등록</a> <a class="gnb-button-style" href="myPage.do">마이페이지</a>
+						등록</a> <a class="gnb-button-style" href="/myPage.do">마이페이지</a>
 					<a class="gnb-button-style" href="/logout.do">로그아웃</a>
 				</div>
 			</c:if>
