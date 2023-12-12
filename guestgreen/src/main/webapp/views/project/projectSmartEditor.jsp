@@ -77,8 +77,8 @@ input[type=file]::file-selector-button {
 			<h2>프로젝트 스토리</h2>
 			<hr>
 			<div id="smarteditor">
-				<textarea name="editorTxt" id="editorTxt" rows="13" cols="10"
-					placeholder="내용을 입력해주세요" style="width: 677px"></textarea>
+				<textarea name="editorTxt" id="editorTxt" rows="35" cols="10"
+					placeholder="내용을 입력해주세요" style="width: 1000px"></textarea>
 			</div>
 			<button type="submit" class="next_btn" onclick="save()">등록</button>
 		</form>

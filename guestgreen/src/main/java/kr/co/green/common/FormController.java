@@ -52,8 +52,7 @@ public class FormController extends HttpServlet {
 	// 페이지 포워딩
 	if(!nextPage.isEmpty())
 	{
-		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		dispatcher.forward(request, response);
+		response.sendRedirect(nextPage);
 	}
 	}
 
