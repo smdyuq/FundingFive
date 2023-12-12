@@ -41,19 +41,33 @@ input[type=file]::file-selector-button {
 
 /* 다음 버튼 */
 .next_btn {
-	font-style : ;
-    background-color:#0a0a23;
-    color: #fff;
-    border:none; 
-    border-radius:10px; 
-    padding:15px;
-    min-height:30px; 
-    min-width: 120px;
-  
+	font-style:;
+	background-color: #00E7AF;
+	color: black;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	min-height: 30px;
+	min-width: 120px;
+	transition: background-color 0.3s ease; /* 트랜지션 효과 추가 */
 }
 
-.next_btn{
+.next_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
+}
 
+.jb-text {
+	padding: 15px 20px;
+	background-color: #444444;
+	border-radius: 5px;
+	color: #ffffff;
+	position: absolute;
+	display: none;
+}
+
+.form-label-image:hover+.jb-text {
+	display: block;
 }
 </style>
 
@@ -121,15 +135,20 @@ input[type=file]::file-selector-button {
 						</div>
 
 						<div class="file-input-container">
-							<label class="form-label">프로젝트 메인 페이지 이미지 </label> <br> <input
-								type="file" class="form-file-control"
+							<label class="form-label-image">프로젝트 메인 이미지 </label>
+							<div class="jb-text">이 이미지는 홈페이지 메인에 보일 이미지 입니다.</div>
+
+
+							<br> <input type="file" class="form-file-control"
 								id="exampleFormControlInput1" name="project_outer_image"
 								required>
 						</div>
 
 						<div class="file-input-container">
-							<label class="form-label">프로젝트 상세 메인 이미지</label> <br> <input
-								type="file" class="form-file-control"
+							<label class="form-label-image">프로젝트 상세 이미지 </label>
+							<div class="jb-text">이 이미지는 상세 페이지 상단에 보일 이미지 입니다.</div>
+
+							<br> <input type="file" class="form-file-control"
 								id="exampleFormControlInput1" name="project_inner_image"
 								required><br>
 						</div>

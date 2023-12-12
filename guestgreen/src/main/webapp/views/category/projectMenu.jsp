@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+<link rel="stylesheet" href="/resources/css/category/category.css">
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -12,11 +13,12 @@
 	<main>
 		
 		<div class="project-cartegory">
-			<c:forEach var="item" items="${list }">
-				
 					<div>${title }</div>
+					<hr>
+				
 
 					<div class="product_container">
+			<c:forEach var="item" items="${list }">
 						<div class="product">
 							<div class="img_div">
 								<a class="img_div_a" href=""><img
@@ -35,9 +37,10 @@
 							</div>
 						</div>
 
+			</c:forEach>
 					</div>
 				
-			</c:forEach>
+		</div>
 		
 		
 	</main>

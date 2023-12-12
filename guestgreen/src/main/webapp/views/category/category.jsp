@@ -16,10 +16,11 @@
 
 		<div class="project-cartegory">
 					<div>${title }</div>
-			<c:forEach var="item" items="${list }">
+					<hr>
 				
 
 					<div class="product_container">
+			<c:forEach var="item" items="${list }">
 						<div class="product">
 							<div class="img_div">
 								<a class="img_div_a" href=""><img
@@ -38,9 +39,9 @@
 							</div>
 						</div>
 
+			</c:forEach>
 					</div>
 				
-			</c:forEach>
 		</div>
 
 	</main>
