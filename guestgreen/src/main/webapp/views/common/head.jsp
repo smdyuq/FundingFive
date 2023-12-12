@@ -7,6 +7,8 @@
 
  
 <title>Blog Post - Start Bootstrap Template</title>
+
+
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/common/header.css" rel="stylesheet" />
 <link href="/resources/css/common/nav.css" rel="stylesheet" />

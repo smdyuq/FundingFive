@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +10,13 @@
 </head>
 <body>
 
-	<%@include file="../../views/common/header.jsp"%>
-	<%@include file="../../views/common/nav.jsp"%>
-	<%@include file="../../views/common/common.jsp"%>
-	
-	<main>
+   <%@include file="../../views/common/header.jsp"%>
+   <%@include file="../../views/common/nav.jsp"%>
+   <%@include file="../../views/common/common.jsp"%>
+   
+   <main>
 
-		<h2>게시판 상세</h2>
+      <h2>게시판 상세</h2>
     <form id="detail-form">
         <input type="hidden" name="idx" value="${board.idx}" />
         <div class="board_main_line"></div>
@@ -59,8 +59,8 @@
             <button type="reset" onclick="window.location.href = '/boardList.do?cpage=1'">취소</button>
         </div>
     </form>
-	</main>
+   </main>
 
-	<%@include file="../../views/common/footer.jsp"%>
+   <%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
