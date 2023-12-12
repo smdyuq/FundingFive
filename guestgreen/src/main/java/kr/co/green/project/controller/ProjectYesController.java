@@ -31,9 +31,11 @@ public class ProjectYesController extends HttpServlet {
 		ProjectService projectService = new ProjectServiceImpl();
 
 		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
+		
 
 //		승인 버튼 누를시 업데이트
 		if (projectService.projectUpdate(projectNo) > 0) {
+			System.out.println(projectService.projectUpdate(projectNo));
 			response.sendRedirect("/administratorOk.do?cpage=1");
 		} else {
 			response.sendRedirect("/views/common/error.jsp");

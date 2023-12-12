@@ -19,7 +19,7 @@ body {
 	width: 22.8%;
 	height: 380px;
 	margin-bottom: 4%;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	float: left;
 	margin-right: 2%;
 }
@@ -37,7 +37,7 @@ body {
 	padding-left: 1%;
 	padding-top: 1px;
 	padding-bottom: 1px;
-	border: 2px solid #c0c0c0;
+/* 	border: 2px solid #c0c0c0; */
 	border-radius: 5px;
 }
 

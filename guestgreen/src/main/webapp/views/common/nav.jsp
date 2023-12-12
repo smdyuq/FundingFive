@@ -15,7 +15,8 @@
 							href="/category.do?category=Clothes">의류</a> <a
 							href="/category.do?category=Beauty">향수·뷰티</a> <a
 							href="/category.do?category=Food">푸드</a> <a
-							href="/category.do?category=Jewelry">주얼리</a>
+							href="/category.do?category=Jewelry">주얼리</a><a
+							href="/category.do?category=Christmas">크리스마스</a>
 					</div></li>
 				<li><a href="/form/home.do" class="menu_text">홈</a></li>
 				<li><a href="/menu.do?menu=proceeding" class="menu_text">진행중인
@@ -25,7 +26,9 @@
 				<li><a href="/menu.do?menu=popularity" class="menu_text">인기
 						프로젝트</a></li>
 			</ul>
+
 		</div>
+
 		<div class="nav_menu_right">
 
 
@@ -81,6 +84,7 @@
 
 
 		</div>
+
 	</div>
 </nav>
 
@@ -107,4 +111,6 @@
 				gtcombo.value = tolang;
 				gtcombo.dispatchEvent(new Event('change'));
 			});
+
 </script>
+

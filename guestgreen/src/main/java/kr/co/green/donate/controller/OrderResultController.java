@@ -75,7 +75,10 @@ public class OrderResultController extends HttpServlet {
 		projectDTO.setProjectNo(projectNo);
 		projectDTO.setProjectPrice(projectPrice);
 		projectDTO.setProjectCurrentAmount(projectCurrentAmount + projectPrice);
-		projectDTO.setProjectCurrentPercentage(projectDTO.getProjectCurrentAmount() / projectTargetAmount * 100);
+
+		
+		projectDTO.setProjectCurrentPercentage((double)projectDTO.getProjectCurrentAmount()/projectTargetAmount*100);
+		
 
 		DonateDTO donateDTO = new DonateDTO();
 		donateDTO.setProjectNo(projectNo);
@@ -85,14 +88,16 @@ public class OrderResultController extends HttpServlet {
 		donateDTO.setMemberAddr(memberAddr);
 		donateDTO.setMemberPhone(memberPhone);
 
-		// project테이블에 후원자 수, 후원된 금액 갱신
-		int result1 = projectService.projectUpdate(projectDTO);
-
-		if (result1 > 0) {
-			// Donate 테이블에 데이터 올리기
+		
+		//project테이블에 후원자 수, 후원된 금액 갱신
+		int projectUpdate = projectService.projectUpdate(projectDTO);
+		
+		if(projectUpdate>0) {
+			//Donate 테이블에 데이터 올리기
 			DonateService donateService = new DonateServiceImpl();
-			int result2 = donateService.donateEnroll(donateDTO);
-			if (result2 > 0) {
+			int donateEnroll = donateService.donateEnroll(donateDTO);
+			if(donateEnroll>0) {
+
 				AlertAndRedirect.alertRedirect(response, "결제가 완료되었습니다.", "/");
 			} else {
 				AlertAndRedirect.alertRedirect(response, "DONATE테이블 등록 실패", "/");

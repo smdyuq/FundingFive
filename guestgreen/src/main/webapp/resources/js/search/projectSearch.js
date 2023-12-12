@@ -27,8 +27,8 @@ function deleteSearchHistory(searchNo){
 	
 }
 
-function searchPopularWord(searchWord){
-	window.location.href = '/searchPopularWord.do?searchWord=' + searchWord;
+function searchSelectedrWord(searchWord){
+	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
     window.onload = function() {
@@ -42,8 +42,6 @@ function searchPopularWord(searchWord){
             }
         });
     };
-
-
 
 
 

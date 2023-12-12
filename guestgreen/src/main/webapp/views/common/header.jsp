@@ -3,10 +3,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <header>
+
 	<div class="header_parent_div">
 		<div class="header_information_div">
 			<c:if test="${empty sessionScope.memberNo}">
 				<a id="member-information"> 로그인을 해주세요.</a>
+
 			</c:if>
 			<c:if test="${not empty sessionScope.memberNo}">
 				<c:if test="${sessionScope.memberType == 1}">
@@ -16,15 +18,19 @@
 					<a id="member-information"> 관리자님 안녕하세요.</a>
 				</c:if>
 			</c:if>
+
 		</div>
 		<div class="gnb_button_div">
 			<c:if test="${empty sessionScope.memberNo}">
+
 				<div>
+
 					<a class="gnb-button-style" href="/form/loginform.do">로그인</a>
 					<div style="margin-left: 8px; margin-right: 8px;">|</div>
 					<a class="gnb-button-style" href="/form/signupform.do">회원가입</a>
 					<div style="margin-left: 8px; margin-right: 8px;">|</div>
 					<a class="gnb-button-style" href="/boardList.do?cpage=1">고객센터</a>
+
 				</div>
 			</c:if>
 			<c:if test="${not empty sessionScope.memberNo}">
@@ -43,6 +49,7 @@
 					</div>
 				</c:if>
 			</c:if>
+
 		</div>
 		<div>
 			<div id="google_translate_element" style="display: none;"></div>
@@ -68,6 +75,7 @@
                     </svg></a>
             </div>
     </header>
+
 <script src="/resources/js/common/nav.js"></script>
 <script
 	src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
