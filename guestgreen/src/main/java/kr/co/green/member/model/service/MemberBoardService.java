@@ -12,5 +12,8 @@ public interface MemberBoardService {
 	
 	//회원 본인이 등록한 프로젝트 중 승인되지않은 프로젝트 조회
 	public ArrayList<MemberBoardDTO> getMyRejectedProject(int memberNo);
+
+	//보류된 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getMyPendingProject(int memberNo);
 	
 }

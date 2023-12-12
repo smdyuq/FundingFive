@@ -19,20 +19,16 @@ import kr.co.green.board.model.service.Pagination;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
-
-
 @WebServlet("/boardList.do")
 public class boardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
     public boardListController() {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		//현재 페이지
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
 		//검색
@@ -72,7 +68,6 @@ public class boardListController extends HttpServlet {
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
-	      
 	      
 	      RequestDispatcher view = request.getRequestDispatcher("/views/board/boardList.jsp");
 	      view.forward(request, response);

@@ -18,6 +18,7 @@ guestgreen/.settings/
 .loadpath
 .recommenders
 build/
+guestgreen/src/main/webapp/resources/js/project/apiKey.js
 
 # External tool builders
 .externalToolBuilders/
@@ -175,5 +176,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,java,eclipse,visualstudiocode

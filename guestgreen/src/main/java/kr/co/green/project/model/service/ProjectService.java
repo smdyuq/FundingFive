@@ -78,4 +78,7 @@ public interface ProjectService {
 	// 최근 프로젝트 등록	
 	public int recentProject(int projectNo, int memberNo);
 
+	//찜한 프로젝트 조회
+	public void getUserWishList(int memberNo, ArrayList<ProjectDTO> projectLikedList);
+
 }

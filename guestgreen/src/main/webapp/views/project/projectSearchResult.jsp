@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+	<link rel="stylesheet" href="/resources/css/project/projectSearchResult.css">
+	<script src="/resources/js/project/projectDetail.js"></script>
 </head>
 <body>
 
@@ -14,8 +16,8 @@
 	    <main>
         <div class="project-search">
             <div class="search_word">
-                <p>'<span>임시값</span>'에 대한 검색결과 입니다.</p>
-                
+                <p>'<span>${searchWord}</span>'에 대한 검색결과 입니다.</p>
+
             </div>
             <div class="Search_results_number">
                 <p><span>n</span>건의 검색결과</p>
@@ -23,7 +25,9 @@
         </div>
         <hr class="thick-line">
         <div class="product_container">
-            <div class="product">
+
+        <c:forEach var="item" items="${searchedProjectList}">
+            <div class="product" onclick="projectDetail('${item.projectNo}')">
                 <div class="img_div">
                     <a class="img_div_a" href=""><img src="#" alt="상품 이미지"></a>
                 </div>
@@ -37,3 +41,11 @@
                     <p class="remaining_days">{남은 날짜}일 남음</p>
                 </div>
             </div>
+            </c:forEach>
+
+        </div>
+    </main>
+
+	<%@include file="../../views/common/footer.jsp"%>
+</body>
+</html>

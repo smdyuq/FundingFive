@@ -34,8 +34,9 @@ public class PhoneController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("", "", "https://api.coolsms.co.kr");
         																	//API키, API 시크릿 키
+    	System.out.println("status:" + status);
         Message message = new Message();
-        if(status.equals(null)) {
+        if(status == null) {
         	String memberPhone = request.getParameter("memberPhone");
 	        
 	        Random rand  = new Random();
@@ -72,7 +73,7 @@ public class PhoneController extends HttpServlet {
         	
         	message.setFrom("");	//발신자 번호
         	for(int i=0; i<sponserList.size(); i++) {
-    	        message.setTo(sponserList.get(i).getMemberPhone());
+        		message.setTo(sponserList.get(i).getMemberPhone());
     	        message.setText(sponserList.get(i).getMemberName() + "님, " 
 	        			  + sponserList.get(i).getProjectName() + "프로젝트가 달성 미달."
 	        			  + sponserList.get(i).getProjectPrice() + "원 환불예정."); //어떤 내용을 보낼건지 

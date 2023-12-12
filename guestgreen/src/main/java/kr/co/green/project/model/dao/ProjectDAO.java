@@ -215,7 +215,9 @@ public class ProjectDAO {
 
 			int result = pstmt.executeUpdate();
 
+			
 			return result;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -522,4 +524,46 @@ public class ProjectDAO {
 		return 0;
 	}
 
+	//찜한 프로젝트 조회
+	public void getUserWhisList(Connection con, int memberNo, ArrayList<ProjectDTO> projectLikedList) {
+		String query = "SELECT p.*, pm.project_manager_name FROM ( SELECT PROJECT_NO, PROJECT_NAME, PROJECT_OUTER_IMAGE_NAME, "
+							+ "	PROJECT_KIND, PROJECT_INTRODUCE, "
+							+ "	PROJECT_CURRENT_PERCENTAGE, PROJECT_CURRENT_AMOUNT, "
+							+ "	TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE FROM project) p "
+				+ " JOIN user_likes ul "
+				+ " ON p.project_no = ul.project_no "
+				+ " JOIN project_manager pm "
+				+ " ON p.project_no = pm.project_no"
+				+ " WHERE ul.MEMBER_NO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				projectDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
+				projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+				projectDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
+				projectDTO.setProjectCurrentPercentage(rs.getDouble("PROJECT_CURRENT_PERCENTAGE"));
+				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
+				projectDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				
+				projectLikedList.add(projectDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
+
+
+
+
+
+
+
