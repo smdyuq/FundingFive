@@ -1306,7 +1306,7 @@ dd {
 
 
 
-      <button id="toTop">Top</button>
+      <button class="top-button" id="toTop">Top</button>
    </main>
    <%@include file="./views/common/footer.jsp"%>
 </body>
@@ -1316,7 +1316,7 @@ dd {
 
    // 좋아요 버튼
    
-    var btn = document.getElementById("like")
+  var btn = document.getElementById("like");
 
   btn.addEventListener('click',function(){
             btn.classList.toggle('active')
