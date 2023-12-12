@@ -1,14 +1,14 @@
 function projectDetail(projectNo) {
-	const pageUrl = '/projectAdministrator.do?projectNo=' + projectNo;
-	window.location.href = pageUrl;
+   const pageUrl = '/projectAdministrator.do?projectNo=' + projectNo;
+   window.location.href = pageUrl;
 }
 
 function yesButton() {
-	const form = document.getElementById("project-administratorok-form");
+   const form = document.getElementById("project-administratorok-form");
 
-	form.action = "/projectUpdate.do";
-	form.method = "post";
-	form.submit();
+   form.action = "/projectUpdate.do";
+   form.method = "post";
+   form.submit();
 }
 
 function noButton() {
@@ -31,19 +31,19 @@ function noButton() {
     
     // 탭이동 스크립트
     
-	function showTabContent(tabId) {
-		// 모든 탭 컨텐츠 숨김
-		var tabContents = document.querySelectorAll('.tab_content');
-		tabContents.forEach(function(content) {
-			content.style.display = 'none';
-		});
+   function showTabContent(tabId) {
+      // 모든 탭 컨텐츠 숨김
+      var tabContents = document.querySelectorAll('.tab_content');
+      tabContents.forEach(function(content) {
+         content.style.display = 'none';
+      });
 
-		// 선택한 탭 컨텐츠 표시
-		var selectedTabContent = document.getElementById(tabId + '_content');
-		if (selectedTabContent) {
-			selectedTabContent.style.display = 'block';
-		}
-	}
+      // 선택한 탭 컨텐츠 표시
+      var selectedTabContent = document.getElementById(tabId + '_content');
+      if (selectedTabContent) {
+         selectedTabContent.style.display = 'block';
+      }
+   }
 
 	window.onload = function() {
 		const googleApiSecretKey = document.getElementById("google-api-secret-key");

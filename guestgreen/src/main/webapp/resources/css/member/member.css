@@ -177,3 +177,122 @@ tr>th {
 	
 }
 
+
+/* 전체 구조 */
+.product_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	float: left;
+	justify-content: flex-start;
+	padding-top: 5%;
+}
+
+.product {
+	width: 22.8%;
+	height: 380px;
+	margin-bottom: 4%;
+	border: 1px solid black;
+	float: left;
+	margin-right: 2%;
+}
+
+.project-cartegory {
+	text-align: center;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.project-cartegory>div {
+	display: inline;
+	font-size: 14px;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border: 2px solid #c0c0c0;
+	border-radius: 5px;
+}
+
+/* 상품카드 리스트 */
+.img_div {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.img_div>a, img {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.category_name, .manager_name {
+	text-decoration: none;
+	color: gray;
+	font-size: 14px;
+}
+
+.divide_area {
+	margin-right: 5px;
+	margin-left: 5px;
+	color: gray;
+	font-size: 14px;
+}
+
+.project_title {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	text-decoration: none;
+	color: black;
+	margin-top: 10px;
+}
+
+.project_explanation {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	color: gray;
+	font-size: 12px;
+}
+
+.detail_text {
+	display: flex;
+	flex-direction: row;
+	width: auto;
+	margin-bottom: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.achievement_rate {
+	font-size: 14px;
+	color: red;
+	margin-right: 3px;
+}
+
+.sponsorship_amount {
+	font-size: 13px;
+	margin-right: 3px;
+}
+
+.remaining_days {
+	font-size: 13px;
+}
+
+.img_div>img, .img_div_a {
+	transition: all 0.2s linear;
+}
+
+.img_div>img, .img_div_a:hover {
+	transform: scale(1.1);
+}

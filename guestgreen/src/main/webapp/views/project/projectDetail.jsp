@@ -9,11 +9,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>funding(수정예정)</title>
 
-<link href="/resources/css/common/common.css" rel="stylesheet"/>
+<link href="/resources/css/common/common.css" rel="stylesheet" />
 <link href="/resources/css/project/projectDetail.css" rel="stylesheet" />
 
 
 <%@include file="../../views/common/head.jsp"%>
+
+
+
+<style>
+.originator-div {
+	display: flex;
+	align-items: center;
+}
+
+.profile-container {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+}
+
+.profile-image img {
+	width: 130px; /* 프로필 사진의 너비 설정 */
+	height: 130px; /* 프로필 사진의 높이 설정 */
+}
+
+.profile-details {
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+</style>
 </head>
 
 <body>
@@ -26,7 +51,9 @@
 				<div class="project-name">${projectDTO.projectName}</div>
 				<div class="project-information">
 					<div class="project-img">
-						<img src="/resources/uploads/innerimage/${projectDTO.projectInnerImageName}" alt="">
+						<img
+							src="/resources/uploads/innerimage/${projectDTO.projectInnerImageName}"
+							alt="">
 					</div>
 					<div class="project-description">
 						<div class="project-text-alignment">
@@ -74,31 +101,32 @@
 				</div>
 			</div>
 			<div class="product-div">
-				<div class="product-description">
-					${projectDTO.projectContent}
+				<div class="product-description">${projectDTO.projectContent}
 				</div>
 				<div class="originator-div">
 					<p>창작자 소개</p>
-					<div>
-						<a class="project-manager-name">${projectDTO.projectManagerName}
-						</a>
-					</div>
-					<p>${projectDTO.projectManagerName}</p>
-					<div>
-						<a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}
-						</a>
+					<div class="profile-container">
+						<div class="profile-image">
+							<img
+								src="resources/uploads/managerimage/${projectDTO.projectManagerImageName}"
+								alt="프로필 사진">
+						</div>
+						<div class="profile-details">
+
+							<a class="project-manager-name">${projectDTO.projectManagerName}</a>
+							<br> <br> <a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
+						</div>
 					</div>
 					<div class="project-button">
 						<a href="#">이전 프로젝트 보기</a>
 					</div>
 				</div>
 			</div>
-		</div>
 	</main>
 
 	<%@include file="../../views/common/common.jsp"%>
 	<%@include file="../../views/common/footer.jsp"%>
-	
+
 
 </body>
 

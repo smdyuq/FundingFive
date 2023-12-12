@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+
 	<link rel="stylesheet" href="/resources/css/project/projectSearchResult.css">
 	<script src="/resources/js/project/projectDetail.js"></script>
 </head>
@@ -40,6 +41,7 @@
                 </div>
             </div>
             </c:forEach>
+
         </div>
     </main>
 

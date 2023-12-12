@@ -36,6 +36,9 @@ main {
 				<div class="menu" onclick="showContent('shipping_information')">
 					<span>배송정보</span> <span class="menu-arrow">></span>
 				</div>
+				<div class="menu" onclick="showContent('like_project')">
+					<span>관심있는 프로젝트</span> <span class="menu-arrow">></span>
+				</div>
 			</div>
 
 			<!-- 내정보 -->
@@ -294,6 +297,55 @@ main {
 					style="display: none;">
 					<h2>배송조회</h2>
 					<div class="table-container">
+						<input type="text" id="waybill-id" name="waybill-id"
+							placeholder="운송장 번호를 입력하세요." required>
+						<button>조회</button>
+					</div>
+				</div>
+
+				<!-- 좋아요 -->
+				<div id="like_project" class="content-section"
+					style="display: none;">
+					<h2>관심있는 프로젝트</h2>
+					<div class="table-container">
+						<div class="project-cartegory">
+							<c:choose>
+								<c:when test="">
+									<p>관심있는 프로젝트가 없습니다.</p>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="item" items="${list}">
+										<div class="product_container">
+											<div class="product">
+												<div class="img_div">
+													<a class="img_div_a" href=""><img
+														src="${item.projectOuterImageName }" alt="상품 이미지"></a>
+												</div>
+												<a href="#" class="category_name">${item.projectKind }</a><a
+													class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>
+												<a href="#" class="project_title">제목 2줄 넘어가면 잘림 테스트
+													테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</a>
+												<p class="project_explanation">설명 2줄 넘어가면 잘림 테스트
+													테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</p>
+												<div class="detail_text">
+													<p class="achievement_rate">{달성률}%</p>
+													<p class="sponsorship_amount">{현재 후원된 금액}원</p>
+													<p class="remaining_days">{남은 날짜}일 남음</p>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</div>
+
+				<!-- 배송조회 -->
+				<div id="shipping_information" class="content-section"
+					style="display: none;">
+					<h2>배송조회</h2>
+					<div class="table-container">
 						<form action="http://info.sweettracker.co.kr/tracking/3"
 							method="post">
 							<div class="form-group">
@@ -313,10 +365,6 @@ main {
 						</form>
 					</div>
 				</div>
-
-
-
-
 			</div>
 		</div>
 	</main>
