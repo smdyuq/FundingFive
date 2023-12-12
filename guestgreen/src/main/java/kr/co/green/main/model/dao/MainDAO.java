@@ -71,7 +71,7 @@ public class MainDAO {
 
 	}
 
-//	인기 프로젝트 조회
+//   인기 프로젝트 조회
 	public ArrayList<ProjectDTO> projectPopularity(Connection con) {
 		ArrayList<ProjectDTO> list = new ArrayList<>();
 

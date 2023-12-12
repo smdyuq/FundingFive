@@ -6,13 +6,52 @@
 <html lang="en">
 
 <head>
-<link rel="shortcut icon" href="#">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/resources/js/project/projectDetail.js"></script>
 <%@include file="./views/common/head.jsp"%>
 </head>
 
 <style>
+
+.card-wrapper0 {
+	position: relative;
+	width: 21%;
+	height: 28vh;
+	padding-bottom: 2%;
+}
+
+#like {
+	fill: #ddd;
+}
+
+#like.active {
+	fill: red;
+}
+
+.LikeBtn {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+}
+
+.LikeButton_Wrapper {
+	position: relative;
+	right: 3.5%;
+	top: 14.6vh;
+	width: 2vw;
+	height: 2vh;
+	 border:  10px solid rgba(255,  0,  0,  .5);
+}
+
+.card-wrapper2 {
+	width: 180px;
+}
+
+.card {
+	width: 210px;
+	height: 150px;
+}
+
 .btn_text {
 	font-style: normal;
 	font-weight: 900;
@@ -278,12 +317,12 @@ body {
 	width: 108%;
 	top: 30%;
 	left: -4%;
-	/*    position: absolute;
-   bottom: 5%;
-   left: 50%;
-   align-text: center;
-   transform: translatex(-250%);
-   transform: translatey(1750%); */
+	/* 	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	align-text: center;
+	transform: translatex(-250%);
+	transform: translatey(1750%); */
 }
 
 .slides_btn button {
@@ -353,8 +392,8 @@ dd>span::before {
 
 /* 상단 왼쪽 (주목할만한 프로젝트)*/
 .FrontPage_StyleHero {
-	/*   height: auto;
-   margin-left: 60px; */
+	/*	height: auto;
+	margin-left: 60px; */
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -382,11 +421,13 @@ dd>span::before {
 }
 
 .frontPageCard_Container {
-	height: auto;
-	margin-top: 3%;
+	width: 800px;
+	height: 580px;
+	margin-top: 2%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	height: auto;
 }
 
 .frontPage_Card {
@@ -405,7 +446,7 @@ dd>span::before {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	flex: 0 1 auto;
-	width: 80%;
+	width: 10.5vw;
 }
 
 .category-brand {
@@ -422,10 +463,10 @@ dd>span::before {
 
 .card-wrapper {
 	position: relative;
-	width: 23%;
-	height: 25%;
-	padding-right: 2%;
+	width: 21%;
+	height: 33vh;
 	padding-bottom: 2%;
+	margin-right:3%
 }
 
 .card-wrapper-last {
@@ -442,7 +483,7 @@ dd>span::before {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
-	width: 180px;
+	width: 100%;
 	height: 50px;
 }
 
@@ -479,7 +520,7 @@ dd>span::before {
 }
 
 .Popula-card-wrapper>div {
-	width: 100%;
+	width: 22vw;
 }
 
 .ProjectCardNumber {
@@ -511,18 +552,18 @@ dd>span::before {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
-	width: 60%
+	width: 86%
 }
 
 .FrontPage_viewTotal {
-	/*    padding-top: 3%;
+	/* 	padding-top: 3%;
  */
 	font-size: small;
 }
 
 .popular-project-header {
 	justify-content: space-between;
-	margin-bottom: 8%;
+	margin-bottom: 3%;
 	display: flex;
 	width: 88%;
 	flex-wrap: wrap;
@@ -537,7 +578,6 @@ dd>span::before {
 }
 
 .Project_ViewMore {
-	background-color : #00E7AF;
 	display: flex;
 	width: 204px;
 	height: 44px;
@@ -562,12 +602,12 @@ dd>span::before {
 }
 
 /* .Card_img {
-   width: 80%
+	width: 80%
 } */
 
 /* .Card_image {
-   width: auto;
-   height: auto;
+	width: auto;
+	height: auto;
 } */
 .Collection_Contents {
 	width: auto;
@@ -610,7 +650,7 @@ dd {
 /* 최근본 */
 .row_frontPage_Card {
 	display: flex;
-	/*    background-color: aqua; */
+	/* 	background-color: aqua; */
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -670,13 +710,13 @@ dd {
 
 .Container_1page {
 	width: 100%;
-	height: auto;
+	height: 560px;
 	display: flex;
 }
 
 .ContentInfo_Container {
-	width: 280px;
-	height: 250px;
+	width: 480px;
+	height: 300px;
 	padding-right: 5%;
 }
 
@@ -816,35 +856,34 @@ dd {
 
 					<!-- 자동 슬라이드 -->
 
-					<!--   <div class="slider">
-               <div class="slide">
-                  <img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
-                     height="280px">
-               </div>
-            </div> -->
+					<!--	<div class="slider">
+					<div class="slide">
+						<img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
+							height="280px">
+					</div>
+				</div> -->
 
 					<p>주목할 만한 프로젝트</p>
 					<div class="frontPageCard_Container">
 
 						<div class="FrontCard_Container">
 							<c:forEach var="item" items="${noteWorthy }">
-								<div class="card-wrapper">
+								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
-										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
-
-									<span class="projectCardDetail">
+										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
+									</a> <span class="projectCardDetail">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -855,6 +894,16 @@ dd {
 										</dt> <span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>
 									</span>
+								</div>
+								<div class="LikeButton_Wrapper">
+									<button class="LikeBtn">
+										<svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
+											width="16" viewBox="0 0 512 512">
+											<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+											<path
+												d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+									</button>
 								</div>
 							</c:forEach>
 
@@ -870,7 +919,7 @@ dd {
 
 					<div class="popular-project-header">
 						<p class="FrontPage_ListTitle">인기 프로젝트</p>
-						<a href="/menu.do?menu=popularity" class=FrontPage_viewTotal>전체보기</a>
+						<a href="#" class=FrontPage_viewTotal>전체보기</a>
 					</div>
 
 					<div class=populaPage_List>
@@ -880,7 +929,10 @@ dd {
 									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="popular_img"
 										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
-									<div class="ProjectCardNumbertop">${item.projectRankNumber }</div>
+									<div class="ProjectCardNumbertop">
+										${item.projectRankNumber }</div>
+
+
 									<div class="projectCardDetail">
 										<dd>
 
@@ -983,10 +1035,10 @@ dd {
 								</c:forEach>
 							</div>
 						</div>
-						<!--    <div class="slides_btn">
-                     <button class="prev"><</button>
-                     <button class="next">></button>
-                  </div> -->
+						<!-- 	<div class="slides_btn">
+							<button class="prev"><</button>
+							<button class="next">></button>
+						</div> -->
 
 						<div class="side-btns1">
 							<div>
@@ -1127,7 +1179,7 @@ dd {
 
 			<div class="Container_1page">
 				<div class="ContentInfo_Container">
-					<img src="/resources/uploads/크리스마스.avif">
+					<img src="/resources/image/크리스마스 이미지.jpg">
 
 
 					<div class="Content_TextInfobox">
@@ -1137,10 +1189,37 @@ dd {
 								텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의 어드벤트
 								캘린더까지!</div>
 					</div>
-					</a> <a href="/category.do?category=Christmas" title="프로젝트 더보기"
-						class="Project_ViewMore">프로젝트 더보기</a>
+					</a> <a href="http://localhost/category.do?category=Christmas"
+						title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
 				</div>
-				<div class="lines_Collection_Contents_div">
+
+				<div class="FrontCard_Container">
+					<c:forEach var="item" items="${christmasProject }">
+						<div class="card">
+							<div class="card-wrapper2">
+								<a href="#"><img class="eximg"
+									src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+
+								<span class="projectCardDetail">
+									<dd>
+
+										<input type="hidden" value=${item.projectNo }> <a
+											href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+									</dd>
+									<dt>
+										<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
+									</dt> <span class="percentage">${item.projectCurrentPercentage }%
+										달성</span>
+								</span>
+							</div>
+						</div>
+
+					</c:forEach>
+
+
+				</div>
+
+				<!-- <div class="lines_Collection_Contents_div">
 					<div class="lines_Collection_Contents">
 
 						<div class="lines_card-wrapper">
@@ -1220,7 +1299,7 @@ dd {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -1235,171 +1314,178 @@ dd {
 
 <script>
 
+	// 좋아요 버튼
+	
+	 var btn = document.getElementById("like")
+
+  btn.addEventListener('click',function(){
+            btn.classList.toggle('active')
+    })
+
+	// 최상단 이동 버튼
+
+	$(function() { // 보이기 | 숨기기 
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 250) {
+				$('#toTop').fadeIn();
+				$('#toTop').css('left', $('#sidebar').offset().left);
+			} else {
+				$('#toTop').fadeOut();
+			}
+		});
+		// 버튼 클릭시 
+		$("#toTop").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+
+			}, 400);
+		});
+	});
+	
+	
+
+	// 배너 슬라이드
+
+	$('.slider-1 > .page-btns > div').click(function() {
+		var $this = $(this);
+		var index = $this.index();
+
+		$this.addClass('active');
+		$this.siblings('.active').removeClass('active');
+
+		var $slider = $this.parent().parent();
+
+		var $current = $slider.find(' > .slides1 > div.active');
+
+		var $post = $slider.find(' > .slides1 > div').eq(index);
+
+		$current.removeClass('active');
+		$post.addClass('active');
+	});
+
+	// 좌/우 버튼 추가 슬라이더
+	$('.slider-1 > .side-btns > div').click(function() {
+		var $this = $(this);
+		var $slider = $this.closest('.slider-1');
+
+		var index = $this.index();
+		var isLeft = index == 0;
+
+		var $current = $slider.find(' > .page-btns > div.active');
+		var $post;
+
+		if (isLeft) {
+			$post = $current.prev();
+		} else {
+			$post = $current.next();
+		}
+		;
+
+		if ($post.length == 0) {
+			if (isLeft) {
+				$post = $slider.find(' > .page-btns > div:last-child');
+			} else {
+				$post = $slider.find(' > .page-btns > div:first-child');
+			}
+		}
+		;
+
+		$post.click();
+	});
+
+	setInterval(function() {
+		$('.slider-1 > .side-btns > div').eq(1).click();
+	}, 3000);
+
+	
+	
+	// 최근 본 프로젝트 슬라이드
+	let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
+			.find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
+			.find(".slides"), slidesi = slidesWrap.find(".side-btns1");
+
+	let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
+
+	slidesCopy = $(".slides:lt(" + showNum + ")").clone();
+	slidesList.append(slidesCopy);
+
+	//이미지 움직이기
+	function backShow() {
+		if (num == 0) {
+			//시작
+			num = slidesCount;
+			slidesList.css("left", -num * slidesWidth + "px");
+		}
+		num--;
+		slidesList.stop().animate({
+			left : -slidesWidth * num + "px"
+		}, 400);
+	}
+
+	function nextShow() {
+		if (num == slidesCount) {
+			//마지막
+			num = 0;
+			slidesList.css("left", num);
+		}
+		num++;
+		slidesList.stop().animate({
+			left : -slidesWidth * num + "px"
+		}, 400);
+	}
+
+	//왼쪽, 오른쪽 버튼 설정
+	slidesi.on("click", "i", function() {
+		if ($(this).hasClass("leftbtn1")) {
+			//왼쪽 버튼을 클릭
+			backShow();
+		} else {
+			//오른쪽 버튼을 클릭
+			nextShow();
+		}
+	});
 
 
-
-   // 최상단 이동 버튼
-
-   $(function() { // 보이기 | 숨기기 
-      $(window).scroll(function() {
-         if ($(this).scrollTop() > 250) {
-            $('#toTop').fadeIn();
-            $('#toTop').css('left', $('#sidebar').offset().left);
-         } else {
-            $('#toTop').fadeOut();
-         }
-      });
-      // 버튼 클릭시 
-      $("#toTop").click(function() {
-         $('html, body').animate({
-            scrollTop : 0
-
-         }, 400);
-      });
-   });
-   
-   
-
-   // 배너 슬라이드
-
-   $('.slider-1 > .page-btns > div').click(function() {
-      var $this = $(this);
-      var index = $this.index();
-
-      $this.addClass('active');
-      $this.siblings('.active').removeClass('active');
-
-      var $slider = $this.parent().parent();
-
-      var $current = $slider.find(' > .slides1 > div.active');
-
-      var $post = $slider.find(' > .slides1 > div').eq(index);
-
-      $current.removeClass('active');
-      $post.addClass('active');
-   });
-
-   // 좌/우 버튼 추가 슬라이더
-   $('.slider-1 > .side-btns > div').click(function() {
-      var $this = $(this);
-      var $slider = $this.closest('.slider-1');
-
-      var index = $this.index();
-      var isLeft = index == 0;
-
-      var $current = $slider.find(' > .page-btns > div.active');
-      var $post;
-
-      if (isLeft) {
-         $post = $current.prev();
-      } else {
-         $post = $current.next();
-      }
-      ;
-
-      if ($post.length == 0) {
-         if (isLeft) {
-            $post = $slider.find(' > .page-btns > div:last-child');
-         } else {
-            $post = $slider.find(' > .page-btns > div:first-child');
-         }
-      }
-      ;
-
-      $post.click();
-   });
-
-   setInterval(function() {
-      $('.slider-1 > .side-btns > div').eq(1).click();
-   }, 3000);
-
-   
-   
-   // 최근 본 프로젝트 슬라이드
-   let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
-         .find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
-         .find(".slides"), slidesi = slidesWrap.find(".side-btns1");
-
-   let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
-
-   slidesCopy = $(".slides:lt(" + showNum + ")").clone();
-   slidesList.append(slidesCopy);
-
-   //이미지 움직이기
-   function backShow() {
-      if (num == 0) {
-         //시작
-         num = slidesCount;
-         slidesList.css("left", -num * slidesWidth + "px");
-      }
-      num--;
-      slidesList.stop().animate({
-         left : -slidesWidth * num + "px"
-      }, 400);
-   }
-
-   function nextShow() {
-      if (num == slidesCount) {
-         //마지막
-         num = 0;
-         slidesList.css("left", num);
-      }
-      num++;
-      slidesList.stop().animate({
-         left : -slidesWidth * num + "px"
-      }, 400);
-   }
-
-   //왼쪽, 오른쪽 버튼 설정
-   slidesi.on("click", "i", function() {
-      if ($(this).hasClass("leftbtn1")) {
-         //왼쪽 버튼을 클릭
-         backShow();
-      } else {
-         //오른쪽 버튼을 클릭
-         nextShow();
-      }
-   });
-
-
-   
-   // 마감임박! 24시간 타이머
-   
-   setInterval(function time() {
-      //시간 초기화
-      var d = new Date();
-      var hours = 24 - d.getHours();
-      var min = 60 - d.getMinutes();
-      var sec = 60 - d.getSeconds();
-      //분이 있으면 시 반올림
-      if (min == '00') {
-         hours = 24 - d.getHours();
-      } else {
-         hours = 23 - d.getHours();
-      }
-      //초가 있으면 분 반올림        
-      if (sec == '00') {
-         min = 60 - d.getMinutes();
-      } else {
-         min = 59 - d.getMinutes();
-      }
-      //1자리수라면 0을 붙혀라
-      if ((hours + '').length == 1) {
-         hours = '0' + hours;
-      }
-      if ((min + '').length == 1) {
-         min = '0' + min;
-      }
-      if ((sec + '').length == 1) {
-         sec = '0' + sec;
-      }
-      //날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
-      jQuery('#countdown Strong').html(
-            '<Strong class="t_hour">' + hours + '</Strong>'
-                  + '<Strong class="t_colon">:</Strong>'
-                  + '<Strong class="t_min">' + min + '</Strong>'
-                  + '<Strong class="t_colon">:</Strong>'
-                  + '<Strong class="t_sec">' + sec + '</Strong>')
-   }, 1000);
+	
+	// 마감임박! 24시간 타이머
+	
+	setInterval(function time() {
+		//시간 초기화
+		var d = new Date();
+		var hours = 24 - d.getHours();
+		var min = 60 - d.getMinutes();
+		var sec = 60 - d.getSeconds();
+		//분이 있으면 시 반올림
+		if (min == '00') {
+			hours = 24 - d.getHours();
+		} else {
+			hours = 23 - d.getHours();
+		}
+		//초가 있으면 분 반올림        
+		if (sec == '00') {
+			min = 60 - d.getMinutes();
+		} else {
+			min = 59 - d.getMinutes();
+		}
+		//1자리수라면 0을 붙혀라
+		if ((hours + '').length == 1) {
+			hours = '0' + hours;
+		}
+		if ((min + '').length == 1) {
+			min = '0' + min;
+		}
+		if ((sec + '').length == 1) {
+			sec = '0' + sec;
+		}
+		//날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
+		jQuery('#countdown Strong').html(
+				'<Strong class="t_hour">' + hours + '</Strong>'
+						+ '<Strong class="t_colon">:</Strong>'
+						+ '<Strong class="t_min">' + min + '</Strong>'
+						+ '<Strong class="t_colon">:</Strong>'
+						+ '<Strong class="t_sec">' + sec + '</Strong>')
+	}, 1000);
+	
+	
 </script>
 </html>
