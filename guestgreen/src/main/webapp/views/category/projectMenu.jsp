@@ -6,6 +6,7 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/category/category.css">
+<script src="/resources/js/project/projectDetail.js"></script>
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -19,10 +20,10 @@
 
 					<div class="product_container">
 			<c:forEach var="item" items="${list }">
-						<div class="product">
-							<div class="img_div">
-								<a class="img_div_a" href=""><img
-									src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }" alt="상품 이미지"></a>
+						<div class="product" onclick="projectDetail(${item.projectNo})">
+							<div class="img_div" >
+								<a class="img_div_a" ><img
+									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" alt="상품 이미지"></a>
 							</div>
 							<a href="#" class="category_name">${item.projectKind }</a><a
 								class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>

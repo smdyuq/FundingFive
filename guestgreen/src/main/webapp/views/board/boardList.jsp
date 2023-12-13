@@ -43,6 +43,7 @@
 
 </style>
 
+
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>

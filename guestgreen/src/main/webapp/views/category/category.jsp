@@ -24,7 +24,7 @@
 						<div class="product">
 							<div class="img_div">
 								<a class="img_div_a" href=""><img
-									src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }" alt="상품 이미지"></a>
+									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" alt="상품 이미지"></a>
 							</div>
 							<a href="#" class="category_name">${item.projectKind }</a><a
 								class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>

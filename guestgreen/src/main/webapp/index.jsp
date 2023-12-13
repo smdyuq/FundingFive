@@ -12,7 +12,6 @@
 </head>
 
 <style>
-
 .card-wrapper0 {
    position: relative;
    width: 21%;
@@ -462,11 +461,13 @@ dd>span::before {
 }
 
 .card-wrapper {
+
    position: relative;
    width: 21%;
    height: 33vh;
    padding-bottom: 2%;
    margin-right:3%
+
 }
 
 .card-wrapper-last {
@@ -829,6 +830,7 @@ dd {
          <div class="FrontPage_HomeWrapper">
             <div class="FrontPage_StyleHero">
 
+
                <div class="slider-1 slidesimg">
                   <div class="slides1">
                      <c:forEach var="item" items="${banner }">
@@ -854,6 +856,7 @@ dd {
                   </div>
                </div>
 
+
                <!-- 자동 슬라이드 -->
 
                <!--   <div class="slider">
@@ -878,6 +881,7 @@ dd {
                <p>주목할 만한 프로젝트</p>
                <div class="frontPageCard_Container">
 
+
                   <div class="FrontCard_Container">
                      <c:forEach var="item" items="${noteWorthy }">
                         <div class="card-wrapper0">
@@ -885,6 +889,7 @@ dd {
                               src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
                            </a> <span class="projectCardDetail">
                               <dd>
+
 
                                  <input type="hidden" value=${item.projectNo }> <a
                                     href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
@@ -922,6 +927,7 @@ dd {
                   <a href="#" class=FrontPage_viewTotal>전체보기</a>
                </div>
 
+
                <div class=populaPage_List>
                   <div class="Popula-card-wrapper">
                      <c:forEach var="item" items="${popularity }">
@@ -931,6 +937,7 @@ dd {
                               src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
                            <div class="ProjectCardNumbertop">
                               ${item.projectRankNumber }</div>
+
 
 
                            <div class="projectCardDetail">
@@ -1017,6 +1024,7 @@ dd {
                         <c:forEach var="item" items="${recentProject }">
                            <div class="slides">
 
+
                               <div class="card-wrapper1">
                                  <a href="#"><img class="Card_img"
                                     src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
@@ -1039,6 +1047,7 @@ dd {
                      <button class="prev"><</button>
                      <button class="next">></button>
                   </div> -->
+
 
                   <div class="side-btns1">
                      <div>
@@ -1386,9 +1395,12 @@ dd {
       $post.click();
    });
 
+
    setInterval(function() {
       $('.slider-1 > .side-btns > div').eq(1).click();
    }, 3000);
+
+
 
    
    
@@ -1397,7 +1409,10 @@ dd {
          .find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
          .find(".slides"), slidesi = slidesWrap.find(".side-btns1");
 
+
+
    let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
+
 
    slidesCopy = $(".slides:lt(" + showNum + ")").clone();
    slidesList.append(slidesCopy);

@@ -6,23 +6,39 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <style>
+.project-enroll-form {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
 .form-label {
 	font-size: 17px;
+}
+
+.thick-line {
+	border-top: 2px solid #000;
+	margin-bottom: 40px;
+	margin-top: 3%;
 }
 
 /* 텍스트 인풋박스 */
 .project_content_div>div>input {
 	width: 100%;
 	height: 30px;
-	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-top: 1%;
+	margin-bottom: 40px;
+}
+
+.form-control {
+	border: none;
+	border-bottom: 1px solid black;
 }
 
 .form-select {
 	width: 100%;
 	height: 30px;
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-bottom: 40px;
 }
 
 /* 파일 인풋박스 */
@@ -40,9 +56,33 @@ input[type=file]::file-selector-button {
 
 /* 다음 버튼 */
 .next_btn {
-	margin-top: 5%;
-	padding: 10px 15px 10px 15px; /* 상단 우측 하단 좌측 */
-	font-size: 15px;
+	font-style:;
+	background-color: #00E7AF;
+	color: black;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	min-height: 30px;
+	min-width: 120px;
+	transition: background-color 0.3s ease; /* 트랜지션 효과 추가 */
+}
+
+.next_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
+}
+
+.jb-text {
+	padding: 15px 20px;
+	background-color: #444444;
+	border-radius: 5px;
+	color: #ffffff;
+	position: absolute;
+	display: none;
+}
+
+.form-label-image:hover+.jb-text {
+	display: block;
 }
 </style>
 </head>
