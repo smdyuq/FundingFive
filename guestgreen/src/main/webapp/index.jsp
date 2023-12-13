@@ -921,14 +921,11 @@ dd {
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
 							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img"
-									onclick="projectDetail(${item.projectNo})">
-									<a href="#"><img class="popular_img"
+								<div class="popula-img">
+									<a href="#"><img class="popular_img" onclick="projectDetail(${item.projectNo})"
 										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
-
-
 									<div class="projectCardDetail">
 										<dd>
 
@@ -936,7 +933,7 @@ dd {
 												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 										</dd>
 										<dt>
-											<a href="#" class="popula-project_Introduce">${item.projectIntroduce }</a>
+											<a href="#" class="popula-project_Introduce" onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</a>
 										</dt>
 										<span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>
@@ -1342,56 +1339,69 @@ dd {
 
 	// 배너 슬라이드
 
-	$('.slider-1 > .page-btns > div').click(function() {
-		var $this = $(this);
-		var index = $this.index();
+   // 배너 슬라이드
 
-		$this.addClass('active');
-		$this.siblings('.active').removeClass('active');
+   $('.slider-1 > .page-btns > div').click(function() {
+      var $this = $(this);
+      var index = $this.index();
 
-		var $slider = $this.parent().parent();
+      $this.addClass('active');
+      $this.siblings('.active').removeClass('active');
 
-		var $current = $slider.find(' > .slides1 > div.active');
+      var $slider = $this.parent().parent();
 
-		var $post = $slider.find(' > .slides1 > div').eq(index);
+      var $current = $slider.find(' > .slides1 > div.active');
 
-		$current.removeClass('active');
-		$post.addClass('active');
-	});
+      var $post = $slider.find(' > .slides1 > div').eq(index);
 
-	// 좌/우 버튼 추가 슬라이더
-	$('.slider-1 > .side-btns > div').click(function() {
-		var $this = $(this);
-		var $slider = $this.closest('.slider-1');
+      $current.removeClass('active');
+      $post.addClass('active');
+   });
 
-		var index = $this.index();
-		var isLeft = index == 0;
+   // 좌/우 버튼 추가 슬라이더
+   $('.slider-1 > .side-btns > div').click(function() {
+      var $this = $(this);
+      var $slider = $this.closest('.slider-1');
 
-		var $current = $slider.find(' > .page-btns > div.active');
-		var $post;
+      var index = $this.index();
+      var isLeft = index == 0;
 
-		if (isLeft) {
-			$post = $current.prev();
-		} else {
-			$post = $current.next();
-		}
-		;
+      var $current = $slider.find(' > .page-btns > div.active');
+      var $post;
 
-		if ($post.length == 0) {
-			if (isLeft) {
-				$post = $slider.find(' > .page-btns > div:last-child');
-			} else {
-				$post = $slider.find(' > .page-btns > div:first-child');
-			}
-		}
-		;
+      if (isLeft) {
+         $post = $current.prev();
+      } else {
+         $post = $current.next();
+      }
+      ;
 
-		$post.click();
-	});
+      if ($post.length == 0) {
+         if (isLeft) {
+            $post = $slider.find(' > .page-btns > div:last-child');
+         } else {
+            $post = $slider.find(' > .page-btns > div:first-child');
+         }
+      }
+      ;
+      
+      $post.click();
+   });
 
-	setInterval(function() {
-		$('.slider-1 > .side-btns > div').eq(1).click();
-	}, 3000);
+   setInterval(function() {
+      if (hovered_flag) return
+      $('.slider-1 > .side-btns > div').eq(1).click();
+   }, 3000);
+
+   var hovered_flag = false;
+
+   $(".lnb-category-expansion").hover(function(e){
+     hovered_flag = true;
+     console.log("prevent triggering");
+   },function(e){
+     hovered_flag = false;
+     console.log("allow triggering");
+   });
 
 	
 	

@@ -87,7 +87,6 @@
                                  aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                               </a></li>
                            </c:when>
-
                         </c:choose>
 
                         <c:forEach var="page" begin="${pi.startPage }"
@@ -98,7 +97,6 @@
                         </c:forEach>
 
                         <c:choose>
-
                            <c:when test="${pi.currentPage == pi.maxPage}">
                               <li class="page-item"><a class="page-link" href="#"
                                  aria-label="Next"> <span aria-hidden="true">&raquo;</span>
