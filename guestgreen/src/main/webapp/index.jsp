@@ -1344,59 +1344,71 @@ dd {
 	
 	
 
-	// 배너 슬라이드
+	   // 배너 슬라이드
 
-	$('.slider-1 > .page-btns > div').click(function() {
-		var $this = $(this);
-		var index = $this.index();
+	   $('.slider-1 > .page-btns > div').click(function() {
+	      var $this = $(this);
+	      var index = $this.index();
 
-		$this.addClass('active');
-		$this.siblings('.active').removeClass('active');
+	      $this.addClass('active');
+	      $this.siblings('.active').removeClass('active');
 
-		var $slider = $this.parent().parent();
+	      var $slider = $this.parent().parent();
 
-		var $current = $slider.find(' > .slides1 > div.active');
+	      var $current = $slider.find(' > .slides1 > div.active');
 
-		var $post = $slider.find(' > .slides1 > div').eq(index);
+	      var $post = $slider.find(' > .slides1 > div').eq(index);
 
-		$current.removeClass('active');
-		$post.addClass('active');
-	});
+	      $current.removeClass('active');
+	      $post.addClass('active');
+	   });
 
-	// 좌/우 버튼 추가 슬라이더
-	$('.slider-1 > .side-btns > div').click(function() {
-		var $this = $(this);
-		var $slider = $this.closest('.slider-1');
+	   // 좌/우 버튼 추가 슬라이더
+	   $('.slider-1 > .side-btns > div').click(function() {
+	      var $this = $(this);
+	      var $slider = $this.closest('.slider-1');
 
-		var index = $this.index();
-		var isLeft = index == 0;
+	      var index = $this.index();
+	      var isLeft = index == 0;
 
-		var $current = $slider.find(' > .page-btns > div.active');
-		var $post;
+	      var $current = $slider.find(' > .page-btns > div.active');
+	      var $post;
 
-		if (isLeft) {
-			$post = $current.prev();
-		} else {
-			$post = $current.next();
-		}
-		;
+	      if (isLeft) {
+	         $post = $current.prev();
+	      } else {
+	         $post = $current.next();
+	      }
+	      ;
 
-		if ($post.length == 0) {
-			if (isLeft) {
-				$post = $slider.find(' > .page-btns > div:last-child');
-			} else {
-				$post = $slider.find(' > .page-btns > div:first-child');
-			}
-		}
-		;
+	      if ($post.length == 0) {
+	         if (isLeft) {
+	            $post = $slider.find(' > .page-btns > div:last-child');
+	         } else {
+	            $post = $slider.find(' > .page-btns > div:first-child');
+	         }
+	      }
+	      ;
 
-		$post.click();
-	});
+	      
+	      
+	      $post.click();
+	   });
 
-	setInterval(function() {
-		$('.slider-1 > .side-btns > div').eq(1).click();
-	}, 3000);
+	   setInterval(function() {
+	      if (hovered_flag) return
+	      $('.slider-1 > .side-btns > div').eq(1).click();
+	   }, 3000);
 
+	   var hovered_flag = false;
+
+	   $(".lnb-category-expansion").hover(function(e){
+	     hovered_flag = true;
+	     console.log("prevent triggering");
+	   },function(e){
+	     hovered_flag = false;
+	     console.log("allow triggering");
+	   });
 	
 	
 	// 최근 본 프로젝트 슬라이드
