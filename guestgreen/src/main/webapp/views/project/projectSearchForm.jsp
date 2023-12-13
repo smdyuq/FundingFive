@@ -42,8 +42,8 @@
 					<c:otherwise>
 						<div class="recent_searches_result">
 							<c:forEach var="searching" items="${memberSearchArr}">
-								<div class="searches_result_div">
-									<div id="search-words${searching.searchNo}">
+								<div class="searches_result_div" id="search-words${searching.searchNo}">
+									<div>
 										<a id="search-word" onclick="searchSelectedWord('${searching.searchWord}')">${searching.searchWord}</a> <a
 											onclick="deleteSearchHistory(${searching.searchNo})">x</a>
 									</div>

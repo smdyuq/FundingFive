@@ -1340,7 +1340,6 @@ dd {
 	// 배너 슬라이드
 
    // 배너 슬라이드
-
    $('.slider-1 > .page-btns > div').click(function() {
       var $this = $(this);
       var index = $this.index();
