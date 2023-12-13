@@ -164,7 +164,6 @@
 										<th>후원 현황</th>
 										<th>생성일</th>
 										<th>마감일</th>
-										<th>프로젝트 판매유무</th>
 									</tr>
 								</thead>
 								<tbody class="project-tbody">
@@ -186,7 +185,6 @@
 													<th>${project.projectCurrentAmount}</th>
 													<th>${project.projectRegisterDate}</th>
 													<th>${project.projectEndDate}</th>
-													<th>프로젝트 판매유무</th>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
@@ -304,6 +302,9 @@
 					<h2>관심있는 프로젝트</h2>
 					<div class="table-container">
 						<div class="project-cartegory">
+						
+						
+						
 							<c:choose>
 								<c:when test="">
 									<p>관심있는 프로젝트가 없습니다.</p>
@@ -331,7 +332,7 @@
 										</div>
 									</c:forEach>
 								</c:otherwise>
-							</c:choose>
+							</c:choose>						
 						</div>
 					</div>
 				</div>

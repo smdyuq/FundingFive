@@ -85,10 +85,7 @@
 								등록</button>
 						</c:if>
 					</div>
-<<<<<<< HEAD
-=======
-					</table>
->>>>>>> branch 'nayoung' of https://github.com/smdyuq/guestgreen.git
+
 
 
 					<nav aria-label="Page navigation example">
@@ -221,7 +218,4 @@
         });
     };
 </script>
-
-
-</html>
 
