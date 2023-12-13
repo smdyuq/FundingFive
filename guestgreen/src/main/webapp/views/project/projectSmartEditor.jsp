@@ -9,6 +9,11 @@
 <script type="text/javascript" src="/resources/js/common/smarteditor.js"
    charset="utf-8"></script>
 <style>
+.smarteditor_div {
+	width: 80%;
+	margin: 0 auto;
+}
+
 .form-label {
    font-size: 17px;
 }
@@ -42,47 +47,72 @@ input[type=file]::file-selector-button {
 }
 
 /* 다음 버튼 */
+.next_btn_div {
+	margin-top: 3%;
+	margin-bottom: 3%;
+	display: flex;
+	height: auto;
+	justify-content: center;
+}
+
 .next_btn {
-   margin-top: 5%;
-   padding: 10px 15px 10px 15px; /* 상단 우측 하단 좌측 */
-   font-size: 15px;
+	font-style:;
+	background-color: #00E7AF;
+	color: black;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	border: none;
+	border-radius: 10px;
+	width: 20%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	transition: background-color 0.3s ease;
+	min-height: 30px; /* 트랜지션 효과 추가 */
+}
+
+.next_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
 }
 </style>
 </head>
 <body>
 
-   <%@include file="../../views/common/header.jsp"%>
-   <%@include file="../../views/common/nav.jsp"%>
-   <main>
-      <form action="/smartEditor.do" method="post">
-         <input type="hidden" name="project-name"
-            value="${projectDTO.projectName}"> <input type="hidden"
-            name="project-introduce" value="${projectDTO.projectIntroduce}">
-         <input type="hidden" name="project-kind"
-            value="${projectDTO.projectKind}"> <input type="hidden"
-            name="project-price" value="${projectDTO.projectPrice}"> <input
-            type="hidden" name="project-target-amount"
-            value="${projectDTO.projectTargetAmount}"> <input
-            type="hidden" name="project-end-date"
-            value="${projectDTO.projectEndDate}"> <input type="hidden"
-            name="project-outer-image-name"
-            value="${projectDTO.projectOuterImageName}"> <input
-            type="hidden" name="project-outer-image-path"
-            value="${projectDTO.projectOuterImagePath}"> <input
-            type="hidden" name="project-inner-image-name"
-            value="${projectDTO.projectInnerImageName}"> <input
-            type="hidden" name="project-inner-image-path"
-            value="${projectDTO.projectInnerImagePath}">
-         
-         <h2>프로젝트 스토리</h2>
-         <hr>
-         <div id="smarteditor">
-            <textarea name="editorTxt" id="editorTxt" rows="50" cols="10"
-               placeholder="내용을 입력해주세요" style="width: 100%">*프로젝트 스토리에는 프로젝트 상세 페이지에서 하단에 들어갈 이미지를 첨부할 수 있습니다*</textarea>
-         </div>
-         <button type="submit" class="next_btn" onclick="save()">등록</button>
-      </form>
-   </main>
+
+	<%@include file="../../views/common/header.jsp"%>
+	<%@include file="../../views/common/nav.jsp"%>
+	<main>
+		<div class="smarteditor_div">
+			<form action="/smartEditor.do" method="post">
+				<input type="hidden" name="project-name"
+					value="${projectDTO.projectName}"> <input type="hidden"
+					name="project-introduce" value="${projectDTO.projectIntroduce}">
+				<input type="hidden" name="project-kind"
+					value="${projectDTO.projectKind}"> <input type="hidden"
+					name="project-price" value="${projectDTO.projectPrice}"> <input
+					type="hidden" name="project-target-amount"
+					value="${projectDTO.projectTargetAmount}"> <input
+					type="hidden" name="project-end-date"
+					value="${projectDTO.projectEndDate}"> <input type="hidden"
+					name="project-outer-image-name"
+					value="${projectDTO.projectOuterImageName}"> <input
+					type="hidden" name="project-outer-image-path"
+					value="${projectDTO.projectOuterImagePath}"> <input
+					type="hidden" name="project-inner-image-name"
+					value="${projectDTO.projectInnerImageName}"> <input
+					type="hidden" name="project-inner-image-path"
+					value="${projectDTO.projectInnerImagePath}">
+
+				<h2>프로젝트 스토리</h2>
+				<hr>
+				<div id="smarteditor">
+					<textarea name="editorTxt" id="editorTxt" rows="50" cols="10"
+						placeholder="내용을 입력해주세요" style="width: 100%">*프로젝트 스토리에는 프로젝트 상세 페이지에서 하단에 들어갈 이미지를 첨부할 수 있습니다*</textarea>
+				</div>
+				<div class="next_btn_div">
+					<button type="submit" class="next_btn" onclick="save()">등록</button>
+				</div>
+			</form>
+		</div>
+	</main>
 
    <%@include file="../../views/common/footer.jsp"%>
 </body>

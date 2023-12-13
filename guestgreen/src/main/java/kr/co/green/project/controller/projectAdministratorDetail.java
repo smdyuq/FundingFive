@@ -24,7 +24,11 @@ public class projectAdministratorDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("asd");
+		
 		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
+		
+		System.out.println(projectNo);
 
 		ProjectDTO projectDTO = new ProjectDTO();
 		projectDTO.setProjectNo(projectNo);
