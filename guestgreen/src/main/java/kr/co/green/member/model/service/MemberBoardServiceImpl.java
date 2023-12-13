@@ -33,4 +33,10 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	public ArrayList<MemberBoardDTO> getMyRejectedProject(int memberNo) {
 		return memberBoardDAO.getMyRejectedProject(con, memberNo);
 	}
+
+	//보류된 프로젝트 조회
+	@Override
+	public ArrayList<MemberBoardDTO> getMyPendingProject(int memberNo) {
+		return memberBoardDAO.getMyPendingProject(con, memberNo);
+	}
 }

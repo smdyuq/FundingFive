@@ -40,6 +40,7 @@ function showContent(id) {
     }
     document.getElementById(id).style.display = 'block';
 
+
     var menus = document.getElementsByClassName('menu');
     for (var i = 0; i < menus.length; i++) {
         menus[i].classList.remove('active');
@@ -56,17 +57,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-   //출고 성사된 프로젝트
-   function successfulProject(){
-      let formId = document.getElementById("project-success");
-      formId.action = "/expiredProject.do";
-      formId.method="post";
-      formId.submit();
-   }
-   //출고 실패한 프로젝트
-   function failedProject(){
-      let formId = document.getElementById("project-fail");
-      formId.action = "/expiredProject.do";
-      formId.method="post";
-      formId.submit();
-   }
+	//출고 성사된 프로젝트
+	function successfulProject(){
+		let formId = document.getElementById("project-success");
+		formId.action = "/expiredProject.do";
+		formId.method="post";
+		formId.submit();
+	}
+	//출고 실패한 프로젝트
+	function failedProject(){
+		let formId = document.getElementById("project-fail");
+		formId.action = "/expiredProject.do";
+		formId.method="post";
+		formId.submit();
+	}

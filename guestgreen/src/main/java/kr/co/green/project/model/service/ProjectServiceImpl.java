@@ -154,4 +154,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.recentProject(con, projectNo, memberNo);
 	}
 
+	//찜한 프로젝트 조회
+	@Override
+	public void getUserWishList(int memberNo, ArrayList<ProjectDTO> projectLikedList) {
+		projectDAO.getUserWhisList(con, memberNo, projectLikedList);
+	}
+
 }

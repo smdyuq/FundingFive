@@ -24,7 +24,6 @@ function deleteSearchHistory(searchNo){
 			alert('실패');
 		}
 	})
-	
 }
 
 function searchSelectedrWord(searchWord){

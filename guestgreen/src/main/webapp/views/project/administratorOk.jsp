@@ -8,12 +8,6 @@
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
 <script src="/resources/js/project/administratorOk.js"></script>
 
-<!-- <link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-   rel="stylesheet"
-   integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-   crossorigin="anonymous"> -->
-
 <style>
 .thick-line {
 	border-top: 2px solid black;
@@ -74,6 +68,7 @@ table {
     
    
 </style>
+
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -189,8 +184,6 @@ table {
 					</section>
 					<!--  -->
 				</div>
-
-
 
 				<div id="faproject_completedq" class="content-section"
 					style="display: none;">

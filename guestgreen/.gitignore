@@ -18,6 +18,7 @@ guestgreen/.settings/
 .loadpath
 .recommenders
 build/
+guestgreen/src/main/webapp/resources/js/project/apiKey.js
 
 # External tool builders
 .externalToolBuilders/

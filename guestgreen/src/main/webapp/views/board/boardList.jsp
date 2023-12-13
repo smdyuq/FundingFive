@@ -23,7 +23,7 @@
 			<div class="menu-container">
 				<h2>고객센터</h2>
 				<div class="menu" onclick="showContent('notice')">
-					<span>공지사항</span> <span class="menu-arrow">></span>
+					<span>공지사항</span> <span class="menu-arrow"></span>
 				</div>
 				<div class="menu" onclick="showContent('faq')">
 					<span>자주하는 질문</span> <span class="menu-arrow">></span>
@@ -69,6 +69,7 @@
 							</c:choose>
 
 						</tbody>
+						
 					</table>
 
 					<div class="board_btn_div">
