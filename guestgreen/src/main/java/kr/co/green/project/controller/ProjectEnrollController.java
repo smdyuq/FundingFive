@@ -42,12 +42,8 @@ public class ProjectEnrollController extends HttpServlet {
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 
-<<<<<<< HEAD
 		String uploadDirectory = "C:\\Users\\jaeyun\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
 
-=======
-		String uploadDirectory = "/Users/kangnayoung/git/guestgreen/guestgreen/src/main/webapp/resources/uploads";
->>>>>>> branch 'master' of https://github.com/smdyuq/guestgreen.git
 
 		// 파일 업로드하려는 디렉토리 없으면 생성
 		File filePath = new File(uploadDirectory);

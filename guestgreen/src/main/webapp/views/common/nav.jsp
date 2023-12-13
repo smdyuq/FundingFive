@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" type="text/css" href="{ % static "css/base.css" % }">
+<link rel="stylesheet" type="text/css" href="{ % block extrastyle % }{ % endblock % }">
 
 <nav>
 	<div class="nav_parent_div">
