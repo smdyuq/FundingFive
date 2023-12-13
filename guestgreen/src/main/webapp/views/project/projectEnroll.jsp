@@ -8,12 +8,11 @@
 <%@include file="../../views/common/head.jsp"%>
 
 <style>
-
-
-.project-enroll-form{
-	padding-left:10%;
-	padding-right:10%;
+.project-enroll-form {
+	padding-left: 10%;
+	padding-right: 10%;
 }
+
 .form-label {
 	font-size: 17px;
 }
@@ -42,7 +41,6 @@
 	height: 30px;
 	margin-top: 2%;
 	margin-bottom: 40px;
-
 }
 
 /* 파일 인풋박스 */
@@ -104,19 +102,14 @@ input[type=file]::file-selector-button {
 					enctype="multipart/form-data">
 
 
-                    <div class="project_content_div">
-                        <div>
-                            <label class="form-label">프로젝트 이름 </label><br>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="project-name"
-                                placeholder="프로젝트 이름을 작성해주세요." required>
-                        </div>
-
 					<div class="project_content_div">
 						<div>
 							<label class="form-label">프로젝트 이름 </label><br> <input
 								type="text" class="form-control" id="exampleFormControlInput1"
 								name="project-name" placeholder="프로젝트 이름을 작성해주세요." required>
 						</div>
+
+
 
 
 						<div>

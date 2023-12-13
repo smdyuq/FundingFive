@@ -9,6 +9,10 @@
 
 <link rel="stylesheet" href="/resources/css/board/boardList.css">
 <script type="text/javascript" src="/resources/js/board/board.js"></script>
+<style>
+
+</style>
+
 
 </head>
 <body>

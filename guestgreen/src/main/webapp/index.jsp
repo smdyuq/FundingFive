@@ -12,7 +12,6 @@
 </head>
 
 <style>
-
 .card-wrapper0 {
 	position: relative;
 	width: 21%;
@@ -466,7 +465,7 @@ dd>span::before {
 	width: 21%;
 	height: 33vh;
 	padding-bottom: 2%;
-	margin-right:3%
+	margin-right: 3%
 }
 
 .card-wrapper-last {
@@ -831,12 +830,16 @@ dd {
 
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
-							<c:forEach var="item" items="${banner }">
-								<div class="active" width="760px" height="280px">
+							<c:forEach var="item" items="${banner }" varStatus="status">
+
+
+								<div class="${status.first ? 'active' : '' }" width="760px"
+									height="280px" onclick="projectDetail(${item.projectNo})">
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
 							</c:forEach>
+
 						</div>
 						<div class="page-btns">
 							<div class="active"></div>
@@ -880,9 +883,10 @@ dd {
 
 						<div class="FrontCard_Container">
 							<c:forEach var="item" items="${noteWorthy }">
-								<div class="card-wrapper0">
+								<div class="card-wrapper0"
+									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="eximg"
-										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }">
 									</a> <span class="projectCardDetail">
 										<dd>
 
@@ -928,7 +932,7 @@ dd {
 								<div class="popula-img"
 									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
 
@@ -1019,7 +1023,7 @@ dd {
 
 										<div class="card-wrapper1">
 											<a href="#"><img class="Card_img"
-												src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 											<span class="projectCardDetail">
 												<dd>
 													<input type="hidden" value=${item.projectNo }> <a
@@ -1390,12 +1394,25 @@ dd {
 		}
 		;
 
+		
+		
 		$post.click();
 	});
 
 	setInterval(function() {
+		if (hovered_flag) return
 		$('.slider-1 > .side-btns > div').eq(1).click();
 	}, 3000);
+
+	var hovered_flag = false;
+
+	$(".lnb-category-expansion").hover(function(e){
+	  hovered_flag = true;
+	  console.log("prevent triggering");
+	},function(e){
+	  hovered_flag = false;
+	  console.log("allow triggering");
+	});
 
 	
 	

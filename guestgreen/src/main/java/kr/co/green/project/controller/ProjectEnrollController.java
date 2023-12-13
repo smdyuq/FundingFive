@@ -59,7 +59,7 @@ public class ProjectEnrollController extends HttpServlet {
 				if (!fileName.equals("")) {
 					fileNameArr[index] = fileName;
 					if (index == 0) { // outer image
-						System.out.println("a");
+
 						part.write(filePath + File.separator + "outerimage" + File.separator + "180x153"
 								+ File.separator + fileName);
 						part.write(filePath + File.separator + "outerimage" + File.separator + "130x105"
@@ -72,14 +72,14 @@ public class ProjectEnrollController extends HttpServlet {
 								+ File.separator + fileName);
 						part.write(filePath + File.separator + "outerimage" + File.separator + "300x300"
 								+ File.separator + fileName);
-						System.out.println("b");
+
 						resizeImage(uploadDirectory + "/outerimage/180x153/" + fileName, 180, 153);
 						resizeImage(uploadDirectory + "/outerimage/130x105/" + fileName, 130, 105);
 						resizeImage(uploadDirectory + "/outerimage/230x185/" + fileName, 230, 185);
 						resizeImage(uploadDirectory + "/outerimage/760x280/" + fileName, 760, 280);
 						resizeImage(uploadDirectory + "/outerimage/160x120/" + fileName, 160, 120);
 						resizeImage(uploadDirectory + "/outerimage/300x300/" + fileName, 300, 300);
-						System.out.println("c");
+
 					} else { // inner image
 						part.write(filePath + File.separator + "innerimage" + File.separator + fileName);
 
