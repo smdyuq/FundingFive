@@ -160,12 +160,12 @@ public class ProjectServiceImpl implements ProjectService {
 	public void getUserWishList(int memberNo, ArrayList<ProjectDTO> projectLikedList) {
 		projectDAO.getUserWhisList(con, memberNo, projectLikedList);
 	}
-	//완료 프로젝트 페이징
+	//완료 프로젝트 카운트
 	@Override
 	public int succcessfulCount() {
 		return projectDAO.succcessfulCount(con);
 	}
-
+	//실패 프로젝트 카운트
 	@Override
 	public int failCount() {
 		return projectDAO.failCount(con);
