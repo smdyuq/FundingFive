@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import kr.co.green.common.PageInfo;
 import kr.co.green.member.model.dto.MemberBoardDTO;
+import kr.co.green.project.model.dto.ProjectDTO;
 
 public class MemberBoardDAO {
 
@@ -44,8 +44,8 @@ public class MemberBoardDAO {
 				dto.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
 				dto.setProjectSponserNumber(rs.getInt("PROJECT_SPONSER_NUMBER"));
 				dto.setProjectConfirmStatus(rs.getString("PROJECT_CONFIRM_STATUS"));
-				dto.setProjectRegisterDate(rs.getDate("PROJECT_REGISTER_DATE"));
-				dto.setProjectEndDate(rs.getDate("PROJECT_END_DATE"));
+				dto.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				dto.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
 				dto.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
 				dto.setProjectOuterImagePath(rs.getString("PROJECT_OUTER_IMAGE_PATH"));
 
@@ -90,8 +90,8 @@ public class MemberBoardDAO {
 				dto.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
 				dto.setProjectSponserNumber(rs.getInt("PROJECT_SPONSER_NUMBER"));
 				dto.setProjectConfirmStatus(rs.getString("PROJECT_CONFIRM_STATUS"));
-				dto.setProjectRegisterDate(rs.getDate("PROJECT_REGISTER_DATE"));
-				dto.setProjectEndDate(rs.getDate("PROJECT_END_DATE"));
+				dto.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				dto.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
 				dto.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
 				dto.setProjectOuterImagePath(rs.getString("PROJECT_OUTER_IMAGE_PATH"));
 				
@@ -136,8 +136,8 @@ public class MemberBoardDAO {
 				dto.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
 				dto.setProjectSponserNumber(rs.getInt("PROJECT_SPONSER_NUMBER"));
 				dto.setProjectConfirmStatus(rs.getString("PROJECT_CONFIRM_STATUS"));
-				dto.setProjectRegisterDate(rs.getDate("PROJECT_REGISTER_DATE"));
-				dto.setProjectEndDate(rs.getDate("PROJECT_END_DATE"));
+				dto.setProjectRegisterDate(rs.getString("PROJECT_REGISTER_DATE"));
+				dto.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
 				dto.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
 				dto.setProjectOuterImagePath(rs.getString("PROJECT_OUTER_IMAGE_PATH"));
 				
@@ -148,6 +148,41 @@ public class MemberBoardDAO {
 			e.printStackTrace();
 		}
 		return myList;
+	}
+
+	//좋아요 누른 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getLikedProject(Connection con, int memberNo) {
+		String query = "SELECT p.*, pm.project_manager_name from (SELECT project_no, project_outer_image_name, project_kind,"
+				+ "													     project_name, project_introduce, project_content, project_current_percentage, project_current_amount, "
+				+ "			     			  						     TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE from project) p"
+				+ "		JOIN user_likes ul"
+				+ "		ON p.project_no = ul.project_no"
+				+ "		JOIN project_manager pm"
+				+ "		ON p.project_no = pm.project_no"
+				+ "		WHERE ul.member_no = ?";
+		ArrayList<MemberBoardDTO> list = new ArrayList<>();
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberBoardDTO memberBoardDTO = new MemberBoardDTO();
+				memberBoardDTO.setProjectNo(rs.getInt("PROJECT_NO"));
+				memberBoardDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
+				memberBoardDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+				memberBoardDTO.setProjectName(rs.getString("PROJECT_NAME"));
+				memberBoardDTO.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
+				memberBoardDTO.setProjectCurrentPercentage(rs.getDouble("PROJECT_CURRENT_PERCENTAGE"));
+				memberBoardDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
+				memberBoardDTO.setProjectEndDate(rs.getString("PROJECT_END_DATE"));
+				memberBoardDTO.setProjectManagerName(rs.getString("PROJECT_MANAGER_NAME"));
+				list.add(memberBoardDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

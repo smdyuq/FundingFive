@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" type="text/css" href="{ % static "css/base.css" % }">
+<link rel="stylesheet" type="text/css" href="{ % block extrastyle % }{ % endblock % }">
 
 <nav>
 	<div class="nav_parent_div">
@@ -10,13 +12,16 @@
 					onclick="lnbCategoryClose()" class="menu_img"><img
 						src="/resources/image/menu.png" alt="메뉴" style="width: 20px;"></a>
 					<div class="lnb-category">
-						<a href="/category.do?category=entire">전체</a> <a
-							href="/category.do?category=Appliances">가전</a> <a
-							href="/category.do?category=Clothes">의류</a> <a
-							href="/category.do?category=Beauty">향수·뷰티</a> <a
-							href="/category.do?category=Food">푸드</a> <a
-							href="/category.do?category=Jewelry">주얼리</a><a
-							href="/category.do?category=Christmas">크리스마스</a>
+						<div class="lnb-category-a-div">
+							<a href="/category.do?category=entire">전체</a> <a
+								href="/category.do?category=Appliances">가전</a> <a
+								href="/category.do?category=Clothes">의류</a> <a
+								href="/category.do?category=Beauty">향수·뷰티</a> <a
+								href="/category.do?category=Food">푸드</a> <a
+								href="/category.do?category=Jewelry">주얼리</a> <a
+								href="/category.do?category=Christmas"
+								class="Christmas_menu_text">크리스마스</a>
+						</div>
 					</div></li>
 				<li><a href="/form/home.do" class="menu_text">홈</a></li>
 				<li><a href="/menu.do?menu=proceeding" class="menu_text">진행중인
@@ -71,7 +76,7 @@
 
 				<c:if test="${sessionScope.memberType == 0}">
 					<div>
-						<a href="/administratorOk.do?cpage=1""><img
+						<a href="/administratorOk.do?menu=first&cpage=1""><img
 							src="/resources/image/project.png" alt=""> <span
 							class="subtext">프로젝트 관리</span> </a>
 					</div>
@@ -91,10 +96,12 @@
 </nav>
 
 <script src="/resources/js/common/nav.js"></script>
-<script src="/resources/js/search/projectSearch.js"></script>
 <script
 	src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
+	function getSearchForm() {
+		window.location.href = "/searchForm.do?status=select";
+	}
 	function googleTranslateElementInit() {
 		new google.translate.TranslateElement({
 			pageLanguage : 'ko',

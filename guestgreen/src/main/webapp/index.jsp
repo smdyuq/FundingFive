@@ -316,12 +316,12 @@ body {
 	width: 108%;
 	top: 30%;
 	left: -4%;
-	/* 	position: absolute;
-	bottom: 5%;
-	left: 50%;
-	align-text: center;
-	transform: translatex(-250%);
-	transform: translatey(1750%); */
+	/*    position: absolute;
+   bottom: 5%;
+   left: 50%;
+   align-text: center;
+   transform: translatex(-250%);
+   transform: translatey(1750%); */
 }
 
 .slides_btn button {
@@ -349,11 +349,6 @@ body {
 .slides_btn .next {
 	font-weight: 500;
 	font-size: larger;
-}
-
-img {
-	width: 100%;
-	height: auto;
 }
 
 /* 이미지 */
@@ -391,8 +386,8 @@ dd>span::before {
 
 /* 상단 왼쪽 (주목할만한 프로젝트)*/
 .FrontPage_StyleHero {
-	/*	height: auto;
-	margin-left: 60px; */
+	/*   height: auto;
+   margin-left: 60px; */
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -555,7 +550,7 @@ dd>span::before {
 }
 
 .FrontPage_viewTotal {
-	/* 	padding-top: 3%;
+	/*    padding-top: 3%;
  */
 	font-size: small;
 }
@@ -601,12 +596,12 @@ dd>span::before {
 }
 
 /* .Card_img {
-	width: 80%
+   width: 80%
 } */
 
 /* .Card_image {
-	width: auto;
-	height: auto;
+   width: auto;
+   height: auto;
 } */
 .Collection_Contents {
 	width: auto;
@@ -649,7 +644,7 @@ dd {
 /* 최근본 */
 .row_frontPage_Card {
 	display: flex;
-	/* 	background-color: aqua; */
+	/*    background-color: aqua; */
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -817,6 +812,7 @@ dd {
 <body>
 
 
+
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
 	<%@include file="./views/common/common.jsp"%>
@@ -831,16 +827,16 @@ dd {
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
 
+
 							<c:forEach var="item" items="${banner }" varStatus="status">
-								<div onclick="noteworthyProject()" style="
-									cursor:pointer;"
-									class="${status.first ? 'active' : '' }"
-									width="760px" height="280px">
+								<div onclick="noteworthyProject()" style="cursor: pointer;"
+									class="${status.first ? 'active' : '' }" width="760px"
+									height="280px">
+
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
 							</c:forEach>
-
 						</div>
 						<div class="page-btns">
 							<div class="active"></div>
@@ -884,10 +880,9 @@ dd {
 
 						<div class="FrontCard_Container">
 							<c:forEach var="item" items="${noteWorthy }">
-								<div class="card-wrapper0"
-									onclick="projectDetail(${item.projectNo})">
+								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
-										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }">
+										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
 									</a> <span class="projectCardDetail">
 										<dd>
 
@@ -930,14 +925,12 @@ dd {
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
 							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img"
-									onclick="projectDetail(${item.projectNo})">
+								<div class="popula-img">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+										onclick="projectDetail(${item.projectNo})"
+										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
-
-
 									<div class="projectCardDetail">
 										<dd>
 
@@ -945,7 +938,8 @@ dd {
 												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 										</dd>
 										<dt>
-											<a href="#" class="popula-project_Introduce">${item.projectIntroduce }</a>
+											<a href="#" class="popula-project_Introduce"
+												onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</a>
 										</dt>
 										<span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>
@@ -998,6 +992,87 @@ dd {
 					</c:forEach>
 				</div>
 
+
+				<div class="FrontPage_StylePopularProjectsSection">
+
+					<div class="popular-project-header">
+						<p class="FrontPage_ListTitle">인기 프로젝트</p>
+						<a href="#" class=FrontPage_viewTotal>전체보기</a>
+					</div>
+
+
+					<div class=populaPage_List>
+						<div class="Popula-card-wrapper">
+							<c:forEach var="item" items="${popularity }">
+								<div class="popula-img"
+									onclick="projectDetail(${item.projectNo})">
+									<a href="#"><img class="popular_img"
+										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
+									<div class="ProjectCardNumbertop">
+										${item.projectRankNumber }</div>
+
+
+
+									<div class="projectCardDetail">
+										<dd>
+
+											<input type="hidden" value=${item.projectNo }> <a
+												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										</dd>
+										<dt>
+											<a href="#" class="popula-project_Introduce">${item.projectIntroduce }</a>
+										</dt>
+										<span class="percentage">${item.projectCurrentPercentage }%
+											달성</span>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<a href="/menu.do?menu=popularity" title="프로젝트 더보기"
+							class="Project_ViewMore">인기 프로젝트 전체보기</a>
+
+
+					</div>
+				</div>
+			</div>
+
+
+			<br> <img class="banner"
+				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
+				width="1160px" height="181.1px">
+
+			<div class="jb-division-line"></div>
+
+			<div class="Container">
+				<div class="FrontPage_ListTitle">마감임박! 마지막 기회</div>
+				<div id="countdown">
+					<Strong id="counttime"></Strong><span id="count-time">남았어요</span>
+				</div>
+
+
+				<div class="row_frontPage_Card">
+
+					<c:forEach var="item" items="${deadLine }">
+
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+
+							<span class="projectCardDetail">
+								<dd>
+
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
+
 			</div>
 
 
@@ -1022,302 +1097,318 @@ dd {
 								<c:forEach var="item" items="${recentProject }">
 									<div class="slides">
 
-										<div class="card-wrapper1">
-											<a href="#"><img class="Card_img"
+
+										<div class="jb-division-line"></div>
+										<div class="Container">
+											<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
+											<br>
+											<div class="row_frontPage_Card">
+												<c:forEach var="item" items="${recommended }">
+													<div class="card-wrapper">
+														<a href="#"><img class="countimg"
+															src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
+														<span class="projectCardDetail">
+															<dd>
+																<input type="hidden" value=${item.projectNo }> <a
+																	href="#">${item.projectKind }</a><span><a
+																	href="#">${item.projectManagerName }</a></span>
+															</dd>
+															<dt>
+																<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+															</dt> <span class="percentage">${item.projectCurrentPercentage }%
+																달성</span>
+														</span>
+													</div>
+												</c:forEach>
+											</div>
+
+										</div>
+
+
+
+										<div class="side-btns1">
+											<div>
+												<span><i class="leftbtn1"><span class="btn_text"><</span></i></span>
+											</div>
+											<div>
+												<span><i class="rightbtn1"><span class="btn_text">></span></i></span>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+
+
+						<div class="jb-division-line"></div>
+						<div class="Container">
+							<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
+							<br>
+							<div class="row_frontPage_Card">
+								<c:forEach var="item" items="${recommended }">
+									<div class="card-wrapper">
+										<a href="#"><img class="countimg"
+											src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+
+										<span class="projectCardDetail">
+											<dd>
+												<input type="hidden" value=${item.projectNo }> <a
+													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+											</dd>
+											<dt>
+												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+											</dt> <span class="percentage">${item.projectCurrentPercentage }%
+												달성</span>
+										</span>
+									</div>
+								</c:forEach>
+							</div>
+
+						</div>
+
+
+						<div class="jb-division-line"></div>
+
+
+
+						<br> <img class="banner"
+							src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/011/original/0db28a55-2b32-4966-b078-7e400c0dd528.jpg?q=80"
+							width="1160px" height="181.1px">
+
+
+						<div class="jb-division-line"></div>
+
+						<div class="Container">
+							<div class="FrontPage_ListTitle">신규 프로젝트</div>
+							<br>
+							<div class="row_frontPage_Card">
+								<c:forEach var="item" items="${newProject }">
+
+
+
+									<div class="card-wrapper">
+										<a href="#"><img class="countimg"
+											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
+
+										<span class="projectCardDetail">
+											<dd>
+												<input type="hidden" value=${item.projectNo }> <a
+													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+											</dd>
+											<dt>
+												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+											</dt> <span class="percentage">${item.projectCurrentPercentage }%
+												달성</span>
+										</span>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+
+						<div class="jb-division-line"></div>
+
+						<div class="Container">
+							<div class="FrontPage_ListTitle">달성완료 프로젝트</div>
+							<br>
+							<div class="row_frontPage_Card">
+								<c:forEach var="item" items="${completeProject }">
+
+
+
+									<div class="card-wrapper">
+										<a href="#"><img class="countimg"
+											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
+
+										<span class="projectCardDetail">
+											<dd>
+												<input type="hidden" value=${item.projectNo }> <a
+													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+											</dd>
+											<dt>
+												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+											</dt> <span class="percentage">${item.projectCurrentPercentage }%
+												달성</span>
+										</span>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+
+						<div class="jb-division-line"></div>
+
+						<div class="Container">
+							<div class="FrontPage_ListTitle">오늘 오픈한 프로젝트</div>
+							<br>
+							<div class="row_frontPage_Card">
+								<c:forEach var="item" items="${todayProject }">
+
+
+
+									<div class="card-wrapper">
+										<a href="#"><img class="countimg"
+											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
+
+										<span class="projectCardDetail">
+											<dd>
+												<input type="hidden" value=${item.projectNo }> <a
+													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+											</dd>
+											<dt>
+												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+											</dt> <span class="percentage">${item.projectCurrentPercentage }%
+												달성</span>
+										</span>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+
+
+
+						<div class="jb-division-line"></div>
+
+						<div class="Container_1page">
+							<div class="ContentInfo_Container">
+								<img src="/resources/image/크리스마스 이미지.jpg">
+
+
+								<div class="Content_TextInfobox">
+									<div class="Content_Title">크리스마스 선물상점</div>
+									<a>
+										<div class="Content_TextInfo">손꼽아 기다린 크리스마스! 포근한 연말을 위해
+											텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의
+											어드벤트 캘린더까지!</div>
+								</div>
+								</a> <a href="http://localhost/category.do?category=Christmas"
+									title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
+							</div>
+
+
+							<div class="FrontCard_Container">
+								<c:forEach var="item" items="${christmasProject }">
+									<div class="card">
+										<div class="card-wrapper2">
+											<a href="#"><img class="eximg"
 												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
+
 											<span class="projectCardDetail">
 												<dd>
+
 													<input type="hidden" value=${item.projectNo }> <a
 														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 												</dd>
 												<dt>
-													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+													<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
 												</dt> <span class="percentage">${item.projectCurrentPercentage }%
 													달성</span>
 											</span>
 										</div>
 									</div>
+
 								</c:forEach>
+
+
 							</div>
-						</div>
-						<!-- 	<div class="slides_btn">
-							<button class="prev"><</button>
-							<button class="next">></button>
-						</div> -->
 
-						<div class="side-btns1">
-							<div>
-								<span><i class="leftbtn1"><span class="btn_text"><</span></i></span>
-							</div>
-							<div>
-								<span><i class="rightbtn1"><span class="btn_text">></span></i></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+							<!-- <div class="lines_Collection_Contents_div">
+               <div class="lines_Collection_Contents">
 
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+               </div>
 
-			<div class="jb-division-line"></div>
-			<div class="Container">
-				<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
-				<br>
-				<div class="row_frontPage_Card">
-					<c:forEach var="item" items="${recommended }">
-						<div class="card-wrapper">
-							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+               <div class="lines_Collection_Contents">
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
 
-							<span class="projectCardDetail">
-								<dd>
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-								</dd>
-								<dt>
-									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
-									달성</span>
-							</span>
-						</div>
-					</c:forEach>
-				</div>
-
-			</div>
-
-
-			<div class="jb-division-line"></div>
-
-
-
-			<br> <img class="banner"
-				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/011/original/0db28a55-2b32-4966-b078-7e400c0dd528.jpg?q=80"
-				width="1160px" height="181.1px">
-
-
-			<div class="jb-division-line"></div>
-
-			<div class="Container">
-				<div class="FrontPage_ListTitle">신규 프로젝트</div>
-				<br>
-				<div class="row_frontPage_Card">
-					<c:forEach var="item" items="${newProject }">
-
-
-						<div class="card-wrapper">
-							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-							<span class="projectCardDetail">
-								<dd>
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-								</dd>
-								<dt>
-									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
-									달성</span>
-							</span>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-
-			<div class="jb-division-line"></div>
-
-			<div class="Container">
-				<div class="FrontPage_ListTitle">달성완료 프로젝트</div>
-				<br>
-				<div class="row_frontPage_Card">
-					<c:forEach var="item" items="${completeProject }">
-
-
-						<div class="card-wrapper">
-							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-							<span class="projectCardDetail">
-								<dd>
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-								</dd>
-								<dt>
-									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
-									달성</span>
-							</span>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-
-			<div class="jb-division-line"></div>
-
-			<div class="Container">
-				<div class="FrontPage_ListTitle">오늘 오픈한 프로젝트</div>
-				<br>
-				<div class="row_frontPage_Card">
-					<c:forEach var="item" items="${todayProject }">
-
-
-						<div class="card-wrapper">
-							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-							<span class="projectCardDetail">
-								<dd>
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-								</dd>
-								<dt>
-									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
-									달성</span>
-							</span>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-
-
-
-			<div class="jb-division-line"></div>
-
-			<div class="Container_1page">
-				<div class="ContentInfo_Container">
-					<img src="/resources/image/크리스마스 이미지.jpg">
-
-
-					<div class="Content_TextInfobox">
-						<div class="Content_Title">크리스마스 선물상점</div>
-						<a>
-							<div class="Content_TextInfo">손꼽아 기다린 크리스마스! 포근한 연말을 위해
-								텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의 어드벤트
-								캘린더까지!</div>
-					</div>
-					</a> <a href="http://localhost/category.do?category=Christmas"
-						title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
-				</div>
-
-				<div class="FrontCard_Container">
-					<c:forEach var="item" items="${christmasProject }">
-						<div class="card">
-							<div class="card-wrapper2">
-								<a href="#"><img class="eximg"
-									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-								<span class="projectCardDetail">
-									<dd>
-
-										<input type="hidden" value=${item.projectNo }> <a
-											href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-									</dd>
-									<dt>
-										<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
-									</dt> <span class="percentage">${item.projectCurrentPercentage }%
-										달성</span>
-								</span>
-							</div>
-						</div>
-
-					</c:forEach>
-
-
-				</div>
-
-				<!-- <div class="lines_Collection_Contents_div">
-					<div class="lines_Collection_Contents">
-
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-									달성</span>
-							</div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+                  <div class="lines_card-wrapper">
+                     <a href="#"><img class="lines_card-wrapper_img"
+                        src="http://placehold.it/180x145"></a><br>
+                     <div class=lines_CardDetail>
+                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
+                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
+                           달성</span>
+                     </div>
+                  </div>
+               </div>
+            </div> -->
 						</div>
 					</div>
 
-					<div class="lines_Collection_Contents">
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-						<div class="lines_card-wrapper">
-							<a href="#"><img class="lines_card-wrapper_img"
-								src="http://placehold.it/180x145"></a><br>
-							<div class=lines_CardDetail>
-								<a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-									class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-									달성</span>
-							</div>
-						</div>
-					</div>
-				</div> -->
-			</div>
-		</div>
 
 
 
-
-		<button id="toTop">Top</button>
+					<button class="top-button" id="toTop">Top</button>
 	</main>
 	<%@include file="./views/common/footer.jsp"%>
 </body>
 
 
 <script>
+
 
 	// 좋아요 버튼
 	
@@ -1329,73 +1420,74 @@ for (var i = 0; i <= 7; i++) {
 }
 
 
-	// 최상단 이동 버튼
 
-	$(function() { // 보이기 | 숨기기 
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 250) {
-				$('#toTop').fadeIn();
-				$('#toTop').css('left', $('#sidebar').offset().left);
-			} else {
-				$('#toTop').fadeOut();
-			}
-		});
-		// 버튼 클릭시 
-		$("#toTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
 
-			}, 400);
-		});
-	});
-	
-	
+   $(function() { // 보이기 | 숨기기 
+      $(window).scroll(function() {
+         if ($(this).scrollTop() > 250) {
+            $('#toTop').fadeIn();
+            $('#toTop').css('left', $('#sidebar').offset().left);
+         } else {
+            $('#toTop').fadeOut();
+         }
+      });
+      // 버튼 클릭시 
+      $("#toTop").click(function() {
+         $('html, body').animate({
+            scrollTop : 0
 
-	// 배너 슬라이드
+         }, 400);
+      });
+   });
+   
+   
 
-	$('.slider-1 > .page-btns > div').click(function() {
-		var $this = $(this);
-		var index = $this.index();
+   // 배너 슬라이드
 
-		$this.addClass('active');
-		$this.siblings('.active').removeClass('active');
 
-		var $slider = $this.parent().parent();
+	   $('.slider-1 > .page-btns > div').click(function() {
+	      var $this = $(this);
+	      var index = $this.index();
 
-		var $current = $slider.find(' > .slides1 > div.active');
+	      $this.addClass('active');
+	      $this.siblings('.active').removeClass('active');
 
-		var $post = $slider.find(' > .slides1 > div').eq(index);
+	      var $slider = $this.parent().parent();
 
-		$current.removeClass('active');
-		$post.addClass('active');
-	});
+	      var $current = $slider.find(' > .slides1 > div.active');
 
-	// 좌/우 버튼 추가 슬라이더
-	$('.slider-1 > .side-btns > div').click(function() {
-		var $this = $(this);
-		var $slider = $this.closest('.slider-1');
+	      var $post = $slider.find(' > .slides1 > div').eq(index);
 
-		var index = $this.index();
-		var isLeft = index == 0;
+	      $current.removeClass('active');
+	      $post.addClass('active');
+	   });
 
-		var $current = $slider.find(' > .page-btns > div.active');
-		var $post;
+	   // 좌/우 버튼 추가 슬라이더
+	   $('.slider-1 > .side-btns > div').click(function() {
+	      var $this = $(this);
+	      var $slider = $this.closest('.slider-1');
 
-		if (isLeft) {
-			$post = $current.prev();
-		} else {
-			$post = $current.next();
-		}
-		;
+	      var index = $this.index();
+	      var isLeft = index == 0;
 
-		if ($post.length == 0) {
-			if (isLeft) {
-				$post = $slider.find(' > .page-btns > div:last-child');
-			} else {
-				$post = $slider.find(' > .page-btns > div:first-child');
-			}
-		}
-		;
+	      var $current = $slider.find(' > .page-btns > div.active');
+	      var $post;
+
+	      if (isLeft) {
+	         $post = $current.prev();
+	      } else {
+	         $post = $current.next();
+	      }
+	      ;
+
+	      if ($post.length == 0) {
+	         if (isLeft) {
+	            $post = $slider.find(' > .page-btns > div:last-child');
+	         } else {
+	            $post = $slider.find(' > .page-btns > div:first-child');
+	         }
+	      }
+	      ;
 
 		
 		
@@ -1409,11 +1501,14 @@ for (var i = 0; i <= 7; i++) {
 		$('.slider-1 > .side-btns > div').eq(1).click();
 	}, 3000);
 
+
+
 	$(".lnb-category-expansion").hover(function(e){
 	  hovered_flag = true;
 	},function(e){
 	  hovered_flag = false;
 	});
+
 
 	
 	
@@ -1464,46 +1559,111 @@ for (var i = 0; i <= 7; i++) {
 	});
 
 
-	
-	// 마감임박! 24시간 타이머
-	
-	setInterval(function time() {
-		//시간 초기화
-		var d = new Date();
-		var hours = 24 - d.getHours();
-		var min = 60 - d.getMinutes();
-		var sec = 60 - d.getSeconds();
-		//분이 있으면 시 반올림
-		if (min == '00') {
-			hours = 24 - d.getHours();
-		} else {
-			hours = 23 - d.getHours();
-		}
-		//초가 있으면 분 반올림        
-		if (sec == '00') {
-			min = 60 - d.getMinutes();
-		} else {
-			min = 59 - d.getMinutes();
-		}
-		//1자리수라면 0을 붙혀라
-		if ((hours + '').length == 1) {
-			hours = '0' + hours;
-		}
-		if ((min + '').length == 1) {
-			min = '0' + min;
-		}
-		if ((sec + '').length == 1) {
-			sec = '0' + sec;
-		}
-		//날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
-		jQuery('#countdown Strong').html(
-				'<Strong class="t_hour">' + hours + '</Strong>'
-						+ '<Strong class="t_colon">:</Strong>'
-						+ '<Strong class="t_min">' + min + '</Strong>'
-						+ '<Strong class="t_colon">:</Strong>'
-						+ '<Strong class="t_sec">' + sec + '</Strong>')
-	}, 1000);
-	
-	
+   setInterval(function() {
+      $('.slider-1 > .side-btns > div').eq(1).click();
+   }, 3000);
+
+
+
+   
+   
+   // 최근 본 프로젝트 슬라이드
+   let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
+         .find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
+         .find(".slides"), slidesi = slidesWrap.find(".side-btns1");
+
+
+
+   let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
+
+
+   slidesCopy = $(".slides:lt(" + showNum + ")").clone();
+   slidesList.append(slidesCopy);
+
+   //이미지 움직이기
+   function backShow() {
+      if (num == 0) {
+         //시작
+         num = slidesCount;
+         slidesList.css("left", -num * slidesWidth + "px");
+      }
+      num--;
+      slidesList.stop().animate({
+         left : -slidesWidth * num + "px"
+      }, 400);
+   }
+
+   function nextShow() {
+      if (num == slidesCount) {
+         //마지막
+         num = 0;
+         slidesList.css("left", num);
+      }
+      num++;
+      slidesList.stop().animate({
+         left : -slidesWidth * num + "px"
+      }, 400);
+   }
+
+   //왼쪽, 오른쪽 버튼 설정
+   slidesi.on("click", "i", function() {
+      if ($(this).hasClass("leftbtn1")) {
+         //왼쪽 버튼을 클릭
+         backShow();
+      } else {
+         //오른쪽 버튼을 클릭
+         nextShow();
+      }
+   });
+
+
+   
+   // 마감임박! 24시간 타이머
+   
+   setInterval(function time() {
+      //시간 초기화
+      var d = new Date();
+      var hours = 24 - d.getHours();
+      var min = 60 - d.getMinutes();
+      var sec = 60 - d.getSeconds();
+      //분이 있으면 시 반올림
+      if (min == '00') {
+         hours = 24 - d.getHours();
+      } else {
+         hours = 23 - d.getHours();
+      }
+      //초가 있으면 분 반올림        
+      if (sec == '00') {
+         min = 60 - d.getMinutes();
+      } else {
+         min = 59 - d.getMinutes();
+      }
+      //1자리수라면 0을 붙혀라
+      if ((hours + '').length == 1) {
+         hours = '0' + hours;
+      }
+      if ((min + '').length == 1) {
+         min = '0' + min;
+      }
+      if ((sec + '').length == 1) {
+         sec = '0' + sec;
+      }
+      //날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
+      jQuery('#countdown Strong').html(
+            '<Strong class="t_hour">' + hours + '</Strong>'
+                  + '<Strong class="t_colon">:</Strong>'
+                  + '<Strong class="t_min">' + min + '</Strong>'
+                  + '<Strong class="t_colon">:</Strong>'
+                  + '<Strong class="t_sec">' + sec + '</Strong>')
+   }, 1000);
+   
+   // 좋아요 버튼
+   
+   var btn = document.getElementById("like");
+
+   btn.addEventListener('click',function(){
+             btn.classList.toggle('active')
+     })
+
 </script>
 </html>

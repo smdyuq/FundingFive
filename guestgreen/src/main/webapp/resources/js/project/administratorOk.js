@@ -1,4 +1,6 @@
 function projectDetail(projectNo) {
+	
+	console.log("sadasd");
    const pageUrl = '/projectAdministrator.do?projectNo=' + projectNo;
    window.location.href = pageUrl;
 }
@@ -26,30 +28,36 @@ function noButton() {
         form.method = "post";
         form.submit();
     }
+
 }
-    
-    
-    // 탭이동 스크립트
-    
-   function showTabContent(tabId) {
-      // 모든 탭 컨텐츠 숨김
-      var tabContents = document.querySelectorAll('.tab_content');
-      tabContents.forEach(function(content) {
-         content.style.display = 'none';
-      });
 
-      // 선택한 탭 컨텐츠 표시
-      var selectedTabContent = document.getElementById(tabId + '_content');
-      if (selectedTabContent) {
-         selectedTabContent.style.display = 'block';
-      }
-   }
+ 
+// 좌측 메뉴
+/*function showContent(id) {
+    var sections = document.getElementsByClassName('content-section');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
 
-	window.onload = function() {
-		const googleApiSecretKey = document.getElementById("google-api-secret-key");
-		googleApiSecretKey.value = config.google_api_secret_key;
-		showTabContent('project_approval');
-	};
+
+    var menus = document.getElementsByClassName('menu');
+    for (var i = 0; i < menus.length; i++) {
+        menus[i].classList.remove('active');
+    }
+    document.querySelector('.menu[onclick="showContent(\'' + id + '\')"]').classList.add('active');
+}*/
+
+function showProject(menu){
+	const pageUrl = "/administratorOk.do?menu="+menu+"&cpage=1";
+	window.location.href = pageUrl;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 페이지 로드 시 '프로젝트 승인 목록' 메뉴의 내용을 보여줌
+    showContent('project_approval');
+});
+
 
 	//출고 성사된 프로젝트
 	function successfulProject(){
