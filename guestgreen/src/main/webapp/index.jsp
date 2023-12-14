@@ -1306,7 +1306,7 @@ dd {
 
 
 
-		<button id="toTop">Top</button>
+		<!-- <button id="toTop">Top</button> -->
 	</main>
 	<%@include file="./views/common/footer.jsp"%>
 </body>

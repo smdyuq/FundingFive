@@ -40,6 +40,9 @@ window.onload = function() {
 	});
 	
 };
+
+
+//운송장 팝업
 function openPopup(url, trackingNumber) {
   var tKey = document.getElementById('t_key').value;
   var tCode = document.getElementById('t_code').value;

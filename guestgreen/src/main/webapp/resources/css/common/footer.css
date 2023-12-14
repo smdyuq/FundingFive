@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .footer_container {
-	background-color: gainsboro;
+	background-color: rgb(240, 240, 240);
 	width: 100%;
 	height: auto;
 	display: flex;
