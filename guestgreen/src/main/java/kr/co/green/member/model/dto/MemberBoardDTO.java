@@ -11,7 +11,7 @@ public class MemberBoardDTO {
 		private int projectTargetAmount;
 	    private int projectCurrentAmount;
 	    private double projectCurrentPercentage;
-	    private int projectSponserNumber;
+		private int projectSponserNumber;
 	    private String projectConfirmStatus;
 	    private String projectRegisterDate;
 	    private String projectEndDate;
@@ -19,9 +19,16 @@ public class MemberBoardDTO {
 	    private String projectOuterImagePath;
 	    private String projectManagerName;
 	    private long projectRemainDate;
+	    private int projectPrice;
 	    
 	    
 	    
+	    public int getProjectPrice() {
+	    	return projectPrice;
+	    }
+	    public void setProjectPrice(int projectPrice) {
+	    	this.projectPrice = projectPrice;
+	    }
 	    public long getProjectRemainDate() {
 			return projectRemainDate;
 		}

@@ -24,7 +24,7 @@
 				<input type="text" class="search_box" id="search_box"
 					placeholder="검색어를 입력해주세요." required>
 				<!-- 검색결과 페이지 이동 -->
-				<button class="search_btn" onclick="projectSearch()">
+				<button class="search_btn" >
 					<img src="resources/image/search.png" alt="돋보기 이미지"
 						style="width: 40px; height: 40px;">
 				</button>
