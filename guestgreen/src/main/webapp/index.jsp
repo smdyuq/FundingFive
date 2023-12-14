@@ -12,13 +12,21 @@
 </head>
 
 <style>
-.card-wrapper0 {
-	position: relative;
-	width: 21%;
-	height: 28vh;
-	padding-bottom: 2%;
+.FrontPage_Main {
+	width: 90%;
+	margin-left: 5.3%;
 }
 
+.card-wrapper0 {
+	position: relative;
+	width: 22%;
+	height: 28vh;
+	padding-bottom: 2%;
+	margin-right: 2%;
+	margin-bottom: 2%;
+}
+
+/* 좋아요 버튼 */
 .like {
 	fill: #ddd;
 }
@@ -27,28 +35,74 @@
 	fill: red;
 }
 
-.LikeBtn {
+.LikeBtn1 {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 80%;
+	top: 150%;
+	transform: translate(-50%, -50%);
+}
+
+
+.LikeBtn2 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	transform: translate(-50%, 500%);
+}
+
+.LikeBtn3 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-170%, 230%);
+}
+
+.LikeBtn4 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform: translate(40%, 140%);
 }
 
 .LikeButton_Wrapper {
-	position: relative;
-	right: 3.5%;
+	position: absolute;
 	top: 14.6vh;
 	width: 2vw;
 	height: 2vh;
-	 border:  10px solid rgba(255,  0,  0,  .5);
+	border:  10px solid rgba(255,  0,  0,  .5);
+	z-index: 9;
+	bottom: 10px;
+	right: 13px;
 }
 
 .card-wrapper2 {
 	width: 180px;
+	position: relative;
 }
 
 .card {
 	width: 210px;
-	height: 150px;
+	height: auto;
 }
 
 .btn_text {
@@ -161,15 +215,8 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-}
-
-body {
-	margin: 0px;
-	padding: 0px;
-	overflow-x: hidden;
-	min-width: 320px;
-	font-size: 14px;
-	line-height: 1.7em;
+	WIDTH:100%;
+	HEIGHT:100%;
 }
 
 .popula-img {
@@ -351,6 +398,12 @@ body {
 	font-size: larger;
 }
 
+img {
+	/* width: 100%;
+   height: auto; */
+	
+}
+
 /* 이미지 */
 .popular_img {
 	width: 150px;
@@ -380,7 +433,7 @@ dd>span::before {
 	display: flex;
 	margin-right: 4%;
 	margin-bottom: 3%;
-	width: 1230px;
+	width: 97%;
 	justify-content: space-between;
 }
 
@@ -415,13 +468,12 @@ dd>span::before {
 }
 
 .frontPageCard_Container {
-	width: 800px;
-	height: 580px;
+	width: 808px;
+	height: 530px;
 	margin-top: 2%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: auto;
 }
 
 .frontPage_Card {
@@ -458,7 +510,6 @@ dd>span::before {
 .card-wrapper {
 	position: relative;
 	width: 21%;
-	height: 33vh;
 	padding-bottom: 2%;
 	margin-right: 3%
 }
@@ -559,7 +610,7 @@ dd>span::before {
 	justify-content: space-between;
 	margin-bottom: 3%;
 	display: flex;
-	width: 88%;
+	width: 92%;
 	flex-wrap: wrap;
 	-webkit-box-align: center;
 	align-items: center;
@@ -588,6 +639,7 @@ dd>span::before {
 	align-items: center;
 	border-radius: 22px;
 	margin: 1px auto 0px;
+	margin-top: 5%;
 }
 
 .card-wrapper>a, img {
@@ -615,6 +667,7 @@ dd>span::before {
 	width: 100%;
 	height: 100%;
 	padding-left: 0px;
+	margin-left: 4.4%;
 }
 
 a {
@@ -704,14 +757,15 @@ dd {
 
 .Container_1page {
 	width: 100%;
-	height: 560px;
+	height: 100%;
 	display: flex;
+	margin-left: 4.4%;
 }
 
 .ContentInfo_Container {
-	width: 480px;
+	width: 40%;
 	height: 300px;
-	padding-right: 5%;
+	margin-right: 4%;
 }
 
 .Collection_Contents_all {
@@ -787,8 +841,8 @@ dd {
 .FrontPage_ListTitle {
 	font-weight: bold;
 	font-size: 1.4em;
-	margin: unset;
-	/* margin-bottom: 2%; */
+	margin-top: 0;
+	margin-bottom: 1%;
 }
 
 /* 상단 이동 버튼 */
@@ -812,7 +866,6 @@ dd {
 <body>
 
 
-
 	<%@include file="./views/common/header.jsp"%>
 	<%@include file="./views/common/nav.jsp"%>
 	<%@include file="./views/common/common.jsp"%>
@@ -826,13 +879,8 @@ dd {
 
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
-
-
-							<c:forEach var="item" items="${banner }" varStatus="status">
-								<div onclick="noteworthyProject()" style="cursor: pointer;"
-									class="${status.first ? 'active' : '' }" width="760px"
-									height="280px">
-
+							<c:forEach var="item" items="${banner }">
+								<div class="active" width="760px" height="280px">
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
@@ -856,24 +904,24 @@ dd {
 
 					<!-- 자동 슬라이드 -->
 
-					<!--	<div class="slider">
-					<div class="slide">
-						<img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
-							height="280px">
-					</div>
-					<div class="slide">
-						<img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
-							height="280px">
-					</div>
-					<div class="slide">
-						<img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
-							height="280px">
-					</div>
-					<div class="slide">
-						<img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
-							height="280px">
-					</div>
-				</div> -->
+					<!--   <div class="slider">
+               <div class="slide">
+                  <img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
+                     height="280px">
+               </div>
+               <div class="slide">
+                  <img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
+                     height="280px">
+               </div>
+               <div class="slide">
+                  <img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
+                     height="280px">
+               </div>
+               <div class="slide">
+                  <img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
+                     height="280px">
+               </div>
+            </div> -->
 
 					<p>주목할 만한 프로젝트</p>
 					<div class="frontPageCard_Container">
@@ -882,8 +930,20 @@ dd {
 							<c:forEach var="item" items="${noteWorthy }">
 								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
-										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
-									</a> <span class="projectCardDetail">
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+										onclick="projectDetail(${item.projectNo})"> </a>
+
+									<div class="LikeButton_Wrapper">
+										<button class="LikeBtn1">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+
+									<span class="projectCardDetail">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -895,16 +955,18 @@ dd {
 											달성</span>
 									</span>
 								</div>
-								<div class="LikeButton_Wrapper">
-									<button class="LikeBtn">
-										<svg class="like" xmlns="http://www.w3.org/2000/svg"
-											height="16" width="16" viewBox="0 0 512 512">
-											<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-											<path
-												d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-									</button>
-								</div>
+								<!-- <div class="LikeButton_Wrapper">
+                           <button class="LikeBtn">
+                              <svg class="like" xmlns="http://www.w3.org/2000/svg" height="16"
+                                 width="16" viewBox="0 0 512 512">
+                                 !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
+                                 <path
+                                    d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+                           </button>
+                        </div> -->
+
 							</c:forEach>
 
 
@@ -919,87 +981,9 @@ dd {
 
 					<div class="popular-project-header">
 						<p class="FrontPage_ListTitle">인기 프로젝트</p>
-						<a href="/menu.do?menu=popularity" class=FrontPage_viewTotal>전체보기</a>
+						<a href="http://localhost/menu.do?menu=popularity"
+							class=FrontPage_viewTotal>전체보기</a>
 					</div>
-
-					<div class=populaPage_List>
-						<div class="Popula-card-wrapper">
-							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img">
-									<a href="#"><img class="popular_img"
-										onclick="projectDetail(${item.projectNo})"
-										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
-									<div class="ProjectCardNumbertop">
-										${item.projectRankNumber }</div>
-									<div class="projectCardDetail">
-										<dd>
-
-											<input type="hidden" value=${item.projectNo }> <a
-												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-										</dd>
-										<dt>
-											<a href="#" class="popula-project_Introduce"
-												onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</a>
-										</dt>
-										<span class="percentage">${item.projectCurrentPercentage }%
-											달성</span>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-						<a href="/menu.do?menu=popularity" title="프로젝트 더보기"
-							class="Project_ViewMore">인기 프로젝트 전체보기</a>
-
-
-					</div>
-				</div>
-			</div>
-
-
-			<br> <img class="banner"
-				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
-				width="1160px" height="181.1px">
-
-			<div class="jb-division-line"></div>
-
-			<div class="Container">
-				<div class="FrontPage_ListTitle">마감임박! 마지막 기회</div>
-				<div id="countdown">
-					<Strong id="counttime"></Strong><span id="count-time">남았어요</span>
-				</div>
-
-
-				<div class="row_frontPage_Card">
-
-					<c:forEach var="item" items="${deadLine }">
-
-						<div class="card-wrapper">
-							<img class="countimg"
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-							<span class="projectCardDetail">
-								<dd>
-
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-								</dd>
-								<dt>
-									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
-									달성</span>
-							</span>
-						</div>
-					</c:forEach>
-				</div>
-
-
-				<div class="FrontPage_StylePopularProjectsSection">
-
-					<div class="popular-project-header">
-						<p class="FrontPage_ListTitle">인기 프로젝트</p>
-						<a href="#" class=FrontPage_viewTotal>전체보기</a>
-					</div>
-
 
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
@@ -1007,10 +991,10 @@ dd {
 								<div class="popula-img"
 									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
-
 
 
 									<div class="projectCardDetail">
@@ -1024,6 +1008,9 @@ dd {
 										</dt>
 										<span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>
+
+
+
 									</div>
 								</div>
 							</c:forEach>
@@ -1037,9 +1024,8 @@ dd {
 			</div>
 
 
-			<br> <img class="banner"
-				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
-				width="1160px" height="181.1px">
+			<br> <img class="banner" src="/resources/image/t3.png"
+				width="1100px" height="181.1px">
 
 			<div class="jb-division-line"></div>
 
@@ -1056,7 +1042,18 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
+
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+								</button>
+							</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1097,224 +1094,273 @@ dd {
 								<c:forEach var="item" items="${recentProject }">
 									<div class="slides">
 
-
-										<div class="jb-division-line"></div>
-										<div class="Container">
-											<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
-											<br>
-											<div class="row_frontPage_Card">
-												<c:forEach var="item" items="${recommended }">
-													<div class="card-wrapper">
-														<a href="#"><img class="countimg"
-															src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-														<span class="projectCardDetail">
-															<dd>
-																<input type="hidden" value=${item.projectNo }> <a
-																	href="#">${item.projectKind }</a><span><a
-																	href="#">${item.projectManagerName }</a></span>
-															</dd>
-															<dt>
-																<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-															</dt> <span class="percentage">${item.projectCurrentPercentage }%
-																달성</span>
-														</span>
-													</div>
-												</c:forEach>
-											</div>
-
-										</div>
-
-
-
-										<div class="side-btns1">
-											<div>
-												<span><i class="leftbtn1"><span class="btn_text"><</span></i></span>
-											</div>
-											<div>
-												<span><i class="rightbtn1"><span class="btn_text">></span></i></span>
-											</div>
-										</div>
-									</div>
-							</div>
-						</div>
-
-
-						<div class="jb-division-line"></div>
-						<div class="Container">
-							<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
-							<br>
-							<div class="row_frontPage_Card">
-								<c:forEach var="item" items="${recommended }">
-									<div class="card-wrapper">
-										<a href="#"><img class="countimg"
-											src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
-
-										<span class="projectCardDetail">
-											<dd>
-												<input type="hidden" value=${item.projectNo }> <a
-													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-											</dd>
-											<dt>
-												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-											</dt> <span class="percentage">${item.projectCurrentPercentage }%
-												달성</span>
-										</span>
-									</div>
-								</c:forEach>
-							</div>
-
-						</div>
-
-
-						<div class="jb-division-line"></div>
-
-
-
-						<br> <img class="banner"
-							src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/011/original/0db28a55-2b32-4966-b078-7e400c0dd528.jpg?q=80"
-							width="1160px" height="181.1px">
-
-
-						<div class="jb-division-line"></div>
-
-						<div class="Container">
-							<div class="FrontPage_ListTitle">신규 프로젝트</div>
-							<br>
-							<div class="row_frontPage_Card">
-								<c:forEach var="item" items="${newProject }">
-
-
-
-									<div class="card-wrapper">
-										<a href="#"><img class="countimg"
-											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-
-										<span class="projectCardDetail">
-											<dd>
-												<input type="hidden" value=${item.projectNo }> <a
-													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-											</dd>
-											<dt>
-												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-											</dt> <span class="percentage">${item.projectCurrentPercentage }%
-												달성</span>
-										</span>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-
-						<div class="jb-division-line"></div>
-
-						<div class="Container">
-							<div class="FrontPage_ListTitle">달성완료 프로젝트</div>
-							<br>
-							<div class="row_frontPage_Card">
-								<c:forEach var="item" items="${completeProject }">
-
-
-
-									<div class="card-wrapper">
-										<a href="#"><img class="countimg"
-											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-
-										<span class="projectCardDetail">
-											<dd>
-												<input type="hidden" value=${item.projectNo }> <a
-													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-											</dd>
-											<dt>
-												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-											</dt> <span class="percentage">${item.projectCurrentPercentage }%
-												달성</span>
-										</span>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-
-						<div class="jb-division-line"></div>
-
-						<div class="Container">
-							<div class="FrontPage_ListTitle">오늘 오픈한 프로젝트</div>
-							<br>
-							<div class="row_frontPage_Card">
-								<c:forEach var="item" items="${todayProject }">
-
-
-
-									<div class="card-wrapper">
-										<a href="#"><img class="countimg"
-											src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-
-										<span class="projectCardDetail">
-											<dd>
-												<input type="hidden" value=${item.projectNo }> <a
-													href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-											</dd>
-											<dt>
-												<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-											</dt> <span class="percentage">${item.projectCurrentPercentage }%
-												달성</span>
-										</span>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-
-
-
-						<div class="jb-division-line"></div>
-
-						<div class="Container_1page">
-							<div class="ContentInfo_Container">
-								<img src="/resources/image/크리스마스 이미지.jpg">
-
-
-								<div class="Content_TextInfobox">
-									<div class="Content_Title">크리스마스 선물상점</div>
-									<a>
-										<div class="Content_TextInfo">손꼽아 기다린 크리스마스! 포근한 연말을 위해
-											텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의
-											어드벤트 캘린더까지!</div>
-								</div>
-								</a> <a href="http://localhost/category.do?category=Christmas"
-									title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
-							</div>
-
-
-							<div class="FrontCard_Container">
-								<c:forEach var="item" items="${christmasProject }">
-									<div class="card">
-										<div class="card-wrapper2">
-											<a href="#"><img class="eximg"
-												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
-
-
-											<span class="projectCardDetail">
+										<div class="card-wrapper1">
+											<a href="#"><img class="Card_img"
+												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+												onclick="projectDetail(${item.projectNo})"></a> <span
+												class="projectCardDetail">
 												<dd>
-
 													<input type="hidden" value=${item.projectNo }> <a
-														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+														<div class="LikeButton_Wrapper">
+															<button class="LikeBtn3">
+																<svg class="like" xmlns="http://www.w3.org/2000/svg"
+																	height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+																		d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+															</button>
+														</div> </span>
 												</dd>
 												<dt>
-													<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
+													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
 												</dt> <span class="percentage">${item.projectCurrentPercentage }%
 													달성</span>
 											</span>
 										</div>
 									</div>
-
 								</c:forEach>
+							</div>
+						</div>
+						<!--    <div class="slides_btn">
+                     <button class="prev"><</button>
+                     <button class="next">></button>
+                  </div> -->
+
+						<div class="side-btns1">
+							<div>
+								<span><i class="leftbtn1"><span class="btn_text"><</span></i></span>
+							</div>
+							<div>
+								<span><i class="rightbtn1"><span class="btn_text">></span></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
+			<div class="jb-division-line"></div>
+			<div class="Container">
+				<div class="FrontPage_ListTitle">이런 프로젝트 어때요?</div>
+				<br>
+				<div class="row_frontPage_Card">
+					<c:forEach var="item" items="${recommended }">
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a> <span
+								class="projectCardDetail">
+								<dd>
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+
+										<div class="LikeButton_Wrapper">
+											<button class="LikeBtn2">
+												<svg class="like" xmlns="http://www.w3.org/2000/svg"
+													height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+														d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+											</button>
+										</div> </span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
+
+			</div>
+
+
+			<div class="jb-division-line"></div>
+
+
+
+			<img class="banner" src="/resources/image/banner.jpg" width="1100px"
+				height="181.1px">
+
+
+			<div class="jb-division-line"></div>
+
+			<div class="Container">
+				<div class="FrontPage_ListTitle">신규 프로젝트</div>
+				<br>
+				<div class="row_frontPage_Card">
+					<c:forEach var="item" items="${newProject }">
+
+
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
+
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+								</button>
 							</div>
 
-							<!-- <div class="lines_Collection_Contents_div">
+							<span class="projectCardDetail">
+								<dd>
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+
+			<div class="jb-division-line"></div>
+
+			<div class="Container">
+				<div class="FrontPage_ListTitle">달성완료 프로젝트</div>
+				<br>
+				<div class="row_frontPage_Card">
+					<c:forEach var="item" items="${completeProject }">
+
+
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
+
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+								</button>
+							</div>
+
+							<span class="projectCardDetail">
+								<dd>
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+
+			<div class="jb-division-line"></div>
+
+			<div class="Container">
+				<div class="FrontPage_ListTitle">오늘 오픈한 프로젝트</div>
+				<br>
+				<div class="row_frontPage_Card">
+					<c:forEach var="item" items="${todayProject }">
+
+
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
+
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+								</button>
+							</div>
+
+							<span class="projectCardDetail">
+								<dd>
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+
+
+
+			<div class="jb-division-line"></div>
+
+			<div class="Container_1page">
+				<div class="ContentInfo_Container">
+					<a href="http://localhost/category.do?category=Christmas"><img
+						src="/resources/image/크리스마스 이미지.jpg">
+
+
+						<div class="Content_TextInfobox">
+							<div class="Content_Title">크리스마스 선물상점</div>
+							<a>
+								<div class="Content_TextInfo">손꼽아 기다린 크리스마스! 포근한 연말을 위해
+									텀블벅이 준비한 크리스마스 선물 상점을 둘러보세요. 후원자를 위한 특별한 선물, 럭키박스와 40만원 상당의
+									어드벤트 캘린더까지!</div>
+						</div> </a> <a href="http://localhost/category.do?category=Christmas"
+						title="프로젝트 더보기" class="Project_ViewMore">프로젝트 더보기</a>
+				</div>
+
+				<div class="FrontCard_Container">
+					<c:forEach var="item" items="${christmasProject }">
+						<div class="card">
+							<div class="card-wrapper2">
+								<div>
+									<a href="#"><img class="eximg"
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+										onclick="projectDetail(${item.projectNo})"></a>
+									<div class="LikeButton_Wrapper">
+										<button class="LikeBtn4">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+								</div>
+
+								<span class="projectCardDetail">
+									<dd>
+
+										<input type="hidden" value=${item.projectNo }> <a
+											href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+									</dd>
+									<dt>
+										<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
+									</dt> <span class="percentage">${item.projectCurrentPercentage }%
+										달성</span>
+								</span>
+							</div>
+						</div>
+
+					</c:forEach>
+
+
+				</div>
+
+				<!-- <div class="lines_Collection_Contents_div">
                <div class="lines_Collection_Contents">
 
                   <div class="lines_card-wrapper">
@@ -1395,13 +1441,13 @@ dd {
                   </div>
                </div>
             </div> -->
-						</div>
-					</div>
+			</div>
+		</div>
 
 
 
 
-					<button class="top-button" id="toTop">Top</button>
+		<!-- <button id="toTop">Top</button> -->
 	</main>
 	<%@include file="./views/common/footer.jsp"%>
 </body>
@@ -1410,17 +1456,7 @@ dd {
 <script>
 
 
-	// 좋아요 버튼
-	
-for (var i = 0; i <= 7; i++) {
-  var btn = document.getElementsByClassName("like")[i];
-  btn.addEventListener('click', function() {
-    this.classList.toggle('active');
-  });
-}
-
-
-
+   // 최상단 이동 버튼
 
    $(function() { // 보이기 | 숨기기 
       $(window).scroll(function() {
@@ -1444,138 +1480,76 @@ for (var i = 0; i <= 7; i++) {
 
    // 배너 슬라이드
 
+   $('.slider-1 > .page-btns > div').click(function() {
+      var $this = $(this);
+      var index = $this.index();
 
-	   $('.slider-1 > .page-btns > div').click(function() {
-	      var $this = $(this);
-	      var index = $this.index();
+      $this.addClass('active');
+      $this.siblings('.active').removeClass('active');
 
-	      $this.addClass('active');
-	      $this.siblings('.active').removeClass('active');
+      var $slider = $this.parent().parent();
 
-	      var $slider = $this.parent().parent();
+      var $current = $slider.find(' > .slides1 > div.active');
 
-	      var $current = $slider.find(' > .slides1 > div.active');
+      var $post = $slider.find(' > .slides1 > div').eq(index);
 
-	      var $post = $slider.find(' > .slides1 > div').eq(index);
+      $current.removeClass('active');
+      $post.addClass('active');
+   });
 
-	      $current.removeClass('active');
-	      $post.addClass('active');
-	   });
+   // 좌/우 버튼 추가 슬라이더
+   $('.slider-1 > .side-btns > div').click(function() {
+      var $this = $(this);
+      var $slider = $this.closest('.slider-1');
 
-	   // 좌/우 버튼 추가 슬라이더
-	   $('.slider-1 > .side-btns > div').click(function() {
-	      var $this = $(this);
-	      var $slider = $this.closest('.slider-1');
+      var index = $this.index();
+      var isLeft = index == 0;
 
-	      var index = $this.index();
-	      var isLeft = index == 0;
+      var $current = $slider.find(' > .page-btns > div.active');
+      var $post;
 
-	      var $current = $slider.find(' > .page-btns > div.active');
-	      var $post;
+      if (isLeft) {
+         $post = $current.prev();
+      } else {
+         $post = $current.next();
+      }
+      ;
 
-	      if (isLeft) {
-	         $post = $current.prev();
-	      } else {
-	         $post = $current.next();
-	      }
-	      ;
+      if ($post.length == 0) {
+         if (isLeft) {
+            $post = $slider.find(' > .page-btns > div:last-child');
+         } else {
+            $post = $slider.find(' > .page-btns > div:first-child');
+         }
+      }
+      ;
 
-	      if ($post.length == 0) {
-	         if (isLeft) {
-	            $post = $slider.find(' > .page-btns > div:last-child');
-	         } else {
-	            $post = $slider.find(' > .page-btns > div:first-child');
-	         }
-	      }
-	      ;
-
-		
-		
-		$post.click();
-	});
-	
-	let hovered_flag = false;
-	
-	setInterval(function() {
-		if (hovered_flag) return
-		$('.slider-1 > .side-btns > div').eq(1).click();
-	}, 3000);
-
-
-
-	$(".lnb-category-expansion").hover(function(e){
-	  hovered_flag = true;
-	},function(e){
-	  hovered_flag = false;
-	});
-
-
-	
-	
-	// 최근 본 프로젝트 슬라이드
-	let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
-			.find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
-			.find(".slides"), slidesi = slidesWrap.find(".side-btns1");
-
-	let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
-
-	slidesCopy = $(".slides:lt(" + showNum + ")").clone();
-	slidesList.append(slidesCopy);
-
-	//이미지 움직이기
-	function backShow() {
-		if (num == 0) {
-			//시작
-			num = slidesCount;
-			slidesList.css("left", -num * slidesWidth + "px");
-		}
-		num--;
-		slidesList.stop().animate({
-			left : -slidesWidth * num + "px"
-		}, 400);
-	}
-
-	function nextShow() {
-		if (num == slidesCount) {
-			//마지막
-			num = 0;
-			slidesList.css("left", num);
-		}
-		num++;
-		slidesList.stop().animate({
-			left : -slidesWidth * num + "px"
-		}, 400);
-	}
-
-	//왼쪽, 오른쪽 버튼 설정
-	slidesi.on("click", "i", function() {
-		if ($(this).hasClass("leftbtn1")) {
-			//왼쪽 버튼을 클릭
-			backShow();
-		} else {
-			//오른쪽 버튼을 클릭
-			nextShow();
-		}
-	});
-
+      
+      
+      $post.click();
+   });
 
    setInterval(function() {
+      if (hovered_flag) return
       $('.slider-1 > .side-btns > div').eq(1).click();
    }, 3000);
 
+   var hovered_flag = false;
 
-
-   
+   $(".lnb-category-expansion").hover(function(e){
+     hovered_flag = true;
+     console.log("prevent triggering");
+   },function(e){
+     hovered_flag = false;
+     console.log("allow triggering");
+   });
    
    // 최근 본 프로젝트 슬라이드
    let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
          .find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
          .find(".slides"), slidesi = slidesWrap.find(".side-btns1");
 
-
-
    let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
-
 
    slidesCopy = $(".slides:lt(" + showNum + ")").clone();
    slidesList.append(slidesCopy);
@@ -1658,12 +1632,14 @@ for (var i = 0; i <= 7; i++) {
    }, 1000);
    
    // 좋아요 버튼
+   for(var i = 0; i <= 9999; i++) {
+       var btn = document.getElementsByClassName("like")[i];
+
+        btn.addEventListener('click',function(){
+        this.classList.toggle('active');
+        });
+   }
    
-   var btn = document.getElementById("like");
-
-   btn.addEventListener('click',function(){
-             btn.classList.toggle('active')
-     })
-
+   
 </script>
 </html>
