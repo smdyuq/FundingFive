@@ -123,28 +123,26 @@ main {
 									<th>프로젝트명</th>
 									<th>카테고리명</th>
 									<th>프로젝트 설명</th>
-									<th>후원 현황</th>
 									<th>생성일</th>
 									<th>마감일</th>
 								</tr>
 							</thead>
 							<c:choose>
-								<c:when test="">
+								<c:when test="${empty memberDonateList}">
 									<div class="sponsorship_result_n">
 										<p>후원현황이 없습니다.</p>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<tbody class="sponsorship_result">
-										<c:forEach var="searching" items="">
+										<c:forEach var="item" items="${memberDonateList}">
 											<tr class="sponsorship_result_tr">
-												<td>이미지</td>
-												<td>프로젝트명</td>
-												<td>카테고리명</td>
-												<td>설명</td>
-												<td>현황</td>
-												<td>생성일</td>
-												<td>마감일</td>
+												<td>${item.projectOuterImageName}</td>
+												<td>${item.projectName }</td>
+												<td>${item.projectKind }</td>
+												<td>${item.projectIntroduce }</td>
+												<td>${item.projectRegisterDate }</td>
+												<td>${item.projectEndDate }</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -166,13 +164,12 @@ main {
 							<table class="project-table" id="content">
 								<thead class="project-thead">
 									<tr>
-										<!-- <th>프로젝트 이미지</th> -->
+										<th>프로젝트 이미지</th>
 										<th>프로젝트명</th>
 										<th>카테고리명</th>
-				<!-- 						<th>프로젝트 설명</th>
+ 										<th>프로젝트 설명</th>
 										<th>프로젝트 가격</th>
 										<th>프로젝트 목표 후원금액</th>
-										<th>후원 현황</th> -->
 										<th>생성일</th>
 										<th>마감일</th>
 									</tr>
@@ -187,13 +184,12 @@ main {
 										<c:otherwise>
 											<c:forEach var="project" items="${projectApprovedList}">
 												<tr>
-													<%-- <th>${project.projectOuterImageName}</th> --%>
+													<th>${project.projectOuterImageName}</th>
 													<th>${project.projectIntroduce}</th>
 													<th>${project.projectKind}</th>
-													<%-- <th>${project.projectKind}</th>
-													<th>프로젝트 가격</th>
-													<th>프로젝트 목표 후원금액</th>
-													<th>${project.projectCurrentAmount}</th> --%>
+													<th>${project.projectKind}</th>
+													<th>${project.projectPrice}</th>
+													<th>${project.projectCurrentAmount}</th> 
 													<th>${project.projectRegisterDate}</th>
 													<th>${project.projectEndDate}</th>
 												</tr>
@@ -216,7 +212,6 @@ main {
 										<th>프로젝트 설명</th>
 										<th>프로젝트 가격</th>
 										<th>프로젝트 목표 후원금액</th>
-										<th>후원 현황</th>
 										<th>생성일</th>
 										<th>마감일</th>
 									</tr>
@@ -231,15 +226,14 @@ main {
 										<c:otherwise>
 											<c:forEach var="project" items="${projectPendingList}">
 												<tr>
-													<th>프로젝트 이미지</th>
-													<th>프로젝트명</th>
-													<th>카테고리명</th>
-													<th>프로젝트 설명</th>
-													<th>프로젝트 가격</th>
-													<th>프로젝트 목표 후원금액</th>
-													<th>후원 현황</th>
-													<th>생성일</th>
-													<th>마감일</th>
+													<th>${project.projectOuterImageName }</th>
+													<th>${project.projectName }</th>
+													<th>${project.projectKind }</th>
+													<th>${project.projectIntroduce }</th>
+													<th>${project.projectPrice }</th>
+													<th>${project.projectTargetAmount }</th>
+													<th>${project.projectRegisterDate }</th>
+													<th>${project.projectEndDate }</th>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
@@ -262,7 +256,6 @@ main {
 										<th>프로젝트 목표 후원금액</th>
 										<th>생성일</th>
 										<th>마감일</th>
-										<th>거절사유</th>
 									</tr>
 								</thead>
 								<tbody class="project-tbody">
@@ -275,15 +268,14 @@ main {
 										<c:otherwise>
 											<c:forEach var="project" items="${projectRejectedList}">
 												<tr>
-													<th>프로젝트 이미지</th>
-													<th>프로젝트명</th>
-													<th>카테고리명</th>
-													<th>프로젝트 설명</th>
-													<th>프로젝트 가격</th>
-													<th>프로젝트 목표 후원금액</th>
-													<th>생성일</th>
-													<th>마감일</th>
-													<th>거절사유</th>
+													<th>${project.projectOuterImageName }</th>
+													<th>${project.projectName }</th>
+													<th>${project.projectKind }</th>
+													<th>${project.projectIntroduce }</th>
+													<th>${project.projectPrice }</th>
+													<th>${project.projectTargetAmount }</th>
+													<th>${project.projectRegisterDate }</th>
+													<th>${project.projectEndDate }</th>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
@@ -326,31 +318,26 @@ main {
 					<h2>관심있는 프로젝트</h2>
 					<div class="table-container">
 						<div class="project-cartegory">
-
-
-
 							<c:choose>
-								<c:when test="">
+								<c:when test="${empty memberWishList }">
 									<p>관심있는 프로젝트가 없습니다.</p>
 								</c:when>
 								<c:otherwise>
-									<c:forEach var="item" items="${list}">
+									<c:forEach var="project" items="${memberWishList}">
 										<div class="product_container">
 											<div class="product">
 												<div class="img_div">
 													<a class="img_div_a" href=""><img
-														src="${item.projectOuterImageName }" alt="상품 이미지"></a>
+														src="/resources/uploads/outerimage/130x105/${project.projectOuterImageName }" alt=""></a>
 												</div>
 												<a href="#" class="category_name">${item.projectKind }</a><a
-													class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>
-												<a href="#" class="project_title">제목 2줄 넘어가면 잘림 테스트
-													테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</a>
-												<p class="project_explanation">설명 2줄 넘어가면 잘림 테스트
-													테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</p>
+													class="divide_area">|</a><a href="#" class="manager_name">${project.projectManagerName }</a>
+												<a href="#" class="project_title">${project.projectName} </a>
+												<p class="project_explanation">${project.projectIntroduce }</p>
 												<div class="detail_text">
-													<p class="achievement_rate">{달성률}%</p>
-													<p class="sponsorship_amount">{현재 후원된 금액}원</p>
-													<p class="remaining_days">{남은 날짜}일 남음</p>
+													<p class="achievement_rate">${project.projectCurrentPercentage }%</p>
+													<p class="sponsorship_amount">${project.projectCurrentAmount }원</p>
+													<p class="remaining_days">${project.projectRemainDate}일 남음</p>
 												</div>
 											</div>
 										</div>

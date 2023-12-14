@@ -214,7 +214,6 @@ public class ProjectDAO {
 			pstmt.setInt(1, projectNo);
 
 			int result = pstmt.executeUpdate();
-
 			
 			return result;
 			

@@ -55,7 +55,7 @@
 			<c:if test="${not empty sessionScope.memberNo}">
 				<c:if test="${sessionScope.memberType == 1}">
 					<div>
-						<a href="myPage.do?cpage=1"><img src="/resources/image/id.png"
+						<a href="/myPage.do?cpage=1"><img src="/resources/image/id.png"
 							alt=""> <span class="subtext">마이페이지</span> </a>
 					</div>
 					<div>
@@ -116,5 +116,8 @@
 				gtcombo.value = tolang;
 				gtcombo.dispatchEvent(new Event('change'));
 			});
+	document.querySelector('.menu_img').addEventListener('mouseover', function() {
+	    document.querySelector('.Christmas_menu_text').style.color = 'red';
+	});
 </script>
 
