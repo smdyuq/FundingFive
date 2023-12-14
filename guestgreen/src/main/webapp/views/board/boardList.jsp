@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <%@include file="../../views/common/head.jsp"%>
 
+
 <link rel="stylesheet" href="/resources/css/board/boardList.css">
+
 <script type="text/javascript" src="/resources/js/board/board.js"></script>
 <style>
 
@@ -271,3 +273,6 @@
     };
 </script>
 
+
+
+ 

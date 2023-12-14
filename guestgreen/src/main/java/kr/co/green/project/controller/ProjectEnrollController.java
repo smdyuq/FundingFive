@@ -19,9 +19,9 @@ import kr.co.green.project.model.dto.ProjectDTO;
 import net.coobird.thumbnailator.Thumbnails;
 
 @WebServlet("/projectEnroll.do")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 30, // 2KB
-		maxFileSize = 1024 * 1024 * 20, // 1KB
-		maxRequestSize = 1024 * 1024 * 10 * 10 // 25MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 30, // 30MB
+		maxFileSize = 1024 * 1024 * 30, // 30MB
+		maxRequestSize = 1024 * 1024 * 10 * 10 // 100MB
 )
 public class ProjectEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

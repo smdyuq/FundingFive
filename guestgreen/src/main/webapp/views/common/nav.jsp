@@ -30,6 +30,8 @@
 						프로젝트</a></li>
 				<li><a href="/menu.do?menu=popularity" class="menu_text">인기
 						프로젝트</a></li>
+				<li><a href="/menu.do?menu=noteworthy" class="menu_text">주목할 만한
+						프로젝트</a></li>
 			</ul>
 
 		</div>

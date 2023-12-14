@@ -37,16 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 });
 
-function projectDetail(projectNo){
-	const pageUrl = 'projectDetail.do?projectNo='+projectNo;
+function projectDetail(projectNo) {
+	const pageUrl = 'projectDetail.do?projectNo=' + projectNo;
 	window.location.href = pageUrl;
 }
+
+
 
 function projectDonate(projectNo) {
 	const pageUrl = '/getData.do?projectNo=' + projectNo;
 	window.location.href = pageUrl;
 }
 
+function noteworthyProject() {
+	const pageUrl = '/menu.do?menu=noteworthy';
+	window.location.href = pageUrl;
+}
 
 
 

@@ -146,9 +146,13 @@ input[type=file]::file-selector-button {
 								required>
 						</div>
 
-						<div class="file-input-container">
-							<label for="exampleFormControlInput1" class="form-label">프로젝트
-								창작자 프로필 이미지 </label> <input type="file" class="form-control"
+
+						<div>
+							<label for="exampleFormControlInput1" class="form-label-image">프로젝트
+								창작자 프로필 이미지 </label>
+								<div class="jb-text">이 이미지는 창작자의 프로필 이미지 입니다.</div>
+								 <input type="file" class="form-control"
+
 								id="exampleFormControlInput1" name="project_manager_image"
 								required>
 						</div>
