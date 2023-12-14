@@ -44,7 +44,9 @@
         <div class="board_content">
             <!-- <label for="content">내용:</label> -->
             <div id="content">${board.content }</div>
+            <c:if test="${not empty board.fileName}"><!-- 보드 이미지가 비어있지않을때 -> 이미지 보이기 -->
             <img src="/resources/uploads/${board.fileName }">
+            </c:if>
         </div>
         <div class="board_content_line"></div>
 
@@ -52,7 +54,7 @@
 
         <!-- 글작성자 수정/삭제 가능 -->
         <div class="board_btn_div">
-            <c:if test="${sessionScope.no == 1 }">
+            <c:if test="${sessionScope.memberType == 0 }">
                 <button type="button" onclick="boardUpdateCheck(${board.idx })">수정</button>
                 <button type="submit" onclick="boardDelete()">삭제</button>
             </c:if>

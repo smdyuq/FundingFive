@@ -113,8 +113,8 @@
 								type="search" name="searchText" placeholder="검색어를 입력하세요">
 							<button type="submit">검색</button>
 						</form>
-						<c:if test="${memberDTO.memberType == 0}">
-							<!-- 멤버 넘버가 1인 사람만 버튼이 보임. -->
+						<c:if test="${sessionScope.memberType == 0}">
+							<!-- 멤버 타입 0인 사람만 버튼이 보임. -->
 							<button class="notice_registration_btn" type="button"
 								onclick="window.location.href= '/views/board/boardEnroll.jsp'">공지사항
 								등록</button>
