@@ -12,6 +12,10 @@
 main {
 	padding: 10px;
 }
+
+.form-control {
+	display: flex;
+}
 </style>
 </head>
 
@@ -160,13 +164,13 @@ main {
 							<table class="project-table" id="content">
 								<thead class="project-thead">
 									<tr>
-										<th>프로젝트 이미지</th>
+										<!-- <th>프로젝트 이미지</th> -->
 										<th>프로젝트명</th>
 										<th>카테고리명</th>
-										<th>프로젝트 설명</th>
+				<!-- 						<th>프로젝트 설명</th>
 										<th>프로젝트 가격</th>
 										<th>프로젝트 목표 후원금액</th>
-										<th>후원 현황</th>
+										<th>후원 현황</th> -->
 										<th>생성일</th>
 										<th>마감일</th>
 									</tr>
@@ -181,13 +185,13 @@ main {
 										<c:otherwise>
 											<c:forEach var="project" items="${projectApprovedList}">
 												<tr>
-													<th>${project.projectOuterImageName}</th>
+													<%-- <th>${project.projectOuterImageName}</th> --%>
 													<th>${project.projectIntroduce}</th>
 													<th>${project.projectKind}</th>
-													<th>${project.projectKind}</th>
+													<%-- <th>${project.projectKind}</th>
 													<th>프로젝트 가격</th>
 													<th>프로젝트 목표 후원금액</th>
-													<th>${project.projectCurrentAmount}</th>
+													<th>${project.projectCurrentAmount}</th> --%>
 													<th>${project.projectRegisterDate}</th>
 													<th>${project.projectEndDate}</th>
 												</tr>
@@ -197,7 +201,6 @@ main {
 								</tbody>
 							</table>
 						</div>
-						<hr>
 					</div>
 					<div class="project-div2">
 						<p>승인 대기중인 프로젝트</p>
@@ -242,7 +245,6 @@ main {
 								</tbody>
 							</table>
 						</div>
-						<hr>
 					</div>
 					<div class="project-div3">
 						<p>승인 거절된 프로젝트</p>
@@ -291,15 +293,53 @@ main {
 				</div>
 
 				<!-- 배송조회 -->
-				<div id="shipping_information" class="content-section"
-					style="display: none;">
-					<h2>배송조회</h2>
-					<div class="table-container">
-						<input type="text" id="waybill-id" name="waybill-id"
-							placeholder="운송장 번호를 입력하세요." required>
-						<button>조회</button>
-					</div>
-				</div>
+				<!-- <div id="shipping_information" class="content-section" style="display: none;">
+					<h2>운송장 번호 조회</h2>
+					<form action="http://info.sweettracker.co.kr/tracking/3"
+						method="post">
+						<div class="table-container">
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="t_key"
+									name="t_key">
+							</div>
+							<div class="form-group">
+								<input type="hidden" class="form-control" name="t_code"
+									id="t_code" value="04">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="t_invoice"
+									id="t_invoice" placeholder="운송장 번호를 입력해주세요.">
+								<button type="submit" class="btn btn-default" onclick="submitFormInNewWindow(event)">조회하기</button>
+							</div>
+						</div>
+					</form>
+				</div> -->
+				<!-- 배송조회 -->
+<div id="shipping_information" class="content-section" style="display: none;">
+  <h2>운송장 번호 조회</h2>
+  <form id="tracking-form" onsubmit="event.preventDefault(); openPopup('http://info.sweettracker.co.kr/tracking/3', this.elements.t_invoice.value);">
+    <div class="table-container">
+      <div class="form-group">
+        <input type="hidden" class="form-control" id="t_key" name="t_key">
+      </div>
+      <div class="form-group">
+        <input type="hidden" class="form-control" name="t_code" id="t_code" value="04">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="t_invoice" id="t_invoice" placeholder="운송장 번호를 입력해주세요.">
+        <button type="submit" class="btn btn-default">조회하기</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- 팝업 모달 -->
+<div id="popup-modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+  <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%;">
+    <iframe id="popup-iframe" style="width: 100%; height: 500px;"></iframe>
+    <button onclick="closePopup()">닫기</button>
+  </div>
+</div>
 
 				<!-- 좋아요 -->
 				<div id="like_project" class="content-section"
@@ -307,9 +347,9 @@ main {
 					<h2>관심있는 프로젝트</h2>
 					<div class="table-container">
 						<div class="project-cartegory">
-						
-						
-						
+
+
+
 							<c:choose>
 								<c:when test="">
 									<p>관심있는 프로젝트가 없습니다.</p>
@@ -337,35 +377,12 @@ main {
 										</div>
 									</c:forEach>
 								</c:otherwise>
-							</c:choose>						
+							</c:choose>
 						</div>
 					</div>
 				</div>
 
-				<!-- 배송조회 -->
-				<div id="shipping_information" class="content-section"
-					style="display: none;">
-					<h2>배송조회</h2>
-					<div class="table-container">
-						<form action="http://info.sweettracker.co.kr/tracking/3"
-							method="post">
-							<div class="form-group">
-								<input type="hidden" class="form-control" id="t_key"
-									name="t_key">
-							</div>
-							<div class="form-group">
-								<input type="hidden" class="form-control" name="t_code"
-									id="t_code" value="04">
-							</div>
-							<div class="form-group">
-								<label for="t_invoice">운송장 번호</label> <input type="text"
-									class="form-control" name="t_invoice" id="t_invoice"
-									placeholder="운송장 번호">
-							</div>
-							<button type="submit" class="btn btn-default">조회하기</button>
-						</form>
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</main>

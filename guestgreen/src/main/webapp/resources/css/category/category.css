@@ -2,6 +2,10 @@
 
 body {
 	margin: 0px;
+	
+}
+main{
+	width: 80%;
 }
 
 /* 전체 구조 */
@@ -13,45 +17,61 @@ body {
 	float: left;
 	justify-content: flex-start;
 	padding-top: 5%;
+	margin-bottom: 5%;
+
+	
+}
+/* 텍스트 하단 선 */
+.thick-line {
+	border-top: 2px solid #000;
+	/*  margin-top: 1%; */
+	margin-bottom: 4%;
 }
 
+/* 카테고리 텍스트 */
+.caregory_title {
+	margin: 0px;
+	padding: 0px;
+	font-size: 25px;
+	height: 20px;
+}
+
+/* 상품 박스 */
 .product {
-	width: 22.8%;
-	height: 380px;
+	width: 20%;
+	height: auto;
 	margin-bottom: 4%;
-/* 	border: 1px solid black; */
+	/* border: 1px solid black;  */
 	float: left;
-	margin-right: 2%;
+	margin-right: 4%;
+
 }
 
 .project-cartegory {
 	text-align: center;
-	padding-bottom: 10px;
-	padding-top: 10px;
 }
 
 .project-cartegory>div {
 	display: inline;
 	font-size: 14px;
-	padding-right: 1%;
-	padding-left: 1%;
+	padding-right: 2%;
+	padding-left: 4%;
 	padding-top: 1px;
 	padding-bottom: 1px;
-/* 	border: 2px solid #c0c0c0; */
 	border-radius: 5px;
 }
 
 /* 상품카드 리스트 */
 .img_div {
 	width: 100%;
-	height: 200px;
+	height: 300px;
 	margin-bottom: 10px;
 	overflow: hidden;
 }
 
 .img_div>a, img {
 	display: block;
-	height: auto;
+	height: 100%;
 	width: 100%;
 }
 

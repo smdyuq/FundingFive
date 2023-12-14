@@ -38,17 +38,17 @@
 		<div class="footerSns">
 			<div class="footerSns_image_div">
 				<div class="sns_image">
-					<a href="https://www.instagram.com/"><img
+					<a href="https://www.instagram.com/" target="_blank"><img
 						src="/resources/image/instagram.png"
 						style="width: 25px; height: 25px;"></a>
 				</div>
 				<div class="sns_image">
-					<a href="https://twitter.com/?lang=ko"><img
+					<a href="https://twitter.com/?lang=ko" target="_blank"><img
 						src="/resources/image/twitter.png"
 						style="width: 25px; height: 25px;"></a>
 				</div>
 				<div class="sns_image">
-					<a href="https://www.facebook.com/?locale=ko_KR"><img
+					<a href="https://www.facebook.com/?locale=ko_KR" target="_blank"><img
 						src="/resources/image/facebook.png"
 						style="width: 25px; height: 25px;"></a>
 				</div>
