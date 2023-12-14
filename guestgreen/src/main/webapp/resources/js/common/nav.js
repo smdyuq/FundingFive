@@ -41,3 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		const pageUrl = '/searchForm.do';
 		window.location.href = pageUrl;
 }
+
+document.querySelector('.menu_img').addEventListener('mouseover', function() {
+    document.querySelector('.Christmas_menu_text').style.color = 'red';
+});
