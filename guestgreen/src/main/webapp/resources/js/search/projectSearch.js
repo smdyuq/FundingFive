@@ -1,5 +1,7 @@
 
-//function projectSearch() {
+
+//function projectSearch(){
+
 //	let searchWord = document.getElementById("search_box").value;
 //	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 //}
@@ -26,16 +28,15 @@ function searchSelectedWord(searchWord) {
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
-window.onload = function() {
-	document.querySelector('.search_btn').addEventListener('click', function() {
-		let searchWord = document.getElementById("search_box").value;
-		window.location.href = '/projectSearch.do?searchWord=' + searchWord;
-	});
+    window.onload = function() {
+        document.querySelector('.search_btn').addEventListener('click', function() {
+	let searchWord = document.getElementById("search_box").value;
+	window.location.href = '/projectSearch.do?searchWord=' + searchWord;        });
+    
+        document.getElementById('search_box').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+	let searchWord = document.getElementById("search_box").value;
+	window.location.href = '/projectSearch.do?searchWord=' + searchWord;            }
+        });
+    };
 
-	document.getElementById('search_box').addEventListener('keydown', function(e) {
-		if (e.key === 'Enter') {
-			let searchWord = document.getElementById("search_box").value;
-			window.location.href = '/projectSearch.do?searchWord=' + searchWord;
-		}
-	});
-};

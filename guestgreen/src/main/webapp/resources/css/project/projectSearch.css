@@ -141,9 +141,10 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
+		margin-bottom:10px;
 }
 
-.searche_row>div>p {
+.searche_row_num {
 	display: flex;
 	width: 30px;
 }
