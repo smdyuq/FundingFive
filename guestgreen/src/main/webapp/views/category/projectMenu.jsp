@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
+<script src="/resources/js/project/projectDetail.js"></script>
 <link rel="stylesheet" href="/resources/css/category/category.css">
 </head>
 <body>
@@ -22,9 +23,9 @@
 				<c:forEach var="item" items="${list }">
 					<div class="product">
 						<div class="img_div">
-							<a class="img_div_a" href=""><img
+							<a class="img_div_a" ><img
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-								alt="상품 이미지"></a>
+								alt="상품 이미지" onclick="projectDetail(${item.projectNo})"></a>
 
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
