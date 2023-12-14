@@ -351,10 +351,7 @@ body {
    font-size: larger;
 }
 
-img {
-   width: 100%;
-   height: auto;
-}
+
 
 /* 이미지 */
 .popular_img {
@@ -819,105 +816,178 @@ dd {
 <body>
 
 
-   <%@include file="./views/common/header.jsp"%>
-   <%@include file="./views/common/nav.jsp"%>
-   <%@include file="./views/common/common.jsp"%>
 
-   <main>
+	<%@include file="./views/common/header.jsp"%>
+	<%@include file="./views/common/nav.jsp"%>
+	<%@include file="./views/common/common.jsp"%>
 
-
-      <div class="FrontPage_Main">
-         <div class="FrontPage_HomeWrapper">
-            <div class="FrontPage_StyleHero">
+	<main>
 
 
-               <div class="slider-1 slidesimg">
-                  <div class="slides1">
-                     <c:forEach var="item" items="${banner }">
-                        <div class="active" width="760px" height="280px">
-                           <img
-                              src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
-                        </div>
-                     </c:forEach>
-                  </div>
-                  <div class="page-btns">
-                     <div class="active"></div>
-                     <div></div>
-                     <div></div>
-                     <div></div>
-                  </div>
-                  <div class="side-btns">
-                     <div>
-                        <span><i class="fas fa-angle-left"></i></span>
-                     </div>
-                     <div>
-                        <span><i class="fas fa-angle-right"></i></span>
-                     </div>
-                  </div>
-               </div>
+		<div class="FrontPage_Main">
+			<div class="FrontPage_HomeWrapper">
+				<div class="FrontPage_StyleHero">
+
+					<div class="slider-1 slidesimg">
+						<div class="slides1">
+							<c:forEach var="item" items="${banner }">
+								<div class="active" width="760px" height="280px">
+									<img
+										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
+								</div>
+							</c:forEach>
+						</div>
+						<div class="page-btns">
+							<div class="active"></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+						<div class="side-btns">
+							<div>
+								<span><i class="fas fa-angle-left"></i></span>
+							</div>
+							<div>
+								<span><i class="fas fa-angle-right"></i></span>
+							</div>
+						</div>
+					</div>
+
+					<!-- 자동 슬라이드 -->
+
+					<!--	<div class="slider">
+					<div class="slide">
+						<img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
+							height="280px">
+					</div>
+					<div class="slide">
+						<img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
+							height="280px">
+					</div>
+				</div> -->
+
+					<p>주목할 만한 프로젝트</p>
+					<div class="frontPageCard_Container">
+
+						<div class="FrontCard_Container">
+							<c:forEach var="item" items="${noteWorthy }">
+								<div class="card-wrapper0">
+									<a href="#"><img class="eximg"
+										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
+									</a> <span class="projectCardDetail">
+										<dd>
+
+											<input type="hidden" value=${item.projectNo }> <a
+												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										</dd>
+										<dt>
+											<a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
+										</dt> <span class="percentage">${item.projectCurrentPercentage }%
+											달성</span>
+									</span>
+								</div>
+								<div class="LikeButton_Wrapper">
+									<button class="LikeBtn">
+										<svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
+											width="16" viewBox="0 0 512 512">
+											<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+											<path
+												d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+									</button>
+								</div>
+							</c:forEach>
 
 
-               <!-- 자동 슬라이드 -->
+						</div>
 
-               <!--   <div class="slider">
-               <div class="slide">
-                  <img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지2.jpg" alt="배너이미지2" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지3.jpg" alt="배너이미지3" width="760px"
-                     height="280px">
-               </div>
-               <div class="slide">
-                  <img src="/resources/image/배너이미지4.jpg" alt="배너이미지4" width="760px"
-                     height="280px">
-               </div>
-            </div> -->
-
-               <p>주목할 만한 프로젝트</p>
-               <div class="frontPageCard_Container">
+					</div>
+				</div>
 
 
-                  <div class="FrontCard_Container">
-                     <c:forEach var="item" items="${noteWorthy }">
-                        <div class="card-wrapper0">
-                           <a href="#"><img class="eximg"
-                              src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
-                           </a> <span class="projectCardDetail">
-                              <dd>
+
+				<div class="FrontPage_StylePopularProjectsSection">
+
+					<div class="popular-project-header">
+						<p class="FrontPage_ListTitle">인기 프로젝트</p>
+						<a href="#" class=FrontPage_viewTotal>전체보기</a>
+					</div>
+
+					<div class=populaPage_List>
+						<div class="Popula-card-wrapper">
+							<c:forEach var="item" items="${popularity }">
+								<div class="popula-img">
+									<a href="#"><img class="popular_img" onclick="projectDetail(${item.projectNo})"
+										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
+									<div class="ProjectCardNumbertop">
+										${item.projectRankNumber }</div>
+									<div class="projectCardDetail">
+										<dd>
+
+											<input type="hidden" value=${item.projectNo }> <a
+												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										</dd>
+										<dt>
+											<a href="#" class="popula-project_Introduce" onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</a>
+										</dt>
+										<span class="percentage">${item.projectCurrentPercentage }%
+											달성</span>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<a href="/menu.do?menu=popularity" title="프로젝트 더보기"
+							class="Project_ViewMore">인기 프로젝트 전체보기</a>
 
 
-                                 <input type="hidden" value=${item.projectNo }> <a
-                                    href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
-                              </dd>
-                              <dt>
-                                 <a href="#" class="Project_Introduce">${item.projectIntroduce }</a>
-                              </dt> <span class="percentage">${item.projectCurrentPercentage }%
-                                 달성</span>
-                           </span>
-                        </div>
-                        <div class="LikeButton_Wrapper">
-                           <button class="LikeBtn">
-                              <svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
-                                 width="16" viewBox="0 0 512 512">
-                                 <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                 <path
-                                    d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
-
-                           </button>
-                        </div>
-                     </c:forEach>
+					</div>
+				</div>
+			</div>
 
 
-                  </div>
+			<br> <img class="banner"
+				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
+				width="1160px" height="181.1px">
 
-               </div>
-            </div>
+			<div class="jb-division-line"></div>
 
+			<div class="Container">
+				<div class="FrontPage_ListTitle">마감임박! 마지막 기회</div>
+				<div id="countdown">
+					<Strong id="counttime"></Strong><span id="count-time">남았어요</span>
+				</div>
+
+
+				<div class="row_frontPage_Card">
+
+					<c:forEach var="item" items="${deadLine }">
+
+						<div class="card-wrapper">
+							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+
+							<span class="projectCardDetail">
+								<dd>
+
+									<input type="hidden" value=${item.projectNo }> <a
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+								</dd>
+								<dt>
+									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+									달성</span>
+							</span>
+						</div>
+					</c:forEach>
+				</div>
 
 
             <div class="FrontPage_StylePopularProjectsSection">

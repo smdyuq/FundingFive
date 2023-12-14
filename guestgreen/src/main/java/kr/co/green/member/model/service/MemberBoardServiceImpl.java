@@ -39,4 +39,10 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	public ArrayList<MemberBoardDTO> getMyPendingProject(int memberNo) {
 		return memberBoardDAO.getMyPendingProject(con, memberNo);
 	}
+
+	//좋아요 누른 프로젝트 조회
+	@Override
+	public ArrayList<MemberBoardDTO> getLikedProject(int memberNo) {
+		return memberBoardDAO.getLikedProject(con, memberNo);
+	}
 }

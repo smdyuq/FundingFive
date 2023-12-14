@@ -7,6 +7,7 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
 <script src="/resources/js/project/administratorOk.js"></script>
+<script src="/resources/js/project/apiKey.js"></script>
 
 <style>
 .thick-line {
@@ -112,6 +113,7 @@ table {
 												<th></th>
 
 											</tr>
+
 											<tr>
 												<td colspan="4"><hr class="thick-line"></td>
 											</tr>
@@ -169,6 +171,7 @@ table {
 												end="${pi.endPage }">
 												<li class="page-item"><a class="page-link"
 													href="/administratorOk.do?menu=first&cpage=${page}">${page}</a></li>
+
 											</c:forEach>
 
 											<c:choose>
@@ -210,6 +213,7 @@ table {
 											<th>창작자 이름</th>
 											<th></th>
 										</tr>
+
 									</thead>
 									<tbody>
 										<c:choose>
@@ -233,6 +237,7 @@ table {
 												</c:forEach>
 											</c:otherwise>
 										</c:choose>
+
 
 									</tbody>
 								</table>
@@ -290,12 +295,14 @@ table {
 								<table class="table">
 									<thead>
 										<tr>
+
 											<th>프로젝트 번호</th>
 											<th>프로젝트명</th>
 											<th>프로젝트 등록일</th>
 											<th>프로젝트 종료일</th>
 											<th>프로젝트 달성률</th>
 											<th>창작자 이름</th>
+
 
 										</tr>
 									</thead>
