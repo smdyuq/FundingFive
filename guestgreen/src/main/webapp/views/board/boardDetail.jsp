@@ -61,7 +61,7 @@
             <button type="reset" onclick="window.location.href = '/boardList.do?cpage=1'">취소</button>
         </div>
     </form>
-   </main>
+   </main> 
 
    <%@include file="../../views/common/footer.jsp"%>
 </body>
