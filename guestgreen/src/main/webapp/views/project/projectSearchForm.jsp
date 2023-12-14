@@ -82,19 +82,6 @@
 </body>
 
 </html>
-<script>
-    window.onload = function() {
-        document.querySelector('.search_btn').addEventListener('click', function() {
-            location.href = '#';
-        });
-    
-        document.getElementById('search_box').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                location.href = '#';
-            }
-        });
-    };
-</script>
 
 
 

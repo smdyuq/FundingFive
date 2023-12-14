@@ -1,30 +1,28 @@
-/*top 踰꾪듉*/
-        .floating_btn{
-            position: fixed;
-            top: 83%;
-            /* left: 90%; */
-            width: 50px;
-            right: 50px;
-            height: 200px;
-            overflow: hidden;
-            align-items: center;
-        }
-        /*top 踰꾪듉*/
-        .top-button {        
-            border: 2px solid #c0c0c0;
-            border-radius: 100%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #c0c0c0;
-            display: none;
-            width: 88%;
-            margin: 0 auto;
-        }
+.floating_btn {
+	position: fixed;
+	top: 83%;
+	/* left: 90%; */
+	width: 50px;
+	right: 50px;
+	height: 200px;
+	overflow: hidden;
+	align-items: center;
+}
+/*top 버튼*/
+.top-button {
+	border: 2px solid #c0c0c0;
+	border-radius: 100%;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: #c0c0c0;
+	display: none;
+	width: 88%;
+	margin: 0 auto;
+}
 
-
-        .talk>img {
-            width: 100%;
-            margin-bottom: 5px;
-        }
+.talk>img {
+	width: 100%;
+	margin-bottom: 5px;
+}
 
 body {
 	position: static !important;
@@ -70,24 +68,42 @@ iframe.goog-te-banner-frame {
 	display: none;
 }
 
-.goog-tooltip {
-	display: none !important;
-}
-
-.floating_btn {
-    cursor: pointer;
-}
-
-.goog-tooltip:hover {
-	display: none !important;
-}
-
-.goog-text-highlight {
-	background-color: transparent !important;
-	border: none !important;
-	box-shadow: none !important;
-}
-
-.VIpgJd-ZVi9od-l4eHX-hSRGPd {
+/*말풍선*/
+/* 말풍선 적절한 top 과 margin-left 로 위치조정 */
+/* .arrow_box {
 	display: none;
+	position: absolute;
+	width: 100px;
+	padding: 8px;
+	left: 0;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background: #333;
+	color: #fff;
+	font-size: 14px;
+		top: 83%;
+	
+	width: 50px;
+	right: 50px;
+	height: 200px;
 }
+
+.arrow_box:after {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	margin-left: -10px;
+	border: solid transparent;
+	border-color: rgba(51, 51, 51, 0);
+	border-bottom-color: #333;
+	border-width: 10px;
+	pointer-events: none;
+	content: ' ';
+}
+
+span:hover+p.arrow_box {
+	display: block;
+} */

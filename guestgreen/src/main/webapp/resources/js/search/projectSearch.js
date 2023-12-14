@@ -1,6 +1,3 @@
-function getSearchForm(){
-	window.location.href = "/searchForm.do?status=select";
-}
 
 function projectSearch(){
 	let searchWord = document.getElementById("search_box").value;
@@ -40,11 +37,3 @@ function searchSelectedWord(searchWord){
             }
         });
     };
-
-
-
-
-
-
-
-
