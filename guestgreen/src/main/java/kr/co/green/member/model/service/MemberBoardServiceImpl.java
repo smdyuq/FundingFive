@@ -7,6 +7,7 @@ import kr.co.green.common.DatabaseConnection;
 import kr.co.green.common.PageInfo;
 import kr.co.green.member.model.dao.MemberBoardDAO;
 import kr.co.green.member.model.dto.MemberBoardDTO;
+import kr.co.green.project.model.dto.ProjectDTO;
 
 
 
@@ -44,5 +45,11 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	@Override
 	public ArrayList<MemberBoardDTO> getLikedProject(int memberNo) {
 		return memberBoardDAO.getLikedProject(con, memberNo);
+	}
+
+	//마이페이지 후훤현황 조회
+	@Override
+	public ArrayList<ProjectDTO> getMyDonateProject(int memberNo) {
+		return memberBoardDAO.getMyDonateProject(con, memberNo);
 	}
 }

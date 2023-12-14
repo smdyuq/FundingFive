@@ -61,10 +61,10 @@ public class MypageController extends HttpServlet {
 		projectService.getUserWishList(memberNo, projectLikedList);
 		
 		//관심있는 프로젝트 목록
-		//projectOuterImageName, projectKind, projectManagerName, projectName, projectIntroduce, projectCurrnetPercentage,
-		//projectCurrentAmount, proejctRemainDate
 		ArrayList<MemberBoardDTO> memberWishList = memberBoardService.getLikedProject(memberNo);
 		
+		//후원현황 조회
+		ArrayList<ProjectDTO> memberDonateList = memberBoardService.getMyDonateProject(memberNo);
 		//디데이 계산
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate currentDate = LocalDate.now();
@@ -82,6 +82,7 @@ public class MypageController extends HttpServlet {
 		request.setAttribute("projectRejectedList", projectRejectedList);
 		request.setAttribute("projectPendingList", projectPendingList);
 		request.setAttribute("memberWishList", memberWishList);
+		request.setAttribute("memberDonateList", memberDonateList);
 		request.setAttribute("memberDTO", memberDTO);
 				
 		RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");
