@@ -55,7 +55,7 @@
 			<c:if test="${not empty sessionScope.memberNo}">
 				<c:if test="${sessionScope.memberType == 1}">
 					<div class="nav_menu_right_hover">
-						<a href="myPage.do?cpage=1"><img src="/resources/image/id.png"
+						<a href="/myPage.do?cpage=1"><img src="/resources/image/id.png"
 							alt=""> <span class="subtext">마이페이지</span> </a>
 					</div>
 					<div class="nav_menu_right_hover">

@@ -166,13 +166,13 @@ main {
 							<table class="project-table" id="content">
 								<thead class="project-thead">
 									<tr>
-										<!-- <th>프로젝트 이미지</th> -->
+										<th>프로젝트 이미지</th>
 										<th>프로젝트명</th>
 										<th>카테고리명</th>
-				<!-- 						<th>프로젝트 설명</th>
+										<th>프로젝트 설명</th>
 										<th>프로젝트 가격</th>
 										<th>프로젝트 목표 후원금액</th>
-										<th>후원 현황</th> -->
+										<th>후원 현황</th> 
 										<th>생성일</th>
 										<th>마감일</th>
 									</tr>
@@ -187,13 +187,13 @@ main {
 										<c:otherwise>
 											<c:forEach var="project" items="${projectApprovedList}">
 												<tr>
-													<%-- <th>${project.projectOuterImageName}</th> --%>
+													<th>${project.projectOuterImageName}</th>
 													<th>${project.projectIntroduce}</th>
 													<th>${project.projectKind}</th>
-													<%-- <th>${project.projectKind}</th>
+												    <th>${project.projectKind}</th>
 													<th>프로젝트 가격</th>
 													<th>프로젝트 목표 후원금액</th>
-													<th>${project.projectCurrentAmount}</th> --%>
+													<th>${project.projectCurrentAmount}</th> 
 													<th>${project.projectRegisterDate}</th>
 													<th>${project.projectEndDate}</th>
 												</tr>
