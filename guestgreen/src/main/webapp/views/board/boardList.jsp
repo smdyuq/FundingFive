@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +7,18 @@
 <meta charset="UTF-8">
 <%@include file="../../views/common/head.jsp"%>
 
-<link rel="stylesheet" href="/resources/css/board/boardList.css">
+<!-- 부트스트랩 5 CSS 파일 -->
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+   rel="stylesheet">
+
+<!-- 부트스트랩 5 JavaScript 및 팝퍼 라이브러리 -->
+<script
+   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/resources/css/member/member.css">
 <script type="text/javascript" src="/resources/js/board/board.js"></script>
 <style>
 
@@ -46,6 +57,7 @@
 
 </head>
 <body>
+
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
 	<%@include file="../../views/common/common.jsp"%>
@@ -217,9 +229,10 @@
 	</main>
 
 	<%@include file="../../views/common/footer.jsp"%>
-</body>
 
+</body>
 </html>
+
 <script>
     // 좌측 메뉴
     function showContent(id) {
@@ -257,3 +270,4 @@
         });
     };
 </script>
+
