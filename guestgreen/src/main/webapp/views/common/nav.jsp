@@ -16,8 +16,7 @@
 								href="/category.do?category=Clothes">의류</a> <a
 								href="/category.do?category=Beauty">향수·뷰티</a> <a
 								href="/category.do?category=Food">푸드</a> <a
-								href="/category.do?category=Jewelry">주얼리</a>
-								<a
+								href="/category.do?category=Jewelry">주얼리</a> <a
 								href="/category.do?category=Christmas"
 								class="Christmas_menu_text">크리스마스</a>
 						</div>
@@ -93,10 +92,12 @@
 </nav>
 
 <script src="/resources/js/common/nav.js"></script>
-<script src="/resources/js/search/projectSearch.js"></script>
 <script
 	src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
+	function getSearchForm() {
+		window.location.href = "/searchForm.do?status=select";
+	}
 	function googleTranslateElementInit() {
 		new google.translate.TranslateElement({
 			pageLanguage : 'ko',

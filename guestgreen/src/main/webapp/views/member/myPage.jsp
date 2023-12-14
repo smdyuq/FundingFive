@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/member/member.css">
-<script src="/resources/js/member/myPage.js"></script>
+<script src="/resources/js/project/projectDetail.js"></script>
 <script src="/resources/js/project/apiKey.js"></script>
+<script src="/resources/js/member/myPage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <style>
 main {
 	padding: 10px;
@@ -292,29 +294,6 @@ main {
 					</div>
 				</div>
 
-				<!-- 배송조회 -->
-				<!-- <div id="shipping_information" class="content-section" style="display: none;">
-					<h2>운송장 번호 조회</h2>
-					<form action="http://info.sweettracker.co.kr/tracking/3"
-						method="post">
-						<div class="table-container">
-							<div class="form-group">
-								<input type="hidden" class="form-control" id="t_key"
-									name="t_key">
-							</div>
-							<div class="form-group">
-								<input type="hidden" class="form-control" name="t_code"
-									id="t_code" value="04">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="t_invoice"
-									id="t_invoice" placeholder="운송장 번호를 입력해주세요.">
-								<button type="submit" class="btn btn-default" onclick="submitFormInNewWindow(event)">조회하기</button>
-							</div>
-						</div>
-					</form>
-				</div> -->
-				<!-- 배송조회 -->
 <div id="shipping_information" class="content-section" style="display: none;">
   <h2>운송장 번호 조회</h2>
   <form id="tracking-form" onsubmit="event.preventDefault(); openPopup('http://info.sweettracker.co.kr/tracking/3', this.elements.t_invoice.value);">

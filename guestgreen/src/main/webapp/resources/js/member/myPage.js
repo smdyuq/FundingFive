@@ -16,8 +16,10 @@ function showContent(id) {
 }
 
 window.onload = function() {
-	
+	console.log("asdsds");
 	const shippingApiKey = document.getElementById("t_key");
+	console.log(shippingApiKey);
+	
 	shippingApiKey.value = config.shipping_api_key;
 	showTabContent('information');
 	
@@ -54,4 +56,3 @@ function closePopup() {
   document.getElementById('popup-modal').style.display = 'none';
   document.getElementById('popup-iframe').src = '';
 }
-

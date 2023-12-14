@@ -35,8 +35,6 @@ public class MemberLikeController extends HttpServlet {
 		}
 		MemberService memberService = new MemberServiceImpl();
 		if(memberService.memberLike(memberNo, projectNo) > 0) {
-			//후에 하트 빨간색으로 변하는 로직 추가
-			AlertAndRedirect.alertRedirect(response, "관심프로젝트에 추가되었습니다.", "/");
 		}else {System.out.println("MemberLikeController 37번 라인 if문 못들어감");}
 	}
 
