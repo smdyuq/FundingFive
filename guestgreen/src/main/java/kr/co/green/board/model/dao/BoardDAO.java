@@ -18,8 +18,10 @@ public class BoardDAO {
 
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		String query = "select BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_IN_DATE, BOARD_UPDATE_DATE, BOARD_VIEWS, MEMBER_NO"
-				+ "			from BOARD " + "			where BOARD_DELETE_DATE is null"
-				+ "			and BOARD_TITLE like '%'||?||'%'" + "			order by BOARD_IN_DATE desc"
+				+ "			from BOARD " 
+				+ "			where BOARD_DELETE_DATE is null"
+				+ "			and BOARD_TITLE like '%'||?||'%'" 
+				+ "			order by BOARD_IN_DATE desc"
 				+ "			offset ? row fetch first ? row only";
 
 		try {
@@ -55,7 +57,7 @@ public class BoardDAO {
 		return list;
 	}
 
-	// 게시글 전체 갯수
+	// 게시글 검색
 	public int boardListCount(Connection con, String searchText) {
 		String query = "SELECT count(*) AS cnt FROM BOARD WHERE BOARD_DELETE_DATE IS NULL"
 				+ " 										AND BOARD_TITLE LIKE '%' || ? || '%'";
