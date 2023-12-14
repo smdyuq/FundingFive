@@ -14,6 +14,7 @@ public class DonateDAO {
 
 	//후원 성공 시 후원자 테이블 등록
 	public int donateEnroll(Connection con, DonateDTO donateDTO) {
+
 		String query = "INSERT INTO donate"
 				+ "		VALUES(?, ?, ?, ?, ?, ?, sysdate)";
 		int result=0;

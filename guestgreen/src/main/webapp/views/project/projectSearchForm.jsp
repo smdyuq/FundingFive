@@ -66,10 +66,10 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="searching" items="${popularSearchArr}">
-							<div class="search_row_div" style="background-color: aqua;">
+							<div class="search_row_div">
 								<div class="searche_row">
 									<div onclick="searchSelectedWord('${searching.searchWord}')">
-										<a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a>
+										<strong class="searche_row_num">${searching.rowNum}</strong><a id="popular-search">${searching.searchWord}</a>
 									</div>
 								</div>
 							</div>

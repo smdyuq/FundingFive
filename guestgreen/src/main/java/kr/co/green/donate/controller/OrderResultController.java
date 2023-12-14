@@ -78,6 +78,7 @@ public class OrderResultController extends HttpServlet {
 		projectDTO.setProjectPrice(projectPrice);
 		projectDTO.setProjectCurrentAmount(projectCurrentAmount + projectPrice);
 		projectDTO.setProjectCurrentPercentage((double)projectDTO.getProjectCurrentAmount()/projectTargetAmount*100);
+		
 
 		DonateDTO donateDTO = new DonateDTO();
 		donateDTO.setProjectNo(projectNo);
@@ -86,6 +87,8 @@ public class OrderResultController extends HttpServlet {
 		donateDTO.setMemberName(memberName);
 		donateDTO.setMemberAddr(memberAddr);
 		donateDTO.setMemberPhone(memberPhone);
+		
+		
 		
 		//project테이블에 후원자 수, 후원된 금액 갱신
 		int projectUpdate = projectService.projectUpdate(projectDTO);
