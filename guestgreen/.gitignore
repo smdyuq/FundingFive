@@ -11,6 +11,7 @@ tmp/
 *~.nib
 local.properties
 guestgreen/.settings/
+guestgreen/src/main/webapp/resources/js/project/apiKey.js
 .settings/
 .classpath
 guestgreen/.classpath

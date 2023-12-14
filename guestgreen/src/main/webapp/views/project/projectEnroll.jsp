@@ -134,6 +134,7 @@ input[type=file]::file-selector-button {
 								type="text" class="form-control" id="exampleFormControlInput1"
 								name="project-name" placeholder="프로젝트 이름을 작성해주세요." required>
 						</div>
+
 						<div>
 							<label class="form-label">프로젝트 소개 </label><br> <input
 								type="text" class="form-control" id="exampleFormControlInput1"

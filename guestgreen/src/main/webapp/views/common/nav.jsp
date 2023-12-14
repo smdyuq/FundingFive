@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" type="text/css" href="{ % static "css/base.css" % }">
+<link rel="stylesheet" type="text/css" href="{ % block extrastyle % }{ % endblock % }">
 
 <nav>
 	<div class="nav_parent_div">
@@ -72,7 +74,7 @@
 
 				<c:if test="${sessionScope.memberType == 0}">
 					<div>
-						<a href="/administratorOk.do?cpage=1""><img
+						<a href="/administratorOk.do?menu=first&cpage=1""><img
 							src="/resources/image/project.png" alt=""> <span
 							class="subtext">프로젝트 관리</span> </a>
 					</div>

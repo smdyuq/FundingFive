@@ -33,7 +33,7 @@ function noButton() {
 
  
 // 좌측 메뉴
-function showContent(id) {
+/*function showContent(id) {
     var sections = document.getElementsByClassName('content-section');
     for (var i = 0; i < sections.length; i++) {
         sections[i].style.display = 'none';
@@ -46,15 +46,17 @@ function showContent(id) {
         menus[i].classList.remove('active');
     }
     document.querySelector('.menu[onclick="showContent(\'' + id + '\')"]').classList.add('active');
+}*/
+
+function showProject(menu){
+	const pageUrl = "/administratorOk.do?menu="+menu+"&cpage=1";
+	window.location.href = pageUrl;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     // 페이지 로드 시 '프로젝트 승인 목록' 메뉴의 내용을 보여줌
     showContent('project_approval');
 });
-
-
-
 
 
 	//출고 성사된 프로젝트

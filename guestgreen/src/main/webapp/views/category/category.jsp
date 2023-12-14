@@ -19,6 +19,7 @@
 			<hr class="thick-line">
 
 
+
 			<div class="product_container">
 				<c:forEach var="item" items="${list }">
 					<div class="product">

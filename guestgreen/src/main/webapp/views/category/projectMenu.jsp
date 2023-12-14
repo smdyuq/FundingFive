@@ -6,6 +6,7 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/category/category.css">
+<script src="/resources/js/project/projectDetail.js"></script>
 </head>
 <body>
 	<%@include file="../../views/common/header.jsp"%>
@@ -15,7 +16,6 @@
 		<div class="project-cartegory">
 			<div><p class="caregory_title">${title }</p></div>
 			<hr class="thick-line">
-
 
 			<div class="product_container">
 				<c:forEach var="item" items="${list }">
