@@ -31,7 +31,7 @@ public interface ProjectService {
 // 	완료 프로젝트 
 	public int succcessfulCount();
 	
-//실패 프로젝트
+//	실패 프로젝트
 	public int failCount();
 
 //	프로젝트 조회
