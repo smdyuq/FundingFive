@@ -19,11 +19,11 @@
 	padding-bottom: 2%;
 }
 
-#like {
+.like {
 	fill: #ddd;
 }
 
-#like.active {
+.like.active {
 	fill: red;
 }
 
@@ -830,11 +830,12 @@ dd {
 
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
+
 							<c:forEach var="item" items="${banner }" varStatus="status">
-
-
-								<div class="${status.first ? 'active' : '' }" width="760px"
-									height="280px" onclick="projectDetail(${item.projectNo})">
+								<div onclick="noteworthyProject()" style="
+									cursor:pointer;"
+									class="${status.first ? 'active' : '' }"
+									width="760px" height="280px">
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
@@ -901,8 +902,8 @@ dd {
 								</div>
 								<div class="LikeButton_Wrapper">
 									<button class="LikeBtn">
-										<svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
-											width="16" viewBox="0 0 512 512">
+										<svg class="like" xmlns="http://www.w3.org/2000/svg"
+											height="16" width="16" viewBox="0 0 512 512">
 											<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
 											<path
 												d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
@@ -923,7 +924,7 @@ dd {
 
 					<div class="popular-project-header">
 						<p class="FrontPage_ListTitle">인기 프로젝트</p>
-						<a href="#" class=FrontPage_viewTotal>전체보기</a>
+						<a href="/menu.do?menu=popularity" class=FrontPage_viewTotal>전체보기</a>
 					</div>
 
 					<div class=populaPage_List>
@@ -979,8 +980,8 @@ dd {
 					<c:forEach var="item" items="${deadLine }">
 
 						<div class="card-wrapper">
-							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+							<img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1065,7 +1066,7 @@ dd {
 					<c:forEach var="item" items="${recommended }">
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1104,7 +1105,7 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1132,7 +1133,7 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1160,7 +1161,7 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1202,7 +1203,7 @@ dd {
 						<div class="card">
 							<div class="card-wrapper2">
 								<a href="#"><img class="eximg"
-									src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 								<span class="projectCardDetail">
 									<dd>
@@ -1320,11 +1321,13 @@ dd {
 
 	// 좋아요 버튼
 	
-	 var btn = document.getElementById("like")
+for (var i = 0; i <= 7; i++) {
+  var btn = document.getElementsByClassName("like")[i];
+  btn.addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+}
 
-  btn.addEventListener('click',function(){
-            btn.classList.toggle('active')
-    })
 
 	// 최상단 이동 버튼
 
@@ -1398,20 +1401,18 @@ dd {
 		
 		$post.click();
 	});
-
+	
+	let hovered_flag = false;
+	
 	setInterval(function() {
 		if (hovered_flag) return
 		$('.slider-1 > .side-btns > div').eq(1).click();
 	}, 3000);
 
-	var hovered_flag = false;
-
 	$(".lnb-category-expansion").hover(function(e){
 	  hovered_flag = true;
-	  console.log("prevent triggering");
 	},function(e){
 	  hovered_flag = false;
-	  console.log("allow triggering");
 	});
 
 	

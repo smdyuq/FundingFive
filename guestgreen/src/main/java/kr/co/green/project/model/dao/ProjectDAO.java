@@ -94,7 +94,7 @@ public class ProjectDAO {
 			pstmt = con.prepareStatement(query);
 
 			pstmt.setString(1, projectDTO.getProjectManagerName());
-			pstmt.setString(2, projectDTO.getProjectIntroduce());
+			pstmt.setString(2, projectDTO.getProjectManagerIntroduce());
 			pstmt.setString(3, projectDTO.getProjectManagerImageName());
 			pstmt.setString(4, projectDTO.getProjectManagerImagePath());
 			pstmt.setString(5, projectDTO.getProjectManagerAccount());
@@ -347,7 +347,7 @@ public class ProjectDAO {
 
 	// API에 넘긴 후에 DONATE테이블에 저장하기 위한 기본적인 프로젝트 정보 조회
 	public ProjectDTO getProjectBasicInfo(Connection con, int projectNo) {
-		String query = "SELECT project_no, project_kind, project_name, project_price, "
+		String query = "SELECT project_no, project_outer_image_name, project_kind, project_name, project_price, "
 				+ "	project_current_amount, project_target_amount, project_current_percentage " + "	FROM project"
 				+ " WHERE project_no = ?";
 
@@ -358,6 +358,7 @@ public class ProjectDAO {
 			while (rs.next()) {
 				projectDTO.setProjectNo(projectNo);
 				projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));
+				projectDTO.setProjectOuterImageName(rs.getString("project_outer_image_name"));
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectPrice(rs.getInt("PROJECT_PRICE"));
 				projectDTO.setProjectCurrentAmount(rs.getInt("PROJECT_CURRENT_AMOUNT"));
