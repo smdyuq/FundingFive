@@ -32,20 +32,4 @@
 		  }
 </script>
 </head>
-<body>
-	<label class="tab_item" for="shipping">배송조회</label> 
-	<form action="http://info.sweettracker.co.kr/tracking/3" method="post">
-            <div class="form-group">
-              <input type="hidden" class="form-control" id="t_key" name="t_key" value="bRm16slaIRj7ecv626FPQg">
-            </div>
-            <div class="form-group">
-              <input type="hidden" class="form-control" name="t_code" id="t_code" value="04">
-            </div>
-            <div class="form-group">
-              <label for="t_invoice">운송장 번호</label>
-              <input type="text" class="form-control	" name="t_invoice" id="t_invoice" placeholder="운송장 번호">
-            </div>
-            <button type="submit" class="btn btn-default" onclick="checkShipping()">조회하기</button>
-        </form>
-</body>
 </html>

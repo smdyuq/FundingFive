@@ -352,10 +352,6 @@ body {
 	font-size: larger;
 }
 
-img {
-	width: 100%;
-	height: auto;
-}
 
 /* 이미지 */
 .popular_img {
@@ -925,14 +921,11 @@ dd {
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
 							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img"
-									onclick="projectDetail(${item.projectNo})">
-									<a href="#"><img class="popular_img"
+								<div class="popula-img">
+									<a href="#"><img class="popular_img" onclick="projectDetail(${item.projectNo})"
 										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
-
-
 									<div class="projectCardDetail">
 										<dd>
 
@@ -940,7 +933,7 @@ dd {
 												href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 										</dd>
 										<dt>
-											<a href="#" class="popula-project_Introduce">${item.projectIntroduce }</a>
+											<a href="#" class="popula-project_Introduce" onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</a>
 										</dt>
 										<span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>

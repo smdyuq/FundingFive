@@ -7,6 +7,7 @@
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
 <script src="/resources/js/project/administratorOk.js"></script>
+<script src="/resources/js/project/apiKey.js"></script>
 
 <style>
 .thick-line {
@@ -53,20 +54,17 @@ table {
 	background-color: white;
 }
 
- .custom-table {
-        width: 100%;
-    }
-    
-    .custom-table th,
-    .custom-table td {
-        text-align: left;
-    }
-    
-    .approval-button {
-        float: right;
-    }
-    
-   
+.custom-table {
+	width: 100%;
+}
+
+.custom-table th, .custom-table td {
+	text-align: left;
+}
+
+.approval-button {
+	float: right;
+}
 </style>
 
 </head>
@@ -128,7 +126,8 @@ table {
 													<td>${item.projectManagerName }</td>
 													<td>
 														<button type="button" class="approval-button"
-															onclick="projectDetail('${item.projectNo}')">프로젝트 상세보기</button>
+															onclick="projectDetail('${item.projectNo}')">프로젝트
+															상세보기</button>
 													</td>
 												</tr>
 												<tr>
@@ -215,6 +214,8 @@ table {
 										<c:forEach var="item" items="${successfulProjectList}">
 											<input type="hidden" name="project-no"
 												value="${item.projectNo}">
+											<input type="hidden" id="google-api-secret-key"
+												name="google-api-secret-key">
 											<tr onclick="successfulProject()">
 												<td>${item.projectNo}</td>
 												<td>${item.projectName}</td>
@@ -259,7 +260,7 @@ table {
 								<c:choose>
 									<c:when test="${empty failedProjectList}">
 										<tr>
-											<td colspan="5" class="text-center"> 프로젝트 목록이 없습니다.</td>
+											<td colspan="5" class="text-center">프로젝트 목록이 없습니다.</td>
 										</tr>
 									</c:when>
 									<c:otherwise>

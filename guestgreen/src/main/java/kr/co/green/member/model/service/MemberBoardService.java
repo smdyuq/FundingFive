@@ -15,5 +15,8 @@ public interface MemberBoardService {
 
 	//보류된 프로젝트 조회
 	public ArrayList<MemberBoardDTO> getMyPendingProject(int memberNo);
+
+	//좋아요 누른 프로젝트 조회
+	public ArrayList<MemberBoardDTO> getLikedProject(int memberNo);
 	
 }
