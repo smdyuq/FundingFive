@@ -1,0 +1,298 @@
+@charset "UTF-8";
+
+.container {
+	display: flex;
+	height: 100vh;
+}
+
+.thick-line {
+	border-top: 2px solid #000;
+	margin-bottom: 5%;
+}
+
+/* 탭 내 타이틀 */
+.menu-container {
+	display: flex;
+	flex-direction: column;
+	width: 25%;
+	padding-right: 10px;
+}
+
+.menu-container h2 {
+	padding: 20px;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	cursor: pointer;
+	border: 1px solid #f0f0f0;
+}
+
+.menu:hover, .menu.active {
+	background-color: #f0f0f0;
+	color: blue;
+}
+
+.content {
+	width: 100%;
+	padding: 20px 20px 20px 5%;
+	overflow: hidden;
+}
+
+/* 내정보 */
+.signup-input {
+	position: relative;
+	margin-bottom: 20px;
+	border-top: none;
+	position: relative;
+}
+
+.signup-input label {
+	display: block;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 7px;
+}
+
+.signup-input input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	border: none;
+}
+
+.signup-input span {
+	display: block;
+	color: red;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.signup-input div {
+	text-align: left;
+	margin-top: 30px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+}
+
+.signup-input div>p {
+	margin-bottom: 5px;
+}
+
+.signup-input span::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #d3d3d3;
+}
+
+button {
+	border: 2px solid #c0c0c0;
+	border-radius: 5px;
+	padding: 7px;
+	font-size: 14px;
+	width: 20%;
+	margin-right: 10px;
+}
+
+/* 후원현황 */
+.project-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.project-thead th {
+	border-bottom: 2px solid black;
+	padding: 10px;
+}
+
+.sponsorship_result_tr {
+	border-bottom: 1px solid black;
+}
+
+.project-table tr td {
+	padding: 10px;
+	/* 간격 조정 */
+}
+
+.sponsorship_result_n {
+	text-align: center;
+}
+
+.sponsorship_result {
+	text-align: center;
+}
+
+/* 프로젝트 현황 */
+.project-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.project-thead th {
+	border-bottom: 2px solid black;
+	padding: 10px;
+}
+
+.project-tbody tr {
+	border-bottom: 1px solid black;
+}
+
+.project-table tr td {
+	padding: 10px;
+}
+
+.project-tbody {
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+tr>th {
+	font-size: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+	width: 100%;
+	height: auto;
+}
+
+#waybill-id{
+	 width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                padding-left: 30px; 
+                bottom: -5px; 
+                border: none;
+                border-bottom: 1px solid #c0c0c0;
+                position: relative;
+	
+}
+
+
+/* 전체 구조 */
+.product_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	float: left;
+	justify-content: flex-start;
+	padding-top: 5%;
+}
+
+.product {
+	width: 22.8%;
+	height: 380px;
+	margin-bottom: 4%;
+	border: 1px solid black;
+	float: left;
+	margin-right: 2%;
+}
+
+.project-cartegory {
+	text-align: center;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.project-cartegory>div {
+	display: inline;
+	font-size: 14px;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border: 2px solid #c0c0c0;
+	border-radius: 5px;
+}
+
+/* 상품카드 리스트 */
+.img_div {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.img_div>a, img {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.category_name, .manager_name {
+	text-decoration: none;
+	color: gray;
+	font-size: 14px;
+}
+
+.divide_area {
+	margin-right: 5px;
+	margin-left: 5px;
+	color: gray;
+	font-size: 14px;
+}
+
+.project_title {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	text-decoration: none;
+	color: black;
+	margin-top: 10px;
+}
+
+.project_explanation {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	color: gray;
+	font-size: 12px;
+}
+
+.detail_text {
+	display: flex;
+	flex-direction: row;
+	width: auto;
+	margin-bottom: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.achievement_rate {
+	font-size: 14px;
+	color: red;
+	margin-right: 3px;
+}
+
+.sponsorship_amount {
+	font-size: 13px;
+	margin-right: 3px;
+}
+
+.remaining_days {
+	font-size: 13px;
+}
+
+.img_div>img, .img_div_a {
+	transition: all 0.2s linear;
+}
+
+.img_div>img, .img_div_a:hover {
+	transform: scale(1.1);
+}
