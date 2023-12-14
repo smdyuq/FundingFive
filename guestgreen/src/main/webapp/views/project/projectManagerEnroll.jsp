@@ -47,7 +47,7 @@ margin-top: 2%;
 	width: 100%;
 	height: 30px;
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-bottom: 40px;
 }
 
 /* 파일 인풋박스 */
@@ -79,6 +79,7 @@ input[type=file]::file-selector-button {
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
 	border: none;
 	border-radius: 10px;
+
     width: 20%;
     padding-top: 10px;
     padding-bottom: 10px;

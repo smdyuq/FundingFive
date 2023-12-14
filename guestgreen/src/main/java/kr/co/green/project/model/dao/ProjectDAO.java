@@ -136,7 +136,62 @@ public class ProjectDAO {
 
 		return 0;
 	}
+// 완료 프로젝트 수
+	public int succcessfulCount(Connection con) {
+		String query = "SELECT count(*) As scnt" 
+				+ "			   FROM project p" 
+				+ "			   JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no" 
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage >= 100" 
+				+ "		AND project_confirm_status = 'Y'";
+		
 
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int result = rs.getInt("scnt");
+				
+				return result;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+// 실패 프로젝트 수
+	public int failCount(Connection con) {
+		String query = "SELECT count(*) As fcnt" 
+				+ "			   FROM project p" 
+				+ "			   JOIN project_manager pm"
+				+ "		ON   p.project_no = pm.project_no" 
+				+ "		WHERE project_end_date - sysdate < 0"
+				+ "		AND project_current_percentage < 100" 
+				+ "		AND project_confirm_status = 'Y'";
+		
+
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int result = rs.getInt("fcnt");
+				
+				return result;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
 //	프로젝트 조회
 	public ArrayList<ProjectDTO> projectSelect(Connection con, PageInfo pi) {
 		ArrayList<ProjectDTO> list = new ArrayList<>();
@@ -214,7 +269,6 @@ public class ProjectDAO {
 			pstmt.setInt(1, projectNo);
 
 			int result = pstmt.executeUpdate();
-
 			
 			return result;
 			

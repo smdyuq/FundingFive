@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.co.green.common.PageInfo;
 import kr.co.green.member.model.dto.MemberBoardDTO;
+import kr.co.green.project.model.dto.ProjectDTO;
 
 public interface MemberBoardService {
 
@@ -18,5 +19,8 @@ public interface MemberBoardService {
 
 	//좋아요 누른 프로젝트 조회
 	public ArrayList<MemberBoardDTO> getLikedProject(int memberNo);
+
+	//마이페이지 후원현황 조회
+	public ArrayList<ProjectDTO> getMyDonateProject(int memberNo);
 	
 }

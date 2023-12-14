@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <%@ include file="../common/smarteditor.jsp"%>
 <script type="text/javascript" src="/resources/js/common/smarteditor.js"
-	charset="utf-8"></script>
+   charset="utf-8"></script>
 <style>
 .smarteditor_div {
 	width: 80%;
@@ -15,33 +15,33 @@
 }
 
 .form-label {
-	font-size: 17px;
+   font-size: 17px;
 }
 
 /* 텍스트 인풋박스 */
 .project_content_div>div>input {
-	width: 100%;
-	height: 30px;
-	margin-top: 2%;
-	margin-bottom: 2%;
+   width: 100%;
+   height: 30px;
+   margin-top: 2%;
+   margin-bottom: 2%;
 }
 
 .form-select {
-	width: 100%;
-	height: 30px;
-	margin-top: 2%;
-	margin-bottom: 2%;
+   width: 100%;
+   height: 30px;
+   margin-top: 2%;
+   margin-bottom: 2%;
 }
 
 /* 파일 인풋박스 */
 input[type=file]::file-selector-button {
-	width: 150px;
-	height: 30px;
-	background: #fff;
-	border: 1px solid rgb(77, 77, 77);
-	border-radius: 10px;
-	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
-	color: #fff;
+   width: 150px;
+   height: 30px;
+   background: #fff;
+   border: 1px solid rgb(77, 77, 77);
+   border-radius: 10px;
+   cursor: pointer; &: hover { background : rgb( 77, 77, 77);
+   color: #fff;
 }
 
 }
@@ -75,6 +75,7 @@ input[type=file]::file-selector-button {
 </style>
 </head>
 <body>
+
 
 	<%@include file="../../views/common/header.jsp"%>
 	<%@include file="../../views/common/nav.jsp"%>
@@ -113,6 +114,6 @@ input[type=file]::file-selector-button {
 		</div>
 	</main>
 
-	<%@include file="../../views/common/footer.jsp"%>
+   <%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>

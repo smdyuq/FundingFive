@@ -38,6 +38,11 @@
 	margin-left: 20px;
 	margin-bottom: 20px;
 }
+
+/* .project-img {
+	width : 250px;
+	height: 250px;
+} */
 </style>
 </head>
 

@@ -17,6 +17,18 @@ public class PageInfo {
 
 	// 전체 게시글 수
 	private int listCount;
+	
+	// 완료 프로젝트 수
+	private int succcessfulCount;
+	
+	
+	public int getSucccessfulCount() {
+		return succcessfulCount;
+	}
+
+	public void setSucccessfulCount(int succcessfulCount) {
+		this.succcessfulCount = succcessfulCount;
+	}
 
 	// 현재 페이지
 	private int currentPage;

@@ -28,6 +28,12 @@ public interface ProjectService {
 //	전체 게시글 수
 	public int projectListCount();
 
+// 	완료 프로젝트 
+	public int succcessfulCount();
+	
+//실패 프로젝트
+	public int failCount();
+
 //	프로젝트 조회
 	public ArrayList<ProjectDTO> projectSelect(PageInfo pi);
 
@@ -60,25 +66,26 @@ public interface ProjectService {
 	// 후원 시 PROjECT테이블의 후원자 수, 후원 금액 업데이트
 	public abstract int projectUpdate(ProjectDTO projectDTO);
 
-	//기한 만료된 프로젝트 중 달성률 100미만 조회(관리자)
+	// 기한 만료된 프로젝트 중 달성률 100미만 조회(관리자)
 	public ArrayList<ProjectDTO> getFailedProjects(PageInfo pi);
 
-	//기한 만료된 프로젝트 중 달성률 100이상 조회(관리자)
+	// 기한 만료된 프로젝트 중 달성률 100이상 조회(관리자)
 	public ArrayList<ProjectDTO> getSuccessfulProjects(PageInfo pi);
 
-	//프로젝트 창작자 이메일 조회
+	// 프로젝트 창작자 이메일 조회
 	public String getProjectManagerEmail(int projectNo);
 
-	//만료된 프로젝트 승인유무 'N'
+	// 만료된 프로젝트 승인유무 'N'
 	public void projectExpire(int projectNo);
 
-	// 조회수 증가	
+	// 조회수 증가
 	public int projectUpdateViews(int projectNo);
 
-	// 최근 프로젝트 등록	
+	// 최근 프로젝트 등록
 	public int recentProject(int projectNo, int memberNo);
 
-	//찜한 프로젝트 조회
+	// 찜한 프로젝트 조회
 	public void getUserWishList(int memberNo, ArrayList<ProjectDTO> projectLikedList);
+
 
 }
