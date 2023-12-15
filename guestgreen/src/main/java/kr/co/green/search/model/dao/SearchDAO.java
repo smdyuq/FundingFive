@@ -167,7 +167,7 @@ public class SearchDAO {
 	public void searchWordEnroll(Connection con, String searchWord, int memberNo) {
 		String query = "";
 		if(memberNo == 0) {
-			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, NULL)";
+			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, 0)";
 		}
 		else {
 			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, ?)";

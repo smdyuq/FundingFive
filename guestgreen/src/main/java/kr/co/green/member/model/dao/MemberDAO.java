@@ -156,7 +156,7 @@ public class MemberDAO {
 	//좋아요 메소드
 	public int memberLike(Connection con, int memberNo, int projectNo) {
 		String query = "INSERT INTO USER_LIKES "
-				+ "		VALUES(USER_LIKES_NO_SEQ.nextval, memberNo, projectNo)";
+				+ "		VALUES(USER_LIKES_NO_SEQ.nextval, ?, ?)";
 		
 		int result = 0;
 		try {

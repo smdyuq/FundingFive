@@ -27,6 +27,4 @@ public interface MemberService {
 	//좋아요 메소드
 	public int memberLike(int memberNo, int projectNo);
 
-
-
 }

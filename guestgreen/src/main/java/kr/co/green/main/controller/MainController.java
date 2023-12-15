@@ -34,7 +34,7 @@ public class MainController extends HttpServlet {
          arr[i] = new ArrayList<ProjectDTO>();
       }
 
-      mainService.projectSelect(arr);
+      mainService.projectSelect(arr);	
 
       for (int i = 0; i < arr.length; i++) {
          request.setAttribute(nameArr[i], arr[i]);

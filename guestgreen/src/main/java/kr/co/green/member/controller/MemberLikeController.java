@@ -14,7 +14,7 @@ import kr.co.green.common.AlertAndRedirect;
 import kr.co.green.member.model.service.MemberService;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
-@WebServlet("/MemberLikeController")
+@WebServlet("/memberLike.do")
 public class MemberLikeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,9 +23,9 @@ public class MemberLikeController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
-		int memberNo = (int)request.getAttribute("memberNo");
-		int projectNo = (int)request.getAttribute("projectNo");
+		int projectNo = Integer.parseInt(request.getParameter("projectNo"));
 		
 		//memberNo 비어있으면 로그인 페이지로 속성값 넣어서 리다이렉트
 		if(Objects.isNull(session.getAttribute("memberNo"))) {
@@ -33,8 +33,13 @@ public class MemberLikeController extends HttpServlet {
 			session.setAttribute("projectNo", projectNo);
 			response.sendRedirect("/views/member/login.jsp");
 		}
+		int memberNo = (int)session.getAttribute("memberNo");
+		
 		MemberService memberService = new MemberServiceImpl();
 		if(memberService.memberLike(memberNo, projectNo) > 0) {
+			
+			//월내
+			
 		}else {System.out.println("MemberLikeController 37번 라인 if문 못들어감");}
 	}
 
