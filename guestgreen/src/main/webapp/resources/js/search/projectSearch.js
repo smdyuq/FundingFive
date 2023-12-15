@@ -28,7 +28,7 @@ function searchSelectedWord(searchWord) {
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
-    window.onload = function() {
+   window.onload = function() {
         document.querySelector('.search_btn').addEventListener('click', function() {
 	let searchWord = document.getElementById("search_box").value;
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;        });
