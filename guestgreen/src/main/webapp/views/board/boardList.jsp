@@ -7,18 +7,10 @@
 <meta charset="UTF-8">
 <%@include file="../../views/common/head.jsp"%>
 
-<!-- 부트스트랩 5 CSS 파일 -->
-<!-- <link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-   rel="stylesheet"> -->
 
-<!-- 부트스트랩 5 JavaScript 및 팝퍼 라이브러리 -->
-<!-- <script
-   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> -->
-<!-- <script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script> -->
 
-<link rel="stylesheet" href="/resources/css/member/member.css">
+
+<link rel="stylesheet" href="/resources/css/board/boardList.css">
 <script type="text/javascript" src="/resources/js/board/board.js"></script>
 <style>
 .pagination {
@@ -132,7 +124,9 @@
 
 
 
+
 					<!-- 페이지네이션 -->
+
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
 							<c:choose>
@@ -142,6 +136,7 @@
 									</a></li>
 								</c:when>
 
+
 								<c:otherwise>
 									<div class="page-item">
 										<a class="page-link"
@@ -149,6 +144,7 @@
 											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 										</a>
 									</div>
+
 								</c:otherwise>
 							</c:choose>
 
@@ -185,12 +181,12 @@
 					</nav>
 				</div>
 
-
 				<div id="faq" class="content-section" style="display: none;">
 					<h2>자주 묻는 질문</h2>
 					<hr class="thick-line">
 					<div class="faq-item">
 						<div class="faq-title">
+
 							<a class="text_q">Q. &nbsp;</a> [기타]펀딩이란 무엇인가요?
 						</div>
 						<div class="faq-content">펀딩은 다수의 사람들이 자신이 지원하고 싶은 프로젝트나
@@ -215,7 +211,9 @@
 					</div>
 					<div class="faq-item">
 						<div class="faq-title">
+
 							<a class="text_q">Q. &nbsp;</a> [회원탈퇴] 회원 탈퇴는 어떻게 하나요?
+
 						</div>
 						<div class="faq-content">
 							회원 탈퇴는 아래의 절차를 따라 하실 수 있습니다. 탈퇴 시 회원 전용 웹 서비스 이용이 불가합니다.<br>
@@ -225,7 +223,9 @@
 					</div>
 					<div class="faq-item">
 						<div class="faq-title">
+
 							<a class="text_q">Q. &nbsp;</a>[문의]문의관련해서는 어디서 확인해야하나요?
+
 						</div>
 						<div class="faq-content">
 							페이지 내 카카오 문의하기를 운영하고 있습니다.<br> 자세한 문의 사항은 상담원 문의 하기로 문의
@@ -235,6 +235,7 @@
 					</div>
 					<div class="faq-item">
 						<div class="faq-title">
+
 							<a class="text_q">Q. &nbsp;</a> [배송] 펀딩이 성공하면 언제 보상을 받을 수 있나요?
 						</div>
 						<div class="faq-content">펀딩이 성공하면 프로젝트 제작자는 보상 배송 일정을 공지하며,
@@ -254,6 +255,7 @@
 						<div class="faq-title">
 							<a class="text_q">Q. &nbsp;</a> [결제] 펀딩에 참여하려면 어떤 결제 방식을 사용할 수
 							있나요?
+
 						</div>
 						<div class="faq-content">
 							현재는 카카오톡 결재만을 운영하고 있습니다.<br> 추후 개발을 통하여 다른 결재 서비스도 제공하도록
@@ -269,6 +271,8 @@
 	<%@include file="../../views/common/footer.jsp"%>
 
 </body>
+
+
 </html>
 
 <script>
@@ -309,3 +313,6 @@
     };
 </script>
 
+
+
+ 

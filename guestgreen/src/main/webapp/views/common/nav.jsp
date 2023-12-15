@@ -30,6 +30,8 @@
 						프로젝트</a></li>
 				<li><a href="/menu.do?menu=popularity" class="menu_text">인기
 						프로젝트</a></li>
+				<li><a href="/menu.do?menu=noteworthy" class="menu_text">주목할 만한
+						프로젝트</a></li>
 			</ul>
 
 		</div>
@@ -38,16 +40,16 @@
 
 
 			<c:if test="${empty sessionScope.memberNo}">
-				<div>
+				<div class="nav_menu_right_hover">
 					<a href="/form/loginform.do"><img src="/resources/image/id.png"
 						alt=""> <span class="subtext">마이페이지</span> </a>
 				</div>
-				<div>
+				<div class="nav_menu_right_hover">
 					<a href="/form/loginform.do"><img
 						src="/resources/image/project.png" alt=""> <span
 						class="subtext">프로젝트 등록</span> </a>
 				</div>
-				<div>
+				<div class="nav_menu_right_hover">
 					<a onclick="getSearchForm()"><img
 						src="/resources/image/search.png" alt=""> <span
 						class="subtext">검색</span> </a>
@@ -56,16 +58,18 @@
 
 			<c:if test="${not empty sessionScope.memberNo}">
 				<c:if test="${sessionScope.memberType == 1}">
-					<div>
-						<a href="myPage.do?cpage=1"><img src="/resources/image/id.png"
+
+					<div class="nav_menu_right_hover">
+
+						<a href="/myPage.do?cpage=1"><img src="/resources/image/id.png"
 							alt=""> <span class="subtext">마이페이지</span> </a>
 					</div>
-					<div>
+					<div class="nav_menu_right_hover">
 						<a href="/form/projectEnrollForm.do"><img
 							src="/resources/image/project.png" alt=""> <span
 							class="subtext">프로젝트 등록</span> </a>
 					</div>
-					<div>
+					<div class="nav_menu_right_hover">
 						<a onclick="getSearchForm()"><img
 							src="/resources/image/search.png" alt=""> <span
 							class="subtext">검색</span> </a>
@@ -73,12 +77,14 @@
 				</c:if>
 
 				<c:if test="${sessionScope.memberType == 0}">
-					<div>
-						<a href="/administratorOk.do?menu=first&cpage=1""><img
+
+					<div class="nav_menu_right_hover">
+						<a href="/administratorOk.do?cpage=1""><img
+
 							src="/resources/image/project.png" alt=""> <span
 							class="subtext">프로젝트 관리</span> </a>
 					</div>
-					<div>
+					<div class="nav_menu_right_hover">
 						<a onclick="getSearchForm()"><img
 							src="/resources/image/search.png" alt=""> <span
 							class="subtext">검색</span> </a>
@@ -118,5 +124,8 @@
 				gtcombo.value = tolang;
 				gtcombo.dispatchEvent(new Event('change'));
 			});
+	document.querySelector('.menu_img').addEventListener('mouseover', function() {
+	    document.querySelector('.Christmas_menu_text').style.color = 'red';
+	});
 </script>
 

@@ -21,7 +21,9 @@ import kr.co.green.member.model.service.MemberServiceImpl;
 
 @WebServlet("/boardList.do")
 public class boardListController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
+
 
     public boardListController() {
         super();
@@ -74,8 +76,9 @@ public class boardListController extends HttpServlet {
 	      
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
+   }
 
 }

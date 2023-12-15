@@ -1,6 +1,9 @@
 package kr.co.green.category.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +45,22 @@ public class MenuController extends HttpServlet {
 		} else if (menu.equals("popularity")) {
 			list = categoryService.popularityProject();
 			title = "인기 프로젝트";
+		} else if (menu.equals("noteworthy")) {
+			list = categoryService.noteworthyProject();
+			title = "주목할 만한 프로젝트";
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			String endDate = list.get(i).getProjectEndDate(); // 가져온 날짜 문자열
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+			LocalDate endDateLocalDateType = LocalDate.parse(endDate, formatter);
+			LocalDate currentDate = LocalDate.now();
+
+			long dDay = ChronoUnit.DAYS.between(currentDate, endDateLocalDateType);
+
+			list.get(i).setProjectRemainDate(dDay);
 		}
 
 		request.setAttribute("title", title);

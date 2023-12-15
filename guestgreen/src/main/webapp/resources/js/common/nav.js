@@ -42,6 +42,3 @@ document.addEventListener('DOMContentLoaded', function() {
 		window.location.href = pageUrl;
 }
 
-document.querySelector('.menu_img').addEventListener('mouseover', function() {
-    document.querySelector('.Christmas_menu_text').style.color = 'red';
-});

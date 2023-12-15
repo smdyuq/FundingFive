@@ -27,7 +27,7 @@
 			<div class="top-container">
 				<div class="main-div">
 					<div class="main-img">
-						<img src="" alt="이미지">
+						<img src="/resources/uploads/outerimage/300x300/${projectDTO.projectOuterImageName }" alt="이미지">
 					</div>
 					<div class="main-text">
 						<div class="main-cartegory">${projectDTO.projectKind}</div>
