@@ -12,44 +12,110 @@
 </head>
 
 <style>
+.FrontPage_Main {
+	width: 90%;
+	margin-left: 8%;
+}
 
 .card-wrapper0 {
 	position: relative;
-	width: 21%;
+	width: 22%;
 	height: 28vh;
 	padding-bottom: 2%;
+	margin-right: 2%;
+    margin-bottom: 2%;
 }
 
-#like {
+/* 좋아요 버튼 */
+
+.like {
 	fill: #ddd;
 }
 
-#like.active {
+.like.active {
 	fill: red;
 }
 
-.LikeBtn {
+.LikeBtn1 {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
+.LikeBtn2 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, 300%);
+}
+
+.LikeBtn2 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, 300%);
+}
+
+.LikeBtn3 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-150%, 100%);
+}
+
+.LikeBtn4 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(50%, 0%);
+}
+
+
 .LikeButton_Wrapper {
-	position: relative;
-	right: 3.5%;
+	position: absolute;
 	top: 14.6vh;
 	width: 2vw;
 	height: 2vh;
-	 border:  10px solid rgba(255,  0,  0,  .5);
+	border:  10px solid rgba(255,  0,  0,  .5);
+    z-index: 9;
+    bottom: 10px;
+    right: 13px;
 }
 
 .card-wrapper2 {
 	width: 180px;
+	position:relative;
 }
 
 .card {
 	width: 210px;
-	height: 150px;
+	height: auto;
 }
 
 .btn_text {
@@ -162,15 +228,6 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-}
-
-body {
-	margin: 0px;
-	padding: 0px;
-	overflow-x: hidden;
-	min-width: 320px;
-	font-size: 14px;
-	line-height: 1.7em;
 }
 
 .popula-img {
@@ -353,8 +410,9 @@ body {
 }
 
 img {
-	width: 100%;
-	height: auto;
+	/* width: 100%;
+	height: auto; */
+	
 }
 
 /* 이미지 */
@@ -386,7 +444,7 @@ dd>span::before {
 	display: flex;
 	margin-right: 4%;
 	margin-bottom: 3%;
-	width: 1230px;
+	width: 97%;
 	justify-content: space-between;
 }
 
@@ -421,7 +479,7 @@ dd>span::before {
 }
 
 .frontPageCard_Container {
-	width: 800px;
+	width: 808px;
 	height: 580px;
 	margin-top: 2%;
 	display: flex;
@@ -466,7 +524,7 @@ dd>span::before {
 	width: 21%;
 	height: 33vh;
 	padding-bottom: 2%;
-	margin-right:3%
+	margin-right: 3%
 }
 
 .card-wrapper-last {
@@ -565,7 +623,7 @@ dd>span::before {
 	justify-content: space-between;
 	margin-bottom: 3%;
 	display: flex;
-	width: 88%;
+	width: 92%;
 	flex-wrap: wrap;
 	-webkit-box-align: center;
 	align-items: center;
@@ -594,6 +652,7 @@ dd>span::before {
 	align-items: center;
 	border-radius: 22px;
 	margin: 1px auto 0px;
+	margin-top:5%;
 }
 
 .card-wrapper>a, img {
@@ -621,6 +680,7 @@ dd>span::before {
 	width: 100%;
 	height: 100%;
 	padding-left: 0px;
+	margin-left: 4.4%;
 }
 
 a {
@@ -710,14 +770,15 @@ dd {
 
 .Container_1page {
 	width: 100%;
-	height: 560px;
+	height: 100%;
 	display: flex;
+	margin-left: 4.4%;
 }
 
 .ContentInfo_Container {
-	width: 480px;
+	width: 40%;
 	height: 300px;
-	padding-right: 5%;
+	margin-right:4%;
 }
 
 .Collection_Contents_all {
@@ -793,8 +854,8 @@ dd {
 .FrontPage_ListTitle {
 	font-weight: bold;
 	font-size: 1.4em;
-	margin: unset;
-	/* margin-bottom: 2%; */
+	margin-top: 0;
+	margin-bottom: 1%;
 }
 
 /* 상단 이동 버튼 */
@@ -882,8 +943,20 @@ dd {
 							<c:forEach var="item" items="${noteWorthy }">
 								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
-										src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }">
-									</a> <span class="projectCardDetail">
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})">
+									</a>
+									
+									<div class="LikeButton_Wrapper">
+										<button class="LikeBtn1">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+									
+									<span class="projectCardDetail">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -895,16 +968,8 @@ dd {
 											달성</span>
 									</span>
 								</div>
-								<div class="LikeButton_Wrapper">
-									<button class="LikeBtn">
-										<svg id="like" xmlns="http://www.w3.org/2000/svg" height="16"
-											width="16" viewBox="0 0 512 512">
-											<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-											<path
-												d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-									</button>
-								</div>
+							
 							</c:forEach>
 
 
@@ -919,7 +984,8 @@ dd {
 
 					<div class="popular-project-header">
 						<p class="FrontPage_ListTitle">인기 프로젝트</p>
-						<a href="#" class=FrontPage_viewTotal>전체보기</a>
+						<a href="http://localhost/menu.do?menu=popularity"
+							class=FrontPage_viewTotal>전체보기</a>
 					</div>
 
 					<div class=populaPage_List>
@@ -928,7 +994,8 @@ dd {
 								<div class="popula-img"
 									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName }"></a>
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+										
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
 
@@ -944,6 +1011,9 @@ dd {
 										</dt>
 										<span class="percentage">${item.projectCurrentPercentage }%
 											달성</span>
+
+
+
 									</div>
 								</div>
 							</c:forEach>
@@ -957,9 +1027,8 @@ dd {
 			</div>
 
 
-			<br> <img class="banner"
-				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/009/original/9a5878ad-bf48-4144-b07e-b04ed3b0baf9.jpg?q=80"
-				width="1160px" height="181.1px">
+			<br> <img class="banner" src="/resources/image/banner.jpg"
+				width="1100px" height="181.1px">
 
 			<div class="jb-division-line"></div>
 
@@ -976,7 +1045,17 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
+								
+								<div class="LikeButton_Wrapper">
+										<button class="LikeBtn2">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1019,11 +1098,21 @@ dd {
 
 										<div class="card-wrapper1">
 											<a href="#"><img class="Card_img"
-												src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
 											<span class="projectCardDetail">
 												<dd>
 													<input type="hidden" value=${item.projectNo }> <a
-														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+														<div class="LikeButton_Wrapper">
+										<button class="LikeBtn3">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+														</span>
 												</dd>
 												<dt>
 													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
@@ -1035,10 +1124,7 @@ dd {
 								</c:forEach>
 							</div>
 						</div>
-						<!-- 	<div class="slides_btn">
-							<button class="prev"><</button>
-							<button class="next">></button>
-						</div> -->
+					
 
 						<div class="side-btns1">
 							<div>
@@ -1061,12 +1147,23 @@ dd {
 					<c:forEach var="item" items="${recommended }">
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
 
 							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+										
+										<div class="LikeButton_Wrapper">
+										<button class="LikeBtn2">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+										</span>
 								</dd>
 								<dt>
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
@@ -1084,9 +1181,8 @@ dd {
 
 
 
-			<br> <img class="banner"
-				src="https://tumblbug-assets.imgix.net/main_banners/pc_images/000/000/011/original/0db28a55-2b32-4966-b078-7e400c0dd528.jpg?q=80"
-				width="1160px" height="181.1px">
+			<img class="banner" src="/resources/image/t3.png" width="1100px"
+				height="181.1px">
 
 
 			<div class="jb-division-line"></div>
@@ -1100,7 +1196,17 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
+								
+								<div class="LikeButton_Wrapper">
+										<button class="LikeBtn2">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1128,7 +1234,17 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
+								
+								<div class="LikeButton_Wrapper">
+										<button class="LikeBtn2">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1156,7 +1272,17 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-								src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
+								
+								<div class="LikeButton_Wrapper">
+										<button class="LikeBtn2">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1179,7 +1305,7 @@ dd {
 
 			<div class="Container_1page">
 				<div class="ContentInfo_Container">
-					<img src="/resources/image/크리스마스 이미지.jpg">
+					<a href="http://localhost/category.do?category=Christmas"><img src="/resources/image/크리스마스 이미지.jpg">
 
 
 					<div class="Content_TextInfobox">
@@ -1197,8 +1323,18 @@ dd {
 					<c:forEach var="item" items="${christmasProject }">
 						<div class="card">
 							<div class="card-wrapper2">
-								<a href="#"><img class="eximg"
-									src="/resources/uploads/outerimage/180x153/${item.projectOuterImageName }"></a>
+								<div><a href="#"><img class="eximg"
+									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
+									<div class="LikeButton_Wrapper">
+										<button class="LikeBtn4">
+											<svg class="like" xmlns="http://www.w3.org/2000/svg"
+												height="16" width="16" viewBox="0 0 512 512">
+											<path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+										</button>
+									</div>
+									</div>
 
 								<span class="projectCardDetail">
 									<dd>
@@ -1306,7 +1442,7 @@ dd {
 
 
 
-		<button id="toTop">Top</button>
+		<!-- <button id="toTop">Top</button> -->
 	</main>
 	<%@include file="./views/common/footer.jsp"%>
 </body>
@@ -1314,13 +1450,6 @@ dd {
 
 <script>
 
-	// 좋아요 버튼
-	
-	 var btn = document.getElementById("like")
-
-  btn.addEventListener('click',function(){
-            btn.classList.toggle('active')
-    })
 
 	// 최상단 이동 버튼
 
@@ -1485,6 +1614,37 @@ dd {
 						+ '<Strong class="t_colon">:</Strong>'
 						+ '<Strong class="t_sec">' + sec + '</Strong>')
 	}, 1000);
+	
+	// 좋아요 버튼
+	for(var i = 0; i <= 9999; i++) {
+		 var btn = document.getElementsByClassName("like")[i];
+
+		  btn.addEventListener('click',function(){
+		  this.classList.toggle('active');
+		  });
+	}
+	
+	// 좋아요 하트 버튼 클릭 이벤트
+	  const onHandleClickLike = (e) => {
+	    e.preventDefault();
+
+	    if(!wishlistList.wishlistItems.filter(InwishlistItem => InwishlistItem.id === item.id)[0]) {
+	      dispatch(AddToWishlistAction(item, quantityCount, option));
+	      setColor("#ff0000");
+	    } else {
+	      console.log('2');
+	      dispatch(DeleteFromWishlistAction(item));
+	      setColor("#ffffff");
+	    }
+	    return;
+	  };
+
+	// wishlist에 담겨있으면 빨간색 버튼 유지
+	  useEffect(() => {
+	    if(wishlistList.wishlistItems.filter(InwishlistItem => InwishlistItem.id === item.id)[0]) {
+	      setColor("#ff0000");
+	    }
+	  }, []);
 	
 	
 </script>
