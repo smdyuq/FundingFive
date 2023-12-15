@@ -39,7 +39,6 @@ public class SearchController extends HttpServlet {
 		}
 		
 		SearchService searchService = new SearchServiceImpl();
-
 		
 		searchService.searchWordEnroll(searchWord, memberNo);
 		

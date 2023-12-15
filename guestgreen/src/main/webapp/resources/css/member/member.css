@@ -100,9 +100,15 @@ button {
 	margin-right: 10px;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* 후원현황 */
 .project-table {
-	width: 100%;
+	width: 300px;
 	border-collapse: collapse;
 }
 
@@ -113,6 +119,10 @@ button {
 
 .sponsorship_result_tr {
 	border-bottom: 1px solid black;
+}
+
+.sponsorship_result_tr > td{
+	text-overflow: ellipsis;
 }
 
 .project-table tr td {
@@ -147,6 +157,8 @@ button {
 	padding: 10px;
 }
 
+
+
 .project-tbody {
 	text-align: center;
 }
@@ -165,18 +177,16 @@ tr>th {
 	height: auto;
 }
 
-#waybill-id{
-	 width: 100%;
-                padding: 8px;
-                box-sizing: border-box;
-                padding-left: 30px; 
-                bottom: -5px; 
-                border: none;
-                border-bottom: 1px solid #c0c0c0;
-                position: relative;
-	
+#waybill-id {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	padding-left: 30px;
+	bottom: -5px;
+	border: none;
+	border-bottom: 1px solid #c0c0c0;
+	position: relative;
 }
-
 
 /* 전체 구조 */
 .product_container {
@@ -295,4 +305,19 @@ tr>th {
 
 .img_div>img, .img_div_a:hover {
 	transform: scale(1.1);
+}
+
+/* 운송장 번호조회*/
+.table-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: row;
+}
+
+.t_invoice {
+	margin-bottom: 1%;
 }

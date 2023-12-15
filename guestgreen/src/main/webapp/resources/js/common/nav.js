@@ -41,3 +41,4 @@ document.addEventListener('DOMContentLoaded', function() {
 		const pageUrl = '/searchForm.do';
 		window.location.href = pageUrl;
 }
+

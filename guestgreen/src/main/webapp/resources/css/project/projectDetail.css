@@ -3,15 +3,21 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;	
+	width: 80%;
 	margin-bottom: 40px;
 	margin-top: 40px;
 	margin-bottom: 40px;
+	margin: 0 auto;
 }
 
 /* 페이지 구조(상단) */
+.project-information {
+	overflow: hidden;
+	margin-bottom:5%;
+}
+
 .project-div {
-	margin-bottom: 0px; 
+	margin-bottom: 4%;
 	overflow: hidden;
 }
 
@@ -25,7 +31,6 @@
 	display: inline;
 	font-size: 14px;
 	padding-right: 1%;
-	padding-left: 1%;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	border: 2px solid #c0c0c0;
@@ -48,28 +53,32 @@
 	display: flex;
 }
 
+/* 페이지 상단 좌측 이미지 */
 .project-img {
 	flex-grow: 1; /*가로길이*/
 	box-sizing: border-box;
+	max-width: 600px;
+	max-height: 500px;
 }
 
-.project-description {
-	width: 40%; /*가로길이*/
-	padding-top: 40px;
-	padding-bottom: 20px;
-	justify-content: center;
-}
-/* 페이지 상단 좌측 이미지 */
 .project-img img {
 	width: 100%;
-	height: auto;
+	height: 100%;
 	padding-top: 40px;
 }
 
 /* 페이지 상단 우측 텍스트 스타일 */
+.project-description {
+	width: 50%; /*가로길이*/
+	margin-top: 40px;
+	margin-bottom: 20px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+
 .project-description>div>div>p {
 	text-align: left;
-	padding-left: 10%;
 	width: 100%;
 }
 
@@ -94,24 +103,51 @@
 	padding: 0px;
 	margin: 0px;
 	font-size: 15px;
+	padding-left: 5px;
 }
 
 .project-text-alignment {
+	padding-left: 15%;
 	width: 100%;
 }
 
+.project-value_p {
+	margin-left: 15px;
+}
+
 .project-text-alignment>div>div {
-	padding-left: 10%;
+	padding-left: 1%;
 	margin-right: 10%;
 	display: flex;
 	align-items: baseline;
 	padding-top: 0%;
-	padding-bottom: 10px;
 }
 
+    .goal-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .goal-text,
+    .goal-value {
+        display: inline-block;
+    }
+
+    .goal-unit-text {
+        display: inline;
+    }
+    
+    .goal-text + .goal-value {
+        margin-left: 10px;
+    }
+    
 /* 페이지 상단 후원하기 버튼 스타일 */
 .sponsor-button {
+	display: flex;
 	margin: 0 auto;
+	justify-content: center;
+	margin-top: 5%;
 }
 
 .sponsor-button>button {
@@ -130,6 +166,20 @@
 	font-size: 100%;
 }
 
+.thin_line {
+	background: #ebebeb;
+	height: 1px;
+	border: 0;
+	margin-bottom: 3%;
+}
+
+.thick_line {
+	width: 100%; background : #f0f0f0;
+	height: 1px;
+	margin-bottom: 3%;
+	background: #f0f0f0;
+}
+
 /* 페이지 구조(하단) */
 .product-div {
 	display: flex;
@@ -138,9 +188,11 @@
 }
 
 .product-description {
-	padding-right: 10%;
+	margin-right: 10%;
 	flex-grow: 1;
 	height: auto;
+	border: 1px solid black;
+	max-width: 1000px;
 }
 
 .product-description>p {
@@ -151,9 +203,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-right: 3%;
-	padding-left: 3%;
-	padding-bottom: 5%;
+	padding-right: 2%;
+	padding-left: 2%;
+	padding-bottom: 3%;
 	/* 고정 */
 	position: sticky;
 	top: 5px;

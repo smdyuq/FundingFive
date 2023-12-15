@@ -36,12 +36,10 @@ public class FormController extends HttpServlet {
 		} else if (action.equals("/projectEnrollForm.do")) {
 
 			nextPage = "/views/project/projectEnroll.jsp";
-		} else if (action.equals("/home.do")) {
-
+		}
+		else if(action.equals("/home.do")){
 			nextPage = "/"; // 홈으로 이동
 		}
-
-
 
 		// 페이지 포워딩
 		if(!nextPage.isEmpty()){

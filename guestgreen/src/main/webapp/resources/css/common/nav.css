@@ -1,5 +1,5 @@
 @charset "UTF-8";
-               /* nav css */
+        /* nav css */
         .nav_parent_div {
             width: 100%;
             display: flex;
@@ -8,24 +8,6 @@
 
         }
 
-
-/* LNB카테고리 */
-.lnb-category {
-	display: none;
-	position: absolute;
-	background-color: white;
-	box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
-	left: 0;
-	padding-top: 30px;
-	padding-bottom: 30PX;
-	width: 100%;
-	border-radius: 0px 0px 20px 20px;
-	transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-	overflow: hidden;
-	animation: lnbcategoryDown 1s forwards;
-}
-
-
         .nav_parent_div>div {
             display: flex;
             align-items: center;
@@ -33,17 +15,17 @@
         }
 
 
-
         /* 왼쪽 메뉴 */
         .nav_menu_left {
             display: flex;
-            margin-left: 5%;
+            margin-left: 3%;
         }
 
         .nav-menu-list {
             display: flex;
             align-items: center;
             list-style: none;
+
         }
 
         .nav-menu-list li {
@@ -60,7 +42,7 @@
         }
 
         .lnb-category {
-            display: none;
+            display: none; 
             position: absolute;
             background-color: white;
             box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
@@ -71,10 +53,18 @@
             transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
             overflow: hidden;
             animation: lnbcategoryDown 1s forwards;
+             z-index: 9;
+        }
+        .lnb-category-a-div{
+             display: flex;
+            flex-direction:row; 
+            padding-left: 4%;
+            padding-top: 1%;
         }
 
         .lnb-category a {
-            display: block;
+            display: flex;
+            width: auto;
             padding: 10px 20px;
             text-decoration: none;
             color: black;
@@ -96,13 +86,12 @@
             }
         }
 
-
         /* 오른쪽 메뉴 */
         .nav_menu_right {
             display: flex;
             margin-right: 5%;
             justify-content: space-between;
-
+			z-index: 10;
         }
 
         .nav_menu_right>div {
@@ -129,5 +118,10 @@
             font-size: 12px;
             color: black;
             margin-top:10px;
+        }
+        
+        .nav_menu_right_hover:hover {
+            cursor : pointer;
+            color:red;
         }
 

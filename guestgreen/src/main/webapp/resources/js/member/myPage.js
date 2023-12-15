@@ -16,6 +16,13 @@ function showContent(id) {
 }
 
 window.onload = function() {
+	console.log("asdsds");
+	const shippingApiKey = document.getElementById("t_key");
+	console.log(shippingApiKey);
+	
+	shippingApiKey.value = config.shipping_api_key;
+	showTabContent('information');
+	
 	// 페이지 로드 시 '공지사항' 메뉴의 내용을 보여줌
 	showContent('information');
 
@@ -33,5 +40,19 @@ window.onload = function() {
 		});
 
 	});
+	
 };
 
+
+//운송장 팝업
+function openPopup(url, trackingNumber) {
+  var tKey = document.getElementById('t_key').value;
+  var tCode = document.getElementById('t_code').value;
+  document.getElementById('popup-iframe').src = `${url}?t_key=${tKey}&t_code=${tCode}&t_invoice=${trackingNumber}`;
+  document.getElementById('popup-modal').style.display = 'block';
+}
+
+function closePopup() {
+  document.getElementById('popup-modal').style.display = 'none';
+  document.getElementById('popup-iframe').src = '';
+}

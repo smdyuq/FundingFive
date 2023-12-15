@@ -37,4 +37,7 @@ public interface CategoryService {
 
 //	인기 프로젝트 조회
 	public ArrayList<ProjectDTO> popularityProject();
+
+//	주목할만한 프로젝트 조회
+	public ArrayList<ProjectDTO> noteworthyProject();
 }

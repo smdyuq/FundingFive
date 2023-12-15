@@ -27,7 +27,7 @@
 			<div class="top-container">
 				<div class="main-div">
 					<div class="main-img">
-						<img src="" alt="이미지">
+						<img src="/resources/uploads/outerimage/300x300/${projectDTO.projectOuterImageName }" alt="이미지">
 					</div>
 					<div class="main-text">
 						<div class="main-cartegory">${projectDTO.projectKind}</div>
@@ -67,7 +67,7 @@
 						<p class="project-information">배송지 정보</p>
 						<div class="project-information-div">
 							<p class="project-information-name">이름</p>
-							<p>{}</p>
+							<p>${memberDTO.memberName}</p>
 							<br>
 							<p class="project-information-name">연락처</p>
 							<p>${memberDTO.memberPhone}</p>
@@ -82,9 +82,11 @@
 				<div class="payment-information">
 					<div class="payment-information-div">
 						<p class="payment-information-name">최종 후원 금액 :</p>
-						<p>원</p>
+						<p>${projectDTO.projectPrice}원</p>
 					</div>
-					<button class="donateButton" id="donateButton">카카오톡으로 후원하기</button>
+					<button class="donateButton" id="donateButton" onclick="requestPay('${projectDTO.projectName}', '${projectDTO.projectPrice}',
+		                '${memberDTO.memberName}', '${memberDTO.memberPhone}', '${memberDTO.memberAddr}',
+		                '${projectDTO.projectNo}', '${memberDTO.memberNo}', '${projectDTO.projectCurrentAmount}', '${projectDTO.projectTargetAmount}')">카카오톡으로 후원하기</button>
 				</div>
 			</div>
 		</div>
@@ -94,72 +96,9 @@
 	<%@include file="../../views/common/common.jsp"%>
 	<%@include file="../../views/common/footer.jsp"%>
 
-	<script>
-		var IMP = window.IMP;
-		IMP.init(config.store_identification_code);
-		
-		var today = new Date();
-		var hours = today.getHours(); 
-		var minutes = today.getMinutes(); 
-		var seconds = today.getSeconds(); 
-		var milliseconds = today.getMilliseconds();
-		var make_donate_id = '' + hours + minutes + seconds + milliseconds;
-		
-		function requestPay(project_name, project_price, member_name, 
-							member_phone, member_addr, project_no, member_no, project_current_amount, project_target_amount ) {
-			IMP.request_pay({
-                pg : "kakaopay.TC0ONETIME",
-                pay_method : 'card',
-                merchant_id : "IMP" + make_donate_id,
-                name : project_name,
-                amount : project_price,
-                buyer_email : 'Iamport@chai.finance',
-                buyer_name : member_name,
-                buyer_tel : member_phone,
-                buyer_addr : member_addr,
-                buyer_postcode : '123-456'
-			},rsp => {
-			    if (rsp.success) {
-			        axios({
-			          url: "/orderResult.do",
-			          method: "post",
-			          headers: { "Content-Type": "application/json" },
-			          data: {
-			            donate_id: "IMP" + make_donate_id, 
-						project_no : project_no,
-						project_price : project_price,
-						member_no : member_no,
-						project_current_amount : project_current_amount,
-						project_target_amount : project_target_amount,
-						member_addr : member_addr,
-						member_phone : member_phone,
-						member_name : member_name
-			          }
-			        }).then((data) => {
-			        })
-			      } else {
-			        alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
-			      }
-			    });
-		}
-		
-		document.getElementById('donateButton').addEventListener('click', function(){
-			requestPay('${projectDTO.projectName}', '${projectDTO.projectPrice}',
-	                '${memberDTO.memberName}', '${memberDTO.memberPhone}', '${memberDTO.memberAddr}',
-	                '${projectDTO.projectNo}', '${memberDTO.memberNo}', '${projectDTO.projectCurrentAmount}', '${projectDTO.projectTargetAmount}');
-		});
-		
-	</script>
 </body>
+	<script src="/resources/js/project/projectDonate.js"></script>
 </html>
-
-
-
-
-
-
-
-
 
 
 
