@@ -33,6 +33,7 @@ public class DuplicateIdController extends HttpServlet {
 	       MemberServiceImpl memberService = new MemberServiceImpl();
 	       boolean isIdDuplicate = memberService.duplicateMemberId(memberId);
 	       
+	       System.out.println(isIdDuplicate);
 	       PrintWriter out = response.getWriter();
 	       
 	       out.print(isIdDuplicate);

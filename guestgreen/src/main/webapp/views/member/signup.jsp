@@ -87,16 +87,17 @@
 		if (id == "") {
 			idCheck.innerHTML = "아이디를 입력해주세요.";
 			idCheck.style.color = "red";
+			return;
 		} else if (!idRegExp.test(id)) { // 아이디 유효성 검사
 			idCheck.style.color = "red";
 			idCheck.innerHTML = "아이디는 영문자와 숫자로 이루어진 4~12자여야 합니다.";
 			return;
-		} else {
+		} 
 			$.ajax({
 				type : "POST",
 				url : "/duplicateId.do",
 				data : {
-					id : id
+					memberId : id
 				},
 				contentType : "application/x-www-form-urlencoded",
 				success : function(res) {
@@ -112,7 +113,7 @@
 				}
 			})
 
-		}
+		
 
 	}
 
