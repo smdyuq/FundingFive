@@ -1050,6 +1050,7 @@ dd {
          <br> <img class="banner" src="/resources/image/firstbanner.png"
             width="1100px" height="181.1px">
 
+
          <div class="jb-division-line"></div>
 
          <div class="Container">
@@ -1408,87 +1409,6 @@ dd {
 
             </div>
 
-            <!-- <div class="lines_Collection_Contents_div">
-               <div class="lines_Collection_Contents">
-
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="lines_Collection_Contents">
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a> <span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-                  <div class="lines_card-wrapper">
-                     <a href="#"><img class="lines_card-wrapper_img"
-                        src="http://placehold.it/180x145"></a><br>
-                     <div class=lines_CardDetail>
-                        <a href="#">생활 용품</a> <a href="#">코튼샤워</a><br> <a href="#"
-                           class="Project_Introduce">프로젝트 소개</a><span class="percentage">585%
-                           달성</span>
-                     </div>
-                  </div>
-               </div>
-            </div> -->
          </div>
       </div>
 
