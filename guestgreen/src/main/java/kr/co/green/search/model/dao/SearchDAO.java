@@ -13,43 +13,48 @@ public class SearchDAO {
 	private PreparedStatement pstmt;
 
 	//회원 검색기록 조회
-	public SearchDTO[] getSearchHistory(Connection con, int memberNo) {
+	public ArrayList<SearchDTO> getSearchHistory(Connection con, int memberNo) {
 		String query = "SELECT SEARCH_NO, "
 				+ "			   SEARCH_WORD"
 				+ "		FROM SEARCHING"
 				+ "		WHERE MEMBER_NO = ?"
 				+ "		AND SEARCH_STATUS = 'Y'"
-				+ "		AND ROWNUM <= 5"
+				// + "		AND ROWNUM <= 5"
 				+ "		ORDER BY SEARCH_DATE DESC";
-		SearchDTO[] arr = new SearchDTO[5];
+		ArrayList<SearchDTO> arr = new ArrayList<>();
+		// SearchDTO[] arr = new SearchDTO[5];
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, memberNo);
 			ResultSet rs = pstmt.executeQuery();
 			
-			int index = 0;
-			while(rs.next() && index < 5) {
+			// int index = 0;
+			// while(rs.next() && index < 5) {
+			while(rs.next()) {
 				SearchDTO searchDTO = new SearchDTO();
 				searchDTO.setSearchNo(rs.getInt("SEARCH_NO"));
 				searchDTO.setSearchWord(rs.getString("SEARCH_WORD"));
-				arr[index] = searchDTO;
-				index++ ;
+				// arr[index] = searchDTO;
+				arr.add(searchDTO);
+				// index++ ;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		boolean isEmpty = true;
-		for (SearchDTO dto : arr) {
-		    if (dto != null) {
-		        isEmpty = false;
-		        break;
-		    }
-		}
-		if(isEmpty) {
-		    return new SearchDTO[0];
-		}else {
-		    return arr;
-		}
+//		boolean isEmpty = true;
+//		for (SearchDTO dto : arr) {
+//		    if (dto != null) {
+//		        isEmpty = false;
+//		        break;
+//		    }
+//		}
+//		if(isEmpty) {
+//		    return new SearchDTO[0];
+//		}else {
+//		    return arr;
+//		}
+		
+		return arr;
 	}
 
 	//인기 검색어 조회
@@ -167,7 +172,7 @@ public class SearchDAO {
 	public void searchWordEnroll(Connection con, String searchWord, int memberNo) {
 		String query = "";
 		if(memberNo == 0) {
-			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, NULL)";
+			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, 0)";
 		}
 		else {
 			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, ?)";

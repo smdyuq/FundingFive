@@ -37,8 +37,6 @@
 		</div>
 
 		<div class="nav_menu_right">
-
-
 			<c:if test="${empty sessionScope.memberNo}">
 				<div class="nav_menu_right_hover">
 					<a href="/form/loginform.do"><img src="/resources/image/id.png"
@@ -91,11 +89,7 @@
 					</div>
 				</c:if>
 			</c:if>
-
-
-
 		</div>
-
 	</div>
 </nav>
 

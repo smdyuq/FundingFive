@@ -1,4 +1,3 @@
-
 // 좌측 메뉴
 function showContent(id) {
 	var sections = document.getElementsByClassName('content-section');
@@ -15,44 +14,74 @@ function showContent(id) {
 		.add('active');
 }
 
-window.onload = function() {
-	console.log("asdsds");
-	const shippingApiKey = document.getElementById("t_key");
-	console.log(shippingApiKey);
-	
-	shippingApiKey.value = config.shipping_api_key;
-	showTabContent('information');
-	
-	// 페이지 로드 시 '공지사항' 메뉴의 내용을 보여줌
-	showContent('information');
-
-	var faqItems = document.querySelectorAll('.faq-item');
-
-	faqItems.forEach(function(item) {
-		var title = item.querySelector('.faq-title');
-		var content = item.querySelector('.faq-content');
-
-		title.addEventListener('click', function() {
-			var display = content.style.display;
-			content.style.display = (display === 'block') ? 'none'
-				: 'block';
-
-		});
-
-	});
-	
-};
-
-
 //운송장 팝업
 function openPopup(url, trackingNumber) {
-  var tKey = document.getElementById('t_key').value;
-  var tCode = document.getElementById('t_code').value;
-  document.getElementById('popup-iframe').src = `${url}?t_key=${tKey}&t_code=${tCode}&t_invoice=${trackingNumber}`;
-  document.getElementById('popup-modal').style.display = 'block';
+	var tKey = document.getElementById('t_key').value;
+	var tCode = document.getElementById('t_code').value;
+	document.getElementById('popup-iframe').src = `${url}?t_key=${tKey}&t_code=${tCode}&t_invoice=${trackingNumber}`;
+	document.getElementById('popup-modal').style.display = 'block';
 }
 
 function closePopup() {
-  document.getElementById('popup-modal').style.display = 'none';
-  document.getElementById('popup-iframe').src = '';
+	document.getElementById('popup-modal').style.display = 'none';
+	document.getElementById('popup-iframe').src = '';
 }
+
+
+
+//더보기 버튼 
+window.onload = function() {
+	var itemContainers = ['.item-container', '.item-container1', '.item-container2', '.item-container3'];
+	var moreBtns = ['.moreBtn', '.moreBtn1', '.moreBtn2', '.moreBtn3'];
+
+	itemContainers.forEach(function(container, index) {
+		var items = document.querySelectorAll(container);
+		for (var i = 0; i < items.length; i++) {
+			if (i < 3) {
+				items[i].style.display = 'block';
+			} else {
+				items[i].style.display = 'none';
+			}
+		}
+
+		// 항목의 갯수가 3개 미만인 경우 '더보기' 버튼을 숨김 
+		if (items.length <= 3) {
+			var moreBtn = document.querySelector(moreBtns[index]);
+			moreBtn.style.display = 'none';
+		}
+	});
+
+	moreBtns.forEach(function(btnClass, index) {
+		var btn = document.querySelector(btnClass);
+		btn.addEventListener('click', function(event) {
+			var btn = event.target;
+			var container = btn.closest('.sponsorship_result_div');
+			var items = container.querySelectorAll(itemContainers[index]);
+			var hiddenItems = Array.from(items).filter(function(item) {
+				return item.style.display === 'none';
+			});
+
+			if (btn.innerText === '더보기') {
+				for (var j = 0; j < hiddenItems.length && j < 3; j++) {
+					hiddenItems[j].style.display = 'block';
+				}
+
+				if (hiddenItems.length <= 3) {
+					btn.innerText = '닫기';
+				}
+			} else {
+				for (var j = 0; j < items.length; j++) {
+					items[j].style.display = 'none';
+				}
+
+				for (var j = 0; j < items.length && j < 3; j++) {
+					items[j].style.display = 'block';
+				}
+
+				btn.innerText = '더보기';
+			}
+		});
+	});
+
+	showContent('information'); //페이지 최초 진입 시, 내정보 메뉴 활성화 
+};

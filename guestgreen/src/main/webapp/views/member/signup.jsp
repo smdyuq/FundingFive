@@ -12,8 +12,8 @@
 
 </head>
 <body>
-	<%@include file="../../views/common/header.jsp"%>
-	<%@include file="../../views/common/common.jsp"%>
+	<%@include file="../common/header.jsp"%>
+	<%@include file="../common/common.jsp"%>
 
 	<main>
 

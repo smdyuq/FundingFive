@@ -14,11 +14,11 @@
                     </li>
                     <li style="margin-left: 40%;">
                         <div class="sns_image">
-                            <a href="https://www.instagram.com/"><img src="resources/image/instagram.png"
+                            <a href="https://www.instagram.com/"><img src="/resources/image/instagram.png"
                                     style="width:25px; height:25px;"></a>
-                            <a href="https://twitter.com/?lang=ko"><img src="resources/image/twitter.png"
+                            <a href="https://twitter.com/?lang=ko"><img src="/resources/image/twitter.png"
                                     style="width:25px; height:25px;"></a>
-                            <a href="https://www.facebook.com/?locale=ko_KR"><img src="resources/image/facebook.png"
+                            <a href="https://www.facebook.com/?locale=ko_KR"><img src="/resources/image/facebook.png"
                                     style="width:25px; height:25px;"></a>
                         </div>
                     </li>

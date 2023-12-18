@@ -79,9 +79,11 @@ input[type=file]::file-selector-button {
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
 	border: none;
 	border-radius: 10px;
+
 	width: 20%;
 	padding-top: 10px;
 	padding-bottom: 10px;
+
 	transition: background-color 0.3s ease;
 	min-height: 30px; /* 트랜지션 효과 추가 */
 }
@@ -159,10 +161,12 @@ input[type=file]::file-selector-button {
 						</div>
 
 						<div class="file-input-container">
+
 							<label for="exampleFormControlInput1" class="form-label-image">프로젝트
 								창작자 프로필 이미지 </label>
 							<div class="jb-text">이 이미지는 창작자의 프로필 이미지 입니다.</div>
 							<input type="file" class="form-control"
+
 								id="exampleFormControlInput1" name="project_manager_image"
 								required>
 						</div>
