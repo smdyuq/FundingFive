@@ -60,7 +60,7 @@
 			<div class="menu-container">
 				<h2>고객센터</h2>
 				<div class="menu" onclick="showContent('notice')">
-					<span>공지사항</span> <span class="menu-arrow"></span>
+					<span>공지사항</span> <span class="menu-arrow">></span>
 				</div>
 				<div class="menu" onclick="showContent('faq')">
 					<span>자주하는 질문</span> <span class="menu-arrow">></span>
@@ -185,6 +185,7 @@
 
 				<div id="faq" class="content-section" style="display: none;">
 					<h2>자주 묻는 질문</h2>
+					<hr class="thick-line">
 					               <div class="faq-item">
                   <div class="faq-title">
                      <a class="text_q">Q. &nbsp;</a> [기타]펀딩이란 무엇인가요?

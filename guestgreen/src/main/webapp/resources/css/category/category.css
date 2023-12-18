@@ -44,6 +44,22 @@ body {
    border-radius: 5px;
 }
 
+/* 텍스트 하단 선 */
+.thick-line {
+	border-top: 2px solid #000;
+	/*  margin-top: 1%; */
+	margin-bottom: 4%;
+}
+
+/* 카테고리 텍스트 */
+.caregory_title {
+	margin: 0px;
+	padding: 0px;
+	font-size: 25px;
+	height: 20px;
+}
+
+
 /* 상품카드 리스트 */
 .img_div {
    width: 100%;
@@ -98,15 +114,13 @@ body {
 }
 
 .detail_text {
-
 	display: flex;
 	flex-direction: row;
 	width: auto;
 	margin-bottom: 0px;
 	white-space: nowrap;
 	overflow: hidden;
-	
-
+	justify-content: space-evenly;
 }
 
 .achievement_rate {

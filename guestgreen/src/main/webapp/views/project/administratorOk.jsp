@@ -205,13 +205,15 @@ table {
 								<table class="table">
 									<thead>
 										<tr>
-											<th>프로젝트 번호</th>
+
+
 											<th>프로젝트명</th>
 											<th>프로젝트 등록일</th>
 											<th>프로젝트 종료일</th>
 											<th>프로젝트 달성률</th>
-											<th>창작자 이름</th>
 											<th></th>
+
+
 										</tr>
 
 									</thead>
@@ -219,20 +221,21 @@ table {
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="6" class="text-center"><hr class="thick-line">프로젝트 목록이 없습니다.</td>
+													<td colspan="6" class="text-center"><hr
+															class="thick-line">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="item" items="${list}">
 													<input type="hidden" name="project-no"
 														value="${item.projectNo}">
-													<tr onclick="successfulProject()">
-														<td>${item.projectNo}</td>
+													<tr style="text-align: center">
+
 														<td>${item.projectName}</td>
 														<td>${item.projectRegisterDate}</td>
 														<td>${item.projectEndDate}</td>
 														<td>${item.projectCurrentPercentage}</td>
-														<td>${item.projectManagerName}</td>
+														<td><button onclick="successfulProject()">완료 알림</button></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -296,12 +299,12 @@ table {
 									<thead>
 										<tr>
 
-											<th>프로젝트 번호</th>
+
 											<th>프로젝트명</th>
 											<th>프로젝트 등록일</th>
 											<th>프로젝트 종료일</th>
 											<th>프로젝트 달성률</th>
-											<th>창작자 이름</th>
+											<th></th>
 
 
 										</tr>
@@ -310,20 +313,22 @@ table {
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="6" class="text-center"><hr class="thick-line">프로젝트 목록이 없습니다.</td>
+													<td colspan="6" class="text-center"><hr
+															class="thick-line">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="item" items="${list}">
 													<input type="hidden" name="project-no"
 														value="${item.projectNo}">
-													<tr onclick="failedProject()">
-														<td>${item.projectNo}</td>
+
+													<tr style="text-align: center">
+
 														<td>${item.projectName}</td>
 														<td>${item.projectRegisterDate}</td>
 														<td>${item.projectEndDate}</td>
 														<td>${item.projectCurrentPercentage}</td>
-														<td>${item.projectManagerName}</td>
+														<td><button onclick="failedProject()">실패 알림</button></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>

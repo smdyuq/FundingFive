@@ -15,8 +15,8 @@
    <main>
 
       <div class="project-cartegory">
-         <div>${title }</div>
-         <hr>
+         			<div><p class="caregory_title">${title }</p></div>
+			<hr class="thick-line">
 
 
 

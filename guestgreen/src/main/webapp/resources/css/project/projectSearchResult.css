@@ -13,40 +13,40 @@
 
 /* 상단 검색결과 */
 .project-search {
-    display: flex;
-    align-items: center; 
-    justify-content: space-around;  
-    gap: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 20%;
 }
 
 .back_btn {
-    width: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    cursor : pointer;
+	width: 5%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 
 .back_btn>img {
-    width: 50px;
-    height: auto;  
+	width: 50px;
+	height: auto;
 }
 
-.search_word{
-    display: flex;
-    align-items: center;  
-    font-size: 23px;
-}
-
-.Search_results_number{
+.search_word {
 	display: flex;
-    align-items: center;  
-    font-size: 17px;
-    color:red;
+	align-items: center;
+	font-size: 23px;
+}
+
+.Search_results_number {
+	display: flex;
+	align-items: center;
+	font-size: 17px;
+	color: red;
 }
 
 .search_word>a {
-    justify-content: center;
+	justify-content: center;
 }
 
 /* 상품카드 리스트 */
@@ -67,9 +67,8 @@
 }
 
 .img_div, .project_title, .project_explanation:hover {
-	cursor : pointer;
+	cursor: pointer;
 }
-
 
 .img_div>a, img {
 	display: block;
@@ -144,4 +143,73 @@
 
 .img_div>img, .img_div_a:hover {
 	transform: scale(1.1);
+}
+
+/* 좋아요 버튼 */
+.like {
+	fill: #ddd;
+	z-index: 5;
+}
+
+.like.active {
+	fill: red;
+}
+
+.LikeBtn1 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 80%;
+	top: 150%;
+	transform: translate(-50%, -50%);
+}
+
+.LikeBtn2 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	transform: translate(-73vw,57vh);
+}
+
+.LikeBtn3 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-170%, 230%);
+}
+
+.LikeBtn4 {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform: translate(40%, 140%);
+}
+
+.LikeButton_Wrapper {
+	position: absolute;
+	top: 14.6vh;
+	width: 2vw;
+	height: 2vh;
+	border:  10px solid rgba(255,  0,  0,  .5);
+	z-index: 9;
+	bottom: 10px;
+	right: 13px;
 }
