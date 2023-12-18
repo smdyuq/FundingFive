@@ -897,12 +897,14 @@ dd {
 
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
+							<c:set var="count" value="1" />
 							<c:forEach var="item" items="${banner }">
-								<div class="active" width="760px" height="280px"
+								<div class="${count == 1 ? 'active' : '' }" width="760px" height="280px"
 									onclick="noteworthyProject()" style="cursor: pointer;">
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
+								<c:set var="count" value="${count+1}" />
 							</c:forEach>
 						</div>
 						<div class="page-btns">
