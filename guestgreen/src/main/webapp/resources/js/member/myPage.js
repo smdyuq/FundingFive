@@ -18,7 +18,7 @@ function showContent(id) {
 function openPopup(url, trackingNumber) {
 	var tKey = document.getElementById('t_key').value;
 	var tCode = document.getElementById('t_code').value;
-	document.getElementById('popup-iframe').src = url + '?t_key=' + tKey + '&t_code=' + tCode + '&t_invoice=' + trackingNumber;
+	document.getElementById('popup-iframe').src = `${url}?t_key=${tKey}&t_code=${tCode}&t_invoice=${trackingNumber}`;
 	document.getElementById('popup-modal').style.display = 'block';
 }
 
@@ -30,9 +30,12 @@ function closePopup() {
 
 
 //더보기 버튼 
-window.onload = function() {
-   var itemContainers = ['.item-container', '.item-container1', '.item-container2', '.item-container3'];
-   var moreBtns = ['.moreBtn', '.moreBtn1', '.moreBtn2', '.moreBtn3'];
+
+	const shippingApiKey = document.getElementById("t_key");
+	shippingApiKey.value = config.shipping_api_key;
+	var itemContainers = ['.item-container', '.item-container1', '.item-container2', '.item-container3'];
+	var moreBtns = ['.moreBtn', '.moreBtn1', '.moreBtn2', '.moreBtn3'];
+
 
    itemContainers.forEach(function(container, index) {
       var items = document.querySelectorAll(container);
@@ -87,6 +90,3 @@ window.onload = function() {
       });
    });
 
-   showContent('information'); //페이지 최초 진입 시, 내정보 메뉴 활성화 
-
-};

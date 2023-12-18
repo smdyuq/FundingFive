@@ -29,7 +29,7 @@
 /* 좋아요 버튼 */
 .like {
 	fill: #ddd;
-	z-index : 5;
+	z-index: 5;
 }
 
 .like.active {
@@ -281,12 +281,26 @@
 
 /* 슬라이더 좌우 버튼 */
 .slider-1>.side-btns>div {
+	display: flex;
+	width: 48px;
+	height: 48px;
+	padding: 0px;
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 25%;
-	height: 100%;
+	border: 0px;
+	border-radius: 100%;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px, rgba(0, 0, 0, 0.1) 0px 4px
+		5px;
+	background: rgb(255, 255, 255);
+	color: rgb(61, 61, 61);
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	outline: 0px;
+	top: 120px;
 	cursor: pointer;
+	z-index: 3;
+	transition: all 0.5s ease 0s;
 }
 
 .slider-1>.side-btns>div:last-child {
@@ -297,7 +311,6 @@
 .slider-1>.side-btns>div>span {
 	position: absolute;
 	top: 50%;
-	left: 20px;
 	transform: translatey(-50%);
 	background-color: white;
 	opacity: 0.5;
@@ -307,8 +320,6 @@
 }
 
 .slider-1>.side-btns>div:last-child>span {
-	left: auto;
-	right: 20px;
 }
 
 /* 슬라이더 1 끝 */
@@ -902,10 +913,10 @@ dd {
 						</div>
 						<div class="side-btns">
 							<div>
-								<span><i class="fas fa-angle-left"></i></span>
+								<span><i class="fas fa-angle-left"></i><</span>
 							</div>
 							<div>
-								<span><i class="fas fa-angle-right"></i></span>
+								<span><i class="fas fa-angle-right"></i>></span>
 							</div>
 						</div>
 					</div>
@@ -935,23 +946,29 @@ dd {
 					<div class="frontPageCard_Container">
 
 						<div class="FrontCard_Container">
+							<c:set var="count" value="1" />
 							<c:forEach var="item" items="${noteWorthy }">
 								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
 										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
 										onclick="projectDetail(${item.projectNo})"> </a>
-
+									<c:set var="no" value="${item.projectNo }" />
 									<div class="LikeButton_Wrapper">
+										<input type="hidden" id="project-no${count}"
+											value="${item.projectNo}">
 										<button class="LikeBtn1">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
+											<svg
+												class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+												xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+												viewBox="0 0 512 512">
                                  <path
 													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 										</button>
 									</div>
-
-									<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
+									<c:set var="count" value="${count+1}" />
+									<span class="projectCardDetail"
+										onclick="projectDetail(${item.projectNo})">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -996,16 +1013,16 @@ dd {
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
 							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img">
+								<div class="popula-img"
+									onclick="projectDetail(${item.projectNo})">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-										onclick="projectDetail(${item.projectNo})"></a>
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
 
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
 
 
-									<div class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
+									<div class="projectCardDetail">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -1025,8 +1042,6 @@ dd {
 						</div>
 						<a href="/menu.do?menu=popularity" title="프로젝트 더보기"
 							class="Project_ViewMore">인기 프로젝트 전체보기</a>
-
-
 					</div>
 				</div>
 			</div>
@@ -1045,25 +1060,27 @@ dd {
 
 
 				<div class="row_frontPage_Card">
-
 					<c:forEach var="item" items="${deadLine }">
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-								onclick="projectDetail(${item.projectNo})"></a>
+								onclick="projectDetail(${item.projectNo})"></a> <input
+								type="hidden" id="project-no${count}" value="${item.projectNo}">
 
+							<c:set var="no" value="${item.projectNo }" />
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
-									<svg class="like" xmlns="http://www.w3.org/2000/svg"
-										height="16" width="16" viewBox="0 0 512 512">
+									<svg
+										class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+										xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+										viewBox="0 0 512 512">
                                  <path
 											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
-
 								</button>
 							</div>
 
-							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
+							<span class="projectCardDetail">
 								<dd>
 
 									<input type="hidden" value=${item.projectNo }> <a
@@ -1075,6 +1092,7 @@ dd {
 									달성</span>
 							</span>
 						</div>
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 				</div>
 
@@ -1098,42 +1116,44 @@ dd {
 					<div class="slides_wrap">
 						<div class="slides_show">
 							<div class="slides_list">
-
 								<c:forEach var="item" items="${recentProject }">
 									<div class="slides">
 
 										<div class="card-wrapper1">
-											<a href="#"><img class="Card_img"
+											<input type="hidden" id="project-no${count}"
+												value="${item.projectNo}"> <a href="#"><img
+												class="Card_img"
 												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
 												onclick="projectDetail(${item.projectNo})"></a> <span
 												class="projectCardDetail">
 												<dd>
 													<input type="hidden" value=${item.projectNo }> <a
-														href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
+														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+														<c:set var="no" value="${item.projectNo }" />
 														<div class="LikeButton_Wrapper">
 															<button class="LikeBtn3">
-																<svg class="like" xmlns="http://www.w3.org/2000/svg"
-																	height="16" width="16" viewBox="0 0 512 512">
+																<svg
+																	class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+																	xmlns="http://www.w3.org/2000/svg" height="16"
+																	width="16" viewBox="0 0 512 512">
                                  <path
 																		d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 															</button>
 														</div> </span>
 												</dd>
-												<dt onclick="projectDetail(${item.projectNo})">
+												<dt>
 													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-												</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
+												</dt> <span class="percentage">${item.projectCurrentPercentage }%
 													달성</span>
 											</span>
 										</div>
 									</div>
+									<c:set var="count" value="${count+1}" />
 								</c:forEach>
 							</div>
 						</div>
-						<!--    <div class="slides_btn">
-                     <button class="prev"><</button>
-                     <button class="next">></button>
-                  </div> -->
+
 
 						<div class="side-btns1">
 							<div>
@@ -1160,28 +1180,31 @@ dd {
 								onclick="projectDetail(${item.projectNo})"></a> <span
 								class="projectCardDetail">
 								<dd>
-									<input type="hidden" value=${item.projectNo }> <a
-										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
-
+									<input type="hidden" id="project-no${count}"
+										value="${item.projectNo}"> <a href="#">${item.projectKind }</a><span><a
+										href="#">${item.projectManagerName }</a> <c:set var="no"
+											value="${item.projectNo }" />
 										<div class="LikeButton_Wrapper">
 											<button class="LikeBtn2">
-												<svg class="like" xmlns="http://www.w3.org/2000/svg"
-													height="16" width="16" viewBox="0 0 512 512">
+												<svg
+													class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+													xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+													viewBox="0 0 512 512">
                                  <path
 														d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 											</button>
 										</div> </span>
 								</dd>
-								<dt onclick="projectDetail(${item.projectNo})">
+								<dt>
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 				</div>
-
 			</div>
 
 
@@ -1205,12 +1228,15 @@ dd {
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-								onclick="projectDetail(${item.projectNo})"></a>
-
+								onclick="projectDetail(${item.projectNo})"></a> <input
+								type="hidden" id="project-no${count}" value="${item.projectNo}">
+							<c:set var="no" value="${item.projectNo }" />
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
-									<svg class="like" xmlns="http://www.w3.org/2000/svg"
-										height="16" width="16" viewBox="0 0 512 512">
+									<svg
+										class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+										xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+										viewBox="0 0 512 512">
                                  <path
 											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
@@ -1220,14 +1246,15 @@ dd {
 							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a></span>
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 								</dd>
-								<dt onclick="projectDetail(${item.projectNo})">
+								<dt>
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 				</div>
 			</div>
@@ -1244,12 +1271,15 @@ dd {
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-								onclick="projectDetail(${item.projectNo})"></a>
-
+								onclick="projectDetail(${item.projectNo})"></a> <input
+								type="hidden" id="project-no${count}" value="${item.projectNo}">
+							<c:set var="no" value="${item.projectNo }" />
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
-									<svg class="like" xmlns="http://www.w3.org/2000/svg"
-										height="16" width="16" viewBox="0 0 512 512">
+									<svg
+										class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+										xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+										viewBox="0 0 512 512">
                                  <path
 											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
@@ -1259,14 +1289,15 @@ dd {
 							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a></span>
+										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
 								</dd>
-								<dt onclick="projectDetail(${item.projectNo})">
+								<dt>
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 				</div>
 			</div>
@@ -1283,19 +1314,22 @@ dd {
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-								onclick="projectDetail(${item.projectNo})"></a>
-
+								onclick="projectDetail(${item.projectNo})"></a> <input
+								type="hidden" id="project-no${count}" value="${item.projectNo}">
+							<c:set var="no" value="${item.projectNo }" />
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
-									<svg class="like" xmlns="http://www.w3.org/2000/svg"
-										height="16" width="16" viewBox="0 0 512 512">
+									<svg
+										class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+										xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+										viewBox="0 0 512 512">
                                  <path
 											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 								</button>
 							</div>
 
-							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
+							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
 										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
@@ -1306,6 +1340,7 @@ dd {
 									달성</span>
 							</span>
 						</div>
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 				</div>
 			</div>
@@ -1337,11 +1372,16 @@ dd {
 								<div>
 									<a href="#"><img class="eximg"
 										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
-										onclick="projectDetail(${item.projectNo})"></a>
+										onclick="projectDetail(${item.projectNo})"></a> <input
+										type="hidden" id="project-no${count}"
+										value="${item.projectNo}">
+									<c:set var="no" value="${item.projectNo }" />
 									<div class="LikeButton_Wrapper">
 										<button class="LikeBtn4">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
+											<svg
+												class="like count${count} ${not empty userLikeMap[no] ? 'active' : ''}"
+												xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+												viewBox="0 0 512 512">
                                  <path
 													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
@@ -1349,7 +1389,7 @@ dd {
 									</div>
 								</div>
 
-								<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
+								<span class="projectCardDetail">
 									<dd>
 
 										<input type="hidden" value=${item.projectNo }> <a
@@ -1362,7 +1402,7 @@ dd {
 								</span>
 							</div>
 						</div>
-
+						<c:set var="count" value="${count+1}" />
 					</c:forEach>
 
 
@@ -1639,13 +1679,30 @@ dd {
                   + '<Strong class="t_sec">' + sec + '</Strong>')
    }, 1000);
    
-   // 좋아요 버튼
+// 좋아요 버튼
    for(var i = 0; i <= 9999; i++) {
-       var btn = document.getElementsByClassName("like")[i];
-
-        btn.addEventListener('click',function(){
-        this.classList.toggle('active');
-        });
+          var btn = document.getElementsByClassName("like")[i];
+         
+           btn.addEventListener('click',function(){
+              let no = this.classList[1].charAt(this.classList[1].length-1);
+              let projectNo = document.getElementById("project-no"+no).value;
+              this.classList.toggle('active');
+              $.ajax({
+                    type: "GET",
+                    url: "/memberLike.do",
+                    data: {
+                        "projectNo" : projectNo
+                    },
+                    success: function(res){
+                       if(res == 'loginForm') {
+                          window.location.href="/views/member/login.jsp";
+                       }
+                    },
+                    error: function(err) {
+                       console.log('index.jsp 좋아요 버튼 에러');
+                    }
+                })
+           });
    }
    
    

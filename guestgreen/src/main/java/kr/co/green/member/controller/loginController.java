@@ -48,13 +48,9 @@ public class loginController extends HttpServlet {
 			session.setAttribute("memberType", memberDTO.getMemberType());
 			
 			if(!Objects.isNull(session.getAttribute("click")) && !Objects.isNull(session.getAttribute("projectNo"))) {
+				session.removeAttribute("click");
 				int projectNo = (int)session.getAttribute("projectNo");
-				int result = memberService.memberLike(memberDTO.getMemberNo(), projectNo);
-				if(result > 0) {
-					System.out.println("좋아요 성공. db확인 요망");
-				}else {
-					System.out.println("좋아요 실패");
-				}
+				memberService.memberLikeCheck(memberDTO.getMemberNo(), projectNo);
 			}
 			response.sendRedirect("/main.do");
 		} else {

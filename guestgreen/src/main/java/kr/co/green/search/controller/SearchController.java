@@ -37,7 +37,7 @@ public class SearchController extends HttpServlet {
 		if(!Objects.isNull(session.getAttribute("memberNo"))) {
 			memberNo = (int)session.getAttribute("memberNo");
 		}
-		
+		System.out.println("cccccccccccc");
 		SearchService searchService = new SearchServiceImpl();
 		
 		searchService.searchWordEnroll(searchWord, memberNo);

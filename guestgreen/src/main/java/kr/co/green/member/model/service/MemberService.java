@@ -24,9 +24,6 @@ public interface MemberService {
 	//회원 탈퇴 
 	int memberDelete(int memberNo);
 
-	//좋아요 메소드
-	public int memberLike(int memberNo, int projectNo);
-
-
-
+	//좋아요 눌렀을 때 db에 이미 있는지 확인 후 없으면 넣고, 있으면 제거
+	public void memberLikeCheck(int memberNo, int projectNo);
 }

@@ -18,7 +18,7 @@
 	<main>
 		<div class="project-search">
 			<div class="back_btn">
-				<img src="/resources/image/back.png" onclick="history.back();" >
+				<img src="/resources/image/back.png" onclick="history.back();">
 			</div>
 			<div class="search_word">
 				<p>
@@ -37,17 +37,20 @@
 				<div class="product">
 					<div class="img_div" onclick="projectDetail('${item.projectNo}')">
 						<a class="img_div_a" onclick="projectDetail(${item.projectNo})"><img
-							src="/resources/uploads/outerimage/130x105/${item.projectOuterImageName}"
+
+							src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName}"
 							alt="상품 이미지"></a>
 					</div>
-					<a href="#" class="category_name" >${item.projectKind }</a><a
+					<a href="#" class="category_name">${item.projectKind }</a><a
 						class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>
-					<a class="project_title"  onclick="projectDetail('${item.projectNo}')">${item.projectName }</a>
-					<p class="project_explanation"  onclick="projectDetail('${item.projectNo}')">${item.projectIntroduce }</p>
+					<a class="project_title"
+						onclick="projectDetail('${item.projectNo}')">${item.projectName }</a>
+					<p class="project_explanation"
+						onclick="projectDetail('${item.projectNo}')">${item.projectIntroduce }</p>
 					<div class="detail_text">
 						<p class="achievement_rate">${item.projectCurrentPercentage}%</p>
 						<p class="sponsorship_amount">${item.projectCurrentAmount}원</p>
-						<p class="remaining_days">${item.projectRemainDate}일 남음</p>
+						<p class="remaining_days">${item.projectRemainDate}일남음</p>
 					</div>
 				</div>
 			</c:forEach>
