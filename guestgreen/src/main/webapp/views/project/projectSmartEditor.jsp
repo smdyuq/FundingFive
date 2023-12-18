@@ -103,9 +103,10 @@ input[type=file]::file-selector-button {
 
 				<h2>프로젝트 스토리</h2>
 				<hr>
+				<p>*프로젝트 스토리에는 프로젝트 상세 페이지에서 하단에 들어갈 이미지를 첨부할 수 있습니다*</p>
 				<div id="smarteditor">
 					<textarea name="editorTxt" id="editorTxt" rows="50" cols="10"
-						placeholder="내용을 입력해주세요" style="width: 100%">*프로젝트 스토리에는 프로젝트 상세 페이지에서 하단에 들어갈 이미지를 첨부할 수 있습니다*</textarea>
+						placeholder=" 입력해주세요" style="width: 100%"></textarea>
 				</div>
 				<div class="next_btn_div">
 					<button type="submit" class="next_btn" onclick="save()">등록</button>

@@ -31,9 +31,12 @@ public class ProjectDAO {
 			pstmt.setString(7, projectDTO.getProjectEndDate());
 			pstmt.setString(8, projectDTO.getProjectOuterImageName());
 			pstmt.setString(9, projectDTO.getProjectOuterImagePath());
-
 			int result = pstmt.executeUpdate();
 
+			System.out.println();
+			
+			
+			
 			return result;
 		} catch (SQLException e) {
 

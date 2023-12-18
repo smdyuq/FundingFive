@@ -164,7 +164,7 @@ main {
 										</div>
 									</c:forEach>
 									<div class="button_container">
-										<button class="moreBtn moreBtn">더보기</button>
+										<button class="moreBtn">더보기</button>
 									</div>
 								</div>
 							</c:otherwise>
@@ -232,7 +232,7 @@ main {
 
 										</c:forEach>
 										<div class="button_container">
-											<button class="moreBtn moreBtn1">더보기</button>
+											<button class="moreBtn1">더보기</button>
 										</div>
 									</div>
 								</c:otherwise>
@@ -294,7 +294,7 @@ main {
 											</div>
 										</c:forEach>
 										<div class="button_container">
-											<button class="moreBtn moreBtn2">더보기</button>
+											<button class="moreBtn2">더보기</button>
 										</div>
 									</div>
 								</c:otherwise>
@@ -356,7 +356,7 @@ main {
 											</div>
 										</c:forEach>
 										<div class="button_container">
-											<button class="moreBtn moreBtn3">더보기</button>
+											<button class="moreBtn3">더보기</button>
 										</div>
 									</div>
 								</c:otherwise>

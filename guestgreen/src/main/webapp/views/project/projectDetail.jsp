@@ -14,6 +14,11 @@
 
 
 <%@include file="../../views/common/head.jsp"%>
+<style>
+ .product-description > div > p>  img {
+width:100%;
+} 
+</style>
 
 </head>
 
@@ -96,7 +101,7 @@
 						<p>창작자 소개</p>
 						<div class="profile-container">
 							<div class="profile-image">
-								<img
+								<img style="width:100%;"
 									src="resources/uploads/managerimage/${projectDTO.projectManagerImageName}"
 									alt="프로필 사진">
 							</div>
