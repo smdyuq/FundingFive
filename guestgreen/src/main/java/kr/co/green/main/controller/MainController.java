@@ -2,6 +2,8 @@ package kr.co.green.main.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.green.main.model.service.MainServiceImpl;
 import kr.co.green.project.model.dto.ProjectDTO;
@@ -23,6 +26,7 @@ public class MainController extends HttpServlet {
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
+	   HttpSession session = request.getSession();
       MainServiceImpl mainService = new MainServiceImpl();
 
       String[] nameArr = { "banner", "noteWorthy", "deadLine", "recentProject", "recommended", "newProject",
@@ -34,7 +38,7 @@ public class MainController extends HttpServlet {
          arr[i] = new ArrayList<ProjectDTO>();
       }
 
-      mainService.projectSelect(arr);
+      mainService.projectSelect(arr);	
 
       for (int i = 0; i < arr.length; i++) {
          request.setAttribute(nameArr[i], arr[i]);
@@ -42,7 +46,17 @@ public class MainController extends HttpServlet {
 
 //      인기 프로젝트 조회
       ArrayList<ProjectDTO> popularity = mainService.projectPopularity();
-
+      
+      //좋아요 눌렀던 프로젝트 번호 조회(좋아요 눌렀던 프로젝트 가져오기(하트 빨간색 유지하기 위함)
+      //index.jsp에서 key값(projectNo)로 바로 접근하기 위해 해시맵 으로 보냄
+      if(!Objects.isNull(session.getAttribute("memberNo"))) {
+    	  int memberNo = (int)session.getAttribute("memberNo");
+    	  //	   projectNo, "" 
+    	  HashMap<Integer, String> userLikeMap = new HashMap<Integer, String>();
+    	  mainService.getLikedProject(memberNo, userLikeMap);
+    	  request.setAttribute("userLikeMap", userLikeMap);
+      }
+      
       request.setAttribute("popularity", popularity);
 
       RequestDispatcher view = request.getRequestDispatcher("/index.jsp");

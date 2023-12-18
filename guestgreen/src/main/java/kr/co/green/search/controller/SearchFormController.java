@@ -32,10 +32,9 @@ public class SearchFormController extends HttpServlet {
 		if(session.getAttribute("memberNo") != null) {			//세션에 memberNo가 있다면 검색기록을 가져옴
 			memberNo = (int)session.getAttribute("memberNo");
 			
+			// 검색어 옆 x 누르면 자바스크립트에서 status를 변수로 보냄
 			if(request.getParameter("status").equals("delete")) {
-				// 검색어 옆 x 누르면 자바스크립트에서 status를 변수로 보냄
 				int result = searchService.deleteSearchHistory(Integer.parseInt(request.getParameter("searchNo")));
-				
 				if(result>0) {
 					return;
 				}

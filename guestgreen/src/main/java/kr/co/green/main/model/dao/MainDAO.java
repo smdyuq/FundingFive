@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import kr.co.green.project.model.dto.ProjectDTO;
 
@@ -104,4 +105,27 @@ public class MainDAO {
 		return list;
 	}
 
+	//좋아요 눌렀던 프로젝트 가져오기(하트 빨간색 유지하기 위함)
+	public void getLikedProject(Connection con, int memberNo, HashMap<Integer, String> userLikeMap) {
+		String query = "SELECT project_no from user_likes"
+				+ "		WHERE member_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int projectNo = rs.getInt("PROJECT_NO");
+				userLikeMap.put(projectNo, "asd");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
+
+
+
+
+
