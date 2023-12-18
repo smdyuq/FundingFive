@@ -48,7 +48,7 @@ public class ProjectManagerEnrollController extends HttpServlet {
 		// 파일 업로드
 		Collection<Part> parts = request.getParts();
 
-		String uploadDirectory = "C:\\Users\\jaeyun\\git\\guestgreen\\guestgreen\\src\\main\\webapp\\resources\\uploads";
+		String uploadDirectory = "/Users/kangnayoung/git/guestgreen/guestgreen/src/main/webapp/resources/uploads";
 
 
 

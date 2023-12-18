@@ -47,7 +47,7 @@ margin-top: 2%;
 	width: 100%;
 	height: 30px;
 	margin-top: 2%;
-	margin-bottom: 40px;
+	margin-bottom: 2%;
 }
 
 /* 파일 인풋박스 */
@@ -79,7 +79,6 @@ input[type=file]::file-selector-button {
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
 	border: none;
 	border-radius: 10px;
-
     width: 20%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -146,13 +145,9 @@ input[type=file]::file-selector-button {
 								required>
 						</div>
 
-
-						<div>
-							<label for="exampleFormControlInput1" class="form-label-image">프로젝트
-								창작자 프로필 이미지 </label>
-								<div class="jb-text">이 이미지는 창작자의 프로필 이미지 입니다.</div>
-								 <input type="file" class="form-control"
-
+						<div class="file-input-container">
+							<label for="exampleFormControlInput1" class="form-label">프로젝트
+								창작자 프로필 이미지 </label> <input type="file" class="form-control"
 								id="exampleFormControlInput1" name="project_manager_image"
 								required>
 						</div>
