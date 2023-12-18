@@ -120,7 +120,7 @@ main {
 							<c:when test="${empty memberDonateList}">
 								<div class="project_status_result_n">
 									<p>후원현황이 없습니다.</p>
-								</div>			
+								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="sponsorship_result_div">
@@ -370,8 +370,6 @@ main {
 				<div id="shipping_information" class="content-section"
 					style="display: none;">
 					<h2>운송장 번호 조회</h2>
-					<hr class="thick-line">
-					<p style="color: red;">운송장 번호를 조회하여 배송 현황을 확인해보세요.</p>
 					<form id="tracking-form"
 						onsubmit="event.preventDefault(); openPopup('http://info.sweettracker.co.kr/tracking/3', this.elements.t_invoice.value);">
 						<div class="table-container">

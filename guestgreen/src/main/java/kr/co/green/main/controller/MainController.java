@@ -18,55 +18,55 @@ import kr.co.green.project.model.dto.ProjectDTO;
 
 @WebServlet("/main.do")
 public class MainController extends HttpServlet {
-   private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-   public MainController() {
-      super();
-   }
+	public MainController() {
+		super();
+	}
 
-   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-         throws ServletException, IOException {
-	   HttpSession session = request.getSession();
-      MainServiceImpl mainService = new MainServiceImpl();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		MainServiceImpl mainService = new MainServiceImpl();
 
-      String[] nameArr = { "banner", "noteWorthy", "deadLine", "recentProject", "recommended", "newProject",
-            "completeProject", "todayProject", "christmasProject" };
+		String[] nameArr = { "banner", "noteWorthy", "deadLine", "recentProject", "recommended", "newProject",
+				"completeProject", "todayProject", "christmasProject" };
 
-      ArrayList<ProjectDTO>[] arr = new ArrayList[9];
+		ArrayList<ProjectDTO>[] arr = new ArrayList[9];
 
-      for (int i = 0; i < arr.length; i++) {
-         arr[i] = new ArrayList<ProjectDTO>();
-      }
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = new ArrayList<ProjectDTO>();
+		}
 
-      mainService.projectSelect(arr);	
+		mainService.projectSelect(arr);
 
-      for (int i = 0; i < arr.length; i++) {
-         request.setAttribute(nameArr[i], arr[i]);
-      }
+		for (int i = 0; i < arr.length; i++) {
+			request.setAttribute(nameArr[i], arr[i]);
+		}
 
 //      인기 프로젝트 조회
-      ArrayList<ProjectDTO> popularity = mainService.projectPopularity();
-      
-      //좋아요 눌렀던 프로젝트 번호 조회(좋아요 눌렀던 프로젝트 가져오기(하트 빨간색 유지하기 위함)
-      //index.jsp에서 key값(projectNo)로 바로 접근하기 위해 해시맵 으로 보냄
-      if(!Objects.isNull(session.getAttribute("memberNo"))) {
-    	  int memberNo = (int)session.getAttribute("memberNo");
-    	  //	   projectNo, "" 
-    	  HashMap<Integer, String> userLikeMap = new HashMap<Integer, String>();
-    	  mainService.getLikedProject(memberNo, userLikeMap);
-    	  request.setAttribute("userLikeMap", userLikeMap);
-      }
-      
-      request.setAttribute("popularity", popularity);
+		ArrayList<ProjectDTO> popularity = mainService.projectPopularity();
 
-      RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-      view.forward(request, response);
+		// 좋아요 눌렀던 프로젝트 번호 조회(좋아요 눌렀던 프로젝트 가져오기(하트 빨간색 유지하기 위함)
 
-   }
+		if (!Objects.isNull(session.getAttribute("memberNo"))) {
+			int memberNo = (int) session.getAttribute("memberNo");
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-         throws ServletException, IOException {
+			HashMap<Integer, String> userLikeMap = new HashMap<Integer, String>();
+			mainService.getLikedProject(memberNo, userLikeMap);
+			request.setAttribute("userLikeMap", userLikeMap);
+		}
 
-   }
+		request.setAttribute("popularity", popularity);
+
+		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+		view.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
 
 }
