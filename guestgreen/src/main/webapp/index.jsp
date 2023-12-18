@@ -14,9 +14,7 @@
 <style>
 .FrontPage_Main {
 	width: 90%;
-
-	margin-left: 8%;
-
+	margin-left: 5.3%;
 }
 
 .card-wrapper0 {
@@ -25,12 +23,10 @@
 	height: 28vh;
 	padding-bottom: 2%;
 	margin-right: 2%;
-
-    margin-bottom: 2%;
+	margin-bottom: 2%;
 }
 
 /* 좋아요 버튼 */
-
 .like {
 	fill: #ddd;
 	z-index : 5;
@@ -41,66 +37,52 @@
 }
 
 .LikeBtn1 {
-
 	background-color: transparent;
 	border: 0;
 	outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 80%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-
-.LikeBtn2 {
-	background-color: transparent;
-	border: 0;
-	outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, 300%);
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 80%;
+	top: 150%;
+	transform: translate(-50%, -50%);
 }
 
 .LikeBtn2 {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, 300%);
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	transform: translate(-50%, 500%);
 }
 
 .LikeBtn3 {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-150%, 100%);
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-170%, 230%);
 }
 
 .LikeBtn4 {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translate(50%, 0%);
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform: translate(40%, 140%);
 }
-
 
 .LikeButton_Wrapper {
 	position: absolute;
@@ -108,18 +90,14 @@
 	width: 2vw;
 	height: 2vh;
 	border:  10px solid rgba(255,  0,  0,  .5);
-
-    z-index: 9;
-    bottom: 10px;
-    right: 13px;
-
+	z-index: 9;
+	bottom: 10px;
+	right: 13px;
 }
 
 .card-wrapper2 {
 	width: 180px;
-
-	position:relative;
-
+	position: relative;
 }
 
 .card {
@@ -237,10 +215,8 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-
 	WIDTH: 100%;
 	HEIGHT: 100%;
-
 }
 
 .popula-img {
@@ -424,6 +400,8 @@
 
 img {
 	/* width: 100%;
+   height: auto; */
+	
 }
 
 /* 이미지 */
@@ -491,8 +469,7 @@ dd>span::before {
 
 .frontPageCard_Container {
 	width: 808px;
-	height: 580px;
-
+	height: 530px;
 	margin-top: 2%;
 	display: flex;
 	flex-direction: column;
@@ -662,7 +639,6 @@ dd>span::before {
 	align-items: center;
 	border-radius: 22px;
 	margin: 1px auto 0px;
-
 	margin-top: 5%;
 	background-color: #00E7AF;
 	color: black;
@@ -671,7 +647,6 @@ dd>span::before {
 
 .Project_ViewMore:hover {
 	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
-
 }
 
 .card-wrapper>a, img {
@@ -797,8 +772,7 @@ dd {
 .ContentInfo_Container {
 	width: 40%;
 	height: 300px;
-	margin-right:4%;
-
+	margin-right: 4%;
 }
 
 .Collection_Contents_all {
@@ -964,18 +938,15 @@ dd {
 							<c:forEach var="item" items="${noteWorthy }">
 								<div class="card-wrapper0">
 									<a href="#"><img class="eximg"
-
-										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})">
-									</a>
-									
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+										onclick="projectDetail(${item.projectNo})"> </a>
 
 									<div class="LikeButton_Wrapper">
 										<button class="LikeBtn1">
 											<svg class="like" xmlns="http://www.w3.org/2000/svg"
 												height="16" width="16" viewBox="0 0 512 512">
-
-											<path
-				d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+                                 <path
+													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 										</button>
 									</div>
@@ -992,6 +963,17 @@ dd {
 											달성</span>
 									</span>
 								</div>
+
+								<!-- <div class="LikeButton_Wrapper">
+                           <button class="LikeBtn">
+                              <svg class="like" xmlns="http://www.w3.org/2000/svg" height="16"
+                                 width="16" viewBox="0 0 512 512">
+                                 !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
+                                 <path
+                                    d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+
+                           </button>
+                        </div> -->
 
 							</c:forEach>
 
@@ -1050,9 +1032,7 @@ dd {
 			</div>
 
 
-
-			<br> <img class="banner" src="/resources/image/banner.jpg"
-
+			<br> <img class="banner" src="/resources/image/t3.png"
 				width="1100px" height="181.1px">
 
 			<div class="jb-division-line"></div>
@@ -1070,19 +1050,18 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
 
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-								
-								<div class="LikeButton_Wrapper">
-										<button class="LikeBtn2">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										</button>
-									</div>
-
+								</button>
+							</div>
 
 							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 								<dd>
@@ -1125,24 +1104,21 @@ dd {
 
 										<div class="card-wrapper1">
 											<a href="#"><img class="Card_img"
-
-												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-											<span class="projectCardDetail">
-
+												src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+												onclick="projectDetail(${item.projectNo})"></a> <span
+												class="projectCardDetail">
 												<dd>
 													<input type="hidden" value=${item.projectNo }> <a
 														href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
 														<div class="LikeButton_Wrapper">
+															<button class="LikeBtn3">
+																<svg class="like" xmlns="http://www.w3.org/2000/svg"
+																	height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+																		d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										<button class="LikeBtn3">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
-
-										</button>
-									</div>
-
+															</button>
+														</div> </span>
 												</dd>
 												<dt onclick="projectDetail(${item.projectNo})">
 													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
@@ -1154,6 +1130,10 @@ dd {
 								</c:forEach>
 							</div>
 						</div>
+						<!--    <div class="slides_btn">
+                     <button class="prev"><</button>
+                     <button class="next">></button>
+                  </div> -->
 
 						<div class="side-btns1">
 							<div>
@@ -1176,27 +1156,22 @@ dd {
 					<c:forEach var="item" items="${recommended }">
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
-
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-
-							<span class="projectCardDetail">
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a> <span
+								class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-
 										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
 
-
 										<div class="LikeButton_Wrapper">
-										<button class="LikeBtn2">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+											<button class="LikeBtn2">
+												<svg class="like" xmlns="http://www.w3.org/2000/svg"
+													height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+														d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										</button>
-									</div>
-										</span>
-
+											</button>
+										</div> </span>
 								</dd>
 								<dt onclick="projectDetail(${item.projectNo})">
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
@@ -1214,9 +1189,7 @@ dd {
 
 
 
-
-			<img class="banner" src="/resources/image/t3.png" width="1100px"
-
+			<img class="banner" src="/resources/image/banner.jpg" width="1100px"
 				height="181.1px">
 
 
@@ -1231,19 +1204,18 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
 
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-								
-								<div class="LikeButton_Wrapper">
-										<button class="LikeBtn2">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										</button>
-									</div>
-
+								</button>
+							</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1271,19 +1243,18 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
 
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-								
-								<div class="LikeButton_Wrapper">
-										<button class="LikeBtn2">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										</button>
-									</div>
-
+								</button>
+							</div>
 
 							<span class="projectCardDetail">
 								<dd>
@@ -1311,19 +1282,18 @@ dd {
 
 						<div class="card-wrapper">
 							<a href="#"><img class="countimg"
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+								onclick="projectDetail(${item.projectNo})"></a>
 
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-								
-								<div class="LikeButton_Wrapper">
-										<button class="LikeBtn2">
-											<svg class="like" xmlns="http://www.w3.org/2000/svg"
-												height="16" width="16" viewBox="0 0 512 512">
-											<path
-													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
+							<div class="LikeButton_Wrapper">
+								<button class="LikeBtn2">
+									<svg class="like" xmlns="http://www.w3.org/2000/svg"
+										height="16" width="16" viewBox="0 0 512 512">
+                                 <path
+											d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
-										</button>
-									</div>
-
+								</button>
+							</div>
 
 							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 								<dd>
@@ -1346,9 +1316,8 @@ dd {
 
 			<div class="Container_1page">
 				<div class="ContentInfo_Container">
-
-					<a href="http://localhost/category.do?category=Christmas"><img src="/resources/image/크리스마스 이미지.jpg">
-
+					<a href="http://localhost/category.do?category=Christmas"><img
+						src="/resources/image/크리스마스 이미지.jpg">
 
 
 						<div class="Content_TextInfobox">
@@ -1365,24 +1334,20 @@ dd {
 					<c:forEach var="item" items="${christmasProject }">
 						<div class="card">
 							<div class="card-wrapper2">
-
-								<div><a href="#"><img class="eximg"
-									src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" onclick="projectDetail(${item.projectNo})"></a>
-
+								<div>
+									<a href="#"><img class="eximg"
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+										onclick="projectDetail(${item.projectNo})"></a>
 									<div class="LikeButton_Wrapper">
 										<button class="LikeBtn4">
 											<svg class="like" xmlns="http://www.w3.org/2000/svg"
 												height="16" width="16" viewBox="0 0 512 512">
-
-											<path
-
+                                 <path
 													d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>
 
 										</button>
 									</div>
-
-									</div>
-
+								</div>
 
 								<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 									<dd>
@@ -1500,199 +1465,189 @@ dd {
 
 
 
-	// 최상단 이동 버튼
 
-	$(function() { // 보이기 | 숨기기 
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 250) {
-				$('#toTop').fadeIn();
-				$('#toTop').css('left', $('#sidebar').offset().left);
-			} else {
-				$('#toTop').fadeOut();
-			}
-		});
-		// 버튼 클릭시 
-		$("#toTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
+   $(function() { // 보이기 | 숨기기 
+      $(window).scroll(function() {
+         if ($(this).scrollTop() > 250) {
+            $('#toTop').fadeIn();
+            $('#toTop').css('left', $('#sidebar').offset().left);
+         } else {
+            $('#toTop').fadeOut();
+         }
+      });
+      // 버튼 클릭시 
+      $("#toTop").click(function() {
+         $('html, body').animate({
+            scrollTop : 0
 
-			}, 400);
-		});
-	});
-	
-	
+         }, 400);
+      });
+   });
+   
+   
 
-	// 배너 슬라이드
+   // 배너 슬라이드
 
-	$('.slider-1 > .page-btns > div').click(function() {
-		var $this = $(this);
-		var index = $this.index();
+   $('.slider-1 > .page-btns > div').click(function() {
+      var $this = $(this);
+      var index = $this.index();
 
-		$this.addClass('active');
-		$this.siblings('.active').removeClass('active');
+      $this.addClass('active');
+      $this.siblings('.active').removeClass('active');
+
+      var $slider = $this.parent().parent();
+
+      var $current = $slider.find(' > .slides1 > div.active');
+
+      var $post = $slider.find(' > .slides1 > div').eq(index);
+
+      $current.removeClass('active');
+      $post.addClass('active');
+   });
+
+   // 좌/우 버튼 추가 슬라이더
+   $('.slider-1 > .side-btns > div').click(function() {
+      var $this = $(this);
+      var $slider = $this.closest('.slider-1');
+
+      var index = $this.index();
+      var isLeft = index == 0;
+
+      var $current = $slider.find(' > .page-btns > div.active');
+      var $post;
+
+      if (isLeft) {
+         $post = $current.prev();
+      } else {
+         $post = $current.next();
+      }
+      ;
+
+      if ($post.length == 0) {
+         if (isLeft) {
+            $post = $slider.find(' > .page-btns > div:last-child');
+         } else {
+            $post = $slider.find(' > .page-btns > div:first-child');
+         }
+      }
+      ;
+
+      
+      
+      $post.click();
+   });
+
+   setInterval(function() {
+      if (hovered_flag) return
+      $('.slider-1 > .side-btns > div').eq(1).click();
+   }, 3000);
+
+   var hovered_flag = false;
+
+   $(".lnb-category-expansion").hover(function(e){
+     hovered_flag = true;
+     console.log("prevent triggering");
+   },function(e){
+     hovered_flag = false;
+     console.log("allow triggering");
+   });
+   
+   // 최근 본 프로젝트 슬라이드
+   let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
+         .find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
+         .find(".slides"), slidesi = slidesWrap.find(".side-btns1");
+
+   let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
+
+   slidesCopy = $(".slides:lt(" + showNum + ")").clone();
+   slidesList.append(slidesCopy);
+
+   //이미지 움직이기
+   function backShow() {
+      if (num == 0) {
+         //시작
+         num = slidesCount;
+         slidesList.css("left", -num * slidesWidth + "px");
+      }
+      num--;
+      slidesList.stop().animate({
+         left : -slidesWidth * num + "px"
+      }, 400);
+   }
+
+   function nextShow() {
+      if (num == slidesCount) {
+         //마지막
+         num = 0;
+         slidesList.css("left", num);
+      }
+      num++;
+      slidesList.stop().animate({
+         left : -slidesWidth * num + "px"
+      }, 400);
+   }
+
+   //왼쪽, 오른쪽 버튼 설정
+   slidesi.on("click", "i", function() {
+      if ($(this).hasClass("leftbtn1")) {
+         //왼쪽 버튼을 클릭
+         backShow();
+      } else {
+         //오른쪽 버튼을 클릭
+         nextShow();
+      }
+   });
 
 
-		var $post = $slider.find(' > .slides1 > div').eq(index);
+   
+   // 마감임박! 24시간 타이머
+   
+   setInterval(function time() {
+      //시간 초기화
+      var d = new Date();
+      var hours = 24 - d.getHours();
+      var min = 60 - d.getMinutes();
+      var sec = 60 - d.getSeconds();
+      //분이 있으면 시 반올림
+      if (min == '00') {
+         hours = 24 - d.getHours();
+      } else {
+         hours = 23 - d.getHours();
+      }
+      //초가 있으면 분 반올림        
+      if (sec == '00') {
+         min = 60 - d.getMinutes();
+      } else {
+         min = 59 - d.getMinutes();
+      }
+      //1자리수라면 0을 붙혀라
+      if ((hours + '').length == 1) {
+         hours = '0' + hours;
+      }
+      if ((min + '').length == 1) {
+         min = '0' + min;
+      }
+      if ((sec + '').length == 1) {
+         sec = '0' + sec;
+      }
+      //날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
+      jQuery('#countdown Strong').html(
+            '<Strong class="t_hour">' + hours + '</Strong>'
+                  + '<Strong class="t_colon">:</Strong>'
+                  + '<Strong class="t_min">' + min + '</Strong>'
+                  + '<Strong class="t_colon">:</Strong>'
+                  + '<Strong class="t_sec">' + sec + '</Strong>')
+   }, 1000);
+   
+   // 좋아요 버튼
+   for(var i = 0; i <= 9999; i++) {
+       var btn = document.getElementsByClassName("like")[i];
 
-		$current.removeClass('active');
-		$post.addClass('active');
-	});
-
-	// 좌/우 버튼 추가 슬라이더
-	$('.slider-1 > .side-btns > div').click(function() {
-		var $this = $(this);
-		var $slider = $this.closest('.slider-1');
-
-		var index = $this.index();
-		var isLeft = index == 0;
-
-		var $current = $slider.find(' > .page-btns > div.active');
-		var $post;
-
-		if (isLeft) {
-			$post = $current.prev();
-		} else {
-			$post = $current.next();
-		}
-		;
-
-		if ($post.length == 0) {
-			if (isLeft) {
-				$post = $slider.find(' > .page-btns > div:last-child');
-			} else {
-				$post = $slider.find(' > .page-btns > div:first-child');
-			}
-		}
-		;
-
-		$post.click();
-	});
-
-	setInterval(function() {
-		$('.slider-1 > .side-btns > div').eq(1).click();
-	}, 3000);
-
-	
-	
-	// 최근 본 프로젝트 슬라이드
-	let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
-			.find(".slides_show"), slidesList = slidesShow.find(".slides_list"), slides = slidesList
-			.find(".slides"), slidesi = slidesWrap.find(".side-btns1");
-
-	let slidesCount = slides.length, slidesWidth = slides.innerWidth(), showNum = 3, num = 0, currentIndex = 0,
-
-	slidesCopy = $(".slides:lt(" + showNum + ")").clone();
-	slidesList.append(slidesCopy);
-
-	//이미지 움직이기
-	function backShow() {
-		if (num == 0) {
-			//시작
-			num = slidesCount;
-			slidesList.css("left", -num * slidesWidth + "px");
-		}
-		num--;
-		slidesList.stop().animate({
-			left : -slidesWidth * num + "px"
-		}, 400);
-	}
-
-	function nextShow() {
-		if (num == slidesCount) {
-			//마지막
-			num = 0;
-			slidesList.css("left", num);
-		}
-		num++;
-		slidesList.stop().animate({
-			left : -slidesWidth * num + "px"
-		}, 400);
-	}
-
-	//왼쪽, 오른쪽 버튼 설정
-	slidesi.on("click", "i", function() {
-		if ($(this).hasClass("leftbtn1")) {
-			//왼쪽 버튼을 클릭
-			backShow();
-		} else {
-			//오른쪽 버튼을 클릭
-			nextShow();
-		}
-	});
-
-
-	
-	// 마감임박! 24시간 타이머
-	
-	setInterval(function time() {
-		//시간 초기화
-		var d = new Date();
-		var hours = 24 - d.getHours();
-		var min = 60 - d.getMinutes();
-		var sec = 60 - d.getSeconds();
-		//분이 있으면 시 반올림
-		if (min == '00') {
-			hours = 24 - d.getHours();
-		} else {
-			hours = 23 - d.getHours();
-		}
-		//초가 있으면 분 반올림        
-		if (sec == '00') {
-			min = 60 - d.getMinutes();
-		} else {
-			min = 59 - d.getMinutes();
-		}
-		//1자리수라면 0을 붙혀라
-		if ((hours + '').length == 1) {
-			hours = '0' + hours;
-		}
-		if ((min + '').length == 1) {
-			min = '0' + min;
-		}
-		if ((sec + '').length == 1) {
-			sec = '0' + sec;
-		}
-		//날짜를 표기하고 딜레이는 1초(1000)마다 바뀌겠금
-		jQuery('#countdown Strong').html(
-				'<Strong class="t_hour">' + hours + '</Strong>'
-						+ '<Strong class="t_colon">:</Strong>'
-						+ '<Strong class="t_min">' + min + '</Strong>'
-						+ '<Strong class="t_colon">:</Strong>'
-						+ '<Strong class="t_sec">' + sec + '</Strong>')
-	}, 1000);
-	
-	// 좋아요 버튼
-	for(var i = 0; i <= 9999; i++) {
-		 var btn = document.getElementsByClassName("like")[i];
-
-		  btn.addEventListener('click',function(){
-		  this.classList.toggle('active');
-		  });
-	}
-	
-	// 좋아요 하트 버튼 클릭 이벤트
-	  const onHandleClickLike = (e) => {
-	    e.preventDefault();
-
-	    if(!wishlistList.wishlistItems.filter(InwishlistItem => InwishlistItem.id === item.id)[0]) {
-	      dispatch(AddToWishlistAction(item, quantityCount, option));
-	      setColor("#ff0000");
-	    } else {
-	      console.log('2');
-	      dispatch(DeleteFromWishlistAction(item));
-	      setColor("#ffffff");
-	    }
-	    return;
-	  };
-
-	// wishlist에 담겨있으면 빨간색 버튼 유지
-	  useEffect(() => {
-	    if(wishlistList.wishlistItems.filter(InwishlistItem => InwishlistItem.id === item.id)[0]) {
-	      setColor("#ff0000");
-	    }
-	  }, []);
-	
-	
-
+        btn.addEventListener('click',function(){
+        this.classList.toggle('active');
+        });
+   }
+   
+   
 </script>
 </html>

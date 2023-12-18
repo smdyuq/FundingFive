@@ -18,9 +18,9 @@
 
 
 <style>
-.product-description > img {
+.product-description > P > img {
 width:100%;
-}
+} 
 
 .originator-div {
 	display: flex;
@@ -48,7 +48,6 @@ width:100%;
 	height: 250px;
 } */
 </style>
-
 </head>
 
 <body>
@@ -84,8 +83,7 @@ width:100%;
 										</a>
 									</c:if>
 									<c:if test="${projectDTO.projectRemainDate<=0}">
-										<span class="project-text-unit" style="color: blue;">종료된
-											프로젝트입니다.</span>
+										<span class="project-text-unit">종료된 프로젝트입니다.</span>
 									</c:if>
 								</div>
 								<p class="project-text">후원자 수</p>
@@ -110,6 +108,10 @@ width:100%;
 											${projectDTO.projectEndDate}</a>
 									</div>
 								</div>
+
+
+
+
 								<div class="sponsor-button">
 									<button class="btn btn-dark me-md-2" type="button"
 										onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
@@ -123,8 +125,7 @@ width:100%;
 				</div>
 				<div class="product-div">
 
-					<div class="product-description">
-						<div>${projectDTO.projectContent}</div>
+					<div class="product-description">${projectDTO.projectContent}
 					</div>
 					<div class="originator-div">
 						<p>창작자 소개</p>
@@ -135,11 +136,9 @@ width:100%;
 									alt="프로필 사진">
 							</div>
 							<div class="profile-details">
-								<p class="profile_text">창작자 이름</p>
+
 								<a class="project-manager-name">${projectDTO.projectManagerName}</a>
-								<br> <br>
-								<p class="profile_text">프로젝트 소개</p>
-								<a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
+								<br> <br> <a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
 							</div>
 						</div>
 						<div class="project-button">
@@ -148,7 +147,6 @@ width:100%;
 					</div>
 				</div>
 			</div>
-		</div>
 	</main>
 
 	<%@include file="../../views/common/common.jsp"%>
