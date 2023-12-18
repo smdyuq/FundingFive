@@ -98,12 +98,15 @@ body {
 }
 
 .detail_text {
-   display: flex;
-   flex-direction: row;
-   width: auto;
-   margin-bottom: 0px;
-   white-space: nowrap;
-   overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	width: auto;
+	margin-bottom: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	
+
 }
 
 .achievement_rate {

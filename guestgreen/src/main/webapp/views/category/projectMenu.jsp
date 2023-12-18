@@ -24,10 +24,10 @@
 				<c:forEach var="item" items="${list }">
 					<div class="product">
 						<div class="img_div">
-							<a class="img_div_a" href=""><img
+							<a class="img_div_a" ><img
 								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
 
-								alt="상품 이미지" onclick="projectDetail(${item.projectNo})"></a>
+								alt="상품 이미지" onclick="projectDetail(${item.projectNo})" style="cursor:pointer"></a>
 
 
 							<div class="LikeButton_Wrapper">
@@ -46,14 +46,14 @@
 
 
 
-                  <a href="#" class="category_name">${item.projectKind }</a><a
-                     class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>
+
+						<a href="#" class="category_name" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><a
+							class="divide_area">|</a><a href="#" class="manager_name" >${item.projectManagerName }</a>
 
 
-
-						<a href="#" class="project_title">${item.projectName }</a>
-						<p class="project_explanation">${item.projectIntroduce }</p>
-						<div class="detail_text">
+						<a href="#" class="project_title" onclick="projectDetail(${item.projectNo})">${item.projectName }</a>
+						<p class="project_explanation" onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</p>
+						<div class="detail_text" onclick="projectDetail(${item.projectNo})">
 							<p class="achievement_rate">${item.projectCurrentPercentage }%</p>
 							<p class="sponsorship_amount">${item.projectCurrentAmount }원</p>
 							<p class="remaining_days">${item.projectRemainDate }일남음</p>
