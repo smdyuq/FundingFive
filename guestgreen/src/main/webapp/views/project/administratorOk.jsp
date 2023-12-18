@@ -219,7 +219,7 @@ table {
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="5" class="text-center">프로젝트 목록이 없습니다.</td>
+													<td colspan="6" class="text-center"><hr class="thick-line">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
@@ -310,7 +310,7 @@ table {
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="5" class="text-center">프로젝트 목록이 없습니다.</td>
+													<td colspan="6" class="text-center"><hr class="thick-line">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>

@@ -7,6 +7,7 @@
 <%@include file="../../views/common/head.jsp"%>
 
 <link rel="stylesheet" href="/resources/css/category/category.css">
+<script src="/resources/js/project/projectDetail.js"></script>
 </head>
 <body>
 
@@ -15,21 +16,88 @@
 	<%@include file="../../views/common/common.jsp"%>
 
 	<main>
+		<%-- <div id="menu">
+			<div class="nav_menu_left">
+				<a href="/category.do?category=entire">전체</a> <a
+					href="/category.do?category=Appliances">가전</a> <a
+					href="/category.do?category=Clothes">의류</a> <a
+					href="/category.do?category=Beauty">향수·뷰티</a> <a
+					href="/category.do?category=Food">푸드</a> <a
+					href="/category.do?category=Jewelry">주얼리</a> <a
+					href="/category.do?category=Christmas" class="Christmas_menu_text">크리스마스</a>
+			</div>
+			<div class="nav_menu_right">
+				<c:if test="${empty sessionScope.memberNo}">
+					<div class="nav_menu_right_hover">
+						<a href="/form/loginform.do"><img
+							src="/resources/image/id.png" alt=""> <span class="subtext">마이페이지</span>
+						</a>
+					</div>
+					<div class="nav_menu_right_hover">
+						<a href="/form/loginform.do"><img
+							src="/resources/image/project.png" alt=""> <span
+							class="subtext">프로젝트 등록</span> </a>
+					</div>
+					<div class="nav_menu_right_hover">
+						<a onclick="getSearchForm()"><img
+							src="/resources/image/search.png" alt=""> <span
+							class="subtext">검색</span> </a>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty sessionScope.memberNo}">
+					<c:if test="${sessionScope.memberType == 1}">
+
+						<div class="nav_menu_right_hover">
+
+							<a href="/myPage.do?cpage=1"><img
+								src="/resources/image/id.png" alt=""> <span
+								class="subtext">마이페이지</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a href="/form/projectEnrollForm.do"><img
+								src="/resources/image/project.png" alt=""> <span
+								class="subtext">프로젝트 등록</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a onclick="getSearchForm()"><img
+								src="/resources/image/search.png" alt=""> <span
+								class="subtext">검색</span> </a>
+						</div>
+					</c:if>
+
+					<c:if test="${sessionScope.memberType == 0}">
+
+						<div class="nav_menu_right_hover">
+							<a href="/administratorOk.do?menu=first&cpage=1""><img
+								src="/resources/image/project.png" alt=""> <span
+								class="subtext">프로젝트 관리</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a onclick="getSearchForm()"><img
+								src="/resources/image/search.png" alt=""> <span
+								class="subtext">검색</span> </a>
+						</div>
+					</c:if>
+				</c:if>
+			</div>
+		</div> --%>
+
 
 		<div class="project-cartegory">
 			<div>${title }</div>
 			<hr>
 
 
-			<div class="product_container">
-				<c:forEach var="item" items="${list }">
-					<div class="product">
-						<div class="img_div">
-							<a class="img_div_a" href=""><img
-								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
 
-								alt="상품 이미지" onclick="projectDetail(${item.projectNo})"></a>
-							
+			<div class="product_container" >
+				<c:forEach var="item" items="${list }" >
+					<div class="product" >
+						<div class="img_div" >
+							<a class="img_div_a"><img
+								src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }" 
+								alt="상품 이미지" onclick="projectDetail(${item.projectNo})" style="cursor:pointer"></a>
+
 
 							<div class="LikeButton_Wrapper">
 								<button class="LikeBtn2">
@@ -45,12 +113,12 @@
 
 
 						</div>
-						<a href="#" class="category_name">${item.projectKind }</a><a
-							class="divide_area">|</a><a href="#" class="manager_name">${item.projectManagerName }</a>
+						<a href="#" class="category_name" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><a
+							class="divide_area">|</a><a href="#" class="manager_name" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
 
-						<a href="#" class="project_title">${item.projectName }</a>
-						<p class="project_explanation">${item.projectIntroduce }</p>
-						<div class="detail_text">
+						<a href="#" class="project_title" onclick="projectDetail(${item.projectNo})">${item.projectName }</a>
+						<p class="project_explanation" onclick="projectDetail(${item.projectNo})">${item.projectIntroduce }</p>
+						<div class="detail_text" onclick="projectDetail(${item.projectNo})">
 							<p class="achievement_rate">${item.projectCurrentPercentage }%</p>
 							<p class="sponsorship_amount">${item.projectCurrentAmount }원</p>
 							<p class="remaining_days">${item.projectRemainDate }일남음</p>
@@ -70,3 +138,23 @@
 	<script src="/resources/js/category/category.js"></script>
 </body>
 </html>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+const menu = document.getElementById('menu');
+const titleDiv = document.querySelector('.project-cartegory > div');
+
+window.addEventListener('scroll', () => {
+   const titleDivBottom = titleDiv.getBoundingClientRect().bottom;
+
+   if (titleDivBottom <= 0) {
+       menu.classList.remove('hide');
+       menu.classList.add('show');
+   } else {
+       menu.classList.remove('show');
+       menu.classList.add('hide');
+   }
+});
+});
+</script>

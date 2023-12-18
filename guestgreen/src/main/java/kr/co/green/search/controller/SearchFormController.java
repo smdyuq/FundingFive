@@ -1,6 +1,7 @@
 package kr.co.green.search.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,7 +42,7 @@ public class SearchFormController extends HttpServlet {
 					System.out.println("오류");
 				}
 			}
-			SearchDTO[] memberSearchArr = searchService.getSearchHistory(memberNo);
+			ArrayList<SearchDTO> memberSearchArr = searchService.getSearchHistory(memberNo);
 			request.setAttribute("memberSearchArr", memberSearchArr);
 		}
 		

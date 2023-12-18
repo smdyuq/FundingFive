@@ -13,23 +13,27 @@
 
 <style>
 .FrontPage_Main {
-   width: 90%;
-   margin-left: 8%;
+
+	width: 90%;
+	margin-left: 5.3%;
 }
 
 .card-wrapper0 {
-   position: relative;
-   width: 22%;
-   height: 28vh;
-   padding-bottom: 2%;
-   margin-right: 2%;
-    margin-bottom: 2%;
+	position: relative;
+	width: 22%;
+	height: 28vh;
+	padding-bottom: 2%;
+	margin-right: 2%;
+	margin-bottom: 2%;
+
 }
 
 /* 좋아요 버튼 */
-
 .like {
-   fill: #ddd;
+
+	fill: #ddd;
+	z-index : 5;
+
 }
 
 .like.active {
@@ -37,80 +41,71 @@
 }
 
 .LikeBtn1 {
-   background-color: transparent;
-   border: 0;
-   outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 80%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 80%;
+	top: 150%;
+	transform: translate(-50%, -50%);
 }
 
 .LikeBtn2 {
-   background-color: transparent;
-   border: 0;
-   outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, 300%);
-}
-
-.LikeBtn2 {
-   background-color: transparent;
-   border: 0;
-   outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, 300%);
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	transform: translate(-50%, 500%);
 }
 
 .LikeBtn3 {
-   background-color: transparent;
-   border: 0;
-   outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-150%, 100%);
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-170%, 230%);
 }
 
 .LikeBtn4 {
-   background-color: transparent;
-   border: 0;
-   outline: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translate(50%, 0%);
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform: translate(40%, 140%);
+
 }
 
-
 .LikeButton_Wrapper {
-   position: absolute;
-   top: 14.6vh;
-   width: 2vw;
-   height: 2vh;
-   border:  10px solid rgba(255,  0,  0,  .5);
-    z-index: 9;
-    bottom: 10px;
-    right: 13px;
+
+	position: absolute;
+	top: 14.6vh;
+	width: 2vw;
+	height: 2vh;
+	border:  10px solid rgba(255,  0,  0,  .5);
+	z-index: 9;
+	bottom: 10px;
+	right: 13px;
 }
 
 .card-wrapper2 {
-   width: 180px;
-   position:relative;
+	width: 180px;
+	position: relative;
+
 }
 
 .card {
@@ -223,11 +218,15 @@
 
 /* 주목할 만한 프로젝트 */
 .FrontCard_Container {
-   margin: 0px;
-   padding: 0px;
-   list-style: none;
-   display: flex;
-   flex-wrap: wrap;
+
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	WIDTH: 100%;
+	HEIGHT: 100%;
+
 }
 
 .popula-img {
@@ -410,9 +409,11 @@
 }
 
 img {
-   /* width: 100%;
+
+	/* width: 100%;
    height: auto; */
-   
+	
+
 }
 
 /* 이미지 */
@@ -479,13 +480,14 @@ dd>span::before {
 }
 
 .frontPageCard_Container {
-   width: 808px;
-   height: 580px;
-   margin-top: 2%;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   height: auto;
+
+	width: 808px;
+	height: 530px;
+	margin-top: 2%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
 }
 
 .frontPage_Card {
@@ -636,23 +638,32 @@ dd>span::before {
 }
 
 .Project_ViewMore {
-   display: flex;
-   width: 204px;
-   height: 44px;
-   font-size: 13px;
-   line-height: 20px;
-   letter-spacing: -0.015em;
-   border: 1px solid rgb(230, 230, 230);
-   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
-   text-align: center;
-   color: rgb(61, 61, 61);
-   -webkit-box-pack: center;
-   justify-content: center;
-   -webkit-box-align: center;
-   align-items: center;
-   border-radius: 22px;
-   margin: 1px auto 0px;
-   margin-top:5%;
+
+	display: flex;
+	width: 204px;
+	height: 44px;
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: -0.015em;
+	border: 1px solid rgb(230, 230, 230);
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	text-align: center;
+	color: rgb(61, 61, 61);
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	align-items: center;
+	border-radius: 22px;
+	margin: 1px auto 0px;
+	margin-top: 5%;
+	background-color: #00E7AF;
+	color: black;
+	transition: background-color 0.3s ease;
+}
+
+.Project_ViewMore:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
+
 }
 
 .card-wrapper>a, img {
@@ -776,9 +787,11 @@ dd {
 }
 
 .ContentInfo_Container {
-   width: 40%;
-   height: 300px;
-   margin-right:4%;
+
+	width: 40%;
+	height: 300px;
+	margin-right: 4%;
+
 }
 
 .Collection_Contents_all {
@@ -879,45 +892,48 @@ dd {
 <body>
 
 
-   <%@include file="./views/common/header.jsp"%>
-   <%@include file="./views/common/nav.jsp"%>
-   <%@include file="./views/common/common.jsp"%>
 
-   <main>
+	<%@include file="./views/common/header.jsp"%>
+	<%@include file="./views/common/nav.jsp"%>
+	<%@include file="./views/common/common.jsp"%>
+
+	<main>
 
 
-      <div class="FrontPage_Main">
-         <div class="FrontPage_HomeWrapper">
-            <div class="FrontPage_StyleHero">
+		<div class="FrontPage_Main">
+			<div class="FrontPage_HomeWrapper">
+				<div class="FrontPage_StyleHero">
 
-               <div class="slider-1 slidesimg">
-                  <div class="slides1">
-                     <c:forEach var="item" items="${banner }">
-                        <div class="active" width="760px" height="280px">
-                           <img
-                              src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
-                        </div>
-                     </c:forEach>
-                  </div>
-                  <div class="page-btns">
-                     <div class="active"></div>
-                     <div></div>
-                     <div></div>
-                     <div></div>
-                  </div>
-                  <div class="side-btns">
-                     <div>
-                        <span><i class="fas fa-angle-left"></i></span>
-                     </div>
-                     <div>
-                        <span><i class="fas fa-angle-right"></i></span>
-                     </div>
-                  </div>
-               </div>
+					<div class="slider-1 slidesimg">
+						<div class="slides1">
+							<c:forEach var="item" items="${banner }">
+								<div class="active" width="760px" height="280px"
+									onclick="noteworthyProject()" style="cursor: pointer;">
+									<img
+										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
+								</div>
+							</c:forEach>
+						</div>
+						<div class="page-btns">
+							<div class="active"></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+						<div class="side-btns">
+							<div>
+								<span><i class="fas fa-angle-left"></i></span>
+							</div>
+							<div>
+								<span><i class="fas fa-angle-right"></i></span>
+							</div>
+						</div>
+					</div>
 
-               <!-- 자동 슬라이드 -->
+					<!-- 자동 슬라이드 -->
 
-               <!--   <div class="slider">
+					<!--   <div class="slider">
+
                <div class="slide">
                   <img src="/resources/image/배너이미지1.jpg" alt="배너이미지1" width="760px"
                      height="280px">
@@ -935,6 +951,7 @@ dd {
                      height="280px">
                </div>
             </div> -->
+
 
                <p>주목할 만한 프로젝트</p>
                <div class="frontPageCard_Container">
@@ -982,6 +999,8 @@ dd {
 
 
 
+
+
             <div class="FrontPage_StylePopularProjectsSection">
 
                <div class="popular-project-header">
@@ -1002,8 +1021,10 @@ dd {
                               ${item.projectRankNumber }</div>
 
 
+
                            <div class="projectCardDetail">
                               <dd>
+
 
                                  <input type="hidden" value=${item.projectNo }> <a
                                     href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
@@ -1016,12 +1037,17 @@ dd {
 
 
 
+								</button>
+							</div>
+
+
                            </div>
                         </div>
                      </c:forEach>
                   </div>
                   <a href="/menu.do?menu=popularity" title="프로젝트 더보기"
                      class="Project_ViewMore">인기 프로젝트 전체보기</a>
+
 
 
                </div>
@@ -1184,12 +1210,15 @@ dd {
          </div>
 
 
+
          <div class="jb-division-line"></div>
+
 
 
 
          <img class="banner" src="/resources/image/t3.png" width="1100px"
             height="181.1px">
+
 
 
          <div class="jb-division-line"></div>
@@ -1319,6 +1348,7 @@ dd {
          <div class="Container_1page">
             <div class="ContentInfo_Container">
                <a href="http://localhost/category.do?category=Christmas"><img src="/resources/image/크리스마스 이미지.jpg">
+
 
 
                <div class="Content_TextInfobox">
@@ -1466,7 +1496,9 @@ dd {
 <script>
 
 
+
    // 최상단 이동 버튼
+
 
    $(function() { // 보이기 | 숨기기 
       $(window).scroll(function() {
@@ -1538,10 +1570,21 @@ dd {
    });
 
    setInterval(function() {
+
+      if (hovered_flag) return
       $('.slider-1 > .side-btns > div').eq(1).click();
    }, 3000);
 
-   
+   var hovered_flag = false;
+
+   $(".lnb-category-expansion").hover(function(e){
+     hovered_flag = true;
+     console.log("prevent triggering");
+   },function(e){
+     hovered_flag = false;
+     console.log("allow triggering");
+   });
+
    
    // 최근 본 프로젝트 슬라이드
    let slidesWrap = $(".slides_wrap"), slidesShow = slidesWrap
@@ -1630,6 +1673,7 @@ dd {
                   + '<Strong class="t_sec">' + sec + '</Strong>')
    }, 1000);
    
+
 // 좋아요 버튼
 for(var i = 0; i <= 9999; i++) {
 		 var btn = document.getElementsByClassName("like")[i];
@@ -1656,27 +1700,7 @@ for(var i = 0; i <= 9999; i++) {
 		  });
 }
 		  
-/* 	for(var i = 0; i <= 9999; i++) {
-		 var btn = document.getElementsByClassName("like")[i];
-		 const projectNo = document.getElementsByClassName("project-no")[i].value;
-		
-		  btn.addEventListener('click',function(){
-			  this.classList.toggle('active');
-			  $.ajax({
-			        type: "GET",
-			        url: "/memberLike.do",
-			        data: {
-			            "projectNo" : projectNo
-			        },
-			        success: function(res){
-			        	console.log('.');
-			        },
-			        error: function(err) {
-			        	console.log('index.jsp 좋아요 버튼 에러');
-			        }
-			    })
-		  });
-	} */
+
    
 </script>
 </html>
