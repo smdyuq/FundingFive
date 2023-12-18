@@ -4,7 +4,8 @@
 .main-container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	width: 83%;
+	margin: 0 auto;
 }
 
 /* 상단 프로젝트 정보 영역 */

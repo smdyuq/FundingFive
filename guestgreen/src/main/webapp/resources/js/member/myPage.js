@@ -14,11 +14,11 @@ function showContent(id) {
 		.add('active');
 }
 
-//운송장 팝업
+// 운송장 팝업
 function openPopup(url, trackingNumber) {
 	var tKey = document.getElementById('t_key').value;
 	var tCode = document.getElementById('t_code').value;
-	document.getElementById('popup-iframe').src = `${url}?t_key=${tKey}&t_code=${tCode}&t_invoice=${trackingNumber}`;
+	document.getElementById('popup-iframe').src = url + '?t_key=' + tKey + '&t_code=' + tCode + '&t_invoice=' + trackingNumber;
 	document.getElementById('popup-modal').style.display = 'block';
 }
 
@@ -44,15 +44,15 @@ window.onload = function() {
          }
       }
 
-      // 항목의 갯수가 3개 미만인 경우 '더보기' 버튼을 숨김 
-      if (items.length <= 3) {
-         console.log(index);
-         var moreBtn = document.querySelector(moreBtns[index]);
-         if (moreBtn) {
-            moreBtn.style.display = 'none';
-         }
-      }
-   });
+		// 항목의 갯수가 3개 미만인 경우 '더보기' 버튼을 숨김 
+		if (items.length <= 3) {
+			console.log(index);
+			var moreBtn = document.querySelector(moreBtns[index]);
+			if (moreBtn) {
+				moreBtn.style.display = 'none';
+			}
+		}
+	});
 
 
    moreBtns.forEach(function(btnClass, index) {
@@ -88,4 +88,5 @@ window.onload = function() {
    });
 
    showContent('information'); //페이지 최초 진입 시, 내정보 메뉴 활성화 
+
 };

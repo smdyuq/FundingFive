@@ -12,8 +12,8 @@
 
 </head>
 <body>
-	<%@include file="../../views/common/header.jsp"%>
-	<%@include file="../../views/common/common.jsp"%>
+	<%@include file="../common/header.jsp"%>
+	<%@include file="../common/common.jsp"%>
 
 	<main>
 
@@ -79,42 +79,42 @@
 </body>
 </html>
 <script>
-	/* 아이디 중복체크 및 유효성 검사 */
-	function duplicateId() {
-		const id = document.getElementById("member-id").value;
-		const idCheck = document.getElementById("idMsg");
-		const idRegExp = /^[a-zA-z0-9]{4,12}$/; // 아이디 유효성 검사 정규식
-		if (id == "") {
-			idCheck.innerHTML = "아이디를 입력해주세요.";
-			idCheck.style.color = "red";
-		} else if (!idRegExp.test(id)) { // 아이디 유효성 검사
-			idCheck.style.color = "red";
-			idCheck.innerHTML = "아이디는 영문자와 숫자로 이루어진 4~12자여야 합니다.";
-			return;
-		} else {
-			$.ajax({
-				type : "POST",
-				url : "/duplicateId.do",
-				data : {
-					id : id
-				},
-				contentType : "application/x-www-form-urlencoded",
-				success : function(res) {
-					if (res === 'true') {
-						idCheck.style.color = "red";
-						idCheck.innerHTML = "중복된 아이디입니다.";
-					} else {
-						idCheck.style.color = "green";
-						idCheck.innerHTML = "사용 가능한 아이디입니다.";
-					}
-				},
-				error : function(response) {
-				}
-			})
+function duplicateId() {
+    const id = document.getElementById("member-id").value;
+    const idCheck = document.getElementById("idMsg");
+    const idRegExp = /^[a-zA-z0-9]{4,12}$/; // 아이디 유효성 검사 정규식
+    if (id == "") {
+       idCheck.innerHTML = "아이디를 입력해주세요.";
+       idCheck.style.color = "red";
+       return;
+    } else if (!idRegExp.test(id)) { // 아이디 유효성 검사
+       idCheck.style.color = "red";
+       idCheck.innerHTML = "아이디는 영문자와 숫자로 이루어진 4~12자여야 합니다.";
+       return;
+    } 
+       $.ajax({
+          type : "POST",
+          url : "/duplicateId.do",
+          data : {
+             memberId : id
+          },
+          contentType : "application/x-www-form-urlencoded",
+          success : function(res) {
+             if (res === 'true') {
+                idCheck.style.color = "red";
+                idCheck.innerHTML = "중복된 아이디입니다.";
+             } else {
+                idCheck.style.color = "green";
+                idCheck.innerHTML = "사용 가능한 아이디입니다.";
+             }
+          },
+          error : function(response) {
+          }
+       })
 
-		}
+    
 
-	}
+ }
 
 	// 이름 유효성 검사
 	function validateName() {

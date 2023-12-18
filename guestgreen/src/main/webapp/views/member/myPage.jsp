@@ -127,10 +127,8 @@ main {
 									<c:forEach var="item" items="${memberDonateList}"
 										varStatus="status">
 										<div class="item-container">
-											<!-- 추가된 부분 -->
-											<div class="sponsorship_project_div">
-												<div class="project_info">
-													<!-- 추가된 부분 -->
+											<div class="sponsorship_project_div" >
+												<div class="project_info" onclick="projectDetail(${item.projectNo})">
 													<div class="image-container">
 														<img class="sponsorship_img"
 															src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName}"
@@ -193,7 +191,7 @@ main {
 											varStatus="status">
 											<div class="item-container1">
 												<div class="sponsorship_project_div">
-													<div class="project_info">
+													<div class="project_info" onclick="projectDetail(${project.projectNo})">
 														<div class="image-container">
 															<img class="sponsorship_img"
 																src="/resources/uploads/outerimage/300x300/${project.projectOuterImageName}"
@@ -201,27 +199,27 @@ main {
 														</div>
 														<div class="info-container">
 															<div class="info-set">
-																<span class="sponsorship_title">카테고리명: </span> <span
+																<span class="sponsorship_title">카테고리명 |  </span> <span
 																	class="value">${project.projectKind}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 명: </span> <span
+																<span class="sponsorship_title">프로젝트 명 |  </span> <span
 																	class="value">${project.projectName}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 설명: </span> <span
+																<span class="sponsorship_title">프로젝트 설명 |  </span> <span
 																	class="value">${project.projectIntroduce }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 가격: </span> <span
+																<span class="sponsorship_title">프로젝트 가격 | </span> <span
 																	class="value">${project.projectPrice }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">생성일: </span> <span
+																<span class="sponsorship_title">생성일 |  </span> <span
 																	class="value">${project.projectRegisterDate }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">마감일: </span> <span
+																<span class="sponsorship_title">마감일 |  </span> <span
 																	class="value">${project.projectEndDate }</span>
 															</div>
 														</div>
@@ -264,27 +262,27 @@ main {
 														</div>
 														<div class="info-container">
 															<div class="info-set">
-																<span class="sponsorship_title">카테고리명: </span> <span
+																<span class="sponsorship_title">카테고리명 |  </span> <span
 																	class="value">${project.projectKind}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 명: </span> <span
+																<span class="sponsorship_title">프로젝트 명 |  </span> <span
 																	class="value">${project.projectName}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 설명: </span> <span
+																<span class="sponsorship_title">프로젝트 설명 |  </span> <span
 																	class="value">${project.projectIntroduce }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 가격: </span> <span
+																<span class="sponsorship_title">프로젝트 가격 |  </span> <span
 																	class="value">${project.projectPrice }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">생성일: </span> <span
+																<span class="sponsorship_title">생성일 |  </span> <span
 																	class="value">${project.projectRegisterDate }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">마감일: </span> <span
+																<span class="sponsorship_title">마감일 |  </span> <span
 																	class="value">${project.projectEndDate }</span>
 															</div>
 														</div>
@@ -326,27 +324,27 @@ main {
 														</div>
 														<div class="info-container">
 															<div class="info-set">
-																<span class="sponsorship_title">카테고리명: </span> <span
+																<span class="sponsorship_title">카테고리명 | </span> <span
 																	class="value">${project.projectKind}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 명: </span> <span
+																<span class="sponsorship_title">프로젝트 명 | </span> <span
 																	class="value">${project.projectName}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 설명: </span> <span
+																<span class="sponsorship_title">프로젝트 설명 | </span> <span
 																	class="value">${project.projectIntroduce }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 가격: </span> <span
+																<span class="sponsorship_title">프로젝트 가격 | </span> <span
 																	class="value">${project.projectPrice }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">생성일: </span> <span
+																<span class="sponsorship_title">생성일 | </span> <span
 																	class="value">${project.projectRegisterDate }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">마감일: </span> <span
+																<span class="sponsorship_title">마감일 | </span> <span
 																	class="value">${project.projectEndDate }</span>
 															</div>
 														</div>
