@@ -69,12 +69,13 @@
 
 /* 페이지 상단 우측 텍스트 스타일 */
 .project-description {
-	width: 50%; /*가로길이*/
+	width: 50%; 
 	margin-top: 40px;
 	margin-bottom: 20px;
 	justify-content: center;
 	display: flex;
 	align-items: center;
+	
 }
 
 .project-description>div>div>p {
@@ -104,6 +105,7 @@
 	margin: 0px;
 	font-size: 15px;
 	padding-left: 5px;
+	margin-bottom: 3%;
 }
 
 .project-text-alignment {
@@ -181,6 +183,7 @@
 }
 
 /* 페이지 구조(하단) */
+
 .product-div {
 	display: flex;
 	justify-content: space-between;
@@ -188,16 +191,18 @@
 }
 
 .product-description {
-	margin-right: 10%;
-	flex-grow: 1;
-	height: auto;
-	border: 1px solid black;
-	max-width: 1000px;
+	flex: 0 0 70%;  
+	margin-right: 2%;
+	height: 100%;
+	overflow: hidden;
 }
 
-.product-description>p {
-	font-size: 20px;
+.product-description > div {
+    width: 100%;  
+    box-sizing: border-box;  
 }
+
+
 
 .originator-div {
 	display: flex;
@@ -217,6 +222,36 @@
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.profile-container {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+}
+
+.profile-image img {
+	width: 130px; /* 프로필 사진의 너비 설정 */
+	height: 130px; /* 프로필 사진의 높이 설정 */
+}
+
+.profile-details {
+	margin-left: 20px;
+	margin-bottom: 20px;
+	margin-top: 10%;
+}
+
+.profile_text{
+	color:gray;
+}
+
+.project-manager-name, .project-manager-introduce{
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+   
+}
+
+    
 /* 이전 프로젝트 보기 */
 .project-button {
 	border: 2px solid #c0c0c0;

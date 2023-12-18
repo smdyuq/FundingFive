@@ -21,7 +21,7 @@ public class SearchServiceImpl implements SearchService {
 	
 	//회원 검색기록 조회
 	@Override
-	public SearchDTO[] getSearchHistory(int memberNo) {
+	public ArrayList<SearchDTO> getSearchHistory(int memberNo) {
 		return searchDAO.getSearchHistory(con, memberNo);
 	}
 

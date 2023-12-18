@@ -37,8 +37,6 @@
 		</div>
 
 		<div class="nav_menu_right">
-
-
 			<c:if test="${empty sessionScope.memberNo}">
 				<div class="nav_menu_right_hover">
 					<a href="/form/loginform.do"><img src="/resources/image/id.png"
@@ -79,7 +77,7 @@
 				<c:if test="${sessionScope.memberType == 0}">
 
 					<div class="nav_menu_right_hover">
-						<a href="/administratorOk.do?cpage=1""><img
+						<a href="/administratorOk.do?menu=first&cpage=1""><img
 
 							src="/resources/image/project.png" alt=""> <span
 							class="subtext">프로젝트 관리</span> </a>
@@ -91,11 +89,7 @@
 					</div>
 				</c:if>
 			</c:if>
-
-
-
 		</div>
-
 	</div>
 </nav>
 

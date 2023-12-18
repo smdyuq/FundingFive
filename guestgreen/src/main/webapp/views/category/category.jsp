@@ -14,6 +14,73 @@
 	<%@include file="../../views/common/common.jsp"%>
 
 	<main>
+		<%-- <div id="menu">
+			<div class="nav_menu_left">
+				<a href="/category.do?category=entire">전체</a> <a
+					href="/category.do?category=Appliances">가전</a> <a
+					href="/category.do?category=Clothes">의류</a> <a
+					href="/category.do?category=Beauty">향수·뷰티</a> <a
+					href="/category.do?category=Food">푸드</a> <a
+					href="/category.do?category=Jewelry">주얼리</a> <a
+					href="/category.do?category=Christmas" class="Christmas_menu_text">크리스마스</a>
+			</div>
+			<div class="nav_menu_right">
+				<c:if test="${empty sessionScope.memberNo}">
+					<div class="nav_menu_right_hover">
+						<a href="/form/loginform.do"><img
+							src="/resources/image/id.png" alt=""> <span class="subtext">마이페이지</span>
+						</a>
+					</div>
+					<div class="nav_menu_right_hover">
+						<a href="/form/loginform.do"><img
+							src="/resources/image/project.png" alt=""> <span
+							class="subtext">프로젝트 등록</span> </a>
+					</div>
+					<div class="nav_menu_right_hover">
+						<a onclick="getSearchForm()"><img
+							src="/resources/image/search.png" alt=""> <span
+							class="subtext">검색</span> </a>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty sessionScope.memberNo}">
+					<c:if test="${sessionScope.memberType == 1}">
+
+						<div class="nav_menu_right_hover">
+
+							<a href="/myPage.do?cpage=1"><img
+								src="/resources/image/id.png" alt=""> <span
+								class="subtext">마이페이지</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a href="/form/projectEnrollForm.do"><img
+								src="/resources/image/project.png" alt=""> <span
+								class="subtext">프로젝트 등록</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a onclick="getSearchForm()"><img
+								src="/resources/image/search.png" alt=""> <span
+								class="subtext">검색</span> </a>
+						</div>
+					</c:if>
+
+					<c:if test="${sessionScope.memberType == 0}">
+
+						<div class="nav_menu_right_hover">
+							<a href="/administratorOk.do?menu=first&cpage=1""><img
+								src="/resources/image/project.png" alt=""> <span
+								class="subtext">프로젝트 관리</span> </a>
+						</div>
+						<div class="nav_menu_right_hover">
+							<a onclick="getSearchForm()"><img
+								src="/resources/image/search.png" alt=""> <span
+								class="subtext">검색</span> </a>
+						</div>
+					</c:if>
+				</c:if>
+			</div>
+		</div> --%>
+
 
 		<div class="project-cartegory">
 			<div>${title }</div>
@@ -63,3 +130,23 @@
 	<script src="/resources/js/category/category.js"></script>
 </body>
 </html>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+const menu = document.getElementById('menu');
+const titleDiv = document.querySelector('.project-cartegory > div');
+
+window.addEventListener('scroll', () => {
+   const titleDivBottom = titleDiv.getBoundingClientRect().bottom;
+
+   if (titleDivBottom <= 0) {
+       menu.classList.remove('hide');
+       menu.classList.add('show');
+   } else {
+       menu.classList.remove('show');
+       menu.classList.add('hide');
+   }
+});
+});
+</script>
