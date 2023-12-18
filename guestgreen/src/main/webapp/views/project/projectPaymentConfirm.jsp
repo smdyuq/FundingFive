@@ -20,6 +20,7 @@
    <main>
       <div class="payment_container">
          <div class="payment0">후원 상세정보</div>
+         <hr>
          <div class="payment1">
             <div>
                <p class="project-information">결제내역</p>
