@@ -112,7 +112,7 @@ public class ExpiredProjectController extends HttpServlet {
 			ProjectService projectService = new ProjectServiceImpl();
         	projectService.projectExpire(projectNo);
         	
-        	response.sendRedirect("/administratorOk.do?cpage=1");			
+        	response.sendRedirect("/administratorOk.do?menu=second&cpage=1");			
 		}else if(status.equals("fail")){		//관리자페이지에서 실패한 프로젝트 클릭시
 			//회원 전화번호 조회 후 플랫폼에서 묶어놨던 후원금액 환불 메세지 전송
 			PhoneController phoneController = new PhoneController();

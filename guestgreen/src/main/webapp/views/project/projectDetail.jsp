@@ -141,9 +141,7 @@ width:100%;
 								<br> <br> <a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
 							</div>
 						</div>
-						<div class="project-button">
-							<a href="#">이전 프로젝트 보기</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>
