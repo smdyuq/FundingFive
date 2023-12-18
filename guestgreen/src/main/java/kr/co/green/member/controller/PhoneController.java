@@ -37,7 +37,6 @@ public class PhoneController extends HttpServlet {
     	System.out.println("status:" + status);
         Message message = new Message();
         if(status == null) {
-        	System.out.println("status2:" + status);
         	String memberPhone = request.getParameter("memberPhone");
 	        
 	        Random rand  = new Random();
@@ -90,7 +89,7 @@ public class PhoneController extends HttpServlet {
         	
         	ProjectService projectService = new ProjectServiceImpl();	//프로젝트 승인유무 'N'으로 변경
         	projectService.projectExpire(projectNo);
-        	response.sendRedirect("/administratorOk.do?cpage=1");
+        	response.sendRedirect("/administratorOk.do?menu=third&cpage=1");
         }
     }
 
@@ -104,7 +103,6 @@ public class PhoneController extends HttpServlet {
 		try {
 			doGet(request, response);
 		} catch (ServletException | IOException e) {
-			System.out.println("dsdsdsdsd");
 			e.printStackTrace();
 		}
 	}

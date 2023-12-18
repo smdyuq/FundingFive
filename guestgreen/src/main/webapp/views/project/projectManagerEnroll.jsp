@@ -6,16 +6,41 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <style>
+.project-manager-enroll-form {
+	width: 80%;
+	margin: 0 auto;
+}
+
 .form-label {
 	font-size: 17px;
 }
 
+.thick-line {
+	border-top: 2px solid #000;
+	margin-bottom: 40px;
+	margin-top: 3%;
+}
+
 /* 텍스트 인풋박스 */
-.project_content_div>div>input {
+.form-control {
 	width: 100%;
 	height: 30px;
 	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-bottom: 4%;
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+/* 파일 인풋박스 */
+.form-file-control {
+	width: 50%;
+	height: 30px;
+}
+
+.file-input-container>input {
+	border: none;
+	margin-top: 2%;
+	margin-bottom: 4%;
 }
 
 .form-select {
@@ -39,10 +64,45 @@ input[type=file]::file-selector-button {
 }
 
 /* 다음 버튼 */
+.next_btn_div {
+	margin-top: 3%;
+	margin-bottom: 3%;
+	display: flex;
+	height: auto;
+	justify-content: center;
+}
+
 .next_btn {
-	margin-top: 5%;
-	padding: 10px 15px 10px 15px; /* 상단 우측 하단 좌측 */
-	font-size: 15px;
+	font-style:;
+	background-color: #00E7AF;
+	color: black;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	border: none;
+	border-radius: 10px;
+
+	width: 20%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	transition: background-color 0.3s ease;
+	min-height: 30px; /* 트랜지션 효과 추가 */
+}
+
+.next_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
+}
+
+.jb-text {
+	padding: 15px 20px;
+	background-color: #444444;
+	border-radius: 5px;
+	color: #ffffff;
+	position: absolute;
+	display: none;
+}
+
+.form-label-image:hover+.jb-text {
+	display: block;
 }
 </style>
 </head>
@@ -53,7 +113,7 @@ input[type=file]::file-selector-button {
 		<section>
 			<div class="project-manager-enroll-form">
 				<h2>창작자 등록</h2>
-				<hr>
+				<hr class="thick-line">
 				<form action="/projectManagerEnroll.do" method="post"
 					enctype="multipart/form-data">
 					<input type="hidden" name="project-name"
@@ -83,31 +143,40 @@ input[type=file]::file-selector-button {
 							<label for="exampleFormControlInput1" class="form-label">프로젝트
 								창작자 이름 </label> <input type="text" class="form-control"
 								id="exampleFormControlInput1" name="project-manager-name"
-								required>
+								placeholder="창작자 이름을 작성해주세요." required>
 						</div>
 
 						<div>
 							<label for="exampleFormControlInput1" class="form-label">프로젝트
 								창작자 소개 </label> <input type="text" class="form-control"
 								id="exampleFormControlInput1" name="project-manager-introduce"
-								required>
+								placeholder="창작자 소개를 작성해주세요." required>
 						</div>
 
 						<div>
 							<label for="exampleFormControlInput1" class="form-label">프로젝트
 								창작자 계좌 </label> <input type="text" class="form-control"
 								id="exampleFormControlInput1" name="project-manager-account"
-								required>
+								placeholder="창작자 계좌 작성해주세요." required>
 						</div>
 
-						<div>
-							<label for="exampleFormControlInput1" class="form-label">프로젝트
-								창작자 프로필 이미지 </label> <input type="file" class="form-control"
+						<div class="file-input-container">
+
+							<label for="exampleFormControlInput1" class="form-label-image">프로젝트
+								창작자 프로필 이미지 </label>
+							<div class="jb-text">이 이미지는 창작자의 프로필 이미지 입니다.</div>
+							<input type="file" class="form-control"
+
 								id="exampleFormControlInput1" name="project_manager_image"
 								required>
 						</div>
 
-						<button class="next_btn" type="submit">프로젝트 등록</button>
+						<div>
+							<div class="next_btn_div">
+								<button class="next_btn" type="submit">등록</button>
+							</div>
+						</div>
+					</div>
 				</form>
 			</div>
 		</section>

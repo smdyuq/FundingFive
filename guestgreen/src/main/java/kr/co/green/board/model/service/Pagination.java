@@ -3,7 +3,7 @@ package kr.co.green.board.model.service;
 
 public class Pagination {
 
-	public static PageInfo getPageInfo(int listCount, int currentPage, int pageLimit, int boardLimit) {
+	public PageInfo getPageInfo(int listCount, int currentPage, int pageLimit, int boardLimit) {
 		//전체 페이지
 		//list count = 101, boardLimit = 5 일때
 		//나우었을때 정확히 나눠지지 않음(int 기준)

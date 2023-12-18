@@ -7,6 +7,11 @@
     font-style: normal;
 }
 
+.translation-links{
+	font-family: 'SUITE-Regular';
+	
+}
+
     body {
      font-family: 'SUITE-Regular';
      font-weight : 900;
@@ -34,7 +39,7 @@
         .header_parent_div {
             display: flex;
             padding-right: 6%;
-            background-color: gainsboro;
+            background-color: rgb(240, 240, 240);
             padding-top: 0.5%;
             padding-bottom: 0.5%;
             justify-content: flex-end;

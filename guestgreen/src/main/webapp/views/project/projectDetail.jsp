@@ -18,6 +18,10 @@
 
 
 <style>
+.product-description > P > img {
+width:100%;
+} 
+
 .originator-div {
 	display: flex;
 	align-items: center;
@@ -38,6 +42,11 @@
 	margin-left: 20px;
 	margin-bottom: 20px;
 }
+
+/* .project-img {
+	width : 250px;
+	height: 250px;
+} */
 </style>
 </head>
 
@@ -61,67 +70,78 @@
 								<p class="project-text">모인 금액</p>
 								<div>
 									<a class="project-value">${projectDTO.projectCurrentAmount}
-										<p class="project-text-unit">원</p>
-									</a> <a class="project-value">${projectDTO.projectCurrentPercentage}
-										<p class="project-text-unit">%</p>
+										<span class="project-text-unit">원</span>
+									</a> <a class="project-value_p" style="color: red;">${projectDTO.projectCurrentPercentage}
+										<span>%</span>
 									</a>
 								</div>
 								<p class="project-text">남은 기간</p>
 								<div>
 									<c:if test="${projectDTO.projectRemainDate>0}">
-										<a class="project-value">${projectDTO.projectRemainDate}
-											<p class="project-text-unit">일</p>
+										<a class="project-value">${projectDTO.projectRemainDate} <span
+											class="project-text-unit">일</span>
 										</a>
 									</c:if>
 									<c:if test="${projectDTO.projectRemainDate<=0}">
-										<p class="project-text-unit">종료된 프로젝트입니다.</p>
+										<span class="project-text-unit">종료된 프로젝트입니다.</span>
 									</c:if>
 								</div>
 								<p class="project-text">후원자 수</p>
 								<div>
 									<a class="project-value">${projectDTO.projectSponserNumber}
-										<p class="project-text-unit">명</p>
+										<span class="project-text-unit">명</span>
 									</a>
 								</div>
-								<div>
-									<a class="project-value">${projectDTO.projectTargetAmount}
-										<p class="project-text-unit">원</p>
-									</a> <a class="project-value">${projectDTO.projectRegisterDate}
-										~ ${projectDTO.projectEndDate}
-										<p class="project-text-unit">펀딩기간</p>
-									</a> <a class="project-value">
+
+
+								<hr class="thin_line">
+
+								<div class="goal-container">
+									<div>
+										<p class="goal-text">목표금액</p>
+										<a class="goal-value">${projectDTO.projectTargetAmount}<span
+											class="goal-unit-text">원</span></a>
+									</div>
+									<div>
+										<p class="goal-text">펀딩기간</p>
+										<a class="goal-value">${projectDTO.projectRegisterDate} ~
+											${projectDTO.projectEndDate}</a>
+									</div>
+								</div>
+
+
+
+
+								<div class="sponsor-button">
+									<button class="btn btn-dark me-md-2" type="button"
+										onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
 								</div>
 							</div>
-							<div class="sponsor-button">
+						</div>
+					</div>
+				</div>
+				<div>
+					<hr class="thick_line">
+				</div>
+				<div class="product-div">
 
+					<div class="product-description">${projectDTO.projectContent}
+					</div>
+					<div class="originator-div">
+						<p>창작자 소개</p>
+						<div class="profile-container">
+							<div class="profile-image">
+								<img
+									src="resources/uploads/managerimage/${projectDTO.projectManagerImageName}"
+									alt="프로필 사진">
+							</div>
+							<div class="profile-details">
 
-								<button class="btn btn-dark me-md-2" type="button"
-									onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
-
+								<a class="project-manager-name">${projectDTO.projectManagerName}</a>
+								<br> <br> <a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="product-div">
-				<div class="product-description">${projectDTO.projectContent}
-				</div>
-				<div class="originator-div">
-					<p>창작자 소개</p>
-					<div class="profile-container">
-						<div class="profile-image">
-							<img
-								src="resources/uploads/managerimage/${projectDTO.projectManagerImageName}"
-								alt="프로필 사진">
-						</div>
-						<div class="profile-details">
-
-							<a class="project-manager-name">${projectDTO.projectManagerName}</a>
-							<br> <br> <a class="project-manager-introduce">${projectDTO.projectManagerIntroduce}</a>
-						</div>
-					</div>
-					<div class="project-button">
-						<a href="#">이전 프로젝트 보기</a>
+						
 					</div>
 				</div>
 			</div>

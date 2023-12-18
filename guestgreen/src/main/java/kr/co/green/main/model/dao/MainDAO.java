@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import kr.co.green.project.model.dto.ProjectDTO;
 
@@ -17,7 +18,7 @@ public class MainDAO {
 					+ " ORDER BY PROJECT_VIEWS DESC FETCH FIRST 4 ROWS ONLY",
 			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE"
 					+ " FROM (SELECT PROJECT.*, ROW_NUMBER() OVER (ORDER BY PROJECT_VIEWS DESC) as RANK FROM PROJECT WHERE PROJECT_CONFIRM_STATUS = 'Y') P1"
-					+ " JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE P1.RANK BETWEEN 5 AND 12",
+					+ " JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE P1.RANK BETWEEN 5 AND 12 ORDER BY PROJECT_VIEWS desc",
 			"SELECT P1.PROJECT_NO, PROJECT_OUTER_IMAGE_NAME, PROJECT_KIND, PROJECT_MANAGER_NAME, PROJECT_INTRODUCE, PROJECT_CURRENT_PERCENTAGE FROM PROJECT P1 JOIN PROJECT_MANAGER P2 ON P1.PROJECT_NO = P2.PROJECT_NO WHERE PROJECT_CONFIRM_STATUS = 'Y'"
 					+ " AND PROJECT_END_DATE BETWEEN SYSDATE AND SYSDATE + 1 FETCH FIRST 4 ROWS ONLY",
 			"SELECT P1.PROJECT_NO, P1.PROJECT_OUTER_IMAGE_NAME, P1.PROJECT_KIND, P2.PROJECT_MANAGER_NAME, P1.PROJECT_INTRODUCE, P1.PROJECT_CURRENT_PERCENTAGE, MAX(P3.RECENT_PROJECT_DATE)"
@@ -104,4 +105,27 @@ public class MainDAO {
 		return list;
 	}
 
+	//좋아요 눌렀던 프로젝트 가져오기(하트 빨간색 유지하기 위함)
+	public void getLikedProject(Connection con, int memberNo, HashMap<Integer, String> userLikeMap) {
+		String query = "SELECT project_no from user_likes"
+				+ "		WHERE member_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int projectNo = rs.getInt("PROJECT_NO");
+				userLikeMap.put(projectNo, "asd");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
+
+
+
+
+

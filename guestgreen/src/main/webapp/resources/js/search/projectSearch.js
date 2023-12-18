@@ -1,52 +1,47 @@
-function getSearchForm(){
-	window.location.href = "/searchForm.do?status=select";
-}
 
-function projectSearch(){
-	let searchWord = document.getElementById("search_box").value;
-	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
-}
 
-function deleteSearchHistory(searchNo){
-	
+//function projectSearch(){
+
+//	let searchWord = document.getElementById("search_box").value;
+//	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
+//}
+
+function deleteSearchHistory(searchNo) {
 	$.ajax({
 		type: "GET",
 		url: "/searchForm.do",
 		data: {
-			searchNo : searchNo,
-			status : 'delete'
+			searchNo: searchNo,
+			status: 'delete'
 		},
-		success: function(){
-			let searchWords = document.getElementById("search-words"+searchNo);
-			searchWords.style.display = "none";
+		success: function() {
+			let searchWords = document.getElementById("search-words" + searchNo);
+			searchWords.parentNode.removeChild(searchWords);
 		},
-		error: function(){
+		error: function() {
 			alert('실패');
 		}
 	})
-	
 }
 
-function searchSelectedrWord(searchWord){
+function searchSelectedWord(searchWord) {
+	console.log('asdasdadsasdasd');
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
-   window.onload = function() {
-        document.querySelector('.search_btn').addEventListener('click', function() {
-            location.href = 'projectSearch()';
-        });
-    
-        document.getElementById('search_box').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                location.href = 'projectSearch()';
-            }
-        });
-    };
+window.onload = function() {
+	document.querySelector('.search_btn').addEventListener('click', function() {
+		console.log("asd");
+		let searchWord = document.getElementById("search_box").value;
+		window.location.href = '/projectSearch.do?searchWord=' + searchWord;        
+	});
+	    
+	document.getElementById('search_box').addEventListener('keydown', function(e) {
+	    if (e.key === 'Enter') {
+		console.log("bbb");
+			let searchWord = document.getElementById("search_box").value;
+			window.location.href = '/projectSearch.do?searchWord=' + searchWord;            
+		}
+	});
 
-
-
-
-
-
-
-
+}

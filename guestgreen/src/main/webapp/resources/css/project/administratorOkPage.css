@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* 상세보기 하단 선 */
+.thick-line {
+	border-top: 2px solid #000;
+	margin-bottom: 3%;
+	margin-top: 3%;
+}
+
+/* 프로젝트 정보, 창작자 정보 */
+.adminOkPage_project_informationtitle {
+	margin-bottom: 2%;
+}
+
+/* 인풋박스 */
+.form-control {
+	margin-top: 1%;
+	margin-bottom: 2%;
+	padding-bottom: 10px;
+	border: 0px;
+	width: 100%;
+	border-bottom: 1px solid black;
+	background-color: white;
+}
+
+/* 프로젝트 내용 */
+.project-content {
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+
+/* 이미지 */
+.form-label-img {
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+
+/* 다음 버튼 */
+.next_btn_div {
+	display: flex;
+	height: auto;
+	justify-content: center;
+}
+
+.btn-btn-primary {
+	background-color: #00E7AF;
+	color: black;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	min-height: 30px;
+	min-width: 120px;
+	transition: background-color 0.3s ease; /* 트랜지션 효과 추가 */
+}
+
+.next_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
+}

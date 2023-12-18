@@ -81,4 +81,10 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDAO.popularityProject(con);
 	}
 
+//	주목할만한 프로젝트 조회
+	@Override
+	public ArrayList<ProjectDTO> noteworthyProject() {
+		return categoryDAO.noteworthyProject(con);
+	}
+
 }

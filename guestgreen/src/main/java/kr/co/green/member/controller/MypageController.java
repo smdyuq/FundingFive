@@ -1,6 +1,9 @@
 package kr.co.green.member.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -19,6 +22,9 @@ import kr.co.green.member.model.service.MemberBoardService;
 import kr.co.green.member.model.service.MemberBoardServiceImpl;
 import kr.co.green.member.model.service.MemberService;
 import kr.co.green.member.model.service.MemberServiceImpl;
+import kr.co.green.project.model.dto.ProjectDTO;
+import kr.co.green.project.model.service.ProjectService;
+import kr.co.green.project.model.service.ProjectServiceImpl;
 
 @WebServlet("/myPage.do")
 public class MypageController extends HttpServlet {
@@ -37,26 +43,50 @@ public class MypageController extends HttpServlet {
 		
 		MemberService memberService = new MemberServiceImpl();
 		MemberDTO memberDTO = memberService.memberSelect(memberNo);
+	
 
 		// 관리자가 승인한 프로젝트 목록
 		MemberBoardService memberBoardService = new MemberBoardServiceImpl();
 		ArrayList<MemberBoardDTO> projectApprovedList = memberBoardService.getMyApprovedProject(memberNo);
 		
-		// 관리자가 보류/거절한 프로젝트 목록
+		// 관리자가 거절한 프로젝트 목록
 		ArrayList<MemberBoardDTO> projectRejectedList = memberBoardService.getMyRejectedProject(memberNo);
 		
-		if(!Objects.isNull(memberDTO)) {
-			//프로젝트 리스트가 비어있어도 보냄
-				request.setAttribute("projectApprovedList", projectApprovedList);
-				request.setAttribute("projectRejectedList", projectRejectedList);
-				request.setAttribute("memberDTO", memberDTO);
+		// 승인 보류된 프로젝트 목록
+		ArrayList<MemberBoardDTO> projectPendingList = memberBoardService.getMyPendingProject(memberNo);
+		
+		// 좋아요 누른 프로젝트 목록
+		ProjectService projectService = new ProjectServiceImpl();
+		ArrayList<ProjectDTO> projectLikedList = new ArrayList<>();
+		projectService.getUserWishList(memberNo, projectLikedList);
+		
+		//관심있는 프로젝트 목록
+		ArrayList<MemberBoardDTO> memberWishList = memberBoardService.getLikedProject(memberNo);
+		
+		//후원현황 조회
+		ArrayList<ProjectDTO> memberDonateList = memberBoardService.getMyDonateProject(memberNo);
+		//디데이 계산
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate currentDate = LocalDate.now();
+		
+		for(int i=0; i<memberWishList.size(); i++) {
+			String endDate = memberWishList.get(i).getProjectEndDate();
+			LocalDate endDateLocalDateType = LocalDate.parse(endDate, formatter);
+			long dDay = ChronoUnit.DAYS.between(currentDate, endDateLocalDateType);
+			memberWishList.get(i).setProjectEndDate(endDate);
+			memberWishList.get(i).setProjectRemainDate(dDay);
+		}
+		
+		//프로젝트 리스트가 비어있어도 보냄
+		request.setAttribute("projectApprovedList", projectApprovedList);
+		request.setAttribute("projectRejectedList", projectRejectedList);
+		request.setAttribute("projectPendingList", projectPendingList);
+		request.setAttribute("memberWishList", memberWishList);
+		request.setAttribute("memberDonateList", memberDonateList);
+		request.setAttribute("memberDTO", memberDTO);
 				
-				RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");
-				view.forward(request, response);
-		}
-		else {
-			AlertAndRedirect.alertRedirect(response, "마이페이지로 이동하는데 실패했습니다.", "/");
-		}
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/myPage.jsp");
+		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

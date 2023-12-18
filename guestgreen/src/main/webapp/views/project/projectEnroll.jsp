@@ -8,12 +8,11 @@
 <%@include file="../../views/common/head.jsp"%>
 
 <style>
-
-
-.project-enroll-form{
-	padding-left:10%;
-	padding-right:10%;
+.project-enroll-form {
+	padding-left: 10%;
+	padding-right: 10%;
 }
+
 .form-label {
 	font-size: 17px;
 }
@@ -25,16 +24,33 @@
 }
 
 /* 텍스트 인풋박스 */
-.project_content_div>div>input {
+.form-control {
 	width: 100%;
 	height: 30px;
-	margin-top: 1%;
-	margin-bottom: 40px;
-}
-
-.form-control {
+	margin-top: 2%;
+	margin-bottom: 4%;
 	border: none;
 	border-bottom: 1px solid black;
+	background-color: white;
+}
+
+/* 날짜 인풋박스 */
+.form-control_date {
+	width: 17%;
+	height: 30px;
+	margin-top: 2%;
+	margin-bottom: 4%;
+	border: none;
+	border-bottom: 1px solid black;
+	margin-bottom: 4%;
+}
+
+/* 파일 인풋박스 */
+.form-file-control {
+	width: 50%;
+	height: 30px;
+	margin-top: 2%;
+	margin-bottom: 4%;
 }
 
 .form-select {
@@ -42,7 +58,6 @@
 	height: 30px;
 	margin-top: 2%;
 	margin-bottom: 40px;
-
 }
 
 /* 파일 인풋박스 */
@@ -59,6 +74,14 @@ input[type=file]::file-selector-button {
 }
 
 /* 다음 버튼 */
+.next_btn_div {
+	margin-top: 3%;
+	margin-bottom: 5%;
+	display: flex;
+	height: auto;
+	justify-content: center;
+}
+
 .next_btn {
 	font-style:;
 	background-color: #00E7AF;
@@ -66,10 +89,11 @@ input[type=file]::file-selector-button {
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
 	border: none;
 	border-radius: 10px;
-	padding: 10px;
+	width: 20%; padding-top : 10px; padding-bottom : 10px;
+	transition: background-color 0.3s ease;
 	min-height: 30px;
-	min-width: 120px;
-	transition: background-color 0.3s ease; /* 트랜지션 효과 추가 */
+	padding-top: 10px;
+	padding-bottom: 10px; /* 트랜지션 효과 추가 */
 }
 
 .next_btn:hover {
@@ -104,20 +128,12 @@ input[type=file]::file-selector-button {
 					enctype="multipart/form-data">
 
 
-                    <div class="project_content_div">
-                        <div>
-                            <label class="form-label">프로젝트 이름 </label><br>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="project-name"
-                                placeholder="프로젝트 이름을 작성해주세요." required>
-                        </div>
-
 					<div class="project_content_div">
 						<div>
 							<label class="form-label">프로젝트 이름 </label><br> <input
 								type="text" class="form-control" id="exampleFormControlInput1"
 								name="project-name" placeholder="프로젝트 이름을 작성해주세요." required>
 						</div>
-
 
 						<div>
 							<label class="form-label">프로젝트 소개 </label><br> <input
@@ -135,7 +151,7 @@ input[type=file]::file-selector-button {
 								<option selected>카테고리를 선택해주세요.</option>
 								<option value="가전">가전</option>
 								<option value="의류">의류</option>
-								<option value="뷰티">뷰티</option>
+								<option value="뷰티">향수·뷰티</option>
 								<option value="푸드">푸드</option>
 								<option value="주얼리">주얼리</option>
 								<option value="크리스마스">크리스마스</option>
@@ -157,8 +173,8 @@ input[type=file]::file-selector-button {
 
 						<div>
 							<label class="form-label">프로젝트 마감일 </label> <br> <input
-								type="date" class="form-control" id="exampleFormControlInput1"
-								name="project-end-date" required>
+								type="date" class="form-control_date"
+								id="exampleFormControlInput1" name="project-end-date" required>
 						</div>
 
 						<div class="file-input-container">
@@ -180,7 +196,11 @@ input[type=file]::file-selector-button {
 								required><br>
 						</div>
 
-						<button class="next_btn" type="submit">다음</button>
+						<div>
+							<div class="next_btn_div">
+								<button class="next_btn" type="submit">다음</button>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

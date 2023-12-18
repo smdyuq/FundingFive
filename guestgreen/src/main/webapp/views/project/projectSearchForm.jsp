@@ -24,7 +24,7 @@
 				<input type="text" class="search_box" id="search_box"
 					placeholder="검색어를 입력해주세요." required>
 				<!-- 검색결과 페이지 이동 -->
-				<button class="search_btn">
+				<button class="search_btn" >
 					<img src="resources/image/search.png" alt="돋보기 이미지"
 						style="width: 40px; height: 40px;">
 				</button>
@@ -42,9 +42,10 @@
 					<c:otherwise>
 						<div class="recent_searches_result">
 							<c:forEach var="searching" items="${memberSearchArr}">
-								<div class="searches_result_div">
-									<div id="search-words${searching.searchNo}">
-										<a id="search-word">${searching.searchWord}</a> <a
+								<div class="searches_result_div" id="search-words${searching.searchNo}" >
+									<div>
+										<a id="search-word" class="searchSelectedWord" onclick="searchSelectedWord('${searching.searchWord}')">${searching.searchWord}</a> 
+										<a class="deleteSearchHistory"
 											onclick="deleteSearchHistory(${searching.searchNo})">x</a>
 									</div>
 								</div>
@@ -66,10 +67,10 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="searching" items="${popularSearchArr}">
-							<div class="search_row_div" style="background-color: aqua;">
+							<div class="search_row_div">
 								<div class="searche_row">
-									<div onclick="searchPopularWord(${searching.searchWord})">
-										<a href="#">${searching.rowNum}</a><a id="popular-search">${searching.searchWord}</a>
+									<div onclick="searchSelectedWord('${searching.searchWord}')">
+										<strong class="searche_row_num">${searching.rowNum}</strong><a id="popular-search">${searching.searchWord}</a>
 									</div>
 								</div>
 							</div>
@@ -82,19 +83,6 @@
 </body>
 
 </html>
-<script>
-    window.onload = function() {
-        document.querySelector('.search_btn').addEventListener('click', function() {
-            location.href = '#';
-        });
-    
-        document.getElementById('search_box').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                location.href = '#';
-            }
-        });
-    };
-</script>
 
 
 
