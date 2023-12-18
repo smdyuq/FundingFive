@@ -18,6 +18,10 @@
 
 
 <style>
+.product-description > img {
+width:100%;
+}
+
 .originator-div {
 	display: flex;
 	align-items: center;

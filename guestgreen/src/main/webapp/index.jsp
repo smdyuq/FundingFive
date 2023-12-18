@@ -29,6 +29,7 @@
 /* 좋아요 버튼 */
 .like {
 	fill: #ddd;
+	z-index : 5;
 }
 
 .like.active {
@@ -47,7 +48,6 @@
 	top: 150%;
 	transform: translate(-50%, -50%);
 }
-
 
 .LikeBtn2 {
 	background-color: transparent;
@@ -215,8 +215,8 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-	WIDTH:100%;
-	HEIGHT:100%;
+	WIDTH: 100%;
+	HEIGHT: 100%;
 }
 
 .popula-img {
@@ -640,6 +640,13 @@ dd>span::before {
 	border-radius: 22px;
 	margin: 1px auto 0px;
 	margin-top: 5%;
+	background-color: #00E7AF;
+	color: black;
+	transition: background-color 0.3s ease;
+}
+
+.Project_ViewMore:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
 }
 
 .card-wrapper>a, img {
@@ -880,7 +887,8 @@ dd {
 					<div class="slider-1 slidesimg">
 						<div class="slides1">
 							<c:forEach var="item" items="${banner }">
-								<div class="active" width="760px" height="280px">
+								<div class="active" width="760px" height="280px"
+									onclick="noteworthyProject()" style="cursor: pointer;">
 									<img
 										src="resources/uploads/outerimage/760x280/${item.projectOuterImageName }">
 								</div>
@@ -943,7 +951,7 @@ dd {
 										</button>
 									</div>
 
-									<span class="projectCardDetail">
+									<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -988,16 +996,16 @@ dd {
 					<div class=populaPage_List>
 						<div class="Popula-card-wrapper">
 							<c:forEach var="item" items="${popularity }">
-								<div class="popula-img"
-									onclick="projectDetail(${item.projectNo})">
+								<div class="popula-img">
 									<a href="#"><img class="popular_img"
-										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"></a>
+										src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName }"
+										onclick="projectDetail(${item.projectNo})"></a>
 
 									<div class="ProjectCardNumbertop">
 										${item.projectRankNumber }</div>
 
 
-									<div class="projectCardDetail">
+									<div class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 										<dd>
 
 											<input type="hidden" value=${item.projectNo }> <a
@@ -1055,7 +1063,7 @@ dd {
 								</button>
 							</div>
 
-							<span class="projectCardDetail">
+							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 								<dd>
 
 									<input type="hidden" value=${item.projectNo }> <a
@@ -1101,7 +1109,7 @@ dd {
 												class="projectCardDetail">
 												<dd>
 													<input type="hidden" value=${item.projectNo }> <a
-														href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+														href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
 														<div class="LikeButton_Wrapper">
 															<button class="LikeBtn3">
 																<svg class="like" xmlns="http://www.w3.org/2000/svg"
@@ -1112,9 +1120,9 @@ dd {
 															</button>
 														</div> </span>
 												</dd>
-												<dt>
+												<dt onclick="projectDetail(${item.projectNo})">
 													<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-												</dt> <span class="percentage">${item.projectCurrentPercentage }%
+												</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
 													달성</span>
 											</span>
 										</div>
@@ -1153,7 +1161,7 @@ dd {
 								class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a>
+										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a>
 
 										<div class="LikeButton_Wrapper">
 											<button class="LikeBtn2">
@@ -1165,9 +1173,9 @@ dd {
 											</button>
 										</div> </span>
 								</dd>
-								<dt>
+								<dt onclick="projectDetail(${item.projectNo})">
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
@@ -1212,11 +1220,11 @@ dd {
 							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a></span>
 								</dd>
-								<dt>
+								<dt onclick="projectDetail(${item.projectNo})">
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
@@ -1251,11 +1259,11 @@ dd {
 							<span class="projectCardDetail">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
-										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
+										href="#" onclick="projectDetail(${item.projectNo})">${item.projectKind }</a><span><a href="#" onclick="projectDetail(${item.projectNo})">${item.projectManagerName }</a></span>
 								</dd>
-								<dt>
+								<dt onclick="projectDetail(${item.projectNo})">
 									<a href="#" class="Project_Introduce1">${item.projectIntroduce }</a>
-								</dt> <span class="percentage">${item.projectCurrentPercentage }%
+								</dt> <span class="percentage" onclick="projectDetail(${item.projectNo})">${item.projectCurrentPercentage }%
 									달성</span>
 							</span>
 						</div>
@@ -1287,7 +1295,7 @@ dd {
 								</button>
 							</div>
 
-							<span class="projectCardDetail">
+							<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 								<dd>
 									<input type="hidden" value=${item.projectNo }> <a
 										href="#">${item.projectKind }</a><span><a href="#">${item.projectManagerName }</a></span>
@@ -1341,7 +1349,7 @@ dd {
 									</div>
 								</div>
 
-								<span class="projectCardDetail">
+								<span class="projectCardDetail" onclick="projectDetail(${item.projectNo})">
 									<dd>
 
 										<input type="hidden" value=${item.projectNo }> <a

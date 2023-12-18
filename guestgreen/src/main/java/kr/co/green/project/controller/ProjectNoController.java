@@ -34,7 +34,7 @@ public class ProjectNoController extends HttpServlet {
 
 //		거절 버튼 누를시 승인상태 업데이트, 거절 사유 메시지 등록
 		if (projectService.projectDelete(projectNo) > 0 &&  projectService.deleteReason(reason, projectNo) > 0) {
-			response.sendRedirect("/administratorOk.do?cpage=1");
+			response.sendRedirect("/administratorOk.do?menu=first&cpage=1");
 		} else {
 			response.sendRedirect("/views/common/error.jsp");
 		}
