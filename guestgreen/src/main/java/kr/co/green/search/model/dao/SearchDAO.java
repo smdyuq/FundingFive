@@ -168,17 +168,17 @@ public class SearchDAO {
 		String query = "";
 		if(memberNo == 0) {
 			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, 0)";
-		}
-		else {
+		} else {
 			query = " INSERT INTO searching VALUES(search_no_seq.nextval, ?, 'Y', sysdate, ?)";
 		}
-		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, searchWord);
 	        if (memberNo != 0) {
 	            pstmt.setInt(2, memberNo);
 	        }
+	        System.out.println(memberNo);
+	        System.out.println(searchWord);
 		    pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -25,18 +25,23 @@ function deleteSearchHistory(searchNo) {
 }
 
 function searchSelectedWord(searchWord) {
+	console.log('asdasdadsasdasd');
 	window.location.href = '/projectSearch.do?searchWord=' + searchWord;
 }
 
-   window.onload = function() {
-        document.querySelector('.search_btn').addEventListener('click', function() {
-	let searchWord = document.getElementById("search_box").value;
-	window.location.href = '/projectSearch.do?searchWord=' + searchWord;        });
-    
-        document.getElementById('search_box').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-	let searchWord = document.getElementById("search_box").value;
-	window.location.href = '/projectSearch.do?searchWord=' + searchWord;            }
-        });
-    };
+window.onload = function() {
+	document.querySelector('.search_btn').addEventListener('click', function() {
+		console.log("asd");
+		let searchWord = document.getElementById("search_box").value;
+		window.location.href = '/projectSearch.do?searchWord=' + searchWord;        
+	});
+	    
+	document.getElementById('search_box').addEventListener('keydown', function(e) {
+	    if (e.key === 'Enter') {
+		console.log("bbb");
+			let searchWord = document.getElementById("search_box").value;
+			window.location.href = '/projectSearch.do?searchWord=' + searchWord;            
+		}
+	});
 
+}
