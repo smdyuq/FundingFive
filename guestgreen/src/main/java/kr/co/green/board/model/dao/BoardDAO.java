@@ -87,11 +87,11 @@ public class BoardDAO {
 				+ "									?," // 내용
 				+ "									DEFAULT," // 작성일
 				+ "									null," // 수정일
+				+ "									null,"
 				+ "									0," // 조회수
-				+ "									1," // 작성자
 				+ "									?," // 파일 이름
 				+ "									?," // 파일 경로
-				+ "									null)"; // 삭제일
+				+ "									1)";
 
 		try {
 			// 쿼리 사용 준비
@@ -119,7 +119,8 @@ public class BoardDAO {
 	// 게시글 상세보기
 	public void boardSelect(Connection con, BoardDTO board) {
 		String query = "SELECT board_no, board_title, board_views, board_in_date, board_content, BOARD_IMAGE_NAME"
-				+ " 		FROM board" + " 		WHERE board_no=?";
+				+ " 		FROM board"
+				+ " 		WHERE board_no=?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -152,7 +153,8 @@ public class BoardDAO {
 
 	// 게시글 삭제
 	public int boardDelete(Connection con, int idx) {
-		String query = "UPDATE board SET board_delete_date = sysdate" + "				WHERE board_no = ?";
+		String query = "UPDATE board SET board_delete_date = sysdate" 
+				+ "				WHERE board_no = ?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -198,9 +200,12 @@ public class BoardDAO {
 	// 게시글 수정(제목,내용,이미지)
 	public int boardUpdate(Connection con, int idx, String title, String content, String fileName,
 			String uploadDirectory) {
-		String query = "UPDATE board SET board_title = ?," + "						 board_content = ?,"
-				+ "						 board_update_date = sysdate," + "						 board_image_name = ?,"
-				+ "						 board_image_path = ? " + "						 WHERE board_no =?";
+		String query = "UPDATE board SET board_title = ?,"
+				+ "						 board_content = ?,"
+				+ "						 board_update_date = sysdate,"
+				+ "						 board_image_name = ?,"
+				+ "						 board_image_path = ? "
+				+ "						 WHERE board_no =?";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -225,7 +230,9 @@ public class BoardDAO {
 
 	// 조회수 증가
 	public int boardView(Connection con, int idx) {
-		String query = "UPDATE board" + "		SET board_views = board_views+1" + "		WHERE board_no = ?";
+		String query = "UPDATE board"
+				+ "		SET board_views = board_views+1"
+				+ "		WHERE board_no = ?";
 
 		try {
 			pstmt = con.prepareStatement(query);
