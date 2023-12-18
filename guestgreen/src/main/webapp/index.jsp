@@ -1047,7 +1047,7 @@ dd {
 			</div>
 
 
-			<br> <img class="banner" src="/resources/image/t3.png"
+			<br> <img class="banner" src="/resources/image/firstbanner.png"
 				width="1100px" height="181.1px">
 
 			<div class="jb-division-line"></div>
@@ -1212,7 +1212,7 @@ dd {
 
 
 
-			<img class="banner" src="/resources/image/banner.jpg" width="1100px"
+			<img class="banner" src="/resources/image/secondbanner.jpg" width="1100px"
 				height="181.1px">
 
 
