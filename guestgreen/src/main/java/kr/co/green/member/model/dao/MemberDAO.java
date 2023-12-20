@@ -16,7 +16,7 @@ public class MemberDAO {
 	public int memberSignUp(Connection con, MemberDTO memberDTO) {
 		
 		String query = "INSERT INTO member "
-				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1)";
+				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1, NULL)";
 		int result = 0;
 		try {
 			pstmt = con.prepareStatement(query);
@@ -152,11 +152,46 @@ public class MemberDAO {
 		}
 		return 0;
 	}
+	
+	//좋아요 눌렀을 때 db에 이미 있는지 확인 후 없으면 넣고, 있으면 제거
+	public void memberLikeCheck(Connection con, int memberNo, int projectNo) {
+		String query = "SELECT like_no from user_likes"
+				+ "		WHERE member_no = ? AND project_NO = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, projectNo);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				memberLikeDelete(con, memberNo, projectNo);
+			}else {
+				memberLikeInsert(con, memberNo, projectNo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-	//좋아요 메소드
-	public int memberLike(Connection con, int memberNo, int projectNo) {
+	//관심프로젝트 추가 메소드
+	public int memberLikeInsert(Connection con, int memberNo, int projectNo) {
 		String query = "INSERT INTO USER_LIKES "
-				+ "		VALUES(USER_LIKES_NO_SEQ.nextval, memberNo, projectNo)";
+				+ "		VALUES(USER_LIKES_NO_SEQ.nextval, ?, ?)";
+		
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, projectNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	//관심프로젝트 제거 메소드
+	public int memberLikeDelete(Connection con, int memberNo, int projectNo) {
+		String query = "DELETE USER_LIKES "
+				+ "		WHERE member_no = ? AND project_NO = ?";
 		
 		int result = 0;
 		try {

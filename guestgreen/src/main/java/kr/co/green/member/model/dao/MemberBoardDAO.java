@@ -17,7 +17,7 @@ public class MemberBoardDAO {
 	public ArrayList<MemberBoardDTO> getMyApprovedProject(Connection con, int memberNo) {
 		ArrayList<MemberBoardDTO> myList = new ArrayList<>();
 
-		String query = "SELECT P.PROJECT_NAME, P.PROJECT_INTRODUCE, P.PROJECT_CONTENT,"
+		String query = "SELECT P.PROJECT_NO, P.PROJECT_NAME, P.PROJECT_INTRODUCE, P.PROJECT_CONTENT,"
 				+ "       P.PROJECT_KIND, P.PROJECT_PRICE, P.PROJECT_TARGET_AMOUNT, P.PROJECT_CURRENT_AMOUNT,"
 				+ "       P.PROJECT_SPONSER_NUMBER, P.PROJECT_CONFIRM_STATUS,"
 				+ "       P.PROJECT_REGISTER_DATE, P.PROJECT_END_DATE,"
@@ -38,6 +38,7 @@ public class MemberBoardDAO {
 			while (rs.next()) {
 				MemberBoardDTO dto = new MemberBoardDTO();
 
+				dto.setProjectNo(rs.getInt("PROJECT_NO"));
 				dto.setProjectName(rs.getString("PROJECT_NAME"));
 				dto.setProjectIntroduce(rs.getString("PROJECT_INTRODUCE"));
 				dto.setProjectContent(rs.getString("PROJECT_CONTENT"));
@@ -192,7 +193,7 @@ public class MemberBoardDAO {
 
 	//마이페이지 후원현황 조회
 	public ArrayList<ProjectDTO> getMyDonateProject(Connection con, int memberNo) {
-		String query = " SELECT project_outer_image_name, project_name, project_kind, project_introduce, "
+		String query = " SELECT p.project_no, project_outer_image_name, project_name, project_kind, project_introduce, "
 				   	 + "		TO_CHAR(PROJECT_REGISTER_DATE, 'YYYY/MM/DD') AS project_register_date, "
 				   	 + "		  TO_CHAR(PROJECT_END_DATE, 'YYYY/MM/DD') AS PROJECT_END_DATE FROM PROJECT p " 
 				   	 + " JOIN DONATE d "
@@ -205,6 +206,7 @@ public class MemberBoardDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProjectDTO projectDTO = new ProjectDTO();
+				projectDTO.setProjectNo(rs.getInt("PROJECT_NO"));
 				projectDTO.setProjectOuterImageName(rs.getString("PROJECT_OUTER_IMAGE_NAME"));
 				projectDTO.setProjectName(rs.getString("PROJECT_NAME"));
 				projectDTO.setProjectKind(rs.getString("PROJECT_KIND"));

@@ -13,7 +13,7 @@
 /* 페이지 구조(상단) */
 .project-information {
 	overflow: hidden;
-	margin-bottom:5%;
+	margin-bottom: 5%;
 }
 
 .project-div {
@@ -123,49 +123,25 @@
 	padding-top: 0%;
 }
 
-    .goal-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+.goal-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
 
-    .goal-text,
-    .goal-value {
-        display: inline-block;
-    }
+.goal-text, .goal-value {
+	display: inline-block;
+}
 
-    .goal-unit-text {
-        display: inline;
-    }
-    
-    .goal-text + .goal-value {
-        margin-left: 10px;
-    }
-    
+.goal-unit-text {
+	display: inline;
+}
+
+.goal-text+.goal-value {
+	margin-left: 10px;
+}
+
 /* 페이지 상단 후원하기 버튼 스타일 */
-.sponsor-button {
-	display: flex;
-	margin: 0 auto;
-	justify-content: center;
-	margin-top: 5%;
-}
-
-.sponsor-button>button {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	border: 2px solid #c0c0c0;
-	border-radius: 5px;
-	width: 100px;
-	padding: 10px;
-}
-
-.sponsor-button>a {
-	text-decoration: none;
-	color: white;
-	font-size: 100%;
-}
-
 .thin_line {
 	background: #ebebeb;
 	height: 1px;
@@ -174,7 +150,8 @@
 }
 
 .thick_line {
-	width: 100%; background : #f0f0f0;
+	width: 100%;
+	background: #f0f0f0;
 	height: 1px;
 	margin-bottom: 3%;
 	background: #f0f0f0;
@@ -188,11 +165,10 @@
 }
 
 .product-description {
-	margin-right: 10%;
+	margin-right: 5%;
 	flex-grow: 1;
 	height: auto;
-	border: 1px solid black;
-	max-width: 1000px;
+	width: 700px;
 }
 
 .product-description>p {
@@ -217,26 +193,58 @@
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 이전 프로젝트 보기 */
-.project-button {
-	border: 2px solid #c0c0c0;
-	border-radius: 5px;
-	width: auto;
-	background-color: white;
-	padding: 10px;
-	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-	margin-top: 20%;
-}
-
-.project-button>a {
-	text-decoration: none;
-	color: black;
-	font-size: 15px;
-	margin-top: 100%;
-}
-
-.line {
-	border-top: 1px solid #c0c0c0;
-	margin: 30px 0px;
+.product-description>div>p>img {
 	width: 100%;
+}
+
+.product-description>P>img {
+	width: 100%;
+}
+
+.originator-div {
+	display: flex;
+	align-items: center;
+}
+
+.profile-container {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+}
+
+.profile-image img {
+	width: 130px; /* 프로필 사진의 너비 설정 */
+	height: 130px; /* 프로필 사진의 높이 설정 */
+}
+
+.profile-details {
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+.Donate_btn {
+	display: flex;
+	width: 204px;
+	height: 44px;
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: -0.015em;
+	border: 1px solid rgb(230, 230, 230);
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	text-align: center;
+	color: rgb(61, 61, 61);
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	align-items: center;
+	border-radius: 22px;
+	margin: 1px auto 0px;
+	margin-top: 5%;
+	background-color: #00E7AF;
+	color: black;
+	transition: background-color 0.3s ease;
+}
+
+.Donate_btn:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
 }

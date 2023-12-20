@@ -6,65 +6,10 @@
 <head>
 <%@include file="../../views/common/head.jsp"%>
 <link rel="stylesheet" href="/resources/css/project/administratorOk.css">
-<script src="/resources/js/project/administratorOk.js"></script>
 <script src="/resources/js/project/apiKey.js"></script>
+<script src="/resources/js/project/administratorOk.js"></script>
 
 <style>
-.thick-line {
-	border-top: 2px solid black;
-}
-
-.thin-line {
-	border-top: 1px solid black;
-}
-
-.pagination {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	list-style: none;
-	padding: 0;
-}
-
-.page-item {
-	margin: 0 5px;
-}
-
-.page-link {
-	color: black;
-	text-decoration: none;
-	padding: 5px 10px;
-	border: 1px solid black;
-	border-radius: 5px;
-}
-
-.page-link:hover {
-	background-color: lightgray;
-}
-
-.page-link.disabled {
-	color: gray;
-	pointer-events: none;
-}
-
-table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: 1rem auto;
-	background-color: white;
-}
-
-.custom-table {
-	width: 100%;
-}
-
-.custom-table th, .custom-table td {
-	text-align: left;
-}
-
-.approval-button {
-	float: right;
-}
 </style>
 
 </head>
@@ -98,8 +43,6 @@ table {
 						<div id="project_approval" class="content-section">
 							<h2>프로젝트 승인 목록</h2>
 							<hr class="thick-line">
-
-							<!--  -->
 							<section>
 								<form action="/administratorOk.do" method="get"
 									id="project-list">
@@ -147,8 +90,6 @@ table {
 
 										</tbody>
 									</table>
-
-									<!-- 페이징 처리 -->
 
 									<nav aria-label="Page navigation example">
 										<ul class="pagination">
@@ -205,13 +146,18 @@ table {
 								<table class="table">
 									<thead>
 										<tr>
-											<th>프로젝트 번호</th>
+
+
 											<th>프로젝트명</th>
 											<th>프로젝트 등록일</th>
 											<th>프로젝트 종료일</th>
 											<th>프로젝트 달성률</th>
-											<th>창작자 이름</th>
 											<th></th>
+
+
+										</tr>
+										<tr>
+											<td colspan="6"><hr class="thick-line"></td>
 										</tr>
 
 									</thead>
@@ -219,20 +165,28 @@ table {
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="5" class="text-center">프로젝트 목록이 없습니다.</td>
+
+													<td colspan="6" class="text-center"
+														style="text-align: center;">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="item" items="${list}">
 													<input type="hidden" name="project-no"
 														value="${item.projectNo}">
-													<tr onclick="successfulProject()">
-														<td>${item.projectNo}</td>
+														<input type="hidden" id="mailApiKey" name="google-api-secret-key" value="">
+										
+													<tr style="text-align: center">
+
 														<td>${item.projectName}</td>
 														<td>${item.projectRegisterDate}</td>
 														<td>${item.projectEndDate}</td>
 														<td>${item.projectCurrentPercentage}</td>
-														<td>${item.projectManagerName}</td>
+														<td><button class="approval-button"
+																onclick="successfulProject()">완료 알림</button></td>
+													</tr>
+													<tr>
+														<td colspan="6"><hr class="thin-line"></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -296,34 +250,43 @@ table {
 									<thead>
 										<tr>
 
-											<th>프로젝트 번호</th>
+
 											<th>프로젝트명</th>
 											<th>프로젝트 등록일</th>
 											<th>프로젝트 종료일</th>
 											<th>프로젝트 달성률</th>
-											<th>창작자 이름</th>
+											<th></th>
 
 
+										</tr>
+										<tr>
+											<td colspan="6"><hr class="thick-line"></td>
 										</tr>
 									</thead>
 									<tbody>
 										<c:choose>
 											<c:when test="${empty list}">
 												<tr>
-													<td colspan="5" class="text-center">프로젝트 목록이 없습니다.</td>
+													<td colspan="6" class="text-center"><hr
+															class="thick-line">프로젝트 목록이 없습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="item" items="${list}">
 													<input type="hidden" name="project-no"
 														value="${item.projectNo}">
-													<tr onclick="failedProject()">
-														<td>${item.projectNo}</td>
+
+													<tr style="text-align: center">
+
 														<td>${item.projectName}</td>
 														<td>${item.projectRegisterDate}</td>
 														<td>${item.projectEndDate}</td>
 														<td>${item.projectCurrentPercentage}</td>
-														<td>${item.projectManagerName}</td>
+														<td><button class="approval-button"
+																onclick="failedProject()">실패 알림</button></td>
+													</tr>
+													<tr>
+														<td colspan="6"><hr class="thin-line"></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -375,7 +338,7 @@ table {
 									</ul>
 								</nav>
 							</form>
-							<!--  -->
+							<!—  —>
 						</div>
 					</c:when>
 				</c:choose>
