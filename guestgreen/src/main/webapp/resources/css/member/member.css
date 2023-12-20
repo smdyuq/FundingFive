@@ -92,12 +92,29 @@
 }
 
 button {
-	border: 2px solid #c0c0c0;
-	border-radius: 5px;
-	padding: 7px;
-	font-size: 14px;
-	width: 20%;
-	margin-right: 10px;
+	width: 204px;
+	height: 44px;
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: -0.015em;
+	border: 1px solid rgb(230, 230, 230);
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 8px;
+	text-align: center;
+	color: rgb(61, 61, 61);
+	/* -webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center; */
+	/* align-items: center; */
+	border-radius: 22px;
+	/* margin: 1px auto 0px; */
+	background-color: #00E7AF;
+	color: black;
+	transition: background-color 0.3s ease;
+	margin-left: 0px;
+}
+
+button:hover {
+	background-color: rgba(0, 231, 175, 0.6); /* 흐려진 색상으로 변경 */
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
@@ -111,24 +128,21 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	display: lnline;
 }
 
-
 .project_status_result_n {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
 }
-
 
 .sponsorship_project_div {
 	display: block;
 	margin-bottom: 2%;
 	width: 100%;
-
 }
 
 .image-container {
-	flex: 0 0 30%; 
+	flex: 0 0 30%;
 	position: relative;
 	padding-top: 20%;
 	overflow: hidden;
@@ -154,30 +168,30 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 .info-set {
 	display: flex;
 	align-items: center;
-	margin-bottom:5px;
+	margin-bottom: 5px;
 }
 
 .sponsorship_title {
 	margin-right: 7px;
-	color:gray;
-	font-size:15px;
+	color: gray;
+	font-size: 15px;
 }
 
 .project_info {
-    display: flex;
+	display: flex;
 }
 
 .button_container {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
-.project_status_info-container{
-	margin-bottom:5px;
+.project_status_info-container {
+	margin-bottom: 5px;
 }
 
-.value{
-	font-size:17px;
+.value {
+	font-size: 17px;
 }
 
 /* 전체 구조 */
@@ -276,20 +290,19 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 .achievement_rate {
-   font-size: 14px;
-   color: red;
-   margin-right: 3px;
+	font-size: 14px;
+	color: red;
+	margin-right: 3px;
 }
 
 .sponsorship_amount {
-   font-size: 13px;
-   margin-right: 3px;
+	font-size: 13px;
+	margin-right: 3px;
 }
 
 .remaining_days {
-   font-size: 13px;
+	font-size: 13px;
 }
-
 
 .img_div>img, .img_div_a {
 	transition: all 0.2s linear;
@@ -300,11 +313,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 /* 운송장 번호조회*/
-
 .form-control {
-    display: flex;
-    width: 30%;
-    margin-right: 3%;
+	display: flex;
+	width: 30%;
+	margin-right: 3%;
 }
 
 .table-container {
