@@ -103,8 +103,10 @@ main {
 								<span id="addrMsg"></span>
 							</div>
 							<br>
+							<div class="button_container">
 							<button type="submit">수정하기</button>
 							<button type="submit" onclick="deleteBtn()">탈퇴하기</button>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -127,8 +129,9 @@ main {
 									<c:forEach var="item" items="${memberDonateList}"
 										varStatus="status">
 										<div class="item-container">
-											<div class="sponsorship_project_div" >
-												<div class="project_info" onclick="projectDetail(${item.projectNo})">
+											<div class="sponsorship_project_div">
+												<div class="project_info"
+													onclick="projectDetail(${item.projectNo})">
 													<div class="image-container">
 														<img class="sponsorship_img"
 															src="/resources/uploads/outerimage/300x300/${item.projectOuterImageName}"
@@ -191,7 +194,8 @@ main {
 											varStatus="status">
 											<div class="item-container1">
 												<div class="sponsorship_project_div">
-													<div class="project_info" onclick="projectDetail(${project.projectNo})">
+													<div class="project_info"
+														onclick="projectDetail(${project.projectNo})">
 														<div class="image-container">
 															<img class="sponsorship_img"
 																src="/resources/uploads/outerimage/300x300/${project.projectOuterImageName}"
@@ -199,15 +203,15 @@ main {
 														</div>
 														<div class="info-container">
 															<div class="info-set">
-																<span class="sponsorship_title">카테고리명 |  </span> <span
+																<span class="sponsorship_title">카테고리명 | </span> <span
 																	class="value">${project.projectKind}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 명 |  </span> <span
+																<span class="sponsorship_title">프로젝트 명 | </span> <span
 																	class="value">${project.projectName}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 설명 |  </span> <span
+																<span class="sponsorship_title">프로젝트 설명 | </span> <span
 																	class="value">${project.projectIntroduce }</span>
 															</div>
 															<div class="project_status_info-container">
@@ -215,11 +219,11 @@ main {
 																	class="value">${project.projectPrice }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">생성일 |  </span> <span
+																<span class="sponsorship_title">생성일 | </span> <span
 																	class="value">${project.projectRegisterDate }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">마감일 |  </span> <span
+																<span class="sponsorship_title">마감일 | </span> <span
 																	class="value">${project.projectEndDate }</span>
 															</div>
 														</div>
@@ -262,27 +266,27 @@ main {
 														</div>
 														<div class="info-container">
 															<div class="info-set">
-																<span class="sponsorship_title">카테고리명 |  </span> <span
+																<span class="sponsorship_title">카테고리명 | </span> <span
 																	class="value">${project.projectKind}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 명 |  </span> <span
+																<span class="sponsorship_title">프로젝트 명 | </span> <span
 																	class="value">${project.projectName}</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 설명 |  </span> <span
+																<span class="sponsorship_title">프로젝트 설명 | </span> <span
 																	class="value">${project.projectIntroduce }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">프로젝트 가격 |  </span> <span
+																<span class="sponsorship_title">프로젝트 가격 | </span> <span
 																	class="value">${project.projectPrice }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">생성일 |  </span> <span
+																<span class="sponsorship_title">생성일 | </span> <span
 																	class="value">${project.projectRegisterDate }</span>
 															</div>
 															<div class="project_status_info-container">
-																<span class="sponsorship_title">마감일 |  </span> <span
+																<span class="sponsorship_title">마감일 | </span> <span
 																	class="value">${project.projectEndDate }</span>
 															</div>
 														</div>
@@ -368,6 +372,8 @@ main {
 				<div id="shipping_information" class="content-section"
 					style="display: none;">
 					<h2>운송장 번호 조회</h2>
+					<hr class="thick-line">
+					<p style="color: red;">* 운송장 번호를 조회하여 배송현황을 확인하세요.</p>
 					<form id="tracking-form"
 						onsubmit="event.preventDefault(); openPopup('http://info.sweettracker.co.kr/tracking/3', this.elements.t_invoice.value);">
 						<div class="table-container">
@@ -412,12 +418,12 @@ main {
 									<p>관심있는 프로젝트가 없습니다.</p>
 								</c:when>
 								<c:otherwise>
-								<div class="product_container">
-									<c:forEach var="project" items="${memberWishList}">
-										
-											<div class="product">
+									<div class="product_container">
+										<c:forEach var="project" items="${memberWishList}">
+
+											<div class="product" onclick="projectDetail(${project.projectNo})" style="cursor:pointer;">
 												<div class="img_div">
-													<a class="img_div_a" href=""><img
+													<a class="img_div_a"><img
 														src="/resources/uploads/outerimage/300x300/${project.projectOuterImageName }"
 														alt=""></a>
 												</div>
@@ -433,8 +439,8 @@ main {
 														남음</p>
 												</div>
 											</div>
-										
-									</c:forEach>
+
+										</c:forEach>
 									</div>
 								</c:otherwise>
 							</c:choose>

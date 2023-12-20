@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <link rel="stylesheet" href="/resources/css/member/signup.css">
-  
+
 <script src="/resources/js/member/signup.js"></script>
 
 </head>
@@ -24,48 +24,51 @@
 				<form action="/signup.do" method="POST">
 					<div class="signup-input"></div>
 					<div class="signup-input">
-						<label for="member-id">아이디:</label> <input type="text"
+						<label for="member-id">아이디</label> <input type="text"
 							id="member-id" name="member-id" onkeyup="duplicateId()"
 							placeholder="사용하실 id를 입력해주세요." required><br> <span
 							id="idMsg"></span>
 					</div>
 					<br>
 					<div class="signup-input">
-						<label for="member-pwd">비밀번호:</label> <input type="password"
+						<label for="member-pwd">비밀번호</label> <input type="password"
 							id="member-pwd" name="member-pwd" onkeyup="validatePassword()"
 							placeholder="비밀번호를 입력해주세요." required> <br> <span
 							id="passwordMsg"></span>
 					</div>
 					<br>
 					<div class="signup-input">
-						<label for="member-pwdCheck">비밀번호 확인:</label> <input
+						<label for="member-pwdCheck">비밀번호 확인</label> <input
 							type="password" id="member-pwdCheck" name="member-pwdCheck"
 							onkeyup="validatePassword()" placeholder="비밀번호를 확인합니다." required>
 						<br> <span id="passwordChkMsg"></span>
 					</div>
 					<br>
 					<div class="signup-input">
-						<label for="member-name">이름:</label> <input type="text"
+						<label for="member-name">이름</label> <input type="text"
 							id="member-name" name="member-name" onkeyup="validateName() "
 							placeholder="이름을 입력해주세요." required><br> <span
 							id="nameMsg"></span>
 					</div>
 					<br>
 					<div class="signup-input">
-						<label for="member-phone">휴대폰 번호:</label> <input type="number"
-							id="member-phone" name="member-phone" onkeyup=""
-							placeholder="숫자만 입력해주세요." required>
-						<button type="button" id="sendPhoneNumber">인증요청</button>
+						<label for="member-phone">휴대폰 번호</label>
+						<div class="input-wrapper">
+							<input type="number" id="member-phone" name="member-phone"
+								onkeyup="" placeholder="숫자만 입력해주세요." required>
+							<button type="button" id="sendPhoneNumber">인증요청</button>
+						</div>
 						<br>
 						<!-- 인증 요청 성공하면 보이게  -->
 						<div id="verificationSection" style="display: none;">
 							<input type="number" placeholder="인증번호를 입력해주세요."
 								id="verificationCode">
-							<button type="button" onclick="randomExample()">인증하기</button>
+							<button type="button" id="sendPhoneNumber"
+								onclick="randomExample()">인증하기</button>
 						</div>
 						<br>
 						<div class="signup-input">
-							<label for="member-addr">주소:</label> <input type="text"
+							<label for="member-addr">주소</label> <input type="text"
 								id="member-addr" name="member-addr" onkeyup=""
 								placeholder="주소를 입력해주세요." required> <span id="addrMsg"></span>
 						</div>
@@ -79,42 +82,40 @@
 </body>
 </html>
 <script>
-function duplicateId() {
-    const id = document.getElementById("member-id").value;
-    const idCheck = document.getElementById("idMsg");
-    const idRegExp = /^[a-zA-z0-9]{4,12}$/; // 아이디 유효성 검사 정규식
-    if (id == "") {
-       idCheck.innerHTML = "아이디를 입력해주세요.";
-       idCheck.style.color = "red";
-       return;
-    } else if (!idRegExp.test(id)) { // 아이디 유효성 검사
-       idCheck.style.color = "red";
-       idCheck.innerHTML = "아이디는 영문자와 숫자로 이루어진 4~12자여야 합니다.";
-       return;
-    } 
-       $.ajax({
-          type : "POST",
-          url : "/duplicateId.do",
-          data : {
-             memberId : id
-          },
-          contentType : "application/x-www-form-urlencoded",
-          success : function(res) {
-             if (res === 'true') {
-                idCheck.style.color = "red";
-                idCheck.innerHTML = "중복된 아이디입니다.";
-             } else {
-                idCheck.style.color = "green";
-                idCheck.innerHTML = "사용 가능한 아이디입니다.";
-             }
-          },
-          error : function(response) {
-          }
-       })
+	function duplicateId() {
+		const id = document.getElementById("member-id").value;
+		const idCheck = document.getElementById("idMsg");
+		const idRegExp = /^[a-zA-z0-9]{4,12}$/; // 아이디 유효성 검사 정규식
+		if (id == "") {
+			idCheck.innerHTML = "아이디를 입력해주세요.";
+			idCheck.style.color = "red";
+			return;
+		} else if (!idRegExp.test(id)) { // 아이디 유효성 검사
+			idCheck.style.color = "red";
+			idCheck.innerHTML = "아이디는 영문자와 숫자로 이루어진 4~12자여야 합니다.";
+			return;
+		}
+		$.ajax({
+			type : "POST",
+			url : "/duplicateId.do",
+			data : {
+				memberId : id
+			},
+			contentType : "application/x-www-form-urlencoded",
+			success : function(res) {
+				if (res === 'true') {
+					idCheck.style.color = "red";
+					idCheck.innerHTML = "중복된 아이디입니다.";
+				} else {
+					idCheck.style.color = "green";
+					idCheck.innerHTML = "사용 가능한 아이디입니다.";
+				}
+			},
+			error : function(response) {
+			}
+		})
 
-    
-
- }
+	}
 
 	// 이름 유효성 검사
 	function validateName() {

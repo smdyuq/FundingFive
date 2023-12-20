@@ -63,6 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function successfulProject() {
 	if (confirm("알림을 보내시겠습니까?")) {
 		let formId = document.getElementById("project-success");
+		let mailApiKey = document.getElementById("mailApiKey");
+		mailApiKey.value = config.google_api_secret_key;
+		console.log(config.google_api_secret_key);
+		console.log(mailApiKey.value);
 		formId.action = "/expiredProject.do";
 		formId.method  = "post";
 		formId.submit();

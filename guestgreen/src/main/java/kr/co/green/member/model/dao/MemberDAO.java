@@ -16,7 +16,7 @@ public class MemberDAO {
 	public int memberSignUp(Connection con, MemberDTO memberDTO) {
 		
 		String query = "INSERT INTO member "
-				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1)";
+				+ "		VALUES(member_no_seq.nextval, ?, ?, ?, ?, ?, sysdate, NULL, 1, NULL)";
 		int result = 0;
 		try {
 			pstmt = con.prepareStatement(query);

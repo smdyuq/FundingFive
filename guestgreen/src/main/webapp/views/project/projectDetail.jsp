@@ -16,38 +16,6 @@
 <%@include file="../../views/common/head.jsp"%>
 
 
-
-<style>
-.product-description > P > img {
-width:100%;
-} 
-
-.originator-div {
-	display: flex;
-	align-items: center;
-}
-
-.profile-container {
-	display: flex;
-	align-items: center;
-	margin-right: 20px;
-}
-
-.profile-image img {
-	width: 130px; /* 프로필 사진의 너비 설정 */
-	height: 130px; /* 프로필 사진의 높이 설정 */
-}
-
-.profile-details {
-	margin-left: 20px;
-	margin-bottom: 20px;
-}
-
-/* .project-img {
-	width : 250px;
-	height: 250px;
-} */
-</style>
 </head>
 
 <body>
@@ -97,6 +65,11 @@ width:100%;
 								<hr class="thin_line">
 
 								<div class="goal-container">
+								<div>
+										<p class="goal-text">상품금액</p>
+										<a class="goal-value">${projectDTO.projectPrice}<span
+											class="goal-unit-text">원</span></a>
+									</div>
 									<div>
 										<p class="goal-text">목표금액</p>
 										<a class="goal-value">${projectDTO.projectTargetAmount}<span
@@ -113,7 +86,7 @@ width:100%;
 
 
 								<div class="sponsor-button">
-									<button class="btn btn-dark me-md-2" type="button"
+									<button class="Donate_btn" type="button"
 										onclick="projectDonate(${projectDTO.projectNo})">후원하기</button>
 								</div>
 							</div>
@@ -131,7 +104,7 @@ width:100%;
 						<p>창작자 소개</p>
 						<div class="profile-container">
 							<div class="profile-image">
-								<img
+								<img style="width:100%;"
 									src="resources/uploads/managerimage/${projectDTO.projectManagerImageName}"
 									alt="프로필 사진">
 							</div>
@@ -145,6 +118,8 @@ width:100%;
 					</div>
 				</div>
 			</div>
+			
+		</div>
 	</main>
 
 	<%@include file="../../views/common/common.jsp"%>
