@@ -18,6 +18,8 @@ guestgreen/.classpath
 guestgreen/.settings/
 .loadpath
 .recommenders
+guestgreen/src/main/webapp/resources/uploads
+guestgreen/src/main/webapp/resources/image
 build/
 guestgreen/src/main/webapp/resources/js/project/apiKey.js
 
