@@ -55,22 +55,7 @@
         <a href="https://github.com/Jaeyun-Na">
           나재윤
         </a><br>
-        <center>공지사항 게시판 기능 구현(등록,수정,삭제)</center><br>
-        <center>API 적용(Kakao Chatbot, 구글 번역기, 네이버 SmartEditer)</center><br>
-        <center>페이지 기능 검수</center><br>
-      </td>
-      <td align="center" width="400px">
-        <center>팀원</center><br>
-        <a href="https://github.com/YounHoooooa">
-          이윤호
-        </a><br>
-        <center>메인 페이지</center><br>
-        <center>웹 퍼블리싱</center><br>
-      </td>
-      <td align="center" width="400px">
-        <center>팀원</center><br>
-        <a href="https://github.com/jyoonje">
-          이윤제
+   정윤제
         </a><br>
         <center>상품 상세페이</center><br>
         <center>주문정보 DB저장</center><br>
