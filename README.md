@@ -58,7 +58,7 @@
         <center>공지 게시판 구현</center><br>
         <center>API 적용</center><br>
         <center>[Kakao API, Naver SmartEditer, Google 번역기]</center><br>
-        <center>페이지 기능 검</center><br>
+        <center>페이지 기능 검수</center><br>
       </td>
       <td align="center" width="400px">
         <center>팀원</center><br>
