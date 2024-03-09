@@ -1,4 +1,4 @@
-# [Funding Five](23년 11월14일 ~ 23년 12월21일)
+# [Funding Five] 세미 프로젝트(23년 11월 ~ 23년 12월)
 <center><img width="100%" src="https://github.com/smdyuq/FundingFive/assets/150643112/44fbb65f-6ae8-4cb7-8ac4-dc3577c05e8a"></center>
 <br/><br/>
 
